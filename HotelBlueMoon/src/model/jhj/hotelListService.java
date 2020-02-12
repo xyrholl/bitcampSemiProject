@@ -62,6 +62,7 @@ public class hotelListService {
 		for(int i=0 ; i<list.size() ; i++) {
 			temp+="{";
 			
+			temp+="\"seq\":\""+list.get(i).getSeq()+"\",";
 			temp+="\"name\":\""+list.get(i).getName()+"\",";
 			temp+="\"addr\":\""+list.get(i).getAddr()+"\",";
 			temp+="\"count\":\""+list.get(i).getUseCount()+"\",";
