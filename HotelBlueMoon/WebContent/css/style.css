@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url( "../image/bg02.jpg" );
+	display: flex;
+	min-height: 100vh;
+	flex-direction: row;
+	margin: 0;
+    padding: 40px;
+}
+
+
+.hotelcol-1 {
+	
+	flex: 1;
+}
+
+.hotelcol-2 {
+	display: flex;
+	flex-direction: column;
+	flex: 5;
+}
+
+.hotelcontent {
+	display: flex;
+	flex-direction: row;
+}
+
+.hotelcontent>article {
+	flex: 4;
+	min-height: 60vh;
+}
+
+header, footer {
+	
+	height: 20vh;
+}
+
+header, footer, article, nav {
+	padding: 1em;
+}
+
+
+
+.mainSpan .card{
+	background-color:white;
+	float:left;
+	width:200px;
+	height:400px;
+	border:1px solid white;
+	border-radius:5px;
+
+	margin: 10px;
+	
+}
