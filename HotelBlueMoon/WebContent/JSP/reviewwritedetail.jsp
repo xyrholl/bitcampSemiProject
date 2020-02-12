@@ -94,6 +94,6 @@
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/JS/reviewwrite.js"></script>
+		src="<%=request.getContextPath()%>/JS/reviewwritedetail.js"></script>
 </body>
 </html>
