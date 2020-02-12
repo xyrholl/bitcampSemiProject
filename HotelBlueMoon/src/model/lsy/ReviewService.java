@@ -10,7 +10,7 @@ public class ReviewService {
 	ReviewDAO reviewDao = new ReviewDAO();
 
 	public ReviewDTO selectOne(int seq) {
-		return reviewDao.selectOne(seq);
+		return reviewDao.ReviewSelectOne(seq);
 	}
 
 	public List<ReviewDTO> reviewPageList() {

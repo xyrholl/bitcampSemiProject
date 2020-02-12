@@ -29,7 +29,7 @@ DEL NUMBER(1) NOT NULL
 
 public class ReviewDAO {
 
-	public ReviewDTO selectOne(int seq) {
+	public ReviewDTO ReviewSelectOne(int seq) {
 		ReviewDTO dto = null;
 
 		String sql = " SELECT r.SEQ, r.RATING, m.ID, rm.NAME, rs.CURRENT_GUEST, r.WRITEDATE, r.TITLE, r.CONTENT, h.RATING, rs.CHECKIN, rs.CHECKOUT, h.NAME"
@@ -102,6 +102,8 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
 		}
 		return list;
 	}
@@ -148,6 +150,8 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
 		}
 		return list;
 	}
@@ -172,6 +176,8 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, null);
 		}
 
 		return count;
@@ -213,6 +219,8 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
 		}
 
 		return list;
@@ -225,10 +233,10 @@ public class ReviewDAO {
 		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
 				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ? ";
-		
+
 		if (selectIndex == 1) {
 			sql = sql + " AND h.NAME LIKE '%'||?||'%' ";
-		}else if (selectIndex == 2) {
+		} else if (selectIndex == 2) {
 			sql = sql + " AND h.PLACE LIKE '%'||?||'%' ";
 		}
 
@@ -260,9 +268,41 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
 		}
 
 		return list;
+	}
+
+	public ResvDTO ResvSelectOne(int seq) {
+		ResvDTO dto = null;
+
+		String sql = " SELECT * " + " FROM RESV " + " WHERE SEQ = ? ";
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				int i = 1;
+				dto = new ResvDTO();
+				dto.setCancel(i++);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+
+		return dto;
 	}
 
 }
