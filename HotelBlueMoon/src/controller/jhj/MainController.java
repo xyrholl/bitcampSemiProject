@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 @WebServlet("/main")
-public class mainController extends HttpServlet
+public class MainController extends HttpServlet
 {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
         throws ServletException, IOException
