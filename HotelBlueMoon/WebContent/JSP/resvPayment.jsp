@@ -322,7 +322,7 @@ h1 {
 					<div class="receipt">
 						<div class="paper">
 							<div class="title">Receipt</div>
-							<div class="date"><%=resv.getResvDate() %></div>
+
 						</div>
 						<table>
 							<tbody>

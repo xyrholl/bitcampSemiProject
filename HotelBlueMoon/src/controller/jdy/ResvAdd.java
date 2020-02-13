@@ -29,7 +29,7 @@ public class ResvAdd extends HttpServlet {
 	
 	public void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("ResvAdd호출");
-//	    <input type="hidden" name="seq" value="<%=resv.getSeq() %>">
+
 //	    <input type="hidden" name="memberSeq" value="<%=resv.getMemberSeq() %>">
 //	    <input type="hidden" name="roomSeq" value="<%=resv.getRoomSeq() %>">
 //	    <input type="hidden" name="hotelSeq" value="<%=resv.getHotelSeq() %>">
@@ -39,31 +39,28 @@ public class ResvAdd extends HttpServlet {
 //	    <input type="hidden" name="totalPrice" value="<%=resv.getTotalPrice() %>">
 //	    <input type="hidden" name="cancel" value="<%=resv.getCancel() %>">
 //	    <input type="hidden" name="current_guest" value="<%=resv.getCurrent_guest() %>">
-		BM_MemberDTO member = null;
+//		<input type="hidden" name="loginId" value="<%=loginId%>"> 
+		
+		String loginId = req.getParameter("loginId");
+
 		Singleton s = Singleton.getInstance();
-		//(SEQ, MEMBERSEQ, CHECKIN, CHECKOUT, RESVDATE, TOTALPRICE, CURRENT_GUEST, CANCEL) 
-		String sseq = req.getParameter("seq");
-		int seq = Integer.parseInt(sseq);
-		String smemseq = req.getParameter("memberSeq");
-		int memberSeq = Integer.parseInt(smemseq);
+
 		String sroomseq = req.getParameter("roomSeq");
 		int roomSeq = Integer.parseInt(sroomseq);
 		String shotelseq = req.getParameter("hotelSeq");
 		int hotelSeq = Integer.parseInt(shotelseq);
 		String checkIn = req.getParameter("checkIn");
 		String checkOut = req.getParameter("checkOut");
-		String resvDate = req.getParameter("resvDate");
+	
 		String stotalprice = req.getParameter("totalPrice");
 		int totalPrice = Integer.parseInt(stotalprice);
-		String scancle = req.getParameter("cancel");
-		int cancel = Integer.parseInt(scancle);
+
 		String scurrentguest = req.getParameter("current_guest");
 		int current_guest = Integer.parseInt(scurrentguest);
-		
-		
-		ResvDTO resv = new ResvDTO(seq, hotelSeq, memberSeq, roomSeq, checkIn, checkOut, resvDate, totalPrice, cancel, current_guest);
-		
-		member = s.resvSerivce.getMemberInfo(memberSeq);
+
+		BM_MemberDTO member = s.resvSerivce.getMemberInfo(loginId);
+
+		ResvDTO resv = new ResvDTO(hotelSeq, member.getSeq(), roomSeq, checkIn, checkOut, totalPrice, current_guest);
 		resv.setId(member.getId());
 		resv.setPwd(member.getPwd());
 		resv.setMemName(member.getName());
@@ -79,6 +76,7 @@ public class ResvAdd extends HttpServlet {
 		resv.setHotelName(hotel.getName());
 		resv.setHotelAddr(hotel.getAddr());
 		resv.setHotelPlace(hotel.getPlace());
+		System.out.println("resvadd"+resv.toString());
 		
 		boolean b = s.resvSerivce.addResv(resv);
 		if(b) {
@@ -87,10 +85,10 @@ public class ResvAdd extends HttpServlet {
 		}else {
 			resp.sendRedirect(req.getContextPath()+"/JSP/resvcheck.jsp");
 		}
-			
-		
 		
 	}
+
+
 	
 	public void forward(String link, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		RequestDispatcher dispatch = req.getRequestDispatcher(link);
