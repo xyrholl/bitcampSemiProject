@@ -1,19 +1,15 @@
+<%@page import="dto.ReviewDTO"%>
 <%@page import="dto.ResvDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%
+	String loginId = (String) session.getAttribute("loginId");
 
-String loginId = (String) session.getAttribute("loginId");
-
-List<ResvDTO> list = (List<ResvDTO>) request.getAttribute("list");
-
-
-int qnaPage = (int) request.getAttribute("qnaPage");
-int pageNumber = (int) request.getAttribute("pageNumber");
-String choice = (String) request.getAttribute("choice");
-String searchWord = (String) request.getAttribute("searchWord");
+	List<ResvDTO> list = (List<ResvDTO>) request.getAttribute("resvList");
+	
+	System.out.println("myresvhis list.size: "+list.size() );
 %>
 
 <!DOCTYPE html>
@@ -52,13 +48,106 @@ String searchWord = (String) request.getAttribute("searchWord");
 		</header>
 		<main class="hotelcontent">
 
-			<article>
-			
-			
-			
-			
-			</article>
+			<article
+				style="background-color: rgba(170, 166, 157, 0.33); overflow-y: scroll; height: 500px;">
 
+				<h1>My Resv History</h1>
+
+					<input type="hidden" value="" class="js-currDateTmp">
+					<div class="input-group-append">
+
+						<select class="custom-select js-search-select">
+							<option selected>검색</option>
+							<option value="1">호텔이름</option>
+							<option value="2">지역</option>
+						</select>
+
+						<div class="input-group input-group-append mb-3">
+							<input type="text" class="form-control js-searchText"
+								placeholder="Search" aria-label="Recipient's username"
+								aria-describedby="basic-addon2">
+
+							<div class="input-group-append">
+								<span class="input-group-text js-searchBtn" id="basic-addon2">검색</span>
+								<span class="input-group-text js-allListBtn" id="basic-addon2">전체목록</span>
+							</div>
+						</div>
+					</div>
+
+					<table class="table" style="background-color: rgba(170, 166, 157, 0.44)">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">평점</th>
+								<th scope="col">호텔명</th>
+								<th scope="col">방이름</th>
+								<th scope="col">체크인</th>
+								<th scope="col">체크아웃</th>
+								<th scope="col">취소여부</th>
+								<th scope="col">리뷰여부</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								if (list == null || list.size() == 0) {
+							%>
+							<tr>
+								<td colspan="7">작성된 글이 없습니다</td>
+							</tr>
+							<%
+								} else {
+									for (int i = 0; i < list.size(); i++) {
+										ResvDTO dto = list.get(i);
+							%>
+							<tr class="row<%=i%>">
+								<th scope="row"><%=i + 1%></th>
+								<td>
+									<%
+										if (dto.getHotelRating() >= 4) {
+									%>
+											<button class="btn btn-primary"><%=dto.getHotelRating()%></button> <%
+									 	} else if (dto.getHotelRating() < 4 && dto.getHotelRating() >= 3) {
+									 %>
+											<button class="btn btn-info"><%=dto.getHotelRating()%></button> <%
+									 	} else {
+									 %>
+											<button class="btn btn-secondary"><%=dto.getHotelRating()%></button>
+									<%
+										}
+									%>
+									</td>
+								<td><a
+									href="<%=request.getContextPath()%>/reviewdetailfoward?seq=<%=dto.getSeq()%>"
+									class="list-group-item list-group-item-action"><%=dto.getHotelName()%></a>
+									</td>
+								<td><a class="list-group-item list-group-item-action"><%=dto.getRoomName()%></a></td>
+								<td><%=dto.getCheckIn() %></td>
+								<td><%=dto.getCheckOut() %></td>
+								<td><%if(dto.getCancel() == 0){
+									%>
+									<button type="button" class="btn btn-success">이용완료</button>
+									<%}else{%>
+									<button type="button" class="btn btn-danger">취소완료</button>
+									<%} %>
+									</td>
+								<td><%if(dto.getReviewIs() == 0){
+									%>
+									<button type="button" class="btn btn-outline-info">리뷰 쓰기</button>
+									<%}else{%>
+									<button type="button" class="btn btn-info">리뷰 완료</button>
+									<%} %>
+									</td>
+							</tr>
+							<%
+									}
+								}
+							%>
+						</tbody>
+					</table>
+
+
+
+				</article>
 		</main>
 		<footer>Footer</footer>
 	</div>

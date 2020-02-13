@@ -89,16 +89,12 @@
 
 					<br>
 					<div class="buttonbox" align="center">
-						<%
-							if (loginId != null && loginId != "") {
-								if (dto.getMemberId().equals(loginId) || loginId.equals("admin")) {
-						%>
-						<button type="submit" id="qnaUpdateBtn">수정하기</button>
-						<button type="button" id="qnaDeleteBtn" value="<%=dto.getSeq()%>">삭제하기</button>
-						<%
-							}
-							}
-						%>
+						
+						<button class="Idcheck" type="submit" id="qnaUpdateBtn">수정하기</button>
+						<button class="Idcheck" type="button" id="qnaDeleteBtn" value="<%=dto.getSeq()%>">삭제하기</button>
+						<input type="hidden" id="loginId" value="<%=loginId %>">
+						<input type="hidden" id="dtoId" value="<%=dto.getMemberId() %>">
+						
 						<button type="button" id="qnaListBtn">목록보기</button>
 						<button type="button" id="qnaCommentBtn" value="<%=dto.getSeq()%>">답글달기</button>
 
@@ -111,7 +107,9 @@
 		<footer>Footer</footer>
 	</div>
 
-	<script src="<%=request.getContextPath()%>/JS/qnadetail.js"></script>
+	<script src="<%=request.getContextPath()%>/JS/qnadetail.js">
+	
+	</script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>
