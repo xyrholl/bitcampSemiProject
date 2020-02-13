@@ -22,13 +22,13 @@ public class hotelListDAO {
 			for (int i = 0; i < hotelNameList.size(); i++) {
 				String sql = "";
 				if(area.equals("Area")) {
-					sql = " SELECT hotel.NAME, hotel.ADDR, room.MAX_GUEST, hotel.RATING FROM HOTEL"
+					sql = " SELECT hotel.SEQ, hotel.NAME, hotel.ADDR, room.MAX_GUEST, hotel.RATING FROM HOTEL"
 							+ " INNER JOIN ROOM ON HOTEL.SEQ = ROOM.hotelSEQ WHERE "
 							+ " MAX_GUEST >= '" + Integer.parseInt(guest) + "' AND hotel.NAME = '"
 							+ hotelNameList.get(i) + "'";
 				}
 				else {
-					sql = " SELECT hotel.NAME, hotel.ADDR, room.MAX_GUEST, hotel.RATING FROM HOTEL"
+					sql = " SELECT hotel.SEQ, hotel.NAME, hotel.ADDR, room.MAX_GUEST, hotel.RATING FROM HOTEL"
 							+ " INNER JOIN ROOM ON HOTEL.SEQ = ROOM.hotelSEQ WHERE PLACE = '" + area + "'"
 							+ " AND MAX_GUEST >= '" + Integer.parseInt(guest) + "' AND hotel.NAME = '"
 							+ hotelNameList.get(i) + "'";
@@ -40,7 +40,7 @@ public class hotelListDAO {
 				rs = psmt.executeQuery();
 
 				while (rs.next()) {
-					HotelDTO dto = new HotelDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4));
+					HotelDTO dto = new HotelDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
 					list.add(dto);
 				}
 			}

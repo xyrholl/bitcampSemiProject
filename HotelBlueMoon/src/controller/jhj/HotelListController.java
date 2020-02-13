@@ -16,7 +16,7 @@ import dto.HotelDTO;
 import singleton.Singleton;
 
 @WebServlet("/hotelList")
-public class hotelListController extends HttpServlet{
+public class HotelListController extends HttpServlet{
 	Singleton s;
 	
 	

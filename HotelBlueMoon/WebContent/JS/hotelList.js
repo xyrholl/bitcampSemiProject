@@ -17,6 +17,7 @@ function ajax(checkin, checkout, guest, area, flag){
 		$("#area").val(area);
 		$("#guest").val(guest);
 		$(".card").remove();
+		$(".result").remove();
 
 		$.ajax({
 					url : "../hotelList",
@@ -50,13 +51,9 @@ function ajax(checkin, checkout, guest, area, flag){
 													+ data[i].name
 													+ "</h5>"
 													+ "<p class=\"card-text\">"
-													+ data[i].addr
-													+ "<br>[평점 : "
-													+ star
-													+ " / "
-													+ data[i].count
-													+ "점]</p>"
-													+ "<a href=\"#\" class=\"btn btn-primary\">Reservation</a>"
+													+ data[i].addr + "<br>[평점 : " + star + " / " + data[i].count + "점]</p>"
+													+ "<a href=\"../gotoRI?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout 
+													+ "&guest=" + guest + "\" class=\"btn btn-primary\">Reservation</a>"
 													+ "</div>"
 													+ "</div>");
 
@@ -65,7 +62,7 @@ function ajax(checkin, checkout, guest, area, flag){
 					},
 					error : function() {
 						$(".mainSpan")
-						.append("<br><br><br><br><span style=\"color:white;\">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" +
+						.append("<span style=\"color:white;\" class = \"result\"><br><br><br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" +
 								"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" +
 								"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" +
 								"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp해당 조건과 일치하는 검색 결과가 없습니다.</span>");
