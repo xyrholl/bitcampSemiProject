@@ -189,7 +189,7 @@ public class ReviewDAO {
 
 		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
-				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND  = 0 " + " AND m.ID = ? ";
+				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND DEL = 0 " + " AND m.ID = ? ";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -278,7 +278,9 @@ public class ReviewDAO {
 	public ResvDTO ResvSelectOne(int seq) {
 		ResvDTO dto = null;
 
-		String sql = " SELECT * " + " FROM RESV " + " WHERE SEQ = ? ";
+		String sql = " SELECT h.RATING, h.NAME, re.CURRENT_GUEST, r.NAME, re.SEQ, h.SEQ, r.SEQ "
+				+ " FROM RESV re, HOTEL h, ROOM r " + " WHERE re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ "
+				+ " AND re.SEQ = ? ";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -293,7 +295,13 @@ public class ReviewDAO {
 			if (rs.next()) {
 				int i = 1;
 				dto = new ResvDTO();
-				dto.setCancel(i++);
+				dto.setHotelRating(rs.getDouble(i++));
+				dto.setHotelName(rs.getString(i++));
+				dto.setCurrent_guest(rs.getInt(i++));
+				dto.setRoomName(rs.getString(i++));
+				dto.setSeq(rs.getInt(i++));
+				dto.setHotelSeq(rs.getInt(i++));
+				dto.setRoomSeq(rs.getInt(i++));
 			}
 
 		} catch (SQLException e) {
@@ -303,6 +311,38 @@ public class ReviewDAO {
 		}
 
 		return dto;
+	}
+
+	public int insertReview(ReviewDTO dto) {
+
+		String sql = " INSERT INTO REVIEW (SEQ, HOTELSEQ, ROOMSEQ, RESVSEQ, MEMBERSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL) "
+				+ " VALUES (SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0)";
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto.getSeq());
+			psmt.setInt(2, dto.getHotleSeq());
+			psmt.setInt(3, dto.getRoomSeq());
+			psmt.setInt(4, dto.getResvSeq());
+			psmt.setInt(4, dto.getMemberSeq());
+			psmt.setString(5, dto.getTitle());
+			psmt.setString(6, dto.getContent());
+			psmt.setDouble(7, dto.getRating());
+
+			count = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, null);
+		}
+		return count;
+
 	}
 
 }

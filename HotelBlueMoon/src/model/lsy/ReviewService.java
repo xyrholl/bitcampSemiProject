@@ -38,4 +38,17 @@ public class ReviewService {
 		return reviewDao.writeReviewCheck(loginId, selectIndex, hotelName, place);
 	}
 
+	public ResvDTO ResvSelectOne(int seq) {
+		return reviewDao.ResvSelectOne(seq);
+	}
+
+	public boolean insertReview(ReviewDTO dto) {
+		int count = reviewDao.insertReview(dto);
+		if (count == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 }
