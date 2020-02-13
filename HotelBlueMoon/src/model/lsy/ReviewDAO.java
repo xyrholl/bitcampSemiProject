@@ -182,8 +182,8 @@ public class ReviewDAO {
 		List<ResvDTO> list = new ArrayList<ResvDTO>();
 
 		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL "
-				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
-				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND  = 0 " + " AND m.ID = ? ";
+				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r " + " WHERE re.MemberSEQ = m.SEQ "
+				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ? ";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
