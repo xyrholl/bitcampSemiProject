@@ -315,20 +315,25 @@ public class ReviewDAO {
 
 	public int insertReview(ReviewDTO dto) {
 
-		String sql = " INSERT INTO REVIEW (SEQ, HOTELSEQ, ROOMSEQ, RESVSEQ, MEMBERSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL) "
-				+ " VALUES (SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0)";
+		String sql = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL) "
+				+ " VALUES(SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0)";
+		
+		//INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL)
+		//VALUES(SEQ_REVIEW.NEXTVAL, 4, 4, 4, 4, '123', '123', 3, SYSDATE, 0);
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		int count = 0;
 
+		String sql2 = " UPDATE RESV " + " SET REVIEWIS = 1 " + " WHERE SEQ = ? ";
+
 		try {
 			conn = DBConnection.getConnection();
+			conn.setAutoCommit(false);
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, dto.getSeq());
-			psmt.setInt(2, dto.getHotleSeq());
-			psmt.setInt(3, dto.getRoomSeq());
-			psmt.setInt(4, dto.getResvSeq());
+			psmt.setInt(1, dto.getHotleSeq());
+			psmt.setInt(2, dto.getRoomSeq());
+			psmt.setInt(3, dto.getResvSeq());
 			psmt.setInt(4, dto.getMemberSeq());
 			psmt.setString(5, dto.getTitle());
 			psmt.setString(6, dto.getContent());
@@ -336,9 +341,29 @@ public class ReviewDAO {
 
 			count = psmt.executeUpdate();
 
+			psmt.clearParameters();
+
+			psmt = conn.prepareStatement(sql2);
+			psmt.setInt(1, dto.getResvSeq());
+
+			count = psmt.executeUpdate();
+			conn.commit();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
 		} finally {
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			DBClose.close(psmt, conn, null);
 		}
 		return count;

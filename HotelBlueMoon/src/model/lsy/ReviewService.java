@@ -17,7 +17,7 @@ public class ReviewService {
 		return reviewDao.reviewList();
 	}
 
-	public List<ReviewDTO> reviewSearchPageList(int selectIndex, String searchText) {
+	public List<ReviewDTO> reviewPageList(int selectIndex, String searchText) {
 		return reviewDao.reviewList(selectIndex, searchText);
 	}
 

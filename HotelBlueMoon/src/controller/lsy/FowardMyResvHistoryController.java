@@ -36,7 +36,6 @@ public class FowardMyResvHistoryController extends HttpServlet {
 
 		if (selectIndex == null) {
 			list = s.reviewService.resvList(loginId);
-			System.out.println("myresvJAVA list.size: "+list.size());
 			req.setAttribute("resvList", list);
 		} else if (Integer.parseInt(selectIndex) == 1 || Integer.parseInt(selectIndex) == 2) {
 			list = s.reviewService.resvList(loginId, Integer.parseInt(selectIndex), hotelName, place);
