@@ -191,8 +191,8 @@ public class ResvDAO {
 	         System.out.println("1/6 addResv success");
 	         
 	         psmt = conn.prepareStatement(sql);
-	         psmt.setInt(1, resv.getMemberSeq());
-	         psmt.setInt(2, resv.getHotelSeq());
+	         psmt.setInt(1, resv.getHotelSeq());
+	         psmt.setInt(2, resv.getMemberSeq());
 	         psmt.setInt(3, resv.getRoomSeq());
 	         psmt.setString(4, resv.getCheckIn());
 	         psmt.setString(5, resv.getCheckOut());
