@@ -1,6 +1,7 @@
 <%@page import="dto.QnADTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%
 	QnADTO dto = (QnADTO) request.getAttribute("dto");
 	String loginId = session.getAttribute("loginId") + "";
@@ -8,14 +9,11 @@
 		response.sendRedirect(request.getContextPath() + "/fowardlogin");
 	}
 %>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA Comment</title>
+<title>main</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -26,7 +24,15 @@
 	href="<%=request.getContextPath()%>/css/style.css">
 </head>
 <body>
-	<nav class="hotelcol-1">Nav</nav>
+	<nav class="hotelcol-1">
+		<ul class="list-group">
+			<li class="list-group-item js-main-foward">메인</li>
+			<li class="list-group-item js-search-foward">검색</li>
+			<li class="list-group-item js-qna-foward">Q&A</li>
+			<li class="list-group-item js-review-foward">Review</li>
+			<li class="list-group-item js-mypage-foward">MyPage</li>
+		</ul>
+	</nav>
 	<div class="hotelcol-2">
 		<header>
 			Header
@@ -35,6 +41,7 @@
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
+			<input type="hidden" value="<%=loginId%>" class="js-session">
 		</header>
 		<main class="hotelcontent">
 
@@ -108,9 +115,11 @@
 					<input type="hidden" name="command" value="qnacommentAf">
 					<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
 					<button type="submit">답글 달기</button>
+					<button type="button" onclick="location.href='<%=request.getContextPath()%>/qnafoward'">목록으로</button>
 				</form>
 
 			</article>
+
 
 		</main>
 		<footer>Footer</footer>
