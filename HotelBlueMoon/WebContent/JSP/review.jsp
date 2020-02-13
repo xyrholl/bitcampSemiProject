@@ -99,11 +99,11 @@
 									if (dto.getRating() >= 4) {
 								%>
 								<button class="btn btn-primary"><%=dto.getRating()%></button> <%
- 	} else if (dto.getRating() < 4 && dto.getRating() >= 3) {
- %>
-								<button class="btn btn-info"><%=dto.getRating()%></button> <%
- 	} else {
- %>
+								 	} else if (dto.getRating() < 4 && dto.getRating() >= 3) {
+								 %>
+																<button class="btn btn-info"><%=dto.getRating()%></button> <%
+								 	} else {
+								 %>
 								<button class="btn btn-secondary"><%=dto.getRating()%></button>
 								<%
 									}
