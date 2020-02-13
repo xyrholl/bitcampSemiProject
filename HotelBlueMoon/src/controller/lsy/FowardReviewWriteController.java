@@ -1,8 +1,6 @@
 package controller.lsy;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,13 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import dto.ReviewDTO;
+import dto.ResvDTO;
 import singleton.Singleton;
 
-@WebServlet("/reviewfoward")
-public class FowardReviewController extends HttpServlet {
+@WebServlet("/fowardreviewwrite")
+public class FowardReviewWriteController extends HttpServlet {
 
 	public void forward(String link, HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -26,21 +23,12 @@ public class FowardReviewController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		String seq = req.getParameter("seq");
 		Singleton s = Singleton.getInstance();
-		String selectIndex = req.getParameter("selectIndex");
-		String searchText = req.getParameter("searchText");
-		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
+		ResvDTO dto = s.reviewService.ResvSelectOne(Integer.parseInt(seq));
+		req.setAttribute("resvDTO", dto);
+		forward("/JSP/reviewwritedetail.jsp", req, resp);
 
-		if (selectIndex == null) {
-			list = s.reviewService.reviewPageList();
-			req.setAttribute("list", list);
-		} else if (Integer.parseInt(selectIndex) == 1 || Integer.parseInt(selectIndex) == 2
-				|| Integer.parseInt(selectIndex) == 3 || Integer.parseInt(selectIndex) == 4) {
-			list = s.reviewService.reviewPageList(Integer.parseInt(selectIndex), searchText);
-			req.setAttribute("list", list);
-		}
-		forward("/JSP/review.jsp", req, resp);
 	}
 
 	@Override

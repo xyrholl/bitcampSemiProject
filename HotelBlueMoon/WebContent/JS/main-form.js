@@ -56,8 +56,35 @@ function fowardReview() {
 }
 
 function fowardMypage() {
-	location.href = getContextPath() + "/mypagefoward"
+	$.ajax({
+		url:`${getContextPath()}`+"/mypageidcheck",
+		method:"get",
+		data: {
+			"loginId" : `${formSessionId.value}`
+		} ,
+		success:function(data){
+			if(data.trim() === "1" ){
+				alert("로그인페이지로 이동합니다.")
+				location.href= getContextPath() +"/fowardlogin";
+			}else if (data === "2"){
+				location.href= getContextPath() +"/mypagefoward";
+			}
+		},
+		error:function(){
+			alert("error")
+		}
+	});
+	
+	
+	
+	//location.href = getContextPath() + "/mypagefoward"
 }
+
+function getContextPath() {
+	var hostIndex = location.href.indexOf(location.host) + location.host.length;
+	return location.href.substring(hostIndex, location.href.indexOf('/',
+			hostIndex + 1));
+};
 
 function init() {
 	loginCheck();

@@ -29,8 +29,7 @@ public class FowardMyResvHistoryController extends HttpServlet {
 		Singleton s = Singleton.getInstance();
 		HttpSession session = req.getSession(false);
 		String selectIndex = req.getParameter("selectIndex");
-		String hotelName = req.getParameter("hotelName");
-		String place = req.getParameter("place");
+		String searchText = req.getParameter("searchText");
 		String loginId = (String) session.getAttribute("loginId");
 		List<ResvDTO> list = new ArrayList<ResvDTO>();
 
@@ -38,11 +37,11 @@ public class FowardMyResvHistoryController extends HttpServlet {
 			list = s.reviewService.resvList(loginId);
 			req.setAttribute("resvList", list);
 		} else if (Integer.parseInt(selectIndex) == 1 || Integer.parseInt(selectIndex) == 2) {
-			list = s.reviewService.resvList(loginId, Integer.parseInt(selectIndex), hotelName, place);
+			list = s.reviewService.resvList(loginId, Integer.parseInt(selectIndex), searchText);
 			req.setAttribute("resvList", list);
 		}
 
-		forward("/JSP/reviewwrite.jsp", req, resp);
+		forward("/JSP/myresvhistory.jsp", req, resp);
 
 	}
 

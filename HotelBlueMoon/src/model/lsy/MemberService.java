@@ -7,7 +7,7 @@ public class MemberService {
 	MemberDAO memberDAO = new MemberDAO();
 
 	public BM_MemberDTO selectOneMember(String id) {
-		BM_MemberDTO dto = memberDAO.selectOneMember(id);
+		BM_MemberDTO dto = memberDAO.getMyPage(id);
 		return dto;
 	}
 
