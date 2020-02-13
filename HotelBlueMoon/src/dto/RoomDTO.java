@@ -18,6 +18,7 @@ public class RoomDTO {
 	private int price;
 	private int max_guest;
 
+	
 	public RoomDTO() {
 	}
 

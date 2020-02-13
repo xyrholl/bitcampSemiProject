@@ -50,7 +50,8 @@
 					class="js-input-review-resvseq"> <input type="hidden"
 					value="<%=dto.getHotelSeq()%>" class="js-input-review-hotelseq">
 				<input type="hidden" value="<%=dto.getRoomSeq()%>"
-					class="js-input-review-roomseq">
+					class="js-input-review-roomseq"> <input type="hidden"
+					class="js-input-id" value="<%=loginId%>">
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -58,7 +59,7 @@
 							<td scope="col"><input type="text" class="js-input-rating">
 							</td>
 							<th scope="col">작성자</th>
-							<td scope="col" class="js-input-id"><%=loginId%></td>
+							<td scope="col"><%=loginId%></td>
 							<th scope="col">이용인원</th>
 							<td scope="col" class="js-input-curr_guest"><%=dto.getCurrent_guest()%></td>
 						</tr>

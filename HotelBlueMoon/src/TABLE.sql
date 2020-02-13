@@ -76,6 +76,8 @@ ALTER TABLE RESV
 ADD CONSTRAINT FK_RESV_SEQ2 FOREIGN KEY(HotelSEQ)
 REFERENCES HOTEL(SEQ);
 
+select * from room;
+
 -------------------------------------------------------------
 
 DROP TABLE BM_MEMBER

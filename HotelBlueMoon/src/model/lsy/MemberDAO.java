@@ -48,7 +48,7 @@ public class MemberDAO {
 	}
 
 	public BM_MemberDTO selectOneMember(String id) {
-		BM_MemberDTO BM_memberDto = null;
+		BM_MemberDTO dto = null;
 
 		String sql = " SELECT SEQ, ID, NAME, PHONENUM, EMAIL " + " FROM BM_MEMBER " + " WHERE ID = ? ";
 
@@ -59,16 +59,15 @@ public class MemberDAO {
 		try {
 			conn = DBConnection.getConnection();
 			psmt = conn.prepareStatement(sql);
+			System.out.println("1");
 			psmt.setString(1, id);
+			System.out.println("2");
 			rs = psmt.executeQuery();
+			System.out.println("3");
 
 			if (rs.next()) {
-				BM_memberDto = new BM_MemberDTO();
-				BM_memberDto.setSeq(rs.getInt(1));
-				BM_memberDto.setId(rs.getString(2));
-				BM_memberDto.setName(rs.getString(3));
-				BM_memberDto.setPhoneNum(rs.getString(4));
-				BM_memberDto.setEmail(rs.getString(5));
+				dto = new BM_MemberDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5));
 			}
 
 		} catch (SQLException e) {
@@ -76,7 +75,38 @@ public class MemberDAO {
 		} finally {
 			DBClose.close(psmt, conn, null);
 		}
-		return BM_memberDto;
+		return dto;
+	}
+
+	public BM_MemberDTO getMyPage(String loginId) {
+		String sql = " SELECT SEQ, ID, PWD, NAME, PHONENUM, EMAIL " + " FROM BM_MEMBER " + " WHERE ID=? ";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		BM_MemberDTO dto = null;
+
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getMyPage success");
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, loginId);
+			System.out.println("2/6 getMyPage success");
+
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getMyPage success");
+			if (rs.next()) {
+				int i = 1;
+				dto = new BM_MemberDTO(rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
+						rs.getString(i++), rs.getString(i++));
+			}
+			System.out.println("4/6 getMyPage success");
+		} catch (SQLException e) {
+			System.out.println("getMyPage fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return dto;
 	}
 
 	public int userRegistration(BM_MemberDTO bm_MemberDTO) {

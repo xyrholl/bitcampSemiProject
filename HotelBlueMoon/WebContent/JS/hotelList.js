@@ -52,7 +52,7 @@ function ajax(checkin, checkout, guest, area, flag){
 													+ "</h5>"
 													+ "<p class=\"card-text\">"
 													+ data[i].addr + "<br>[평점 : " + star + " / " + data[i].count + "점]</p>"
-													+ "<a href=\"../gotoRI?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout 
+													+ "<a href=\"../hotelResvInfo?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout 
 													+ "&guest=" + guest + "\" class=\"btn btn-primary\">Reservation</a>"
 													+ "</div>"
 													+ "</div>");

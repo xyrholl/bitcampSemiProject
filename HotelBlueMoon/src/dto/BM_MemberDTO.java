@@ -25,6 +25,15 @@ public class BM_MemberDTO {
 	public BM_MemberDTO() {
 	}
 
+	public BM_MemberDTO(int seq, String id, String name, String phoneNum, String email) {
+		super();
+		this.seq = seq;
+		this.id = id;
+		this.name = name;
+		this.phoneNum = phoneNum;
+		this.email = email;
+	}
+
 	public BM_MemberDTO(String id, String pwd, String name, String phoneNum, String email) {
 		super();
 		this.id = id;
