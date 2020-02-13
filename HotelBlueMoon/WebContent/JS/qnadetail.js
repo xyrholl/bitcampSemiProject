@@ -8,7 +8,7 @@ var dtoId = $("#dtoId").val();
 	
 	if (loginId !== null && loginId !== "") {
 		if ( dtoId !== loginId || loginId !== "admin" ){
-				$(".Idcheck").attr("disabled", true);
+				$(".Idcheck").attr("disabled", false);
 		}
 	}
 });
