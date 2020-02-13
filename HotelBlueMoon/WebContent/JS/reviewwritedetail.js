@@ -7,9 +7,9 @@ const reviewRating = document.querySelector(".js-input-rating");
 const reviewTitle = document.querySelector(".js-input-title");
 const reviewContent = document.querySelector(".js-input-content");
 
-const reviewResvSeq = document.querySeletor(".js-input-review-resvseq");
-const reviewHotelSeq = document.querySeletor(".js-input-review-hotelseq");
-const reviewRoomSeq = document.querySeletor(".js-input-review-roomseq");
+const reviewResvSeq = document.querySelector(".js-input-review-resvseq");
+const reviewHotelSeq = document.querySelector(".js-input-review-hotelseq");
+const reviewRoomSeq = document.querySelector(".js-input-review-roomseq");
 
 function getContextPath() {
 	var hostIndex = location.href.indexOf(location.host) + location.host.length;
@@ -44,11 +44,11 @@ function insertCheck() {
 }
 
 function insert() {
-	location.href = getContextPath() + "/reviewInsert?loginId=" + loginId
+	location.href = getContextPath() + "/reviewInsert?loginId=" + loginId.value
 			+ "&resvSeq=" + reviewResvSeq.value + "&hotelSeq="
 			+ reviewHotelSeq.value + "&roomSeq=" + reviewRoomSeq.value
-			+ "&rating=" + reviewRating.value + "&title=" + reviewTitle
-			+ "&content=" + reviewContent;
+			+ "&rating=" + reviewRating.value + "&title=" + reviewTitle.value
+			+ "&content=" + reviewContent.value;
 }
 
 function init() {

@@ -37,7 +37,7 @@ public class FowardReviewController extends HttpServlet {
 			req.setAttribute("list", list);
 		} else if (Integer.parseInt(selectIndex) == 1 || Integer.parseInt(selectIndex) == 2
 				|| Integer.parseInt(selectIndex) == 3 || Integer.parseInt(selectIndex) == 4) {
-			list = s.reviewService.reviewSearchPageList(Integer.parseInt(selectIndex), searchText);
+			list = s.reviewService.reviewPageList(Integer.parseInt(selectIndex), searchText);
 			req.setAttribute("list", list);
 		}
 		forward("/JSP/review.jsp", req, resp);
