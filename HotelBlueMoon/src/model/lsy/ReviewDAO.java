@@ -226,7 +226,7 @@ public class ReviewDAO {
 		return list;
 	}
 
-	public List<ResvDTO> writeReviewCheck(String loginId, int selectIndex, String hotelName, String place) {
+	public List<ResvDTO> writeReviewCheck(String loginId, int selectIndex, String searchText) {
 
 		List<ResvDTO> list = new ArrayList<ResvDTO>();
 
@@ -248,6 +248,7 @@ public class ReviewDAO {
 			conn = DBConnection.getConnection();
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, loginId);
+			psmt.setString(2, searchText);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {

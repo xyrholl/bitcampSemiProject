@@ -34,8 +34,8 @@ public class ReviewService {
 		return reviewDao.writeReviewCheck(loginId);
 	}
 
-	public List<ResvDTO> resvList(String loginId, int selectIndex, String hotelName, String place) {
-		return reviewDao.writeReviewCheck(loginId, selectIndex, hotelName, place);
+	public List<ResvDTO> resvList(String loginId, int selectIndex, String searchText) {
+		return reviewDao.writeReviewCheck(loginId, selectIndex, searchText);
 	}
 
 	public ResvDTO ResvSelectOne(int seq) {

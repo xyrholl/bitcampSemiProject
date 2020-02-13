@@ -9,7 +9,6 @@
 
 	List<ResvDTO> list = (List<ResvDTO>) request.getAttribute("resvList");
 
-	System.out.println("myresvhis list.size: " + list.size());
 %>
 
 <!DOCTYPE html>
@@ -164,6 +163,6 @@
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/JS/myresvhis.js"></script>
+		src="<%=request.getContextPath()%>/JS/myresvhistory.js"></script>
 </body>
 </html>
