@@ -5,6 +5,8 @@
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
+	System.out.println(loginId);
+	
 %>
 
 <%
@@ -178,22 +180,17 @@ img {
 					</div>
 
 					<div align="center">
-						<form action="resvAdd">
+						<form id="frm" action="resvAdd">
 							<input type="hidden" name="seq" value="<%=resv.getSeq()%>">
-							<input type="hidden" name="memberSeq"
-								value="<%=resv.getMemberSeq()%>"> <input type="hidden"
-								name="roomSeq" value="<%=resv.getRoomSeq()%>"> <input
-								type="hidden" name="hotelSeq" value="<%=resv.getHotelSeq()%>">
-							<input type="hidden" name="checkIn"
-								value="<%=resv.getCheckIn()%>"> <input type="hidden"
-								name="checkOut" value="<%=resv.getCheckOut()%>"> <input
-								type="hidden" name="resvDate" value="<%=resv.getResvDate()%>">
-							<input type="hidden" name="totalPrice"
-								value="<%=resv.getTotalPrice()%>"> <input type="hidden"
-								name="cancel" value="<%=resv.getCancel()%>"> <input
-								type="hidden" name="current_guest"
-								value="<%=resv.getCurrent_guest()%>"> <input
-								type="submit" class="btn btn-primary btn-lg" value="결제하기">
+							<input type="hidden" name="memberSeq" value="<%=resv.getMemberSeq()%>">
+							 <input type="hidden" name="roomSeq" value="<%=resv.getRoomSeq()%>">
+							 <input type="hidden" name="hotelSeq" value="<%=resv.getHotelSeq()%>">
+						   	<input type="hidden" name="checkIn" value="<%=resv.getCheckIn()%>">
+							 <input type="hidden" name="checkOut" value="<%=resv.getCheckOut()%>"> 
+							<input type="hidden" name="totalPrice" value="<%=resv.getTotalPrice()%>"> 
+							 <input type="hidden" name="current_guest" value="<%=resv.getCurrent_guest()%>"> 
+							 <input type="hidden" id="loginId" name="loginId" value="<%=loginId%>"> 
+							<input type="button" id="btn" class="btn btn-primary btn-lg" value="예약하기">
 						</form>
 					</div>
 				</div>
@@ -203,7 +200,26 @@ img {
 		</main>
 		<footer>Footer</footer>
 	</div>
-
+	<script type="text/javascript">	
+	$('#btn').click(function() { 
+ 		if($("#loginId").val() == 'null'){
+ 			alert("로그인시 이용가능합니다.\n로그인페이지로 이동합니다.");
+				location.href= getContextPath()
+ 					 		+"/resvNullCheck?"
+ 					 		+"roomSeq="+<%=resv.getHotelSeq()%>
+ 					 		+"&hotelSeq="+<%=resv.getHotelSeq()%>
+ 							+"&checkin="+"<%=resv.getCheckIn()%>"
+ 							+"&checkout="+"<%=resv.getCheckOut()%>"
+ 							+"&totalPrice="+<%=resv.getTotalPrice()%>
+ 							+"&guest="+<%=resv.getCurrent_guest()%>; 
+		}else{
+			alert("정보있음");
+			$("#frm").submit();
+		} 
+		
+	});
+	</script>
+	
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>

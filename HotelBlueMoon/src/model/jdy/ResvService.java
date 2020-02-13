@@ -27,9 +27,9 @@ public class ResvService {
 		room = resvDAO.getRoomInfo(seq);
 		return room; 
 	}
-	public BM_MemberDTO getMemberInfo(int seq) {
+	public BM_MemberDTO getMemberInfo(String loginId) {
 		BM_MemberDTO member = null;
-		member = resvDAO.getMemberInfo(seq);
+		member = resvDAO.getMemberInfo(loginId);
 		return member;
 	}
 	
@@ -39,11 +39,5 @@ public class ResvService {
 	}
 	
 
-	
-	public BM_MemberDTO getMemberInfo(String loginId) {
-		BM_MemberDTO member = null;
-		member = resvDAO.getMemberInfo(loginId);
-		return member;
-	}
 	
 }

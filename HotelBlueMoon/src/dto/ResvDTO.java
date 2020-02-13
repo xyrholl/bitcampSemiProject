@@ -17,16 +17,16 @@ REVIEWIS NUMBER(1) NOT NULL
  */
 public class ResvDTO {
 	private int seq;
+	private int hotelSeq;
 	private int memberSeq;
 	private int roomSeq;
-	private int hotelSeq;
 
 	private String checkIn;
 	private String checkOut;
 	private String resvDate;
 	private int totalPrice;
-	private int cancel;
 	private int current_guest;
+	private int cancel;
 	private int reviewIs;
 
 	// HOTELDTO
@@ -59,21 +59,34 @@ public class ResvDTO {
 	public ResvDTO() {
 	}
 
-	public ResvDTO(int seq, int memberSeq, int roomSeq, int hotelSeq, String checkIn, String checkOut, String resvDate,
-			int totalPrice, int cancel, int current_guest) {
+	//resvinfo
+	public ResvDTO(int roomSeq, int hotelSeq, String checkIn, String checkOut,
+			int totalPrice, int current_guest) {
 		super();
-		this.seq = seq;
-		this.memberSeq = memberSeq;
 		this.roomSeq = roomSeq;
 		this.hotelSeq = hotelSeq;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
-		this.resvDate = resvDate;
 		this.totalPrice = totalPrice;
-		this.cancel = cancel;
 		this.current_guest = current_guest;
 	}
+	
 
+	//resvAdd 
+	public ResvDTO(int hotelSeq, int memberSeq, int roomSeq, String checkIn, String checkOut, int totalPrice,
+			int current_guest) {
+		super();
+		this.hotelSeq = hotelSeq;
+		this.memberSeq = memberSeq;
+		this.roomSeq = roomSeq;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.totalPrice = totalPrice;
+		this.current_guest = current_guest;
+	}
+	
+	
+	//전체
 	public ResvDTO(int seq, int memberSeq, int roomSeq, int hotelSeq, String checkIn, String checkOut, String resvDate,
 			int totalPrice, int cancel, int current_guest, String hotelName, String hotelPlace, String hotelAddr,
 			int hotelUseCount, int hotelRating, String roomName, int roomPrice, int roomMax_guest, String id,
@@ -103,6 +116,8 @@ public class ResvDTO {
 		this.phoneNum = phoneNum;
 		this.email = email;
 	}
+
+	
 
 	public int getSeq() {
 		return seq;

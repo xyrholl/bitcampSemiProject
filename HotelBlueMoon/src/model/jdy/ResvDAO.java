@@ -97,41 +97,7 @@ public class ResvDAO {
 		return room;
 	}
 	
-	public BM_MemberDTO getMemberInfo(int seq) {
-		String sql = " SELECT SEQ, ID, PWD, NAME, PHONENUM, EMAIL "
-				+ "FROM BM_MEMBER WHERE SEQ=? ";
-		
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		
-		BM_MemberDTO member = null;
-		
-		
-		try {
-			conn = DBConnection.getConnection();
-			System.out.println("1/6 getMemberInfo success");
-			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, seq);
-			System.out.println("2/6 getMemberInfo success");
-			
-			rs = psmt.executeQuery();
-			System.out.println("3/6 getResvInfo success");
-			
-			if(rs.next()) {
-				
-				int i = 1;
-				member = new BM_MemberDTO(rs.getInt(i++), rs.getString(i++),  rs.getString(i++),  rs.getString(i++),  rs.getString(i++),  rs.getString(i++));
-			}
-			System.out.println("4/6 getResvInfo success");
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return member;
-	}
+
 	
 	
 	public BM_MemberDTO getMemberInfo(String loginId) {
@@ -154,13 +120,13 @@ public class ResvDAO {
 			System.out.println("2/6 getMemberInfo success");
 			
 			rs = psmt.executeQuery();
-			System.out.println("3/6 getResvInfo success");
+			System.out.println("3/6 getMemberInfo success");
 			
 			if(rs.next()) {
 				int i = 1;
 				member = new BM_MemberDTO(rs.getInt(i++), rs.getString(i++),  rs.getString(i++),  rs.getString(i++),  rs.getString(i++),  rs.getString(i++));
 			}
-			System.out.println("4/6 getResvInfo success");
+			System.out.println("4/6 getMemberInfo success");
 			
 			
 		} catch (SQLException e) {
@@ -169,8 +135,10 @@ public class ResvDAO {
 		}
 		return member;
 	}
+	
+
 	public ResvDTO getResvInfo(int seq ) {
-		String sql  = " SELECT * "
+		String sql  = " SELECT ROOMSEQ, HOTELSEQ, CHECKIN, CHECKOut, TOTALPRICE, CURRENT_GUEST "
 				+ " FROM RESV "
 				+ " WHERE SEQ=? ";
 	
@@ -194,19 +162,8 @@ public class ResvDAO {
 			if(rs.next()) {
 				
 				int i = 1;
-//				resv = new ResvDTO(seq, memberSeq, roomSeq, checkIn, checkOut, resvDate, 
-//										totalPrice, cancel, current_guest, 
-//										hotelSeq, roomName, price, max_guest, image, 
-//										id, pwd, memName, phoneNum, email)
-				
-//				resv = new ResvDTO(rs.getInt(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), 
-//								rs.getInt(i++), rs.getInt(i++), rs.getInt(i++),
-//								rs.getInt(i++), rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++),
-//								rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++));
-				
-				//resv = new ResvDTO(seq, memberSeq, roomSeq, hotelSeq, checkIn, checkOut, resvDate, totalPrice, cancel, current_guest)
-				resv = new ResvDTO(rs.getInt(i++), rs.getInt(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), 
-						rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getInt(i++));
+//				(int roomSeq, int hotelSeq, String checkIn, String checkOut, int totalPrice, int current_guest)
+				resv = new ResvDTO(rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getInt(i++), rs.getInt(i++));
 						
 			}
 			System.out.println("4/6 getResvInfo success");
