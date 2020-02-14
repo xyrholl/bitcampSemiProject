@@ -10,7 +10,7 @@ public class ReviewService {
 	ReviewDAO reviewDao = new ReviewDAO();
 
 	public ReviewDTO selectOne(int seq) {
-		return reviewDao.ReviewSelectOne(seq);
+		return reviewDao.selectOne(seq);
 	}
 
 	public List<ReviewDTO> reviewPageList() {
@@ -36,19 +36,6 @@ public class ReviewService {
 
 	public List<ResvDTO> resvList(String loginId, int selectIndex, String searchText) {
 		return reviewDao.writeReviewCheck(loginId, selectIndex, searchText);
-	}
-
-	public ResvDTO ResvSelectOne(int seq) {
-		return reviewDao.ResvSelectOne(seq);
-	}
-
-	public boolean insertReview(ReviewDTO dto) {
-		int count = reviewDao.insertReview(dto);
-		if (count == 0) {
-			return false;
-		} else {
-			return true;
-		}
 	}
 
 }

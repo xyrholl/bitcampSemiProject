@@ -1,9 +1,37 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
 	request.setCharacterEncoding("utf-8");
+	
+	Calendar cal = Calendar.getInstance();
+	
+	String month, frontDay, backDay;
+	
+	int year = cal.get(Calendar.YEAR);
+	if(cal.get(Calendar.MONTH)+1 < 10){
+		month = "0" + Integer.toString(cal.get(Calendar.MONTH)+1);
+	}
+	else{
+		month = Integer.toString(cal.get(Calendar.MONTH)+1);
+	}
+	if(cal.get(Calendar.DATE) < 10){
+		if(cal.get(Calendar.DATE) < 9){
+			frontDay = "0" + Integer.toString(cal.get(Calendar.DATE));
+			backDay = "0" + Integer.toString(cal.get(Calendar.DATE)+1);
+		}
+		else{
+			frontDay = "0" + Integer.toString(cal.get(Calendar.DATE));
+			backDay = Integer.toString(cal.get(Calendar.DATE)+1);
+		}
+	}
+	else{
+		frontDay = Integer.toString(cal.get(Calendar.DATE));
+		backDay = Integer.toString(cal.get(Calendar.DATE)+1);
+	}
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -75,7 +103,7 @@
 					
 					<div class="custom-select custom-select-lg mb-2 js-inBox">
       					
-      					<input type="text" value="in" style="border: none; background: transparent;" name="checkin" id="checkin" size="3">
+      					<input type="text" value="<%=month %>-<%=frontDay %>" style="border: none; background: transparent;" name="checkin" id="checkin" size="3">
     				</div>
 				</div>
 				
@@ -84,7 +112,7 @@
 					
 					<div class="custom-select custom-select-lg mb-2 js-outBox">
       					
-      					<input type="text" value="out" style="border: none; background: transparent;" name="checkout" id="checkout" size="3">
+      					<input type="text" value="<%=month %>-<%=backDay %>" style="border: none; background: transparent;" name="checkout" id="checkout" size="3">
     				</div>
 				</div>
 				

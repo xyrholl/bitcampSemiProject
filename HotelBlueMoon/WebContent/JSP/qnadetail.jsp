@@ -107,9 +107,7 @@
 		<footer>Footer</footer>
 	</div>
 
-	<script src="<%=request.getContextPath()%>/JS/qnadetail.js">
-	
-	</script>
+	<script src="<%=request.getContextPath()%>/JS/qnadetail.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>

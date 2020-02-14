@@ -41,7 +41,7 @@ public class FowardMyResvHistoryController extends HttpServlet {
 			req.setAttribute("resvList", list);
 		}
 
-		forward("/JSP/myresvhistory.jsp", req, resp);
+		forward("/JSP/reviewwrite.jsp", req, resp);
 
 	}
 

@@ -18,13 +18,7 @@ public class hotelListService {
 		
 		System.out.println(timeCount);
 		
-		ArrayList<String> hotelNameList = dao.getHotelTimeList(checkin, checkout, area, timeCount);
-		
-		for(int i = 0 ; i < hotelNameList.size() ; i++) {
-			System.out.println(hotelNameList.get(i));
-		}
-		
-		ArrayList<HotelDTO> list = dao.getHotelList(hotelNameList, guest, area);
+		ArrayList<HotelDTO> list = dao.getHotelList(guest, area, checkin, checkout);
 		
 		return list;
 	}

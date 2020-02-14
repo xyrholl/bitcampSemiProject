@@ -56,8 +56,12 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article
-				style="background-color: rgba(170, 166, 157, 0.33); overflow-y: scroll; height: 500px;">
+			<article>
+			
+			
+			
+			
+			</article>
 
 				<h1>My Resv History</h1>
 

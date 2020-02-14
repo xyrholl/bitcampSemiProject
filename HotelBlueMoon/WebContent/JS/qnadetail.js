@@ -1,3 +1,5 @@
+
+
 const qnaListBtn = document.querySelector("#qnaListBtn");
 const qnaDeleteBtn = document.querySelector("#qnaDeleteBtn");
 const qnaCommentBtn = document.querySelector("#qnaCommentBtn");
@@ -14,22 +16,20 @@ var dtoId = $("#dtoId").val();
 	}
 });
 
-
-
 function getContextPath() {
-	var hostIndex = location.href.indexOf(location.host) + location.host.length;
-	return location.href.substring(hostIndex, location.href.indexOf('/',
-			hostIndex + 1));
+	var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
 }
 
-function qnalist() {
-	location.href = getContextPath() + "/qnafoward";
+function qnalist(){
+	location.href= getContextPath()+"/qnafoward";
 }
 
-function qnadelete() {
+function qnadelete(){
 	var seq = document.getElementById("qnaDeleteBtn").value;
-
-	location.href = getContextPath() + "/qnadelete?seq=" + seq;
+	
+	//alert("delete:" + seq);
+	location.href= getContextPath()+"/qnadelete?seq="+seq;
 }
 
 function qnacomment() {
@@ -39,11 +39,11 @@ function qnacomment() {
 			+ "&command=qnacomment";
 }
 
-function init() {
+function init(){
 	qnaListBtn.addEventListener('click', qnalist);
 	qnaDeleteBtn.addEventListener('click', qnadelete);
 	qnaCommentBtn.addEventListener('click', qnacomment);
-
+	
 }
 
 init();

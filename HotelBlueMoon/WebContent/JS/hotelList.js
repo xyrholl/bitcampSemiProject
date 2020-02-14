@@ -1,16 +1,18 @@
 
 $(document).ready(function() {
-	var checkin = getParameterByName('checkin');
-	var checkout = getParameterByName('checkout');
-	var guest = getParameterByName('guest');
-	var area = getParameterByName('area');
-	var flag = getParameterByName('flag');
-	ajax(checkin, checkout, guest, area, flag);
-
+	if(getParameterByName('flag') == "yes"){
+		var checkin = getParameterByName('checkin');
+		var checkout = getParameterByName('checkout');
+		var guest = getParameterByName('guest');
+		var area = getParameterByName('area');
+		ajax(checkin, checkout, guest, area);
+	}
+	else{
+		goToAjax();
+	}
 });
 
-function ajax(checkin, checkout, guest, area, flag){
-	if (flag == 'yes') {
+function ajax(checkin, checkout, guest, area){
 		
 		$("#checkin").val(checkin.substring(5,10));
 		$("#checkout").val(checkout.substring(5,10));
@@ -68,7 +70,6 @@ function ajax(checkin, checkout, guest, area, flag){
 								"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp해당 조건과 일치하는 검색 결과가 없습니다.</span>");
 					}
 				})
-	}
 };
 
 function getParameterByName(name) {
@@ -84,37 +85,37 @@ $(function (){
 
     $("#checkin").datepicker({
     	minDate: 0,
-    	onClose: function( selectedDate ) {    
+    	onClose: function( selectedDate ) {
             $("#checkout").datepicker( "option", "minDate", selectedDate );
+            $("#checkout").datepicker("show");
         }
     	
     });
-
-});
-
-$(function (){
-
+    
     $("#checkout").datepicker();
-
 });
+
 
 function goToAjax(){
-	
 	var ci_monthDay = $('#checkin').val();
 	var co_monthDay = $('#checkout').val();
-	var guestCount = document.querySelector(".js-guestBox");
-	var area = document.querySelector(".js-areaBox");
-	var flag = "yes";
-	area = area.options[area.selectedIndex].text;
-	guestCount = guest.options[guest.selectedIndex].text;
-
-	if(guestCount == 'Guest'){
-		guestCount = 1;
+	
+	if(ci_monthDay == "in" || ci_monthDay == "" || co_monthDay == "out" || co_monthDay == ""){
+		alert("CheckIn / CheckOut 시간을 입력해주세요.");
 	}
-	
-	var ci_date = "2020-" + ci_monthDay;
-	var co_date = "2020-" + co_monthDay;
+	else{
+		var guestCount = document.querySelector(".js-guestBox");
+		var area = document.querySelector(".js-areaBox");
+		area = area.options[area.selectedIndex].text;
+		guestCount = guest.options[guest.selectedIndex].text;
 
-	ajax(ci_date, co_date, guestCount, area, flag);
+		if(guestCount == 'Guest'){
+			guestCount = 1;
+		}
 	
+		var ci_date = "2020-" + ci_monthDay;
+		var co_date = "2020-" + co_monthDay;
+
+		ajax(ci_date, co_date, guestCount, area);
+	}
 }

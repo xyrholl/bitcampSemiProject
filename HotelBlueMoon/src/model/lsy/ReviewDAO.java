@@ -29,7 +29,7 @@ DEL NUMBER(1) NOT NULL
 
 public class ReviewDAO {
 
-	public ReviewDTO ReviewSelectOne(int seq) {
+	public ReviewDTO selectOne(int seq) {
 		ReviewDTO dto = null;
 
 		String sql = " SELECT r.SEQ, r.RATING, m.ID, rm.NAME, rs.CURRENT_GUEST, r.WRITEDATE, r.TITLE, r.CONTENT, h.RATING, rs.CHECKIN, rs.CHECKOUT, h.NAME"
@@ -102,8 +102,6 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			DBClose.close(psmt, conn, rs);
 		}
 		return list;
 	}
@@ -150,8 +148,6 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			DBClose.close(psmt, conn, rs);
 		}
 		return list;
 	}
@@ -176,8 +172,6 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			DBClose.close(psmt, conn, null);
 		}
 
 		return count;
@@ -189,7 +183,7 @@ public class ReviewDAO {
 
 		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
-				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND DEL = 0 " + " AND m.ID = ? ";
+				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND  = 0 " + " AND m.ID = ? ";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -219,8 +213,6 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			DBClose.close(psmt, conn, rs);
 		}
 
 		return list;
@@ -233,10 +225,10 @@ public class ReviewDAO {
 		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
 				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ? ";
-
+		
 		if (selectIndex == 1) {
 			sql = sql + " AND h.NAME LIKE '%'||?||'%' ";
-		} else if (selectIndex == 2) {
+		}else if (selectIndex == 2) {
 			sql = sql + " AND h.PLACE LIKE '%'||?||'%' ";
 		}
 
@@ -269,8 +261,6 @@ public class ReviewDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			DBClose.close(psmt, conn, rs);
 		}
 
 		return list;

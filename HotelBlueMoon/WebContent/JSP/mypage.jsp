@@ -101,7 +101,7 @@
 										</li>
 										<li id="resvCount"
 											class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
-											예약 내역 보기 및 리뷰 쓰기<span class="badge badge-primary badge-pill"><%=resvCount %></span>
+											예약 내역 보기 및 리뷰 쓰기<span class="badge badge-primary badge-pill">a</span>
 										</li>
 									</ul>
 									<br>

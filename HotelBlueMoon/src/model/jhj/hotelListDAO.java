@@ -11,7 +11,7 @@ import db.DBConnection;
 import dto.HotelDTO;
 
 public class hotelListDAO {
-	public ArrayList<HotelDTO> getHotelList(ArrayList<String> hotelNameList, String guest, String area) {
+	public ArrayList<HotelDTO> getHotelList(String guest, String area, String checkin, String checkout) {
 		ArrayList<HotelDTO> list = new ArrayList<HotelDTO>();
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -19,19 +19,21 @@ public class hotelListDAO {
 
 		try {
 			conn = DBConnection.getConnection();
-			for (int i = 0; i < hotelNameList.size(); i++) {
+			
 				String sql = "";
 				if(area.equals("Area")) {
-					sql = " SELECT hotel.SEQ, hotel.NAME, hotel.ADDR, room.MAX_GUEST, hotel.RATING FROM HOTEL"
-							+ " INNER JOIN ROOM ON HOTEL.SEQ = ROOM.hotelSEQ WHERE "
-							+ " MAX_GUEST >= '" + Integer.parseInt(guest) + "' AND hotel.NAME = '"
-							+ hotelNameList.get(i) + "'";
+					sql = " SELECT H.SEQ, H.NAME, H.ADDR, R.MAX_GUEST, H.RATING FROM HOTEL H " + 
+							"INNER JOIN ROOM R ON H.SEQ = R.hotelSEQ WHERE (H.SEQ, 1) IN " + 
+							"(SELECT S.HOTELSEQ, COUNT(S.HOTELSEQ) FROM SCHEDULE S INNER JOIN HOTEL H ON S.HOTELSEQ = H.SEQ "  + 
+							"WHERE S.RESVDATE >= '" + checkin + "' AND S.RESVDATE < '" + checkout + "' AND S.USE=0 GROUP BY S.HOTELSEQ) " + 
+							"AND MAX_GUEST >= '" + guest + "' ";
 				}
 				else {
-					sql = " SELECT hotel.SEQ, hotel.NAME, hotel.ADDR, room.MAX_GUEST, hotel.RATING FROM HOTEL"
-							+ " INNER JOIN ROOM ON HOTEL.SEQ = ROOM.hotelSEQ WHERE PLACE = '" + area + "'"
-							+ " AND MAX_GUEST >= '" + Integer.parseInt(guest) + "' AND hotel.NAME = '"
-							+ hotelNameList.get(i) + "'";
+					sql = " SELECT H.SEQ, H.NAME, H.ADDR, R.MAX_GUEST, H.RATING FROM HOTEL H " + 
+							"INNER JOIN ROOM R ON H.SEQ = R.hotelSEQ WHERE (H.SEQ, 1) IN " + 
+							"(SELECT S.HOTELSEQ, COUNT(S.HOTELSEQ) FROM SCHEDULE S INNER JOIN HOTEL H ON S.HOTELSEQ = H.SEQ "  + 
+							"WHERE S.RESVDATE >= '" + checkin + "' AND S.RESVDATE < '" + checkout + "' AND S.USE=0 AND H.PLACE = '" + area +"' GROUP BY S.HOTELSEQ) " + 
+							"AND MAX_GUEST >= '" + guest + "' ";
 				}
 				System.out.println("sql :" + sql);
 
@@ -43,7 +45,7 @@ public class hotelListDAO {
 					HotelDTO dto = new HotelDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
 					list.add(dto);
 				}
-			}
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,50 +55,4 @@ public class hotelListDAO {
 
 		return list;
 	}
-
-	public ArrayList<String> getHotelTimeList(String checkin, String checkout, String area,
-			int timeCount) {
-		String sql = "";
-		if(area.equals("Area")) {
-			sql = " SELECT NAME, COUNT(NAME) " + "FROM SCHEDULE " + "WHERE RESVDATE BETWEEN '" + checkin
-					+ " 00' AND '" + checkout + " 00' "
-					+ "AND USE=0 GROUP BY NAME";
-		}
-		else {
-			sql = " SELECT NAME, COUNT(NAME) " + "FROM SCHEDULE " + "WHERE RESVDATE BETWEEN '" + checkin
-					+ " 00' AND '" + checkout + " 00' " + "AND PLACE = '" + area + "' "
-					+ "AND USE=0 GROUP BY NAME";
-		}
-		
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-
-		System.out.println("sql :" + sql);
-
-		ArrayList<String> list = new ArrayList<String>();
-
-		try {
-			conn = DBConnection.getConnection();
-			psmt = conn.prepareStatement(sql);
-
-			rs = psmt.executeQuery();
-
-			while (rs.next()) {
-				if (rs.getInt(2) == timeCount) {
-					System.out.println(rs.getInt(2));
-					String hotelName = rs.getString(1);
-					list.add(hotelName);
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			DBClose.close(psmt, conn, rs);
-		}
-
-		return list;
-	}
-
 }

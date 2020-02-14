@@ -25,27 +25,20 @@ public class ReviewInsertController extends HttpServlet {
 		String srating = req.getParameter("rating");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		System.out.println(sloginId);
+
 		Singleton s = Singleton.getInstance();
 		BM_MemberDTO memDto = s.memberService.selectOneMember(sloginId);
-		ReviewDTO dto = new ReviewDTO();
 
-		dto.setHotleSeq(Integer.parseInt(shotelSeq));
-		dto.setRoomSeq(Integer.parseInt(sroomSeq));
-		dto.setResvSeq(Integer.parseInt(sresvSeq));
-		dto.setMemberSeq(memDto.getSeq());
-		dto.setTitle(title);
-		dto.setContent(content);
-		dto.setRating(Double.parseDouble(srating));
-
+		ReviewDTO dto = new ReviewDTO(Integer.parseInt(shotelSeq), Integer.parseInt(sroomSeq),
+				Integer.parseInt(sresvSeq), memDto.getSeq(), title, content, Double.parseDouble(srating));
 		boolean is = s.reviewService.insertReview(dto);
-
-		if (is) {
-			resp.sendRedirect(req.getContextPath() + "/fowardmyresvhistory?loginId=" + sloginId);
-		} else {
-
+		
+		if(is) {
+			resp.sendRedirect(req.getContextPath() + "/JSP/review.jsp");
+		}else {
+			
 		}
-
+		
 	}
 
 	@Override
