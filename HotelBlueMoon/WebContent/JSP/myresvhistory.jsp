@@ -104,6 +104,7 @@
 							} else {
 								for (int i = 0; i < list.size(); i++) {
 									ResvDTO dto = list.get(i);
+									System.out.println(list.get(i).toString());
 						%>
 						<tr class="row<%=i%>">
 							<th scope="row"><%=i + 1%></th>

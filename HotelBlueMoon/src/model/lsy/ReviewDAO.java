@@ -309,9 +309,6 @@ public class ReviewDAO {
 		String sql = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL) "
 				+ " VALUES(SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0)";
 		
-		//INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL)
-		//VALUES(SEQ_REVIEW.NEXTVAL, 4, 4, 4, 4, '123', '123', 3, SYSDATE, 0);
-
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		int count = 0;
@@ -329,13 +326,14 @@ public class ReviewDAO {
 			psmt.setString(5, dto.getTitle());
 			psmt.setString(6, dto.getContent());
 			psmt.setDouble(7, dto.getRating());
-
+			System.out.println(sql);
 			count = psmt.executeUpdate();
 
 			psmt.clearParameters();
 
 			psmt = conn.prepareStatement(sql2);
 			psmt.setInt(1, dto.getResvSeq());
+			System.out.println(sql2);
 
 			count = psmt.executeUpdate();
 			conn.commit();

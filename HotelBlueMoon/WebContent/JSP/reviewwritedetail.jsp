@@ -62,11 +62,19 @@
 							<th scope="col">작성자</th>
 							<td scope="col"><%=loginId%></td>
 							<th scope="col">이용인원</th>
+							<td scope="col"><%=dto.getCurrent_guest()%></td>
 						</tr>
 						<tr>
 							<th scope="col">호텔평점</th>
-							<td scope="col"></td>
+							<td scope="col"><%=dto.getHotelRating()%></td>
 							<th scope="col">호텔</th>
+							<td scope="col"><%=dto.getHotelName()%></td>
+							<td colspan="2">
+								<form action="" method="post" enctype="multipart/form-data"
+									class="js-file-form">
+									<input type="file" name="imageFile">
+								</form>
+							</td>
 						</tr>
 						<tr>
 							<th scope="row">제목</th>
@@ -88,7 +96,7 @@
 				</table>
 
 				<button type="button" class="btn btn-outline-info js-returnList">돌아가기</button>
-				<button type="button" class="btn btn-outline-info js-update-review">리뷰작성완료</button>
+				<button type="button" class="btn btn-outline-info js-insert-review">리뷰작성완료</button>
 			</article>
 
 		</main>
