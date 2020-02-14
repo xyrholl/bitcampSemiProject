@@ -7,8 +7,9 @@ var loginId = $("#loginId").val();
 var dtoId = $("#dtoId").val();
 	
 	if (loginId !== null && loginId !== "") {
-		if ( dtoId !== loginId || loginId !== "admin" ){
-				$(".Idcheck").attr("disabled", false);
+		alert("loginId: "+loginId +" / dtoId: "+ dtoId);
+		if ( dtoId.trim() !== loginId.trim() || loginId.trim() !== "admin" ){
+				$(".Idcheck").attr("disabled", true);
 		}
 	}
 });
@@ -33,7 +34,7 @@ function qnadelete() {
 
 function qnacomment() {
 	var seq = document.getElementById("qnaCommentBtn").value;
-	 alert("comment:" + seq);
+	
 	location.href = getContextPath() + "/qnacomment?seq=" + seq
 			+ "&command=qnacomment";
 }

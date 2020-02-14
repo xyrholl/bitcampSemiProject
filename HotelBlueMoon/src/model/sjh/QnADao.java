@@ -12,29 +12,8 @@ import db.DBConnection;
 import dto.QnADTO;
 
 public class QnADao {
-	/*
-	 * public List<QnADTO> getQnAList() { String sql =
-	 * " SELECT q.seq, q.memberseq, b.id, REF, STEP, DEPTH, TITLE, CONTENT, WRITEDATE, Q.DEL, READCOUNT "
-	 * + " FROM QNA q, BM_MEMBER b " + " WHERE Q.MEMBERSEQ = B.SEQ " +
-	 * " ORDER BY SEQ DESC, REF DESC, STEP ASC ";
-	 * 
-	 * Connection conn = null; PreparedStatement psmt = null; ResultSet rs = null;
-	 * 
-	 * List<QnADTO> list = new ArrayList<QnADTO>();
-	 * 
-	 * try { conn = DBConnection.getConnection();
-	 * System.out.println("1/6 getQnAList success"); psmt =
-	 * conn.prepareStatement(sql); System.out.println("2/6 getQnAList success"); rs
-	 * = psmt.executeQuery(); System.out.println("3/6 getQnAList success");
-	 * while(rs.next()) { int i = 1; QnADTO dto = new QnADTO(rs.getInt(i++),
-	 * rs.getInt(i++), rs.getString(i++), rs.getInt(i++), rs.getInt(i++),
-	 * rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
-	 * rs.getInt(i++), rs.getInt(i++)); list.add(dto);
-	 * 
-	 * } System.out.println("4/6 getQnAList success"); } catch (SQLException e) {
-	 * System.out.println("getQnAList fail"); e.printStackTrace(); } finally {
-	 * DBClose.close(psmt, conn, rs); } return list; }
-	 */
+	
+	
 	public QnADTO getQnADetail(int seq) {
 		String sql = " SELECT q.seq, q.memberseq, b.id, REF, STEP, DEPTH, TITLE, CONTENT, WRITEDATE, q.DEL, READCOUNT "
 				+ " FROM QNA q, BM_MEMBER b " + " WHERE Q.MEMBERSEQ = B.SEQ" + " AND q.seq =? ";
@@ -101,8 +80,8 @@ public class QnADao {
 
 		List<QnADTO> list = new ArrayList<QnADTO>();
 		int start, end;
-		start = 1 + 10 * page; // 0 -> 1
-		end = 10 + 10 * page; // 0 -> 10
+		start = 1 + 5 * page;
+		end = 5 + 5 * page;
 
 		try {
 			conn = DBConnection.getConnection();

@@ -87,7 +87,7 @@
 											<td><%=dto.getEmail()%></td>
 										</tr>
 									</table>
-
+									<button type="submit">회원정보 수정하기</button><br><br>
 									<ul class="list-group">
 										<li id="reviewCount"
 											class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
@@ -105,7 +105,7 @@
 										</li>
 									</ul>
 									<br>
-									<button type="submit">수정하기</button>
+									<input type="hidden" value="" class="js-currDateTmp">
 									<input type="hidden" name="command" value="mypageUpdate">
 									<input type="hidden" name="id" value="<%=dto.getId()%>">
 								</form>

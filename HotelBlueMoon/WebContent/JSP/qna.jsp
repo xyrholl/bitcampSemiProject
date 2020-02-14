@@ -15,7 +15,7 @@
 %>
 <%!// 댓글의 여백과 이미지 추가하는 함수
 	public String arrow(int depth) {
-		String rs = "<img src='./image/arrow.png' width='20px' heigh='20px'/>";
+		String rs = "<img src='./image/arrow1.png' width='20px' heigh='20px'/>";
 		String nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";
 
 		String ts = "";
@@ -28,11 +28,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>Q n A</title>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+
+
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -78,32 +82,9 @@ table tr td ul li {
 			<article
 				style="background-color: rgba(170, 166, 157, 0.33); overflow-y: scroll; height: 500px;">
 
-				<h1>Q & A</h1>
-
-<!--  
-				<div class="input-group">
-					<select id="choice" class="custom-select" id="inputGroupSelect04">
-						<option value="sel">선 택</option>
-						<option value="title">제목</option>
-						<option value="writer">작성자</option>
-						<option value="content">내용</option>
-					</select>
-				</div>
-
-				<div class="input-group mb-3">
-					<input type="text" id="_search" class="form-control"
-						aria-label="Recipient's username" aria-describedby="basic-addon2">
-					<div class="input-group-append">
-						<div class="input-group-append">
-							<button type="button" onclick="searchQnA()">검색</button>
-						</div>
-					</div>
-				</div>
--->
-
-
 				<div class="input-group-append">
-					<select id="choice" class="custom-select js-search-select">
+					<select id="choice" class="custom-select js-search-select"
+						style="width: 20%">
 						<option value="sel" selected>선 택</option>
 						<option value="title">제목</option>
 						<option value="writer">작성자</option>
@@ -116,9 +97,10 @@ table tr td ul li {
 							aria-describedby="basic-addon2">
 
 						<div class="input-group-append">
-						<button type="button" class="btn btn-secondary" onclick="searchQnA()">검색</button>
-						<button type="button" class="btn btn-outline-info"
-						 onclick="location.href='<%=request.getContextPath()%>'+'/qnafoward'">전체목록</button>
+							<button type="button" class="btn btn-secondary"
+								onclick="searchQnA()">검색</button>
+							<button type="button" class="btn btn-outline-info"
+								onclick="location.href='<%=request.getContextPath()%>'+'/qnafoward'">전체목록</button>
 						</div>
 					</div>
 				</div>
@@ -162,10 +144,10 @@ table tr td ul li {
 											class="list-group-item1 list-group-item-action"><%=qna.getTitle()%></a>
 										</li>
 									</ul> <%
-							 	} else {
-							 %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
-							 	}
-							 %>
+ 	} else {
+ %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
+ 	}
+ %>
 								</td>
 								<td align="center"><ul>
 										<li class="list-group-item"><%=qna.getMemberId()%></li>
@@ -180,35 +162,75 @@ table tr td ul li {
 							%>
 						</tbody>
 					</table>
+					</div>
+					
+					<style type="text/css">
+ 						.list-paging {text-align:center;}
+						.list-paging span {display:inline-block; margin:0 2px;}
+						.list-paging span a {
+								font-size: 20px;
+								background-color: white;
+								padding: 5px 10px;
+								cursor: pointer;
+								text-decoration: none;
+								border-radius: 8px;
+						}
+						span a:hover {
+							background-color: #007bff;
+							color: white;
+						}
+					</style>
+					<div class="list-paging">
+						<span><a href="#">1</a></span>
+						<span><a href="#">2</a></span>
+						<span><a href="#">3</a></span>
+						<span><a href="#">4</a></span>
+					</div>
+					
+					<div align="center" style="float:left; width: 80%" >
+					
+						<ul class="p-pagination" style="display:block; text-align:center;">
+							
+							<%
+								for (int i = 0; i < qnaPage; i++) {
+									if (pageNumber == i) { // 현재 페이지
+							%>
+							<li class="page-item active" style="display:inline-block !important;">
+								<a class="page-link" style="display:inline-block !important;" href="#"><%=i + 1%>
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
 
-
-					<%
-						for (int i = 0; i < qnaPage; i++) {
-							if (pageNumber == i) { // 현재 페이지
-					%>
-					<span style="font-size: 15pt; color: #0000ff; font-weight: bold;">
+							<%-- <span style="font-size: 15pt; color: #0000ff; font-weight: bold;">
 						<%=i + 1%>
-					</span>&nbsp;
+					</span>&nbsp; --%>
 
-					<%
-						} else {
-					%>
-
-					<a href="#none" title="<%=i + 1%>페이지" onclick="goPage(<%=i%>)"
-						style="font-size: 15pt; color: #000; font-weight: bold;"> [<%=i + 1%>]
-					</a>&nbsp;
-
-					<%
-						}
-					%>
-					<%
-						}
-					%>
-
-					<br> <a
-						href="<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>">QnA
-						글쓰기</a>
-				</div>
+							<%
+								} else {
+							%>
+							<li class="page-item"><a class="page-link" href="#"
+								onclick="goPage(<%=i%>)"><%=i + 1%></a></li>
+							<li class="page-item">
+								<%-- <a href="#none" title="<%=i + 1%>페이지" onclick="goPage(<%=i%>)"
+							style="font-size: 15pt; color: #000; font-weight: bold;"> [<%=i + 1%>]
+						</a>&nbsp; --%> <%
+							 	}
+							 %> <%
+							 	}
+							 %> 
+							
+							</li>
+						</ul>
+					
+					</div>
+					
+					
+					
+						<button type="button" class="btn btn-info"
+							onclick="loaction.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA
+							글쓰기</button>
+					
+			
 
 			</article>
 
