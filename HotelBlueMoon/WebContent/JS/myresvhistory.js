@@ -4,7 +4,6 @@ const searchText = document.querySelector(".js-searchText");
 
 const allListBtn = document.querySelector(".js-allListBtn");
 
-
 function getContextPath() {
 	var hostIndex = location.href.indexOf(location.host) + location.host.length;
 	return location.href.substring(hostIndex, location.href.indexOf('/',
@@ -48,6 +47,7 @@ function allSearch() {
 function init() {
 	searchBtn.addEventListener("click", searchCheck);
 	allListBtn.addEventListener("click", allSearch);
+	
 }
 
 init();

@@ -90,8 +90,8 @@
 					<br>
 					<div class="buttonbox" align="center">
 						
-						<button class="Idcheck" type="submit" id="qnaUpdateBtn">수정하기</button>
-						<button class="Idcheck" type="button" id="qnaDeleteBtn" value="<%=dto.getSeq()%>">삭제하기</button>
+						<button class="Idcheck" type="submit" id="qnaUpdateBtn" disabled="disabled">수정하기</button>
+						<button class="Idcheck" type="button" id="qnaDeleteBtn" value="<%=dto.getSeq()%>" disabled="disabled">삭제하기</button>
 						<input type="hidden" id="loginId" value="<%=loginId %>">
 						<input type="hidden" id="dtoId" value="<%=dto.getMemberId() %>">
 						

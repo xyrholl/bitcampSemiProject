@@ -48,7 +48,7 @@
 				<input type="hidden" value="" class="js-currDateTmp">
 				<div class="input-group-append">
 
-					<select class="custom-select js-search-select">
+					<select class="custom-select js-search-select" style="width:20%">
 						<option selected>검색</option>
 						<option value="1">호텔이름</option>
 						<option value="2">제목</option>

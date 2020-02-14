@@ -1,3 +1,19 @@
+var nowTime = "";
+
+currDate();
+
+function currDate() {
+	   
+	   const currDate = new Date();
+	   const yyyy = currDate.getFullYear();
+	   const MM = currDate.getMonth() + 1;
+	   const dd = currDate.getDate();
+	   nowTime = yyyy + "-" + MM + "-" + dd;
+	   
+	  
+	};
+
+
 $(function(){
 	$(document).on("click", "ul li#qnaCount", function(){
 		var searchWord = $("#myid").text().trim();
@@ -14,8 +30,9 @@ $(function(){
 	});
 	
 	$(document).on("click", "ul li#resvCount", function(){
+		alert("JS time: "+nowTime);
 		var loginId = $("#myid").text().trim();
-		location.href= getContextPath()+"/fowardmyresvhistory?loginId="+loginId;
+		location.href= getContextPath()+"/fowardmyresvhistory?loginId="+loginId+"&nowTime="+nowTime;
 	});
 });
 
@@ -25,4 +42,3 @@ function getContextPath() {
 	   
 	   
 	};
-	

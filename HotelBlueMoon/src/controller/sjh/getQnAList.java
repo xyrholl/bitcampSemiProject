@@ -58,8 +58,8 @@ public class getQnAList extends HttpServlet {
 		list = s.qnaService.getQnAPagingList(choice, searchWord, pageNumber);
 		
 		  int totalQnA = s.qnaService.getAllQnA(choice, searchWord);
-		  int qnaPage =  totalQnA/10;
-		  if( totalQnA % 10 > 0){
+		  int qnaPage =  totalQnA/5;
+		  if( totalQnA % 5 > 0){
 		  	qnaPage = qnaPage + 1;
 		  }
 		

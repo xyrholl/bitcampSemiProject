@@ -45,7 +45,7 @@ public class MyPage extends HttpServlet {
 			int qnaCount = s.myPageService.getMyQnACount(loginId);
 			int resvCount = s.myPageService.getMyResvCount(loginId);
 			
-			System.out.println("JAVA: reviewCount="+reviewCount+" / qnaCount="+qnaCount );
+			System.out.println("JAVA: reviewCount="+reviewCount+" / qnaCount="+qnaCount+" / resvCount="+resvCount);
 			
 			req.setAttribute("dto", dto);
 			req.setAttribute("reviewCount", reviewCount);
