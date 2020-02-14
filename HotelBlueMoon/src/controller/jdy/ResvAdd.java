@@ -77,6 +77,12 @@ public class ResvAdd extends HttpServlet {
 		resv.setHotelAddr(hotel.getAddr());
 		resv.setHotelPlace(hotel.getPlace());
 		System.out.println("resvadd"+resv.toString());
+		boolean add = s.resvSerivce.addSchedule(checkIn, checkOut, hotelSeq);
+		if(add) {
+			System.out.println("스케줄업데이트 성공");
+		}else {
+			System.out.println("스케줄업데이트 실패");
+		}
 		
 		boolean b = s.resvSerivce.addResv(resv);
 		if(b) {

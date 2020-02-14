@@ -173,7 +173,7 @@ img {
 							<li><span class="profile-stat-count">PRICE</span> <%=resv.getTotalPrice()%></li>
 							<br>
 							<li class="hotelbtm">
-								<button type="button" class="btn btn-outline-danger">예약취소</button>
+								<button type="button" id="cancleBtn" class="btn btn-outline-danger">예약취소</button>
 								<button type="button" class="btn btn-outline-success">예약수정</button>
 							</li>
 						</ul>
@@ -216,6 +216,11 @@ img {
 			alert("정보있음");
 			$("#frm").submit();
 		} 
+		
+	});
+	
+	$('#cancleBtn').click(function() { 
+		alert("취소버튼");
 		
 	});
 	</script>
