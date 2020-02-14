@@ -7,7 +7,7 @@
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
-	List<ResvDTO> list = (ArrayList<ResvDTO>) request.getAttribute("resvList");
+	ResvDTO dto = (ResvDTO) request.getAttribute("resvDTO");
 %>
 <!DOCTYPE html>
 <html>
@@ -65,8 +65,7 @@
 						</tr>
 						<tr>
 							<th scope="col">호텔평점</th>
-							<td scope="col">
-							</td>
+							<td scope="col"></td>
 							<th scope="col">호텔</th>
 						</tr>
 						<tr>
@@ -99,6 +98,6 @@
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/JS/reviewwrite.js"></script>
+		src="<%=request.getContextPath()%>/JS/reviewwritedetail.js"></script>
 </body>
 </html>
