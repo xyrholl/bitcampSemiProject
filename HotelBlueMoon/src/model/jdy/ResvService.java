@@ -38,6 +38,11 @@ public class ResvService {
 		return b;
 	}
 	
+	public boolean addSchedule(String checkin, String checkout, int hotelSeq) {
+		boolean b = resvDAO.addSchedule(checkin, checkout, hotelSeq);
+		return b;
+	}
+	
 
 	
 }

@@ -16,6 +16,13 @@ USE_COUNT NUMBER(8) NOT NULL,
 RATING NUMBER(3,2) NOT NULL
 );
 
+select * from schedule;
+
+update schedule
+set use = 1
+where resvdate between'2020-02-01' and '2020-02-02'
+
+
 -------------------------------------------------
 
 DROP TABLE Room
@@ -100,6 +107,7 @@ AUTH NUMBER(1) NOT NULL,
 DEL NUMBER(1) NOT NULL
 );
 
+select * from BM_MEMBER;
 ----------------------------------------------------------------
 
 DROP TABLE REVIEW
@@ -184,8 +192,8 @@ SEQ NUMBER(8) PRIMARY KEY,
 RESVDATE VARCHAR2(20) NOT NULL,
 NAME VARCHAR2(50) NOT NULL,
 PLACE VARCHAR2(20) NOT NULL,
-USE NUMBER(1)
-);
+USE NUMBER(1) NOT NULL
+)
 
 ------------------------------------------------------------
 

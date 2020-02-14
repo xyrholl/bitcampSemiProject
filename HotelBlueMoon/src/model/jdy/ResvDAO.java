@@ -213,7 +213,42 @@ public class ResvDAO {
 	      return count > 0?true:false;
 	   }
 	
-
+	
+//	 UPDATE SCHEDULE 
+//	 SET USE = 1 
+//	 WHERE RESVDATE BETWEEN '2020-02-01' AND '2020-02-05'
+//	 AND HOTELSEQ = 2
+	public boolean addSchedule(String checkin, String checkout, int hotelSeq) {
+		String sql = " UPDATE SCHEDULE  "
+					+ " SET USE = 1 "
+					+ " WHERE RESVDATE BETWEEN ? AND ? "
+					+ " AND HOTELSEQ = ? ";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		int count = 0;
+		
+        
+        try {
+        	conn = DBConnection.getConnection();
+        	System.out.println("1/6 addSchedule success");
+        	
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, checkin);
+			psmt.setString(2, checkout);
+			psmt.setInt(3, hotelSeq);
+			System.out.println("2/6 addSchedule success");
+	         
+	         count = psmt.executeUpdate();
+	         System.out.println("3/6 addSchedule success");
+	         
+	      } catch (SQLException e) {
+	         System.out.println("addSchedule fail");
+	         e.printStackTrace();
+	      }finally {
+	         DBClose.close(psmt, conn, null);
+	      }
+	      return count > 0?true:false;
+	   }
 	
 }
 	
