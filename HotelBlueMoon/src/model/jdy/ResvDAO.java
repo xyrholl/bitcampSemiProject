@@ -1,0 +1,262 @@
+package model.jdy;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import db.DBClose;
+import db.DBConnection;
+import dto.BM_MemberDTO;
+import dto.HotelDTO;
+import dto.ResvDTO;
+import dto.RoomDTO;
+
+public class ResvDAO {
+	
+	public HotelDTO getHotelInfo( int seq ) {
+
+		String sql  = " SELECT SEQ, NAME, PLACE, ADDR, USE_COUNT, RATING "
+					+ " FROM HOTEL "
+					+ " WHERE SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		HotelDTO hotel = null;
+		
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getHotelInfo success");
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			System.out.println("2/6 getHotelInfo success");
+			
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getHotelInfo success");
+			
+			if(rs.next()) {
+				
+				int i = 1;
+
+				hotel = new HotelDTO(rs.getInt(i++), rs.getString(i++), rs.getString(i++), 
+						rs.getString(i++), rs.getInt(i++), rs.getInt(i++));
+			}
+			System.out.println("4/6 getHotelInfo success");
+		} catch (SQLException e) {
+			System.out.println("getHotelInfo fail");
+			e.printStackTrace();
+		}finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return hotel;
+		
+	}
+	
+	public RoomDTO getRoomInfo( int seq ) {
+
+		String sql  = " SELECT SEQ, NAME, HOTELSEQ, PRICE, MAX_GUEST "
+				+ " FROM ROOM "
+				+ " WHERE SEQ=? ";
+	
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		RoomDTO room = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getRoomInfo success");
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			System.out.println("2/6 getRoomInfo success");
+			
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getRoomInfo success");
+			
+			if(rs.next()) {
+				
+				int i = 1;
+
+				room = new RoomDTO(rs.getInt(i++), rs.getString(i++), rs.getInt(i++),  rs.getInt(i++), rs.getInt(i++));
+			}
+			System.out.println("4/6 getRoomInfo success");
+		} catch (SQLException e) {
+			System.out.println("getRoomInfo fail");
+			e.printStackTrace();
+		}finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return room;
+	}
+	
+	public BM_MemberDTO getMemberInfo(int seq) {
+		String sql = " SELECT SEQ, ID, PWD, NAME, PHONENUM, EMAIL "
+				+ "FROM BM_MEMBER WHERE SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		BM_MemberDTO member = null;
+		
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getMemberInfo success");
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			System.out.println("2/6 getMemberInfo success");
+			
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getResvInfo success");
+			
+			if(rs.next()) {
+				
+				int i = 1;
+				member = new BM_MemberDTO(rs.getInt(i++), rs.getString(i++),  rs.getString(i++),  rs.getString(i++),  rs.getString(i++),  rs.getString(i++));
+			}
+			System.out.println("4/6 getResvInfo success");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return member;
+	}
+	
+	
+	public BM_MemberDTO getMemberInfo(String loginId) {
+		
+		String sql = " SELECT SEQ, ID, PWD, NAME, PHONENUM, EMAIL "
+				+ "FROM BM_MEMBER WHERE ID=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		BM_MemberDTO member = null;
+		
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getMemberInfo success");
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, loginId);
+			System.out.println("2/6 getMemberInfo success");
+			
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getResvInfo success");
+			
+			if(rs.next()) {
+				int i = 1;
+				member = new BM_MemberDTO(rs.getInt(i++), rs.getString(i++),  rs.getString(i++),  rs.getString(i++),  rs.getString(i++),  rs.getString(i++));
+			}
+			System.out.println("4/6 getResvInfo success");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return member;
+	}
+	public ResvDTO getResvInfo(int seq ) {
+		String sql  = " SELECT * "
+				+ " FROM RESV "
+				+ " WHERE SEQ=? ";
+	
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		ResvDTO resv = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getResvInfo success");
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			System.out.println("2/6 getResvInfo success");
+			
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getResvInfo success");
+			
+			if(rs.next()) {
+				
+				int i = 1;
+//				resv = new ResvDTO(seq, memberSeq, roomSeq, checkIn, checkOut, resvDate, 
+//										totalPrice, cancel, current_guest, 
+//										hotelSeq, roomName, price, max_guest, image, 
+//										id, pwd, memName, phoneNum, email)
+				
+//				resv = new ResvDTO(rs.getInt(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), 
+//								rs.getInt(i++), rs.getInt(i++), rs.getInt(i++),
+//								rs.getInt(i++), rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++),
+//								rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++));
+				
+				//resv = new ResvDTO(seq, memberSeq, roomSeq, hotelSeq, checkIn, checkOut, resvDate, totalPrice, cancel, current_guest)
+				resv = new ResvDTO(rs.getInt(i++), rs.getInt(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), 
+						rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getInt(i++));
+						
+			}
+			System.out.println("4/6 getResvInfo success");
+		} catch (SQLException e) {
+			System.out.println("getResvInfo fail");
+			e.printStackTrace();
+		}finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return resv;
+	}
+	
+	public boolean addResv( ResvDTO resv ) {
+//		INSERT INTO RESV(SEQ, HOTELSEQ, MEMBERSEQ, ROOMSEQ, CHECKIN, CHECKOUT, RESVDATE, TOTALPRICE, CANCEL, CURRENT_GUEST, )
+//		VALUES(3, 3, 3, '20200204', '20200205', SYSDATE, 50000, 0, 2);
+		  String sql = " INSERT INTO RESV(SEQ, HOTELSEQ, MEMBERSEQ, ROOMSEQ, CHECKIN, CHECKOUT, RESVDATE, TOTALPRICE, CANCEL, CURRENT_GUEST, REVIEWIS) "
+	                  + " VALUES(SEQ_RESV.NEXTVAL, ?, ?, ?, ?, ?, SYSDATE, ?, 0, 4, 0)  ";
+	  
+		  Connection conn = null;
+		  PreparedStatement psmt = null;
+		  int count = 0;
+	      
+	      try {
+	         conn = DBConnection.getConnection();
+	         System.out.println("1/6 addResv success");
+	         
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setInt(1, resv.getMemberSeq());
+	         psmt.setInt(2, resv.getHotelSeq());
+	         psmt.setInt(3, resv.getRoomSeq());
+	         psmt.setString(4, resv.getCheckIn());
+	         psmt.setString(5, resv.getCheckOut());
+	         psmt.setInt(6, resv.getTotalPrice());
+	         
+	        
+	         System.out.println("2/6 addResv success");
+	         
+	         count = psmt.executeUpdate();
+	         System.out.println("3/6 addResv success");
+	         
+	      } catch (SQLException e) {
+	         System.out.println("addResv fail");
+	         e.printStackTrace();
+	      }finally {
+	         DBClose.close(psmt, conn, null);
+	      }
+	      return count > 0?true:false;
+	   }
+	
+
+	
+}
+	
