@@ -4,9 +4,10 @@
 <%@page import="dto.ReviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%
 	String loginId = (String) session.getAttribute("loginId");
-	ResvDTO dto = (ResvDTO) request.getAttribute("resvDTO");
+	List<ResvDTO> list = (ArrayList<ResvDTO>) request.getAttribute("resvList");
 %>
 <!DOCTYPE html>
 <html>
@@ -46,11 +47,7 @@
 
 			<article
 				style="background-color: rgba(170, 166, 157, 0.33); overflow-y: scroll; height: 500px;">
-				<input type="hidden" value="<%=dto.getSeq()%>"
-					class="js-input-review-resvseq"> <input type="hidden"
-					value="<%=dto.getHotelSeq()%>" class="js-input-review-hotelseq">
-				<input type="hidden" value="<%=dto.getRoomSeq()%>"
-					class="js-input-review-roomseq">
+
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -58,15 +55,14 @@
 							<td scope="col"><input type="text" class="js-input-rating">
 							</td>
 							<th scope="col">작성자</th>
-							<td scope="col" class="js-input-id"><%=loginId%></td>
+							<td scope="col"><%=loginId%></td>
 							<th scope="col">이용인원</th>
-							<td scope="col" class="js-input-curr_guest"><%=dto.getCurrent_guest()%></td>
 						</tr>
 						<tr>
 							<th scope="col">호텔평점</th>
-							<td scope="col"><%=dto.getHotelRating()%></td>
+							<td scope="col">
+							</td>
 							<th scope="col">호텔</th>
-							<td scope="col"><%=dto.getHotelName()%></td>
 						</tr>
 						<tr>
 							<th scope="row">제목</th>
@@ -86,8 +82,9 @@
 						</tr>
 					</tbody>
 				</table>
+
 				<button type="button" class="btn btn-outline-info js-returnList">돌아가기</button>
-				<button type="button" class="btn btn-outline-info js-insert-review">리뷰작성완료</button>
+				<button type="button" class="btn btn-outline-info js-update-review">리뷰작성완료</button>
 			</article>
 
 		</main>
@@ -97,6 +94,6 @@
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/JS/reviewwritedetail.js"></script>
+		src="<%=request.getContextPath()%>/JS/reviewwrite.js"></script>
 </body>
 </html>

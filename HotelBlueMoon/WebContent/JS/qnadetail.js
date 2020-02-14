@@ -1,48 +1,36 @@
+
+
 const qnaListBtn = document.querySelector("#qnaListBtn");
 const qnaDeleteBtn = document.querySelector("#qnaDeleteBtn");
 const qnaCommentBtn = document.querySelector("#qnaCommentBtn");
 
-$(document).ready(function() {
-var loginId = $("#loginId").val();
-var dtoId = $("#dtoId").val();
-	
-	if (loginId !== null && loginId !== "") {
-		if ( dtoId !== loginId || loginId !== "admin" ){
-				$(".Idcheck").attr("disabled", true);
-		}
-	}
-});
-
-
 
 function getContextPath() {
-	var hostIndex = location.href.indexOf(location.host) + location.host.length;
-	return location.href.substring(hostIndex, location.href.indexOf('/',
-			hostIndex + 1));
+	var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+	return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
 }
 
-function qnalist() {
-	location.href = getContextPath() + "/qnafoward";
+function qnalist(){
+	location.href= getContextPath()+"/qnafoward";
 }
 
-function qnadelete() {
+function qnadelete(){
 	var seq = document.getElementById("qnaDeleteBtn").value;
-
-	location.href = getContextPath() + "/qnadelete?seq=" + seq;
+	
+	//alert("delete:" + seq);
+	location.href= getContextPath()+"/qnadelete?seq="+seq;
 }
 
-function qnacomment() {
-	var seq = document.getElementById("qnaCommentBtn").value;
-	 alert("comment:" + seq);
-	location.href = getContextPath() + "/qnacomment?seq=" + seq
-			+ "&command=qnacomment";
+function qnacomment(){
+	var seq = document.getElementById("qnaCommentBtn").value;	
+	location.href= getContextPath()+"/qnacomment?seq="+seq+"&command=qnacomment";
 }
 
-function init() {
+function init(){
 	qnaListBtn.addEventListener('click', qnalist);
 	qnaDeleteBtn.addEventListener('click', qnadelete);
 	qnaCommentBtn.addEventListener('click', qnacomment);
-
+	
 }
 
 init();

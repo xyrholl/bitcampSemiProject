@@ -15,7 +15,7 @@ $(function(){
 	
 	$(document).on("click", "ul li#resvCount", function(){
 		var loginId = $("#myid").text().trim();
-		location.href= getContextPath()+"/fowardmyresvhistory?loginId="+loginId;
+		location.href= getContextPath()+"/fowardmyresvhistory";
 	});
 });
 

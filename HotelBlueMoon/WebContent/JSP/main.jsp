@@ -1,9 +1,17 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
+
+	Calendar cal = Calendar.getInstance();
+	
+	int year = cal.get(Calendar.YEAR);
+	int month = cal.get(Calendar.MONTH) + 1;
+	int day = cal.get(Calendar.DATE);
+	
 %>
 <html>
 <head>
@@ -74,8 +82,8 @@
 
 						<div class="row justify-content-center">
 							<div class="col-lg-8 booking-datepicker pt-5"
-								data-form-type="formoid" data-start="02/01/2020"
-								data-end="03/31/2020">
+								data-form-type="formoid" data-start="<%=month%>/<%=day%>/<%=year%>"
+								data-end="<%=month+2%>/<%=day%>/<%=year%>">
 								<form class="mbr-form" action="https://mobirise.com/"
 									method="get" data-form-title="My Mobirise Form">
 									<input type="hidden" name="email" data-form-email="true"

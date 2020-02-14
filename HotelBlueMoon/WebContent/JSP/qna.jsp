@@ -75,55 +75,9 @@ table tr td ul li {
 		</header>
 		<main class="hotelcontent">
 
-			<article
-				style="background-color: rgba(170, 166, 157, 0.33); overflow-y: scroll; height: 500px;">
+			<article style="background-color: rgba(170, 166, 157, 0.33); overflow-y:scroll; height: 500px;">
 
 				<h1>Q & A</h1>
-
-<!--  
-				<div class="input-group">
-					<select id="choice" class="custom-select" id="inputGroupSelect04">
-						<option value="sel">선 택</option>
-						<option value="title">제목</option>
-						<option value="writer">작성자</option>
-						<option value="content">내용</option>
-					</select>
-				</div>
-
-				<div class="input-group mb-3">
-					<input type="text" id="_search" class="form-control"
-						aria-label="Recipient's username" aria-describedby="basic-addon2">
-					<div class="input-group-append">
-						<div class="input-group-append">
-							<button type="button" onclick="searchQnA()">검색</button>
-						</div>
-					</div>
-				</div>
--->
-
-
-				<div class="input-group-append">
-					<select id="choice" class="custom-select js-search-select">
-						<option value="sel" selected>선 택</option>
-						<option value="title">제목</option>
-						<option value="writer">작성자</option>
-						<option value="content">내용</option>
-					</select>
-
-					<div class="input-group input-group-append mb-3">
-						<input id="_search" type="text" class="form-control js-searchText"
-							placeholder="Search" aria-label="Recipient's username"
-							aria-describedby="basic-addon2">
-
-						<div class="input-group-append">
-						<button type="button" class="btn btn-secondary" onclick="searchQnA()">검색</button>
-						<button type="button" class="btn btn-outline-info"
-						 onclick="location.href='<%=request.getContextPath()%>'+'/qnafoward'">전체목록</button>
-						</div>
-					</div>
-				</div>
-
-
 				<div align="center">
 
 					<table class="table table-sm">
@@ -162,10 +116,10 @@ table tr td ul li {
 											class="list-group-item1 list-group-item-action"><%=qna.getTitle()%></a>
 										</li>
 									</ul> <%
-							 	} else {
-							 %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
-							 	}
-							 %>
+ 	} else {
+ %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
+ 	}
+ %>
 								</td>
 								<td align="center"><ul>
 										<li class="list-group-item"><%=qna.getMemberId()%></li>
@@ -210,13 +164,32 @@ table tr td ul li {
 						글쓰기</a>
 				</div>
 
+
+				<div class="input-group">
+					<select id="choice" class="custom-select" id="inputGroupSelect04">
+						<option value="sel">선 택</option>
+						<option value="title">제목</option>
+						<option value="writer">작성자</option>
+						<option value="content">내용</option>
+					</select>
+				</div>
+
+				<div class="input-group mb-3">
+					<input type="text" id="_search" class="form-control"
+						aria-label="Recipient's username" aria-describedby="basic-addon2">
+					<div class="input-group-append">
+						<div class="input-group-append">
+							<button type="button" onclick="searchQnA()">검색</button>
+						</div>
+					</div>
+				</div>
+
 			</article>
 
 		</main>
 		<footer>Footer</footer>
 	</div>
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/JS/qna.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/JS/qna.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>
