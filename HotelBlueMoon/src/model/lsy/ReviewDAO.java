@@ -225,10 +225,10 @@ public class ReviewDAO {
 		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
 				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ? ";
-		
+
 		if (selectIndex == 1) {
 			sql = sql + " AND h.NAME LIKE '%'||?||'%' ";
-		}else if (selectIndex == 2) {
+		} else if (selectIndex == 2) {
 			sql = sql + " AND h.PLACE LIKE '%'||?||'%' ";
 		}
 
@@ -308,7 +308,7 @@ public class ReviewDAO {
 
 		String sql = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL) "
 				+ " VALUES(SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0)";
-		
+
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		int count = 0;
@@ -357,6 +357,30 @@ public class ReviewDAO {
 		}
 		return count;
 
+	}
+
+	public int fileUpload(String fileName, String fileRealName) {
+
+		String sql = " INSERT INTO IMAGEFILE(SEQ, FILENAME, FILEREALNAME)" + " VALUES (SEQ_IMAGEFILE.NEXTVAL, ?, ?) ";
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+
+		System.out.println(sql);
+
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, fileName);
+			psmt.setString(2, fileRealName);
+
+			return psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, null);
+		}
+		return -1;
 	}
 
 }

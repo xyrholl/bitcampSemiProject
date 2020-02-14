@@ -11,6 +11,10 @@ const reviewResvSeq = document.querySelector(".js-input-review-resvseq");
 const reviewHotelSeq = document.querySelector(".js-input-review-hotelseq");
 const reviewRoomSeq = document.querySelector(".js-input-review-roomseq");
 
+const formImageFile = document.querySelector(".js-file-form");
+
+const insertFile = document.querySelector(".js-file-upload");
+
 var nowTime = "";
 
 function getContextPath() {
@@ -68,13 +72,13 @@ function insert() {
 			+ "&content=" + reviewContent.value + "&nowTime=" + nowTime;
 }
 
-function test() {
-	alert("test")
+function fileUpload() {
+	formImageFile.submit();
 }
 
 function init() {
+	insertFile.addEventListener("click", fileUpload);	
 	insertReview.addEventListener("click", ratingCheck);
-	insertReview.addEventListener("click", test);
 	returnList.addEventListener("click", returnReviewList);
 	currDate();
 }
