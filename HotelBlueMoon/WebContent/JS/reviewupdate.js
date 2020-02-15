@@ -6,6 +6,8 @@ const updateBtn = document.querySelector(".js-update-review-success");
 
 const returnDetail = document.querySelector(".js-returnList");
 
+const deleteBtn = document.querySelector(".js-delete-review");
+
 function getContextPath() {
 	var hostIndex = location.href.indexOf(location.host) + location.host.length;
 	return location.href.substring(hostIndex, location.href.indexOf('/',
@@ -70,9 +72,15 @@ function returnBtn() {
 			+ updateSeq.value;
 }
 
+function deleteCheck() {
+	alert("리뷰가삭제됩니다.")
+	location.href = getContextPath() + "/reviewdelete?seq=" + updateSeq.value;
+}
+
 function init() {
 	updateBtn.addEventListener("click", ratingCheck);
 	returnDetail.addEventListener("click", returnBtn);
+	deleteBtn.addEventListener("click", deleteCheck);
 }
 
 init();

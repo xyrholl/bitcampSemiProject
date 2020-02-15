@@ -51,4 +51,23 @@ public class ReviewService {
 		}
 	}
 
+	public boolean imageFileUpload(String fileName, String fileRealName) {
+		int count = reviewDao.fileUpload(fileName, fileRealName);
+		if (count > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	public boolean deleteOneReview(int seq) {
+		int count = reviewDao.deleteOne(seq);
+		if (count > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

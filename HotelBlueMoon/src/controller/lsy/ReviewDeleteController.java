@@ -2,32 +2,30 @@ package controller.lsy;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.ResvDTO;
 import singleton.Singleton;
 
-@WebServlet("/fowardreviewwrite")
-public class FowardReviewWriteController extends HttpServlet {
-
-	public void forward(String link, HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		RequestDispatcher dispatch = req.getRequestDispatcher(link);
-		dispatch.forward(req, resp);
-	}
+@WebServlet("/reviewdelete")
+public class ReviewDeleteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		String seq = req.getParameter("seq");
+
 		Singleton s = Singleton.getInstance();
-		ResvDTO dto = s.reviewService.ResvSelectOne(Integer.parseInt(seq));
-		req.setAttribute("resvDTO", dto);
-		forward("/JSP/reviewwritedetail.jsp", req, resp);
+		boolean isS = s.reviewService.deleteOneReview(Integer.parseInt(seq));
+
+		if (isS) {
+			resp.sendRedirect(req.getContextPath() + "/reviewfoward");
+		} else {
+			resp.sendRedirect(req.getContextPath() + "/reviewdetailfoward?seq=" + seq);
+		}
 
 	}
 

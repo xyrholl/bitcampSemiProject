@@ -54,41 +54,46 @@
 					class="js-input-review-roomseq"> <input type="hidden"
 					class="js-input-id" value="<%=loginId%>">
 				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th scope="col">리뷰평점</th>
-							<td scope="col"><input type="text" class="js-input-rating">
-							</td>
-							<th scope="col">작성자</th>
-							<td scope="col"><%=loginId%></td>
-							<th scope="col">이용인원</th>
-						</tr>
-						<tr>
-							<th scope="col">호텔평점</th>
-							<td scope="col"></td>
-							<th scope="col">호텔</th>
-						</tr>
-						<tr>
-							<th scope="row">제목</th>
-							<td colspan="5"><input type="text" class="js-input-title">
-							</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row" colspan="6"><div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text">내용</span>
-									</div>
-									<textarea class="form-control js-input-content"
-										aria-label="With textarea" style="background-color: #fff"></textarea>
-								</div></th>
-						</tr>
-					</tbody>
+					<tr>
+						<th scope="col">리뷰평점</th>
+						<td scope="col"><input type="text" class="js-input-rating">
+						</td>
+						<th scope="col">작성자</th>
+						<td scope="col"><%=loginId%></td>
+						<th scope="col">이용인원</th>
+						<td scope="col"><%=dto.getCurrent_guest()%></td>
+					</tr>
+					<tr>
+						<th scope="col">호텔평점</th>
+						<td scope="col"><%=dto.getHotelRating()%></td>
+						<th scope="col">호텔</th>
+						<td scope="col"><%=dto.getHotelName()%></td>
+						<td colspan="2">
+							<form action="<%=request.getContextPath()%>/formImageFile"
+								method="post" enctype="multipart/form-data" class="js-file-form">
+								<input type="file" name="imageFile">
+								<button type="button"
+									class="btn btn-outline-info js-file-upload">파일업로드</button>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">제목</th>
+						<td colspan="5"><input type="text" class="js-input-title">
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" colspan="6"><div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">내용</span>
+								</div>
+								<textarea class="form-control js-input-content"
+									aria-label="With textarea" style="background-color: #fff"></textarea>
+							</div></th>
+					</tr>
 				</table>
-
 				<button type="button" class="btn btn-outline-info js-returnList">돌아가기</button>
-				<button type="button" class="btn btn-outline-info js-update-review">리뷰작성완료</button>
+				<button type="button" class="btn btn-outline-info js-insert-review">리뷰작성완료</button>
 			</article>
 
 		</main>

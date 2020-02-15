@@ -11,10 +11,26 @@ const reviewResvSeq = document.querySelector(".js-input-review-resvseq");
 const reviewHotelSeq = document.querySelector(".js-input-review-hotelseq");
 const reviewRoomSeq = document.querySelector(".js-input-review-roomseq");
 
+const formImageFile = document.querySelector(".js-file-form");
+
+const insertFile = document.querySelector(".js-file-upload");
+
+var nowTime = "";
+
 function getContextPath() {
 	var hostIndex = location.href.indexOf(location.host) + location.host.length;
 	return location.href.substring(hostIndex, location.href.indexOf('/',
 			hostIndex + 1));
+};
+
+function currDate() {
+
+	const currDate = new Date();
+	const yyyy = currDate.getFullYear();
+	const MM = currDate.getMonth() + 1;
+	const dd = currDate.getDate();
+	nowTime = yyyy + "-" + MM + "-" + dd;
+
 };
 
 function ratingCheck() {
@@ -44,7 +60,8 @@ function insertCheck() {
 }
 
 function returnReviewList() {
-location.href = getContextPath() + "/fowardmyresvhistory";
+	location.href = getContextPath() + "/fowardmyresvhistory?loginId="
+			+ loginId.value + "&nowTime=" + nowTime;
 }
 
 function insert() {
@@ -52,12 +69,18 @@ function insert() {
 			+ "&resvSeq=" + reviewResvSeq.value + "&hotelSeq="
 			+ reviewHotelSeq.value + "&roomSeq=" + reviewRoomSeq.value
 			+ "&rating=" + reviewRating.value + "&title=" + reviewTitle.value
-			+ "&content=" + reviewContent.value;
+			+ "&content=" + reviewContent.value + "&nowTime=" + nowTime;
+}
+
+function fileUpload() {
+	formImageFile.submit();
 }
 
 function init() {
+	insertFile.addEventListener("click", fileUpload);	
 	insertReview.addEventListener("click", ratingCheck);
 	returnList.addEventListener("click", returnReviewList);
+	currDate();
 }
 
 init();

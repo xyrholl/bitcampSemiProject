@@ -25,6 +25,7 @@ public class ReviewInsertController extends HttpServlet {
 		String srating = req.getParameter("rating");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		String nowTime = req.getParameter("nowTime");
 
 		Singleton s = Singleton.getInstance();
 		BM_MemberDTO memDto = s.memberService.selectOneMember(sloginId);
@@ -32,13 +33,14 @@ public class ReviewInsertController extends HttpServlet {
 		ReviewDTO dto = new ReviewDTO(Integer.parseInt(shotelSeq), Integer.parseInt(sroomSeq),
 				Integer.parseInt(sresvSeq), memDto.getSeq(), title, content, Double.parseDouble(srating));
 		boolean is = s.reviewService.insertReview(dto);
-		
-		if(is) {
-			resp.sendRedirect(req.getContextPath() + "/JSP/review.jsp");
-		}else {
-			
+
+		if (is) {
+			resp.sendRedirect(
+					req.getContextPath() + "/fowardmyresvhistory?loginId=" + sloginId + "&nowTime=" + nowTime);
+		} else {
+
 		}
-		
+
 	}
 
 	@Override
