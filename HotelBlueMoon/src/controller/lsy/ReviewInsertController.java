@@ -21,7 +21,7 @@ public class ReviewInsertController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String saveDirectory = req.getSession().getServletContext().getRealPath("/UPload");
+		String saveDirectory = req.getSession().getServletContext().getRealPath("UPload");
 		System.out.println(saveDirectory);
 		int maxSize = 1024 * 1024 * 10;
 		String encoding = "UTF-8";
@@ -50,13 +50,13 @@ public class ReviewInsertController extends HttpServlet {
 		dto.setFileName(fileName);
 		dto.setFileRealName(fileRealName);
 
+		// resp.sendRedirect(req.getContextPath() + "/fowardreviewwrite?seq=" +
+		// sresvSeq);
 		boolean tableAddSuccess = s.reviewService.insertReview(dto);
-
 		if (tableAddSuccess) {
 			resp.sendRedirect(
 					req.getContextPath() + "/fowardmyresvhistory?loginId=" + sloginId + "&nowTime=" + nowTime);
 		}
-
 	}
 
 	@Override

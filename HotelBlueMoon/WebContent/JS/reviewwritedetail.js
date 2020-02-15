@@ -19,7 +19,7 @@ function currDate() {
 
 function returnReviewList() {
 	location.href = getContextPath() + "/fowardmyresvhistory?loginId="
-			+ loginId.value + "&nowTime=" + nowTime;
+			+ loginId.value + "&nowTime=" + nowTime.value;
 }
 
 function init() {

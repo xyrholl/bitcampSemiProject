@@ -74,9 +74,9 @@ public class ReviewDAO {
 	public List<ReviewDTO> reviewList() {
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
 
-		String sql = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC), SEQ, RATING, NAME, TITLE, CONTENT, WRITEDATE "
+		String sql = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC), SEQ, RATING, NAME, TITLE, CONTENT, WRITEDATE, IMAGE "
 				+ " FROM( "
-				+ " SELECT r.SEQ AS SEQ, r.RATING AS RATING, h.NAME AS NAME, TITLE, CONTENT, r.writedate AS WRITEDATE "
+				+ " SELECT r.SEQ AS SEQ, r.RATING AS RATING, h.NAME AS NAME, TITLE, CONTENT, r.writedate AS WRITEDATE, r.REVIEW_IMG_REAL AS IMAGE "
 				+ " FROM REVIEW r, HOTEL h " + " WHERE r.HotelSEQ = h.SEQ " + " AND DEL = 0) ";
 
 		Connection conn = null;
@@ -97,6 +97,9 @@ public class ReviewDAO {
 				dto.setHotelName(rs.getString(i++));
 				dto.setTitle(rs.getString(i++));
 				dto.setContent(rs.getString(i++));
+				dto.setWriteDate(rs.getString(i++));
+				dto.setFileRealName(rs.getString(i++));
+				System.out.println(dto.getFileRealName());
 				list.add(dto);
 			}
 
@@ -109,9 +112,9 @@ public class ReviewDAO {
 	public List<ReviewDTO> reviewList(int selectIndex, String text) {
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
 
-		String sql1 = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC)AS RNUM, REVIEWSEQ, RATING, HOTELNAME, REVIEWTITLE, REVIEWCONTENT, WRITEDATE"
+		String sql1 = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC)AS RNUM, REVIEWSEQ, RATING, HOTELNAME, REVIEWTITLE, REVIEWCONTENT, WRITEDATE, IMAGE"
 				+ " FROM( "
-				+ " SELECT r.SEQ AS REVIEWSEQ, r.RATING AS RATING, h.NAME AS HOTELNAME, r.TITLE AS REVIEWTITLE, r.CONTENT AS REVIEWCONTENT, r.writedate AS WRITEDATE, m.ID AS MEMBERID "
+				+ " SELECT r.SEQ AS REVIEWSEQ, r.RATING AS RATING, h.NAME AS HOTELNAME, r.TITLE AS REVIEWTITLE, r.CONTENT AS REVIEWCONTENT, r.writedate AS WRITEDATE, m.ID AS MEMBERID, r.REVIEW_IMG AS IMAGE "
 				+ " FROM REVIEW r, HOTEL h, BM_MEMBER m "
 				+ " WHERE r.HotelSEQ = h.SEQ AND r.MemberSEQ = m.SEQ AND r.DEL = 0) ";
 
@@ -143,6 +146,9 @@ public class ReviewDAO {
 				dto.setHotelName(rs.getString(i++));
 				dto.setTitle(rs.getString(i++));
 				dto.setContent(rs.getString(i++));
+				dto.setWriteDate(rs.getString(i++));
+				dto.setFileRealName(rs.getString(i++));
+				System.out.println(dto.getFileRealName());
 				list.add(dto);
 			}
 
