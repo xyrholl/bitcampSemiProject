@@ -306,8 +306,8 @@ public class ReviewDAO {
 
 	public int insertReview(ReviewDTO dto) {
 
-		String sql = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL) "
-				+ " VALUES(SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0)";
+		String sql = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL, REVIEW_IMG, REVIEW_IMG_REAL) "
+				+ " VALUES(SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -326,6 +326,8 @@ public class ReviewDAO {
 			psmt.setString(5, dto.getTitle());
 			psmt.setString(6, dto.getContent());
 			psmt.setDouble(7, dto.getRating());
+			psmt.setString(8, dto.getFileName());
+			psmt.setString(9, dto.getFileRealName());
 			System.out.println(sql);
 			count = psmt.executeUpdate();
 
