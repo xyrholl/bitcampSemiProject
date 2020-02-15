@@ -92,7 +92,6 @@
 							</div></th>
 					</tr>
 				</table>
-
 				<button type="button" class="btn btn-outline-info js-returnList">돌아가기</button>
 				<button type="button" class="btn btn-outline-info js-insert-review">리뷰작성완료</button>
 			</article>

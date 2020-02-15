@@ -13,16 +13,9 @@ NAME VARCHAR2(50) NOT NULL,
 PLACE VARCHAR2(20) NOT NULL,
 ADDR VARCHAR2(100) NOT NULL,
 USE_COUNT NUMBER(8) NOT NULL,
-RATING NUMBER(3,2) NOT NULL
+RATING NUMBER(3,2) NOT NULL,
+HOTEL_IMG VARCHAR2(100) 
 );
-
-select * from schedule;
-
-select * from IMAGEFILE;
-
-update schedule
-set use = 1
-where resvdate between'2020-02-01' and '2020-02-02'
 
 
 -------------------------------------------------
@@ -109,7 +102,6 @@ AUTH NUMBER(1) NOT NULL,
 DEL NUMBER(1) NOT NULL
 );
 
-select * from BM_MEMBER;
 ----------------------------------------------------------------
 
 DROP TABLE REVIEW
@@ -191,11 +183,11 @@ START WITH 1;
 
 CREATE TABLE SCHEDULE(
 SEQ NUMBER(8) PRIMARY KEY,
+HOTELSEQ NUMBER(8) NOT NULL,
 RESVDATE VARCHAR2(20) NOT NULL,
-NAME VARCHAR2(50) NOT NULL,
-PLACE VARCHAR2(20) NOT NULL,
 USE NUMBER(1) NOT NULL
-)
+);
+
 
 ------------------------------------------------------------
 

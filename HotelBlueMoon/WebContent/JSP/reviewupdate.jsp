@@ -111,6 +111,9 @@
 				<button type="button"
 					class="btn btn-outline-success js-update-review-success"
 					style="float: right;">리뷰수정완료</button>
+				<button type="button"
+					class="btn btn-outline-warning js-delete-review"
+					style="float: right;">리뷰삭제하기</button>
 				<%
 					}
 				%>
