@@ -43,7 +43,7 @@
 		<main class="hotelcontent">
 
 			<article
-				style="background-color: rgba(170, 166, 157, 0.33); overflow-y: scroll; height: 500px;">
+				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
 
 				<input type="hidden" value="" class="js-currDateTmp">
 				<div class="input-group-append">
