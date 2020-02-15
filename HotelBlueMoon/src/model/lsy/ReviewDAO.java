@@ -383,4 +383,26 @@ public class ReviewDAO {
 		return -1;
 	}
 
+	public int deleteOne(int seq) {
+
+		String sql = " UPDATE REVIEW " + " SET DEL = 1 " + " WHERE SEQ = ? ";
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			return psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, null);
+		}
+
+		return -1;
+	}
+
 }

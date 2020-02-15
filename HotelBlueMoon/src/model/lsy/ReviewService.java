@@ -55,10 +55,19 @@ public class ReviewService {
 		int count = reviewDao.fileUpload(fileName, fileRealName);
 		if (count > 0) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 
+	}
+
+	public boolean deleteOneReview(int seq) {
+		int count = reviewDao.deleteOne(seq);
+		if (count > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
