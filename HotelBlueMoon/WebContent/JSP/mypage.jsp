@@ -55,7 +55,7 @@
 		<main class="hotelcontent">
 
 			<article
-				style="background-color: rgba(170, 166, 157, 0.33); overflow-y: scroll; height: 500px;"">
+				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
 
 				<div class="bluemoon-layout-container">
 					<div class="bluemoon-main">
