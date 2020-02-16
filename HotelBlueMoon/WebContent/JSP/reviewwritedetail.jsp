@@ -7,7 +7,7 @@
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
-	ResvDTO dto = (ResvDTO) request.getAttribute("resvDTO");
+	ResvDTO resvDto = (ResvDTO) request.getAttribute("resvDTO");
 %>
 <!DOCTYPE html>
 <html>
@@ -47,13 +47,13 @@
 
 			<article
 				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
-				<form action="insertreview"
-					method="post" enctype="multipart/form-data" class="js-file-form">
-					<input type="hidden" value="<%=dto.getSeq()%>"
+				<form action="insertreview" method="post"
+					enctype="multipart/form-data" class="js-file-form">
+					<input type="hidden" value="<%=resvDto.getSeq()%>"
 						class="js-input-review-resvseq" name="resvSeq"> <input
-						type="hidden" value="<%=dto.getHotelSeq()%>"
+						type="hidden" value="<%=resvDto.getHotelSeq()%>"
 						class="js-input-review-hotelseq" name="hotelSeq"> <input
-						type="hidden" value="<%=dto.getRoomSeq()%>"
+						type="hidden" value="<%=resvDto.getRoomSeq()%>"
 						class="js-input-review-roomseq" name="roomSeq"> <input
 						type="hidden" class="js-input-id" value="<%=loginId%>"
 						name="loginId"> <input type="hidden" class="js-nowTime"
@@ -61,18 +61,18 @@
 					<table class="table table-bordered">
 						<tr>
 							<th scope="col">리뷰평점</th>
-							<td scope="col"><input type="text" class="js-input-rating" name="rating">
-							</td>
+							<td scope="col"><input type="text" class="js-input-rating"
+								name="rating"></td>
 							<th scope="col">작성자</th>
 							<td scope="col"><%=loginId%></td>
 							<th scope="col">이용인원</th>
-							<td scope="col"><%=dto.getCurrent_guest()%></td>
+							<td scope="col"><%=resvDto.getCurrent_guest()%></td>
 						</tr>
 						<tr>
 							<th scope="col">호텔평점</th>
-							<td scope="col"><%=dto.getHotelRating()%></td>
+							<td scope="col"><%=resvDto.getHotelRating()%></td>
 							<th scope="col">호텔</th>
-							<td scope="col"><%=dto.getHotelName()%></td>
+							<td scope="col"><%=resvDto.getHotelName()%></td>
 							<td colspan="2"><input type="file" name="imageFile">
 							</td>
 						</tr>

@@ -41,17 +41,25 @@ public class ReviewInsertController extends HttpServlet {
 		String content = multipartReq.getParameter("content");
 		String nowTime = multipartReq.getParameter("nowTime");
 
+		if (fileName != null) {
+			int pos = fileName.lastIndexOf(".");
+			String extension = fileName.substring(pos + 1);
+			if (extension != "png" || extension != "jpg") {
+				System.out.println("png가 나 jps 형식이 아닙니다");
+				resp.sendRedirect(req.getContextPath() + "/fowardreviewwrite?seq=" + sresvSeq + "&rating=" + srating
+						+ "&title=" + title + "&content=" + content);
+				return;
+			}
+		}
+
 		Singleton s = Singleton.getInstance();
 		BM_MemberDTO memDto = s.memberService.selectOneMember(sloginId);
-		System.out.println("memSeq: " + memDto.getSeq());
 
 		ReviewDTO dto = new ReviewDTO(Integer.parseInt(shotelSeq), Integer.parseInt(sroomSeq),
 				Integer.parseInt(sresvSeq), memDto.getSeq(), title, content, Double.parseDouble(srating));
 		dto.setFileName(fileName);
 		dto.setFileRealName(fileRealName);
 
-		// resp.sendRedirect(req.getContextPath() + "/fowardreviewwrite?seq=" +
-		// sresvSeq);
 		boolean tableAddSuccess = s.reviewService.insertReview(dto);
 		if (tableAddSuccess) {
 			resp.sendRedirect(

@@ -11,7 +11,6 @@ import db.DBClose;
 import db.DBConnection;
 import dto.ResvDTO;
 import dto.ReviewDTO;
-import sun.nio.ch.SelChImpl;
 
 /*
 CREATE TABLE REVIEW(
@@ -312,7 +311,7 @@ public class ReviewDAO {
 
 	public int insertReview(ReviewDTO dto) {
 
-		String sql = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL, REVIEW_IMG, REVIEW_IMG_REAL) "
+		String sql1 = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL, REVIEW_IMG, REVIEW_IMG_REAL) "
 				+ " VALUES(SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0, ?, ?)";
 
 		Connection conn = null;
@@ -321,10 +320,13 @@ public class ReviewDAO {
 
 		String sql2 = " UPDATE RESV " + " SET REVIEWIS = 1 " + " WHERE SEQ = ? ";
 
+		String sql3 = "  UPDATE HOTEL " + " SET RATING = (SELECT AVG(RATING) FROM REVIEW WHERE HOTELSEQ = ?) "
+				+ " WHERE SEQ = ? ";
+
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
-			psmt = conn.prepareStatement(sql);
+			psmt = conn.prepareStatement(sql1);
 			psmt.setInt(1, dto.getHotleSeq());
 			psmt.setInt(2, dto.getRoomSeq());
 			psmt.setInt(3, dto.getResvSeq());
@@ -334,7 +336,7 @@ public class ReviewDAO {
 			psmt.setDouble(7, dto.getRating());
 			psmt.setString(8, dto.getFileName());
 			psmt.setString(9, dto.getFileRealName());
-			System.out.println(sql);
+			System.out.println(sql1);
 			count = psmt.executeUpdate();
 
 			psmt.clearParameters();
@@ -342,8 +344,16 @@ public class ReviewDAO {
 			psmt = conn.prepareStatement(sql2);
 			psmt.setInt(1, dto.getResvSeq());
 			System.out.println(sql2);
-
 			count = psmt.executeUpdate();
+
+			psmt.clearParameters();
+
+			psmt = conn.prepareStatement(sql3);
+			psmt.setInt(1, dto.getHotleSeq());
+			psmt.setInt(2, dto.getHotleSeq());
+			System.out.println(sql3);
+			count = psmt.executeUpdate();
+
 			conn.commit();
 
 		} catch (SQLException e) {
