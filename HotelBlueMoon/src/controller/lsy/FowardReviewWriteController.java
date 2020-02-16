@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.ResvDTO;
+import dto.ReviewDTO;
 import singleton.Singleton;
+import sun.reflect.generics.visitor.Reifier;
 
 @WebServlet("/fowardreviewwrite")
 public class FowardReviewWriteController extends HttpServlet {
@@ -24,9 +26,15 @@ public class FowardReviewWriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String seq = req.getParameter("seq");
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		String rating = req.getParameter("rating");
+
 		Singleton s = Singleton.getInstance();
-		ResvDTO dto = s.reviewService.ResvSelectOne(Integer.parseInt(seq));
-		req.setAttribute("resvDTO", dto);
+		ResvDTO ResvDto = s.reviewService.ResvSelectOne(Integer.parseInt(seq));
+		ReviewDTO reviewDto = new ReviewDTO();
+		req.setAttribute("resvDTO", ResvDto);
+
 		forward("/JSP/reviewwritedetail.jsp", req, resp);
 
 	}

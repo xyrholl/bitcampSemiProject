@@ -11,7 +11,6 @@ import db.DBClose;
 import db.DBConnection;
 import dto.ResvDTO;
 import dto.ReviewDTO;
-import sun.nio.ch.SelChImpl;
 
 /*
 CREATE TABLE REVIEW(
@@ -74,9 +73,9 @@ public class ReviewDAO {
 	public List<ReviewDTO> reviewList() {
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
 
-		String sql = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC), SEQ, RATING, NAME, TITLE, CONTENT, WRITEDATE "
+		String sql = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC), SEQ, RATING, NAME, TITLE, CONTENT, WRITEDATE, IMAGE "
 				+ " FROM( "
-				+ " SELECT r.SEQ AS SEQ, r.RATING AS RATING, h.NAME AS NAME, TITLE, CONTENT, r.writedate AS WRITEDATE "
+				+ " SELECT r.SEQ AS SEQ, r.RATING AS RATING, h.NAME AS NAME, TITLE, CONTENT, r.writedate AS WRITEDATE, r.REVIEW_IMG_REAL AS IMAGE "
 				+ " FROM REVIEW r, HOTEL h " + " WHERE r.HotelSEQ = h.SEQ " + " AND DEL = 0) ";
 
 		Connection conn = null;
@@ -97,6 +96,9 @@ public class ReviewDAO {
 				dto.setHotelName(rs.getString(i++));
 				dto.setTitle(rs.getString(i++));
 				dto.setContent(rs.getString(i++));
+				dto.setWriteDate(rs.getString(i++));
+				dto.setFileRealName(rs.getString(i++));
+				System.out.println(dto.getFileRealName());
 				list.add(dto);
 			}
 
@@ -109,9 +111,9 @@ public class ReviewDAO {
 	public List<ReviewDTO> reviewList(int selectIndex, String text) {
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
 
-		String sql1 = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC)AS RNUM, REVIEWSEQ, RATING, HOTELNAME, REVIEWTITLE, REVIEWCONTENT, WRITEDATE"
+		String sql1 = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC)AS RNUM, REVIEWSEQ, RATING, HOTELNAME, REVIEWTITLE, REVIEWCONTENT, WRITEDATE, IMAGE"
 				+ " FROM( "
-				+ " SELECT r.SEQ AS REVIEWSEQ, r.RATING AS RATING, h.NAME AS HOTELNAME, r.TITLE AS REVIEWTITLE, r.CONTENT AS REVIEWCONTENT, r.writedate AS WRITEDATE, m.ID AS MEMBERID "
+				+ " SELECT r.SEQ AS REVIEWSEQ, r.RATING AS RATING, h.NAME AS HOTELNAME, r.TITLE AS REVIEWTITLE, r.CONTENT AS REVIEWCONTENT, r.writedate AS WRITEDATE, m.ID AS MEMBERID, r.REVIEW_IMG AS IMAGE "
 				+ " FROM REVIEW r, HOTEL h, BM_MEMBER m "
 				+ " WHERE r.HotelSEQ = h.SEQ AND r.MemberSEQ = m.SEQ AND r.DEL = 0) ";
 
@@ -143,6 +145,9 @@ public class ReviewDAO {
 				dto.setHotelName(rs.getString(i++));
 				dto.setTitle(rs.getString(i++));
 				dto.setContent(rs.getString(i++));
+				dto.setWriteDate(rs.getString(i++));
+				dto.setFileRealName(rs.getString(i++));
+				System.out.println(dto.getFileRealName());
 				list.add(dto);
 			}
 
@@ -306,8 +311,8 @@ public class ReviewDAO {
 
 	public int insertReview(ReviewDTO dto) {
 
-		String sql = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL) "
-				+ " VALUES(SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0)";
+		String sql1 = " INSERT INTO REVIEW(SEQ, HotelSEQ, RoomSEQ, ResvSEQ, MemberSEQ, TITLE, CONTENT, RATING, WRITEDATE, DEL, REVIEW_IMG, REVIEW_IMG_REAL) "
+				+ " VALUES(SEQ_REVIEW.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE, 0, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -315,10 +320,13 @@ public class ReviewDAO {
 
 		String sql2 = " UPDATE RESV " + " SET REVIEWIS = 1 " + " WHERE SEQ = ? ";
 
+		String sql3 = "  UPDATE HOTEL " + " SET RATING = (SELECT AVG(RATING) FROM REVIEW WHERE HOTELSEQ = ?) "
+				+ " WHERE SEQ = ? ";
+
 		try {
 			conn = DBConnection.getConnection();
 			conn.setAutoCommit(false);
-			psmt = conn.prepareStatement(sql);
+			psmt = conn.prepareStatement(sql1);
 			psmt.setInt(1, dto.getHotleSeq());
 			psmt.setInt(2, dto.getRoomSeq());
 			psmt.setInt(3, dto.getResvSeq());
@@ -326,7 +334,9 @@ public class ReviewDAO {
 			psmt.setString(5, dto.getTitle());
 			psmt.setString(6, dto.getContent());
 			psmt.setDouble(7, dto.getRating());
-			System.out.println(sql);
+			psmt.setString(8, dto.getFileName());
+			psmt.setString(9, dto.getFileRealName());
+			System.out.println(sql1);
 			count = psmt.executeUpdate();
 
 			psmt.clearParameters();
@@ -334,8 +344,16 @@ public class ReviewDAO {
 			psmt = conn.prepareStatement(sql2);
 			psmt.setInt(1, dto.getResvSeq());
 			System.out.println(sql2);
-
 			count = psmt.executeUpdate();
+
+			psmt.clearParameters();
+
+			psmt = conn.prepareStatement(sql3);
+			psmt.setInt(1, dto.getHotleSeq());
+			psmt.setInt(2, dto.getHotleSeq());
+			System.out.println(sql3);
+			count = psmt.executeUpdate();
+
 			conn.commit();
 
 		} catch (SQLException e) {

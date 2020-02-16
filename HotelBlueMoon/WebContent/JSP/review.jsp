@@ -48,7 +48,7 @@
 				<input type="hidden" value="" class="js-currDateTmp">
 				<div class="input-group-append">
 
-					<select class="custom-select js-search-select" style="width:20%">
+					<select class="custom-select js-search-select" style="width: 20%">
 						<option selected>검색</option>
 						<option value="1">호텔이름</option>
 						<option value="2">제목</option>
@@ -93,7 +93,9 @@
 						%>
 						<tr class="row<%=i%>">
 							<th scope="row"><%=i + 1%></th>
-							<td></td>
+							<td><img alt=""
+								src="http://localhost:9000/HotelBlueMoon/UPload/<%=dto.getFileRealName()%>"
+								width="40px" height="40px"></td>
 							<td>
 								<%
 									if (dto.getRating() >= 4) {
