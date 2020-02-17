@@ -138,10 +138,6 @@
 											AREA</p>
 										<select class="custom-select custom-select-lg mb-2 js-areaBox">
 											<option selected>Area</option>
-											<option value="seoul">서울</option>
-											<option value="Gyungi">경기</option>
-											<option value="Incheon">인천</option>
-											<option value="ChoongChung">충청</option>
 										</select>
 									</div>
 
@@ -175,6 +171,7 @@
 	<script
 		src="<%=request.getContextPath()%>/css/assets/formoid/formoid.min.js"></script>
 	<script src="<%=request.getContextPath()%>/JS/main.js"></script>
+	<script src="<%=request.getContextPath()%>/JS/placeRead.js"></script>
 
 </body>
 </html>

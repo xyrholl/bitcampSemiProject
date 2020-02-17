@@ -23,7 +23,7 @@ public class HotelDTO {
 	public HotelDTO() {
 	}
 
-	public HotelDTO(int seq, String name, String place, String addr, int useCount, int rating) {
+	public HotelDTO(int seq, String name, String place, String addr, int useCount, double rating) {
 		super();
 		this.seq = seq;
 		this.name = name;
@@ -34,12 +34,11 @@ public class HotelDTO {
 
 	}
 
-	public HotelDTO(int seq, String name, String addr, int useCount, int rating) {
+	public HotelDTO(int seq, String name, String addr, double rating) {
 		super();
 		this.seq = seq;
 		this.name = name;
 		this.addr = addr;
-		this.useCount = useCount;
 		this.rating = rating;
 	}
 

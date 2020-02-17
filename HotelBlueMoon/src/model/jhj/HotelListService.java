@@ -8,9 +8,9 @@ import java.util.Date;
 
 import dto.HotelDTO;
 
-public class hotelListService {
+public class HotelListService {
 	
-	hotelListDAO dao = new hotelListDAO();
+	HotelListDAO dao = new HotelListDAO();
 	
 	public ArrayList<HotelDTO> getHotelInfo(String guest, String area, String checkin, String checkout) {
 		
@@ -18,7 +18,7 @@ public class hotelListService {
 		
 		System.out.println(timeCount);
 		
-		ArrayList<HotelDTO> list = dao.getHotelList(guest, area, checkin, checkout);
+		ArrayList<HotelDTO> list = dao.getHotelList(guest, area, checkin, checkout, timeCount);
 		
 		return list;
 	}
