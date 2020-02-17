@@ -197,7 +197,8 @@
 										}
 								 	} else {
 								 %>
-										<button type="button" class="btn btn-info">리뷰 보기</button> 
+										<button type="button" class="btn btn-info"
+										 onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰 보기</button> 
 								<%
 								 	}%>
 							</td>

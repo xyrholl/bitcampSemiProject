@@ -24,7 +24,7 @@ function searchQnA() {
 }
 
 function goPage( pageNum ){
-	alert(pageNum);
+	//alert(pageNum);
 	
 	var choice = $("#choice").val();
 	var word = $("#search").val();

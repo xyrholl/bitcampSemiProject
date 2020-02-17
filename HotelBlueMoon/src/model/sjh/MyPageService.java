@@ -58,4 +58,9 @@ public class MyPageService {
 		boolean b = mypageDao.resvCancel(seq);
 		return b;
 	}
+
+	public int getMyReviewSeq(int resvSeq) {
+		int seq = mypageDao.getMyReviewSeq(resvSeq);
+		return seq;
+	}
 }
