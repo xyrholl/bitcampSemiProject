@@ -10,6 +10,7 @@ function getContextPath() {
 			hostIndex + 1));
 };
 
+
 function searchCheck() {
 	if (select.value === "검색") {
 		alert("검색 태그가 설정 되지 않았습니다.")
@@ -42,6 +43,8 @@ function searchEvent() {
 function allSearch() {
 	location.href = `${getContextPath()}` + "/fowardmyresvhistory";
 }
+
+
 
 
 function init() {

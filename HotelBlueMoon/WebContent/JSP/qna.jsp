@@ -143,10 +143,10 @@ table tr td ul li {
 											class="list-group-item1 list-group-item-action"><%=qna.getTitle()%></a>
 										</li>
 									</ul> <%
- 	} else {
- %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
- 	}
- %>
+									 	} else {
+									 %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
+									 	}
+									 %>
 								</td>
 								<td align="center"><ul>
 										<li class="list-group-item"><%=qna.getMemberId()%></li>
@@ -174,62 +174,38 @@ table tr td ul li {
 								text-decoration: none;
 								border-radius: 8px;
 						}
+						.list-paging span.now a {
+								font-size: 20px;
+								background-color: #007bff;
+								padding: 5px 10px;
+								cursor: pointer;
+								text-decoration: none;
+								border-radius: 8px;
+								color: white;
+						}
 						span a:hover {
 							background-color: #007bff;
 							color: white;
 						}
 					</style>
-					<div class="list-paging">
-						<span><a href="#">1</a></span>
-						<span><a href="#">2</a></span>
-						<span><a href="#">3</a></span>
-						<span><a href="#">4</a></span>
+					<div class="list-paging" align="center" style="float:left; width: 80%" >
+						<%
+							for (int i = 0; i < qnaPage; i++) {
+								if (pageNumber == i) { // 현재 페이지
+						%>
+								<span class="now"><a href="#" ><%=i + 1%></a></span>
+						<%
+							} else {
+						%>
+								<span><a href="#" onclick="goPage(<%=i%>)"><%=i + 1%></a></span>
+						 <%
+						 	}
+						 %> <%
+						 }
+						 %> 
 					</div>
-					
-					<div align="center" style="float:left; width: 80%" >
-					
-						<ul class="p-pagination" style="display:block; text-align:center;">
-							
-							<%
-								for (int i = 0; i < qnaPage; i++) {
-									if (pageNumber == i) { // 현재 페이지
-							%>
-							<li class="page-item active" style="display:inline-block !important;">
-								<a class="page-link" style="display:inline-block !important;" href="#"><%=i + 1%>
-									<span class="sr-only">(current)</span>
-								</a>
-							</li>
-
-							<%-- <span style="font-size: 15pt; color: #0000ff; font-weight: bold;">
-						<%=i + 1%>
-					</span>&nbsp; --%>
-
-							<%
-								} else {
-							%>
-							<li class="page-item"><a class="page-link" href="#"
-								onclick="goPage(<%=i%>)"><%=i + 1%></a></li>
-							<li class="page-item">
-								<%-- <a href="#none" title="<%=i + 1%>페이지" onclick="goPage(<%=i%>)"
-							style="font-size: 15pt; color: #000; font-weight: bold;"> [<%=i + 1%>]
-						</a>&nbsp; --%> <%
-							 	}
-							 %> <%
-							 	}
-							 %> 
-							
-							</li>
-						</ul>
-					
-					</div>
-					
-					
-					
 						<button type="button" class="btn btn-info"
-							onclick="loaction.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA
-							글쓰기</button>
-					
-			
+							onclick="location.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA 글쓰기</button>
 
 			</article>
 

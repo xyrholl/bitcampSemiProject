@@ -1,6 +1,7 @@
 package model.sjh;
 
 import dto.BM_MemberDTO;
+import dto.ResvDTO;
 
 public class MyPageService {
 	
@@ -35,5 +36,31 @@ public class MyPageService {
 		boolean b = mypageDao.checkPassword(loginId, pwd);
 		return b;
 	}
-			
+	
+	public ResvDTO getMyResv(int seq) {
+		ResvDTO dto = mypageDao.getMyResv(seq);
+		return dto;
+	}
+	
+	public String gethotelName(int seq) {
+		String str = mypageDao.gethotelName(seq);
+		return str;
+	}
+	public String getroomName(int seq) {
+		String str = mypageDao.getroomName(seq);
+		return str;
+	}public String getmemName(int seq) {
+		String str = mypageDao.getmemName(seq);
+		return str;
+	}
+
+	public boolean resvCancel(int seq) {
+		boolean b = mypageDao.resvCancel(seq);
+		return b;
+	}
+
+	public int getMyReviewSeq(int resvSeq) {
+		int seq = mypageDao.getMyReviewSeq(resvSeq);
+		return seq;
+	}
 }

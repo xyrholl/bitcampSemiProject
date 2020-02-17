@@ -41,16 +41,14 @@ public class ReviewInsertController extends HttpServlet {
 		String content = multipartReq.getParameter("content");
 		String nowTime = multipartReq.getParameter("nowTime");
 
-		if (fileName != null) {
-			int pos = fileName.lastIndexOf(".");
-			String extension = fileName.substring(pos + 1);
-			if (extension != "png" || extension != "jpg") {
-				System.out.println("png가 나 jps 형식이 아닙니다");
-				resp.sendRedirect(req.getContextPath() + "/fowardreviewwrite?seq=" + sresvSeq + "&rating=" + srating
-						+ "&title=" + title + "&content=" + content);
-				return;
-			}
-		}
+		/*
+		 * if (fileName != null) { int pos = fileName.lastIndexOf("."); String extension
+		 * = fileName.substring(pos + 1); if (extension != "png" || extension != "jpg")
+		 * { System.out.println("파일이 png 나 jps 형식이 아닙니다");
+		 * resp.sendRedirect(req.getContextPath() + "/fowardreviewwrite?seq=" + sresvSeq
+		 * + "&rating=" + srating + "&title=" + title + "&content=" + content); return;
+		 * } }
+		 */
 
 		Singleton s = Singleton.getInstance();
 		BM_MemberDTO memDto = s.memberService.selectOneMember(sloginId);

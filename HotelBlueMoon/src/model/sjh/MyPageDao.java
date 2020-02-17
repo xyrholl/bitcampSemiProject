@@ -238,4 +238,194 @@ public class MyPageDao {
 		}
 		return DB_pwd.equals(pwd)?true:false;
 	}
+	
+	public ResvDTO getMyResv(int seq ) {
+		String sql  = " SELECT * "
+				+ " FROM RESV "
+				+ " WHERE SEQ=? ";
+	
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		
+		ResvDTO resv = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getMyResv success");
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			System.out.println("2/6 getMyResv success");
+			
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getMyResv success");
+			
+			if(rs.next()) {
+				
+				int i = 1;
+//				(int roomSeq, int hotelSeq, String checkIn, String checkOut, int totalPrice, int current_guest)
+				resv = new ResvDTO(rs.getInt(i++), rs.getInt(i++),rs.getInt(i++),rs.getInt(i++),
+									rs.getString(i++), rs.getString(i++), rs.getString(i++),
+									rs.getInt(i++), rs.getInt(i++), rs.getInt(i++), rs.getInt(i++));
+						
+			}
+			System.out.println("4/6 getMyResv success");
+		} catch (SQLException e) {
+			System.out.println("getMyResv fail");
+			e.printStackTrace();
+		}finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return resv;
+	}
+	public String gethotelName(int seq) {
+		String sql = " SELECT NAME "
+				   + " FROM HOTEL "
+				   + " WHERE SEQ =? ";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		String str = "";
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 gethotelName success");
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			System.out.println("2/6 gethotelName success");
+			rs = psmt.executeQuery();
+			System.out.println("3/6 gethotelName success");
+			
+			if (rs.next()) {
+				str = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("gethotelName fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return str;
+	}
+	public String getroomName(int seq) {
+		String sql = " SELECT NAME "
+				   + " FROM ROOM "
+				   + " WHERE SEQ =? ";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		String str = "";
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getroomName success");
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			System.out.println("2/6 getroomName success");
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getroomName success");
+			
+			if (rs.next()) {
+				str = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("getroomName fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return str;
+	}public String getmemName(int seq) {
+		String sql = " SELECT NAME "
+				   + " FROM BM_MEMBER "
+				   + " WHERE SEQ =? ";
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		String str = "";
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getmemName success");
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, seq);
+			System.out.println("2/6 getmemName success");
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getmemName success");
+			
+			if (rs.next()) {
+				str = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("getmemName fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return str;
+	}
+
+	public boolean resvCancel(int seq) {
+		String sql = " UPDATE RESV"
+				   + " SET CANCEL = 1"
+				   + " WHERE SEQ=? ";
+		
+		Connection conn = null;
+	    PreparedStatement psmt = null;
+	  
+	    int count = 0;
+	      
+	    try {
+	         conn = DBConnection.getConnection();
+	         System.out.println("1/6 resvCancel success");
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setInt(1, seq);
+	         
+	         System.out.println("2/6 resvCancel success");
+	         
+	         count = psmt.executeUpdate();
+	         System.out.println("3/6 resvCancel success");
+	         
+	      } catch (SQLException e) {
+	         System.out.println("resvCancel fail");
+	         e.printStackTrace();
+	      }finally {
+	         DBClose.close(psmt, conn, null);
+	      }
+	         
+	      return count>0?true:false;
+	}
+
+	public int getMyReviewSeq(int resvSeq) {
+		String sql = " SELECT v.SEQ "
+				   + " FROM REVIEW v, RESV s "
+				   + " WHERE s.SEQ = v.RESVSEQ "
+				   + " AND s.SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int reviewSeq = 0;
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getMyReviewSeq success");
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, resvSeq);
+			System.out.println("2/6 getMyReviewSeq success");
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getMyReviewSeq success");
+			
+			if (rs.next()) {
+				reviewSeq = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("getMyReviewSeq fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return reviewSeq;
+	}
 }

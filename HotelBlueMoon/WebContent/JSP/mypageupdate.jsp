@@ -87,13 +87,15 @@
 								value="<%=dto.getEmail()%>" required="required"></td>
 						</tr>
 					</table>
-					<div align="center">
-						<input type="hidden" name="loginId" value="<%=loginId%>">
+					<div align="center" style="float: left; width: 80%">
+						<input type="hidden" id="loginId" name="loginId" value="<%=loginId%>">
 						<input type="hidden" name="command" value="mypageupdateAf">
 						<button type="submit">수정하기</button>
 						<button type="button"
 							onclick="location.href='<%=request.getContextPath()%>/mypagefoward'">취소</button>
 					</div>
+						<button id="getout" type="button">회원 탈퇴</button>
+						
 				</form>
 
 
@@ -103,7 +105,8 @@
 		</main>
 		<footer>Footer</footer>
 	</div>
-
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/JS/mypageupdate.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>
