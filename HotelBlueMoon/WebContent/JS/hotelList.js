@@ -1,8 +1,22 @@
 
 $(document).ready(function() {
-	if(getParameterByName('flag') == "yes"){
+	if(getParameterByName('flag') == 'yes'){
+		var tempYear = tempMonth = tempDay = "";
 		var checkin = getParameterByName('checkin');
 		var checkout = getParameterByName('checkout');
+		if(checkin == checkout){
+			tempYear = checkout.substring(0,4)
+			tempMonth = checkout.substring(5,7);
+			tempDay = checkout.substring(8);
+			tempDay = String(parseInt(tempDay) + 1);
+			if(tempDay < 10){
+				checkout = tempYear + "-" + tempMonth + "-0" + tempDay;
+				alert(checkout);
+			}
+			else{
+				checkout = tempYear + "-" + tempMonth + "-" + tempDay;
+			}
+		}
 		var guest = getParameterByName('guest');
 		var area = getParameterByName('area');
 		ajax(checkin, checkout, guest, area);
@@ -38,11 +52,11 @@ function ajax(checkin, checkout, guest, area){
 
 						for (var i = 0; i < data.length; i++) {
 							var star = "";
-							var tmpNumber = Math.floor(data[i].count);
+							var tmpNumber = Math.floor(data[i].rating);
 							for (var j = 0; j < tmpNumber; j++) {
 								star += "★";
 							}
-							if (data[i].count - tmpNumber > 0) {
+							if (data[i].rating - tmpNumber > 0) {
 								star += "☆";
 							}
 							$(".mainSpan").append(
@@ -53,7 +67,7 @@ function ajax(checkin, checkout, guest, area){
 													+ data[i].name
 													+ "</h5>"
 													+ "<p class=\"card-text\">"
-													+ data[i].addr + "<br>[평점 : " + star + " / " + data[i].count + "점]</p>"
+													+ data[i].addr + "<br>[평점 : " + star + " / " + data[i].rating + "점]</p>"
 													+ "<a href=\"../hotelResvInfo?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout 
 													+ "&guest=" + guest + "\" class=\"btn btn-primary\">Reservation</a>"
 													+ "</div>"
@@ -112,6 +126,19 @@ function goToAjax(){
 		if(guestCount == 'Guest'){
 			guestCount = 1;
 		}
+		
+		if(ci_monthDay == co_monthDay){
+			tempMonth = co_monthDay.substring(0,2);
+			tempDay = co_monthDay.substring(3);
+			tempDay = String(parseInt(tempDay) + 1);
+			if(tempDay < 10){
+				co_monthDay = tempMonth + "-0" + tempDay;
+			}
+			else{
+				co_monthDay = tempMonth + "-" + tempDay;
+			}
+		}
+
 	
 		var ci_date = "2020-" + ci_monthDay;
 		var co_date = "2020-" + co_monthDay;

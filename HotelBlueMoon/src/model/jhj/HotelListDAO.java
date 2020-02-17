@@ -10,8 +10,8 @@ import db.DBClose;
 import db.DBConnection;
 import dto.HotelDTO;
 
-public class hotelListDAO {
-	public ArrayList<HotelDTO> getHotelList(String guest, String area, String checkin, String checkout) {
+public class HotelListDAO {
+	public ArrayList<HotelDTO> getHotelList(String guest, String area, String checkin, String checkout, int timeCount) {
 		ArrayList<HotelDTO> list = new ArrayList<HotelDTO>();
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -22,18 +22,18 @@ public class hotelListDAO {
 			
 				String sql = "";
 				if(area.equals("Area")) {
-					sql = " SELECT H.SEQ, H.NAME, H.ADDR, R.MAX_GUEST, H.RATING FROM HOTEL H " + 
-							"INNER JOIN ROOM R ON H.SEQ = R.hotelSEQ WHERE (H.SEQ, 1) IN " + 
+					sql = " SELECT DISTINCT H.SEQ, H.NAME, H.ADDR, H.RATING FROM HOTEL H " + 
+							"INNER JOIN ROOM R ON H.SEQ = R.hotelSEQ WHERE (H.SEQ, " + timeCount + ") IN " + 
 							"(SELECT S.HOTELSEQ, COUNT(S.HOTELSEQ) FROM SCHEDULE S INNER JOIN HOTEL H ON S.HOTELSEQ = H.SEQ "  + 
 							"WHERE S.RESVDATE >= '" + checkin + "' AND S.RESVDATE < '" + checkout + "' AND S.USE=0 GROUP BY S.HOTELSEQ) " + 
-							"AND MAX_GUEST >= '" + guest + "' ";
+							"AND R.MAX_GUEST >= '" + guest + "' ";
 				}
 				else {
-					sql = " SELECT H.SEQ, H.NAME, H.ADDR, R.MAX_GUEST, H.RATING FROM HOTEL H " + 
-							"INNER JOIN ROOM R ON H.SEQ = R.hotelSEQ WHERE (H.SEQ, 1) IN " + 
+					sql = " SELECT DISTINCT H.SEQ, H.NAME, H.ADDR, H.RATING FROM HOTEL H " + 
+							"INNER JOIN ROOM R ON H.SEQ = R.hotelSEQ WHERE (H.SEQ, " + timeCount + ") IN " + 
 							"(SELECT S.HOTELSEQ, COUNT(S.HOTELSEQ) FROM SCHEDULE S INNER JOIN HOTEL H ON S.HOTELSEQ = H.SEQ "  + 
 							"WHERE S.RESVDATE >= '" + checkin + "' AND S.RESVDATE < '" + checkout + "' AND S.USE=0 AND H.PLACE = '" + area +"' GROUP BY S.HOTELSEQ) " + 
-							"AND MAX_GUEST >= '" + guest + "' ";
+							"AND R.MAX_GUEST >= '" + guest + "' ";
 				}
 				System.out.println("sql :" + sql);
 
@@ -42,7 +42,7 @@ public class hotelListDAO {
 				rs = psmt.executeQuery();
 
 				while (rs.next()) {
-					HotelDTO dto = new HotelDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+					HotelDTO dto = new HotelDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4));
 					list.add(dto);
 				}
 				

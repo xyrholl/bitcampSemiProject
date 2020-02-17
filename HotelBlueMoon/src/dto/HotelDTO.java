@@ -43,7 +43,6 @@ public class HotelDTO {
 		this.seq = seq;
 		this.name = name;
 		this.addr = addr;
-		this.useCount = useCount;
 		this.rating = rating;
 	}
 
