@@ -24,7 +24,7 @@ public class MemberDAO {
 	public BM_MemberDTO loginPwCheck(String id, String pw) {
 		BM_MemberDTO BM_memberDto = null;
 
-		String sql = " SELECT ID " + " FROM BM_MEMBER " + " WHERE ID=? AND PWD=? ";
+		String sql = " SELECT ID " + " FROM BM_MEMBER " + " WHERE ID=? AND PWD=? AND DEL = 0";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -136,6 +136,29 @@ public class MemberDAO {
 		}
 
 		return count;
+	}
+
+	public int memBerDeleteOne(String loginId) {
+
+		String sql = " UPDATE BM_MEMBER " + " SET DEL = 1 " + " WHERE ID = ? ";
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+
+		try {
+			conn = DBConnection.getConnection();
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, loginId);
+
+			return psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, null);
+		}
+
+		return -1;
 	}
 
 }
