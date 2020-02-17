@@ -44,6 +44,8 @@
 
 			<article
 				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
+				<form action="insertreview" method="post"
+					enctype="multipart/form-data" class="js-file-form"></form>
 
 				<table class="table table-bordered">
 					<thead>
@@ -83,7 +85,7 @@
 						</tr>
 						<tr>
 							<th scope="row">제목</th>
-							<td colspan="3"><input type="text"
+							<td colspan="2"><input type="text"
 								class="form-control js-title" value="<%=dto.getTitle()%>"></td>
 							<th scope="row">작성시간</th>
 							<td><%=dto.getWriteDate()%></td>
