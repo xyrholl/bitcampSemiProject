@@ -53,12 +53,13 @@ public class ResvInfo extends HttpServlet {
         long stay = s.hotelService.betweenTime(checkin, checkout);
         int totalprice = room.getPrice()*(int)stay;
         
-        ResvDTO resv = new ResvDTO( hotelSeq, room.getSeq(), checkin, checkout, totalprice, current_guest);
+        ResvDTO resv = new ResvDTO(hotelSeq, room.getSeq(), checkin, checkout, totalprice, current_guest);
         resv.setHotelAddr(hotel.getAddr());
         resv.setHotelName(hotel.getName());
         resv.setHotelPlace(hotel.getPlace());
         resv.setHotelRating(hotel.getRating());
         resv.setHotelUseCount(hotel.getUseCount());
+        resv.setHotel_img(hotel.getHotel_img());
         
         resv.setRoomName(room.getName());
         resv.setRoomPrice(room.getPrice());
