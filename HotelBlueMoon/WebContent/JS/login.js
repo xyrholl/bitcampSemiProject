@@ -3,6 +3,11 @@ const inputPwd = document.querySelector(".input-pwd");
 const loginBtn = document.querySelector(".loginBtn");
 const regiBtn = document.querySelector(".regiBtn");
 
+const hotelSeq = document.getElementById("hotelSeq").value;
+const checkin = document.getElementById("checkin").value;
+const checkout = document.getElementById("checkout").value;
+const guest = document.getElementById("guest").value;
+
 function getContextPath() {
 	var hostIndex = location.href.indexOf(location.host) + location.host.length;
 	return location.href.substring(hostIndex, location.href.indexOf('/',
@@ -28,7 +33,11 @@ function login() {
 		url : `${getContextPath()}` + "/login",
 		data : {
 			"id" : `${inputId.value}`,
-			"pw" : `${inputPwd.value}`
+			"pw" : `${inputPwd.value}`,
+			"hotelSeq" : hotelSeq,
+			"guest" : guest,
+			"checkin" : checkin,
+			"checkout" : checkout
 		},
 		success : function(data) {
 			if (data === "success") {
@@ -39,6 +48,12 @@ function login() {
 				alert("아이디가 맞지 않습니다.")
 			} else if (data === "pw false") {
 				alert("비밀번호가 맞지 않습니다.")
+			} else if (data === "resvSucces"){
+				location.href = getContextPath() + "/hotelResvInfo?id="
+				+`${inputId.value}` + "&hotelSeq="+hotelSeq
+				+"&checkin="+checkin
+				+"&checkout="+checkout
+				+"&guest="+guest;
 			}
 		},
 		error : function() {
