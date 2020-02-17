@@ -174,7 +174,7 @@ img {
 							<br>
 							<li class="hotelbtm">
 								<button type="button" id="cancleBtn" class="btn btn-outline-danger">예약취소</button>
-								<button type="button" class="btn btn-outline-success">예약수정</button>
+								<button type="button" id="updateBtn"class="btn btn-outline-success">예약변경</button>
 							</li>
 						</ul>
 					</div>
@@ -204,13 +204,12 @@ img {
 	$('#btn').click(function() { 
  		if($("#loginId").val() == 'null'){
  			alert("로그인시 이용가능합니다.\n로그인페이지로 이동합니다.");
+
 				location.href= getContextPath()
- 					 		+"/resvNullCheck?"
- 					 		+"roomSeq="+<%=resv.getHotelSeq()%>
+ 					 		+"/resvlogin?"
  					 		+"&hotelSeq="+<%=resv.getHotelSeq()%>
  							+"&checkin="+"<%=resv.getCheckIn()%>"
  							+"&checkout="+"<%=resv.getCheckOut()%>"
- 							+"&totalPrice="+<%=resv.getTotalPrice()%>
  							+"&guest="+<%=resv.getCurrent_guest()%>; 
 		}else{
 			alert("정보있음");
@@ -218,11 +217,22 @@ img {
 		} 
 		
 	});
-	
-	$('#cancleBtn').click(function() { 
-		alert("취소버튼");
+	$('#updateBtn').click(function() { 
+		location.href= getContextPath()
+	 		+"/resvUpdate?"
+	 		+"hotelArea="+"<%=resv.getHotelPlace()%>"
+			+"&checkin="+"<%=resv.getCheckIn()%>"
+			+"&checkout="+"<%=resv.getCheckOut()%>"
+			+"&guest="+<%=resv.getCurrent_guest()%>; 
 		
 	});
+	
+	$('#cancleBtn').click(function() { 
+		alert("메인화면으로 이동합니다.");
+		location.href= getContextPath()+"/JSP/main.jsp";
+		
+	});
+	
 	</script>
 	
 	<script type="text/javascript"
