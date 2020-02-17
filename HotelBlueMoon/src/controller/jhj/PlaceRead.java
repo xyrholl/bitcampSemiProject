@@ -11,33 +11,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import singleton.Singleton;
 
-@WebServlet("/hotelList")
-public class HotelListController extends HttpServlet{
+@WebServlet("/placeRead")
+public class PlaceRead extends HttpServlet{
 	Singleton s;
-	
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		  resp.setContentType("text/html;charset=UTF-8"); 
-		  System.out.println(req.getParameter("checkin"));
-		  System.out.println(req.getParameter("checkout"));
-		  System.out.println(req.getParameter("guest"));
-		  System.out.println(req.getParameter("area"));
-		  
-			  String json = s.getInstance().createJson(req.getParameter("guest"), req.getParameter("area"),
-						req.getParameter("checkin"), req.getParameter("checkout"));
-		 
+		resp.setContentType("text/html;charset=UTF-8"); 
+		String placeInfo = s.getInstance().getPlace();
 		
-		
-		req.setAttribute("json", json);
+		req.setAttribute("json", placeInfo);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/JSP/ajaxData/rs.jsp");
 		dispatcher.forward(req, resp);
-	
+		
 	}
-	
+
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		doGet(req, resp);
+		// TODO Auto-generated method stub
+		this.doGet(req, resp);
 	}
 	
 }

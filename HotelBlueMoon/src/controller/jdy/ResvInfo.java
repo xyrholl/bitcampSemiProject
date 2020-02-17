@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dto.BM_MemberDTO;
 import dto.HotelDTO;
@@ -32,7 +33,13 @@ public class ResvInfo extends HttpServlet {
 		//method //다오가서-서비스보내주고-서비스에서 싱글턴으로 ㅁ ㅗ은고 -컨트롤러에서 뷰
 		System.out.println("hi");
         req.setCharacterEncoding("utf-8");
-        
+
+
+        String id = req.getParameter("id");
+    	HttpSession session = req.getSession(false);
+		if (session.getAttribute("loginId") == null) {
+			session.setAttribute("loginId", id);
+		}
         String checkin = URLEncoder.encode(req.getParameter("checkin"), "UTF-8");
         String checkout = URLEncoder.encode(req.getParameter("checkout"), "UTF-8");
         String sguest = URLEncoder.encode(req.getParameter("guest"), "UTF-8");

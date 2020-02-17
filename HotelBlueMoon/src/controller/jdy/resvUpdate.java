@@ -35,10 +35,10 @@ public class resvUpdate extends HttpServlet{
 		System.out.println("예약수정후 메인:"+hotelArea+checkin + checkout+guest);
 		
 		resp.sendRedirect(req.getContextPath() 
-							+"/JSP/resvUpdate.jsp?hotelArea="+URLEncoder.encode(hotelArea)
-							+"&checkin="+URLEncoder.encode(checkin)
-							+"&checkout="+URLEncoder.encode(checkout)
-							+"&guest="+guest);
+				+"/JSP/hotelList.jsp?area="+URLEncoder.encode(hotelArea)
+				+"&checkin="+URLEncoder.encode(checkin)
+				+"&checkout="+URLEncoder.encode(checkout)
+				+"&guest="+guest + "&flag=yes");
 	}
 	
 }

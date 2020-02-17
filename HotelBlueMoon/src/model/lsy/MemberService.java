@@ -38,4 +38,13 @@ public class MemberService {
 		}
 	}
 
+	public boolean deleteOneMember(String loginId) {
+		int count = memberDAO.memBerDeleteOne(loginId);
+		if (count > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
