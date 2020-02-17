@@ -396,4 +396,36 @@ public class MyPageDao {
 	         
 	      return count>0?true:false;
 	}
+
+	public int getMyReviewSeq(int resvSeq) {
+		String sql = " SELECT v.SEQ "
+				   + " FROM REVIEW v, RESV s "
+				   + " WHERE s.SEQ = v.RESVSEQ "
+				   + " AND s.SEQ=? ";
+		
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int reviewSeq = 0;
+		try {
+			conn = DBConnection.getConnection();
+			System.out.println("1/6 getMyReviewSeq success");
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, resvSeq);
+			System.out.println("2/6 getMyReviewSeq success");
+			rs = psmt.executeQuery();
+			System.out.println("3/6 getMyReviewSeq success");
+			
+			if (rs.next()) {
+				reviewSeq = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("getMyReviewSeq fail");
+			e.printStackTrace();
+		} finally {
+			DBClose.close(psmt, conn, rs);
+		}
+		return reviewSeq;
+	}
 }

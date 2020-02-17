@@ -30,7 +30,7 @@ $(function(){
 	});
 	
 	$(document).on("click", "ul li#resvCount", function(){
-		alert("JS time: "+nowTime);
+		// alert("JS time: "+nowTime);
 		var loginId = $("#myid").text().trim();
 		location.href= getContextPath()+"/fowardmyresvhistory?loginId="+loginId+"&nowTime="+nowTime;
 	});

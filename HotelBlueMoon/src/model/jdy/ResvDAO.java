@@ -18,7 +18,7 @@ public class ResvDAO {
 	
 	public HotelDTO getHotelInfo( int seq ) {
 
-		String sql  = " SELECT SEQ, NAME, PLACE, ADDR, USE_COUNT, RATING "
+		String sql  = " SELECT SEQ, NAME, PLACE, ADDR, USE_COUNT, RATING, HOTEL_IMG "
 					+ " FROM HOTEL "
 					+ " WHERE SEQ=? ";
 		
@@ -45,7 +45,7 @@ public class ResvDAO {
 				int i = 1;
 
 				hotel = new HotelDTO(rs.getInt(i++), rs.getString(i++), rs.getString(i++), 
-						rs.getString(i++), rs.getInt(i++), rs.getInt(i++));
+						rs.getString(i++), rs.getInt(i++), rs.getInt(i++), rs.getString(i++));
 			}
 			System.out.println("4/6 getHotelInfo success");
 		} catch (SQLException e) {
@@ -214,14 +214,15 @@ public class ResvDAO {
 	   }
 	
 	
-//	 UPDATE SCHEDULE 
-//	 SET USE = 1 
-//	 WHERE RESVDATE BETWEEN '2020-02-01' AND '2020-02-05'
-//	 AND HOTELSEQ = 2
+//	update schedule
+//	set use = 1
+//	where resvdate >='2020-02-26' 
+//	and resvdate < '2020-02-28'
 	public boolean addSchedule(String checkin, String checkout, int hotelSeq) {
 		String sql = " UPDATE SCHEDULE  "
 					+ " SET USE = 1 "
-					+ " WHERE RESVDATE BETWEEN ? AND ? "
+					+ " WHERE RESVDATE >= ? "
+					+ " AND RESVDATE < ? "
 					+ " AND HOTELSEQ = ? ";
 		Connection conn = null;
 		PreparedStatement psmt = null;

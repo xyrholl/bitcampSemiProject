@@ -187,9 +187,9 @@
 												리뷰 쓰기</button>
 											
 										<% 
-										}else{ // 체크아웃 안지남
+										}else{ // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
 										%>
-											<button type="button" id="reviewBtn" disabled="disabled"
+											<button type="button" id="reviewBtn" 
 												class="btn btn-outline-info js-review-write"
 												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
 												리뷰 쓰기</button>
@@ -197,7 +197,8 @@
 										}
 								 	} else {
 								 %>
-										<button type="button" class="btn btn-info">리뷰 완료</button> 
+										<button type="button" class="btn btn-info"
+										 onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰 보기</button> 
 								<%
 								 	}%>
 							</td>

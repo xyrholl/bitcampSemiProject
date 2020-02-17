@@ -35,6 +35,7 @@ public class ResvDTO {
 	private String hotelAddr;
 	private int hotelUseCount;
 	private double hotelRating;
+	private String Hotel_img;
 
 	// roomDTO
 	private String roomName;
@@ -314,6 +315,15 @@ public class ResvDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+		
+	public String getHotel_img() {
+		return Hotel_img;
+	}
+
+	public void setHotel_img(String hotel_img) {
+		Hotel_img = hotel_img;
 	}
 
 	@Override

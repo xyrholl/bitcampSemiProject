@@ -2,7 +2,18 @@
 	pageEncoding="UTF-8"%>
 
 <%
+/* req.setAttribute("checkin", checkin);
+req.setAttribute("checkout", checkout);
+req.setAttribute("current_guest", current_guest);
+req.setAttribute("hotelseq", hotelSeq); */
 	String loginId = (String) session.getAttribute("loginId");
+	String shotelSeq = request.getParameter("hotelseq");
+	int hotelseq = Integer.parseInt(shotelSeq);
+	String checkin = request.getParameter("checkin");
+	String checkout= request.getParameter("checkout");
+	
+	String sguest = request.getParameter("geust");
+	int guest = Integer.parseInt(sguest);
 %>
 <!DOCTYPE html>
 <html>
@@ -58,6 +69,17 @@
 					<input type="password" class="form-control input-pwd"
 						placeholder="PASSWORD" aria-label="Username"
 						aria-describedby="basic-addon1">
+					<!-- 	String shotelSeq = request.getParameter("hotelseq");
+						int hotelseq = Integer.parseInt(shotelSeq);
+						String checkin = request.getParameter("checkin");
+						String checkout= request.getParameter("checkout");
+						
+						String sguest = request.getParameter("geust");
+						int guest = Integer.parseInt(sguest); -->
+					<input type="hidden" id="hotelseq" value="<%=hotelseq %>">
+					<input type="hidden" id="checkin" value="<%=checkin %>">
+					<input type="hidden" id="checkout" value="<%=checkout %>">
+					<input type="hidden" id="guest" value="<%=guest %>">
 				</div>
 
 				<div>
@@ -68,7 +90,7 @@
 
 				<div class="btn-group" role="group" aria-label="Basic example">
 					<button type="button" class="btn btn-info regiBtn">회원가입</button>
-					<button type="button" class="btn btn-primary loginBtn">로그인</button>S
+					<button type="button" class="btn btn-primary loginBtn">로그인</button>
 				</div>
 
 			</article>
