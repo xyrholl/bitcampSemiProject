@@ -44,7 +44,7 @@
 		<main class="hotelcontent">
 
 			<article
-				style="background-color: rgba(170, 166, 157, 0.33); overflow-y: scroll; height: 500px;">
+				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
 
 				<table class="table table-bordered">
 					<thead>
@@ -120,8 +120,11 @@
 					if (dto.getMemberId().equals(loginId)) {
 				%>
 				<input type="hidden" value="<%=dto.getSeq()%>" class="js-update-seq">
-				<button type="button" class="btn btn-outline-info js-update-review"
+				<button type="button" class="btn btn-outline-success js-update-review"
 					style="float: right;">리뷰수정하기</button>
+				<button type="button"
+					class="btn btn-outline-warning js-delete-review"
+					style="float: right;">리뷰삭제하기</button>
 				<%
 					}
 				%>

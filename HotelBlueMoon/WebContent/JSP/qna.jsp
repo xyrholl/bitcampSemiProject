@@ -79,7 +79,7 @@ table tr td ul li {
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: rgba(170, 166, 157, 0.33); overflow-y:scroll; height: 500px;">
+			<article style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
 
 				<div class="input-group-append">
 					<select id="choice" class="custom-select js-search-select"
@@ -226,8 +226,7 @@ table tr td ul li {
 					
 					
 						<button type="button" class="btn btn-info"
-							onclick="loaction.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA
-							글쓰기</button>
+							onclick="location.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA 글쓰기</button>
 					
 			
 

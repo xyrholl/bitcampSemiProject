@@ -16,40 +16,40 @@ DEL NUMBER(1) NOT NULL
 */
 
 public class ReviewDTO {
-	
+
 	private int seq;
 	private int hotleSeq;
 	private int roomSeq;
 	private int resvSeq;
 	private int memberSeq;
-	
+
 	private String title;
 	private String content;
 	private Double rating;
 	private String writeDate;
 	private int del;
 	private int rowNum;
-	
-	
+	private String fileName;
+	private String fileRealName;
+
 	// HotelDTO
 	private String hotelName;
 	private Double hotelRating;
-	
+
 	// RoomDTO
 	private String roomName;
-	
+
 	// ResvDTO
 	private String checkInDate;
 	private String checkOutDate;
 	private int current_guest;
-	
+
 	// MemberDTO
 	private String memberId;
-	
-	
+
 	public ReviewDTO() {
 	}
-	
+
 	public ReviewDTO(int seq, String title, String content, Double rating, String hotelName) {
 		super();
 		this.seq = seq;
@@ -82,7 +82,22 @@ public class ReviewDTO {
 		this.current_guest = current_guest;
 		this.memberId = memberId;
 	}
-	
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileRealName() {
+		return fileRealName;
+	}
+
+	public void setFileRealName(String fileRealName) {
+		this.fileRealName = fileRealName;
+	}
 
 	public int getRowNum() {
 		return rowNum;
@@ -236,5 +251,5 @@ public class ReviewDTO {
 				+ hotelRating + ", roomName=" + roomName + ", checkInDate=" + checkInDate + ", checkOutDate="
 				+ checkOutDate + ", current_guest=" + current_guest + ", memberId=" + memberId + "]";
 	}
-	
+
 }
