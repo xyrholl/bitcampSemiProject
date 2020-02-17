@@ -50,7 +50,7 @@ function allSearch() {
 function init() {
 	searchBtn.addEventListener("click", searchCheck);
 	allListBtn.addEventListener("click", allSearch);
-	
+
 }
 
 init();

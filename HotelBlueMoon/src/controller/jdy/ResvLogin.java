@@ -45,7 +45,7 @@ public class ResvLogin extends HttpServlet{
 		req.setAttribute("current_guest", current_guest);
 		req.setAttribute("hotelseq", hotelSeq);
 		
-		resp.sendRedirect(req.getContextPath()+"/JSP/resvLogin.jsp?hotelseq="+hotelSeq
+		resp.sendRedirect(req.getContextPath()+"/JSP/login.jsp?hotelSeq="+hotelSeq
 				+"&checkin="+checkin
 				+"&checkout="+checkout
 				+"&geust="+current_guest);

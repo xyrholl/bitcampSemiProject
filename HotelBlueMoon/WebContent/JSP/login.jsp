@@ -3,6 +3,10 @@
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
+	String hotelSeq = request.getParameter("hotelSeq");
+	String checkin = request.getParameter("checkin");
+	String checkout = request.getParameter("checkout");
+	String guest = request.getParameter("geust");
 %>
 <!DOCTYPE html>
 <html>
@@ -42,7 +46,10 @@
 		<main class="hotelcontent">
 
 			<article>
-
+				<input type="hidden" id="hotelSeq" value="<%=hotelSeq%>">
+				<input type="hidden" id="checkin" value="<%=checkin%>">
+				<input type="hidden" id="checkout" value="<%=checkout%>">
+				<input type="hidden" id="guest" value="<%=guest%>">
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="basic-addon1">ID</span>

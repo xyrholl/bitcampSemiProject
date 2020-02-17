@@ -43,9 +43,18 @@ public class HotelDTO {
 		this.seq = seq;
 		this.name = name;
 		this.addr = addr;
-		this.useCount = useCount;
 		this.rating = rating;
 	}
+
+	public HotelDTO(int seq, String name, String addr, double rating) {
+		super();
+		this.seq = seq;
+		this.name = name;
+		this.addr = addr;
+		this.rating = rating;
+	}
+
+
 
 	public int getSeq() {
 		return seq;

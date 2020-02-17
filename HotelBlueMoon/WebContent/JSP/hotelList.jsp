@@ -89,12 +89,9 @@
 			<div class="mainDiv" style="float: left; width:500px;">
 				<div class="col-3 input-wrap area" style="float: left;">
 					<p class="label mbr-fonts-style align-center display-4"></p>	
-					<select class="custom-select custom-select-lg mb-2 js-areaBox" id="area">
+					<select class="custom-select custom-select-lg mb-2 js-areaBox">
 						<option selected>Area</option>
-						<option value="서울">서울</option>
-						<option value="경기">경기</option>
-						<option value="인천">인천</option>
-						<option value="충청">충청</option>
+						
 					</select>
 				</div>
 				
@@ -169,5 +166,6 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="<%=request.getContextPath()%>/JS/datepicker-ko.js"></script>
+	<script src="<%=request.getContextPath()%>/JS/placeRead.js"></script>
 </body>
 </html>
