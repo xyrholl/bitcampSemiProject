@@ -226,8 +226,7 @@ table tr td ul li {
 					
 					
 						<button type="button" class="btn btn-info"
-							onclick="loaction.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA
-							글쓰기</button>
+							onclick="location.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA 글쓰기</button>
 					
 			
 
