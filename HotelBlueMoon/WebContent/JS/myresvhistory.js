@@ -10,6 +10,7 @@ function getContextPath() {
 			hostIndex + 1));
 };
 
+
 function searchCheck() {
 	if (select.value === "검색") {
 		alert("검색 태그가 설정 되지 않았습니다.")
@@ -47,7 +48,7 @@ function allSearch() {
 function init() {
 	searchBtn.addEventListener("click", searchCheck);
 	allListBtn.addEventListener("click", allSearch);
-	
+
 }
 
 init();

@@ -117,12 +117,25 @@ public class ResvDTO {
 		this.email = email;
 	}
 
-	
-
+	//myresvdeatil
+	public ResvDTO(int seq, int hotelSeq, int memberSeq, int roomSeq, String checkIn, String checkOut, String resvDate,
+			int totalPrice, int current_guest, int cancel, int reviewIs) {
+		super();
+		this.seq = seq;
+		this.hotelSeq = hotelSeq;
+		this.memberSeq = memberSeq;
+		this.roomSeq = roomSeq;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.resvDate = resvDate;
+		this.totalPrice = totalPrice;
+		this.current_guest = current_guest;
+		this.cancel = cancel;
+		this.reviewIs = reviewIs;
+	}
 	public int getSeq() {
 		return seq;
 	}
-
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
