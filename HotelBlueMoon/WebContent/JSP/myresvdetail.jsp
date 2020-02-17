@@ -1,13 +1,20 @@
-<%@page import="dto.QnADTO"%>
+<%@page import="dto.ResvDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%
-	QnADTO dto = (QnADTO) request.getAttribute("dto");
 	String loginId = (String) session.getAttribute("loginId");
+	if(loginId == null || loginId.equals("")){
+	response.sendRedirect(request.getContextPath()+"/fowardlogin");
+	}
+	String hotelName = (String) request.getAttribute("hotelName");
+	String roomName = (String) request.getAttribute("roomName");
+	String memName = (String) request.getAttribute("memName");
 
-	request.setAttribute("dto", dto);
+	ResvDTO dto = (ResvDTO)request.getAttribute("dto");
+		
+	
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,70 +51,54 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: rgba(255, 255, 255); overflow-y:scroll; height: 500px;">
-
-				<h1>QnA detail</h1>
-				<form action="qnaupdate" method="post">
-					<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
-					<input type="hidden" name="command" value="QnAUpdate">
-
-					<div class="detailbox">
+			<article style="background-color: white">
+			
+			<div class="detailbox">
 						<table class="table table-sm">
 							<thead>
 								<tr>
-									<th scope="col" colspan="2">Detail</th>
+									<th scope="col" colspan="2">Resv Detail</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">작성자</th>
-									<td><%=dto.getMemberId()%></td>
+									<th scope="row">예약자</th>
+									<td><%=memName%></td>
 								</tr>
 								<tr>
-									<th scope="row">제목</th>
-									<td><%=dto.getTitle()%></td>
+									<th scope="row">호텔</th>
+									<td><%=hotelName%></td>
 								</tr>
 								<tr>
-									<th scope="row">조회수</th>
-									<td><%=dto.getReadcount()%></td>
+									<th scope="row">방</th>
+									<td><%=roomName%></td>
 								</tr>
 								<tr>
-									<th scope="row">작성일</th>
-									<td><%=dto.getWriteDate()%></td>
+									<th scope="row">예약일</th>
+									<td><%=dto.getResvDate()%></td>
 								</tr>
 								<tr>
-									<th scope="row">내용</th>
-									<td></td>
+									<th scope="row">체크인</th>
+									<td><%=dto.getCheckIn()%></td>
+								</tr>
+								<tr>
+									<th scope="row">체크아웃</th>
+									<td><%=dto.getCheckOut()%></td>
 								</tr>
 							</tbody>
 						</table>
-
-						<textarea class="form-control" id="exampleFormControlTextarea1"
-							rows="3" readonly="readonly" style="background-color: #fff"><%=dto.getContent()%></textarea>
 					</div>
-
-
-					<br>
-					<div class="buttonbox" align="center">
-						
-						<button class="Idcheck" type="submit" id="qnaUpdateBtn" disabled="disabled">수정하기</button>
-						<button class="Idcheck" type="button" id="qnaDeleteBtn" value="<%=dto.getSeq()%>" disabled="disabled">삭제하기</button>
-						<input type="hidden" id="loginId" value="<%=loginId %>">
-						<input type="hidden" id="dtoId" value="<%=dto.getMemberId() %>">
-						
-						<button type="button" id="qnaListBtn">목록보기</button>
-						<button type="button" id="qnaCommentBtn" value="<%=dto.getSeq()%>">답글달기</button>
-
-					</div>
-				</form>
-
+					<button id="cancelBtn" type="button">취소하기</button>
+					<button id="listBtn" type="button">목록으로</button>
+					<input type="hidden" id="cancel_seq" value="<%=dto.getSeq()%>">
+			
 			</article>
 
 		</main>
 		<footer>Footer</footer>
 	</div>
-
-	<script src="<%=request.getContextPath()%>/JS/qnadetail.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/JS/myresvcancel.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>
