@@ -4,11 +4,9 @@
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
-	if(loginId == null || loginId.equals("")){
-	response.sendRedirect(request.getContextPath()+"/fowardlogin");
+	if (loginId == null || loginId.equals("")) {
+		response.sendRedirect(request.getContextPath() + "/fowardlogin");
 	}
-
-
 
 	BM_MemberDTO dto = (BM_MemberDTO) request.getAttribute("dto");
 
@@ -24,9 +22,7 @@
 <meta charset="UTF-8">
 <title>main</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -54,8 +50,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article
-				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
+			<article style="background-color: #2B3E50">
 
 				<div class="bluemoon-layout-container">
 					<div class="bluemoon-main">
@@ -87,7 +82,9 @@
 											<td><%=dto.getEmail()%></td>
 										</tr>
 									</table>
-									<button type="submit">회원정보 수정하기</button><br><br>
+									<button type="submit">회원정보 수정하기</button>
+									<br>
+									<br>
 									<ul class="list-group">
 										<li id="reviewCount"
 											class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
@@ -101,11 +98,10 @@
 										</li>
 										<li id="resvCount"
 											class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
-											예약 내역 보기 및 리뷰 쓰기<span class="badge badge-primary badge-pill"><%=resvCount %></span>
+											예약 내역 보기 및 리뷰 쓰기<span class="badge badge-primary badge-pill"><%=resvCount%></span>
 										</li>
 									</ul>
-									<br>
-									<input type="hidden" value="" class="js-currDateTmp">
+									<br> <input type="hidden" value="" class="js-currDateTmp">
 									<input type="hidden" name="command" value="mypageUpdate">
 									<input type="hidden" name="id" value="<%=dto.getId()%>">
 								</form>

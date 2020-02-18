@@ -29,14 +29,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Q n A</title>
-
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-
-
-
+	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -79,7 +73,7 @@ table tr td ul li {
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 200px;">
+			<article style="background-color: #2B3E50">
 
 				<div class="input-group-append">
 					<select id="choice" class="custom-select js-search-select"
@@ -143,10 +137,10 @@ table tr td ul li {
 											class="list-group-item1 list-group-item-action"><%=qna.getTitle()%></a>
 										</li>
 									</ul> <%
-									 	} else {
-									 %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
-									 	}
-									 %>
+ 	} else {
+ %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
+ 	}
+ %>
 								</td>
 								<td align="center"><ul>
 										<li class="list-group-item"><%=qna.getMemberId()%></li>
@@ -161,58 +155,71 @@ table tr td ul li {
 							%>
 						</tbody>
 					</table>
-					</div>
-					
-					<style type="text/css">
- 						.list-paging {text-align:center;}
-						.list-paging span {display:inline-block; margin:0 2px;}
-						.list-paging span a {
-								font-size: 20px;
-								background-color: white;
-								padding: 5px 10px;
-								cursor: pointer;
-								text-decoration: none;
-								border-radius: 8px;
+				</div>
+
+				<style type="text/css">
+.list-paging {
+	text-align: center;
+}
+
+.list-paging span {
+	display: inline-block;
+	margin: 0 2px;
+}
+
+.list-paging span a {
+	font-size: 20px;
+	background-color: white;
+	padding: 5px 10px;
+	cursor: pointer;
+	text-decoration: none;
+	border-radius: 8px;
+}
+
+.list-paging span.now a {
+	font-size: 20px;
+	background-color: #007bff;
+	padding: 5px 10px;
+	cursor: pointer;
+	text-decoration: none;
+	border-radius: 8px;
+	color: white;
+}
+
+span a:hover {
+	background-color: #007bff;
+	color: white;
+}
+</style>
+				<div class="list-paging" align="center"
+					style="float: left; width: 80%">
+					<%
+						for (int i = 0; i < qnaPage; i++) {
+							if (pageNumber == i) { // 현재 페이지
+					%>
+					<span class="now"><a href="#"><%=i + 1%></a></span>
+					<%
+						} else {
+					%>
+					<span><a href="#" onclick="goPage(<%=i%>)"><%=i + 1%></a></span>
+					<%
 						}
-						.list-paging span.now a {
-								font-size: 20px;
-								background-color: #007bff;
-								padding: 5px 10px;
-								cursor: pointer;
-								text-decoration: none;
-								border-radius: 8px;
-								color: white;
+					%>
+					<%
 						}
-						span a:hover {
-							background-color: #007bff;
-							color: white;
-						}
-					</style>
-					<div class="list-paging" align="center" style="float:left; width: 80%" >
-						<%
-							for (int i = 0; i < qnaPage; i++) {
-								if (pageNumber == i) { // 현재 페이지
-						%>
-								<span class="now"><a href="#" ><%=i + 1%></a></span>
-						<%
-							} else {
-						%>
-								<span><a href="#" onclick="goPage(<%=i%>)"><%=i + 1%></a></span>
-						 <%
-						 	}
-						 %> <%
-						 }
-						 %> 
-					</div>
-						<button type="button" class="btn btn-info"
-							onclick="location.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA 글쓰기</button>
+					%>
+				</div>
+				<button type="button" class="btn btn-info"
+					onclick="location.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA
+					글쓰기</button>
 
 			</article>
 
 		</main>
 		<footer>Footer</footer>
 	</div>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/JS/qna.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath()%>/JS/qna.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>
