@@ -39,9 +39,8 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -88,14 +87,15 @@
 						</tr>
 					</table>
 					<div align="center" style="float: left; width: 80%">
-						<input type="hidden" id="loginId" name="loginId" value="<%=loginId%>">
-						<input type="hidden" name="command" value="mypageupdateAf">
+						<input type="hidden" id="loginId" name="loginId"
+							value="<%=loginId%>"> <input type="hidden" name="command"
+							value="mypageupdateAf">
 						<button type="submit">수정하기</button>
 						<button type="button"
 							onclick="location.href='<%=request.getContextPath()%>/mypagefoward'">취소</button>
 					</div>
-						<button id="getout" type="button">회원 탈퇴</button>
-						
+					<button id="getout" type="button">회원 탈퇴</button>
+
 				</form>
 
 
@@ -103,7 +103,7 @@
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/mypageupdate.js"></script>

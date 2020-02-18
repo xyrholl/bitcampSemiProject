@@ -10757,35 +10757,35 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .btn-primary {
-  background-color: #DF691A;
+  background-color: #DF691A !important;
 }
 
 .btn-secondary {
-  background-color: #4E5D6C;
+  background-color: #4E5D6C !important;
 }
 
 .btn-success {
-  background-color: #408080;
+  background-color: #408080 !important;
 }
 
 .btn-info {
-  background-color: #29aacf;
+  background-color: #29aacf !important;
 }
 
 .btn-warning {
-  background-color: #d88412;
+  background-color: #d88412 !important;
 }
 
 .btn-danger {
-  background-color: #ad2825;
+  background-color: #ad2825 !important;
 }
 
 .btn-light {
-  background-color: #abb6c2;
+  background-color: #abb6c2 !important;
 }
 
 .btn-dark {
-  background-color: #4E5D6C;
+  background-color: #4E5D6C !important;
 }
 
 .dropdown-menu {

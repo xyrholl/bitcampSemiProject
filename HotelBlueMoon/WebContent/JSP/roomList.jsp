@@ -4,7 +4,7 @@
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
-	request.setCharacterEncoding("utf-8");	
+	request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,8 @@
 <meta charset="UTF-8">
 <title>main</title>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
 
@@ -54,25 +55,26 @@
 	<div class="hotelcol-2">
 		<header>
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
 			<input type="hidden" value="<%=loginId%>" class="js-session">
-			<div class="mainDiv" style="float: left; width:500px;">
-					<button onclick="goToBefore()" type="submit"
-												class="btn btn-form btn-secondary mbr-lighter display-8">
-												이전화면</button>
+			<div class="mainDiv" style="float: left; width: 500px;">
+				<button onclick="goToBefore()" type="submit"
+					class="btn btn-form btn-secondary mbr-lighter display-8">
+					이전화면</button>
 				<div>
-				<input type="text" id="hotelName" class="mbr-section-title align-left mbr-fonts-style mbr-bold mbr-white pb-4 display-2"
-				style="background-color:transparent; border-style:none" disabled></input>
+					<input type="text" id="hotelName"
+						class="mbr-section-title align-left mbr-fonts-style mbr-bold mbr-white pb-4 display-2"
+						style="background-color: transparent; border-style: none" disabled></input>
 				</div>
 			</div>
 		</header>
 
 		<main class="hotelcontent">
 
-			<article style="overflow-y: scroll; height: 500px;">
+			<article>
 
 
 				<div class="mainSpan"></div>
@@ -80,7 +82,7 @@
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

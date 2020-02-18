@@ -18,13 +18,13 @@ function getContextPath() {
 function loginCheck() {
 	if (formSessionId.value === null || formSessionId.value === "null") {
 		formRregiBtn.style.visibility = 'visible';
-		formLoginBtn.classList.remove("btn-danger");
-		formLoginBtn.classList.add("btn-primary");
+		formLoginBtn.classList.remove("btn-warning");
+		formLoginBtn.classList.add("btn-success");
 		formLoginBtn.innerHTML = "로그인"
 	} else if (formSessionId !== null) {
 		formRregiBtn.style.visibility = 'hidden';
-		formLoginBtn.classList.remove("btn-primary");
-		formLoginBtn.classList.add("btn-danger");
+		formLoginBtn.classList.remove("btn-success");
+		formLoginBtn.classList.add("btn-warning");
 		formLoginBtn.innerHTML = "로그아웃";
 	}
 }

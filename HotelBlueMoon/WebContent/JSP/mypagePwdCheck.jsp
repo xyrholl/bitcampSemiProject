@@ -3,8 +3,8 @@
 
 <%
 	String loginId = (String) session.getAttribute("loginId");
-	if(loginId == null || loginId.equals("")){
-		response.sendRedirect(request.getContextPath()+"/fowardlogin");
+	if (loginId == null || loginId.equals("")) {
+		response.sendRedirect(request.getContextPath() + "/fowardlogin");
 	}
 %>
 <!DOCTYPE html>
@@ -33,9 +33,8 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -43,28 +42,29 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: rgba(170, 166, 157, 0.55); overflow-y:scroll; height: 500px;">
-			
-			<form action="../mypageupdate" method="post">	
-			<table>
-			<tr>
-				<th>아이디</th>
-				<td><%=loginId %></td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="pwd"></td>
-			</tr>
-			</table>
-			<input type="hidden" name="command" value="mypagePwdChecked">
-			<input type="hidden" name="loginId" value="<%=loginId %>">
-			<button type="submit">확인</button>
-			
-			</form>
+			<article
+				style="background-color: rgba(170, 166, 157, 0.55); overflow-y: scroll; height: 500px;">
+
+				<form action="../mypageupdate" method="post">
+					<table>
+						<tr>
+							<th>아이디</th>
+							<td><%=loginId%></td>
+						</tr>
+						<tr>
+							<th>비밀번호</th>
+							<td><input type="password" name="pwd"></td>
+						</tr>
+					</table>
+					<input type="hidden" name="command" value="mypagePwdChecked">
+					<input type="hidden" name="loginId" value="<%=loginId%>">
+					<button type="submit">확인</button>
+
+				</form>
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

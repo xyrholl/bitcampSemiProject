@@ -30,22 +30,22 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
-				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
+				<button type="button" class="btn btn-success js-foward-login">로그인</button>
 			</div>
 			<input type="hidden" value="<%=loginId%>" class="js-session">
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: #2B3E50">
+			<article>
 
 				<input type="hidden" value="" class="js-currDateTmp">
 				<div class="input-group-append">
 
-					<select class="custom-select js-search-select" style="width: 20%">
+					<select class="custom-select js-search-select"
+						style="width: 20%; border-bottom-left-radius: 5px; border-top-left-radius: 5px; height: 2.22rem; margin-top: 0.08rem;">
 						<option selected>검색</option>
 						<option value="1">호텔이름</option>
 						<option value="2">제목</option>
@@ -60,12 +60,13 @@
 
 						<div class="input-group-append">
 							<span class="input-group-text js-searchBtn" id="basic-addon2">검색</span>
-							<span class="input-group-text js-allListBtn" id="basic-addon2">전체목록</span>
+							<span class="input-group-text js-allListBtn" id="basic-addon2"
+								style="border-bottom-right-radius: 5px; border-top-right-radius: 5px;">전체목록</span>
 						</div>
 					</div>
 				</div>
 
-				<table class="table">
+				<table class="table table-active">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
@@ -81,7 +82,10 @@
 							if (list == null || list.size() == 0) {
 						%>
 						<tr>
-							<td colspan="3">작성된 글이 없습니다</td>
+							<td colspan="6" align="center"><ul>
+									<li class="list-group-item" style="float: none;">작성된 글이
+										없습니다</li>
+								</ul></td>
 						</tr>
 						<%
 							} else {
@@ -124,7 +128,7 @@
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>

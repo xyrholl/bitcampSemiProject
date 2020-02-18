@@ -34,9 +34,8 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -44,9 +43,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: rgba(255, 255, 255); overflow-y:scroll; height: 500px;">
-
-				<h1>QnA detail</h1>
+			<article>
 				<form action="qnaupdate" method="post">
 					<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
 					<input type="hidden" name="command" value="QnAUpdate">
@@ -89,12 +86,14 @@
 
 					<br>
 					<div class="buttonbox" align="center">
-						
-						<button class="Idcheck" type="submit" id="qnaUpdateBtn" disabled="disabled">수정하기</button>
-						<button class="Idcheck" type="button" id="qnaDeleteBtn" value="<%=dto.getSeq()%>" disabled="disabled">삭제하기</button>
-						<input type="hidden" id="loginId" value="<%=loginId %>">
-						<input type="hidden" id="dtoId" value="<%=dto.getMemberId() %>">
-						
+
+						<button class="Idcheck" type="submit" id="qnaUpdateBtn"
+							disabled="disabled">수정하기</button>
+						<button class="Idcheck" type="button" id="qnaDeleteBtn"
+							value="<%=dto.getSeq()%>" disabled="disabled">삭제하기</button>
+						<input type="hidden" id="loginId" value="<%=loginId%>"> <input
+							type="hidden" id="dtoId" value="<%=dto.getMemberId()%>">
+
 						<button type="button" id="qnaListBtn">목록보기</button>
 						<button type="button" id="qnaCommentBtn" value="<%=dto.getSeq()%>">답글달기</button>
 
@@ -104,7 +103,7 @@
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script src="<%=request.getContextPath()%>/JS/qnadetail.js"></script>

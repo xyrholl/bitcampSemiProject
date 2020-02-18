@@ -29,16 +29,15 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
-				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
+				<button type="button" class="btn btn-success js-foward-login">로그인</button>
 			</div>
 			<input type="hidden" value="<%=loginId%>" class="js-session">
 		</header>
 		<main class="hotelcontent">
-			<article>
+			<article style="background-color: rgb(0, 0, 0, 0);">
 				<div style="display: table; width: 40%; margin: auto;">
 					<form action="../regiservlet" class="frm" method="post">
 						<div class="input-group mb-3">
@@ -48,7 +47,7 @@
 							<input name="id" type="text" class="form-control input-id"
 								placeholder="4자리  이상 (영문 대소문자, 숫자)" aria-label="Username"
 								aria-describedby="basic-addon1">
-							<button type="button" class="btn btn-primary idcheck">ID확인</button>
+							<button type="button" class="btn btn-secondary idcheck">ID확인</button>
 						</div>
 
 						<div>
@@ -93,14 +92,14 @@
 
 						<div>
 							<div style="margin-left: 190px;">
-								<button type="button" class="btn btn-primary submitBtn">회원가입</button>
+								<button type="button" class="btn btn-info submitBtn">회원가입</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</article>
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"
