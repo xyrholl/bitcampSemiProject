@@ -46,7 +46,7 @@
 								<span class="input-group-text" id="basic-addon1">ID</span>
 							</div>
 							<input name="id" type="text" class="form-control input-id"
-								placeholder="4자리  이상 (영문, 숫자, 한글)" aria-label="Username"
+								placeholder="4자리  이상 (영문 대소문자, 숫자)" aria-label="Username"
 								aria-describedby="basic-addon1">
 							<button type="button" class="btn btn-primary idcheck">ID확인</button>
 						</div>
@@ -60,7 +60,7 @@
 								<span class="input-group-text" id="basic-addon1">PASSWORD</span>
 							</div>
 							<input name="pwd" type="password" class="form-control input-pwd"
-								placeholder="4자리  이상 (영문, 숫자, 한글)" aria-label="Username"
+								placeholder="4자리  이상 (영문 대소문자, 숫자)" aria-label="Username"
 								aria-describedby="basic-addon1">
 						</div>
 

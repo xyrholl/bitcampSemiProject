@@ -106,6 +106,15 @@ function CheckIdPwd(str) {
 	}
 }
 
+function PhoneNumberCheck(str) {
+	var checkPhone = /^[0-9]{9,12}$/;
+	if (!checkPhone.test(str)) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 function subBtn() {
 	if (inputId.value !== "") {
 		if (CheckIdPwd(inputId.value)) {
@@ -113,14 +122,18 @@ function subBtn() {
 				if (CheckIdPwd(inputPwd.value)) {
 					if (inputName.value !== "") {
 						if (inputPhone.value !== "") {
-							if (inputEmail.value !== "") {
-								if (CheckEmail(inputEmail.value)) {
-									ajaxSubmit()
+							if (PhoneNumberCheck(inputPhone.value)) {
+								if (inputEmail.value !== "") {
+									if (CheckEmail(inputEmail.value)) {
+										ajaxSubmit()
+									} else {
+										alert("이메일 형식이 맞지 않습니다.")
+									}
 								} else {
-									alert("이메일 형식이 맞지 않습니다.")
+									alert("이메일을 입력해주세요")
 								}
 							} else {
-								alert("이메일을 입력해주세요")
+								alert("전화번호를 9자리에서 12자리 숫자로 입력해주세요.")
 							}
 						} else {
 							alert("전화번호를 입력해주세요")
