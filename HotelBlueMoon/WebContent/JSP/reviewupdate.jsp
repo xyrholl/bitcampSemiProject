@@ -45,80 +45,86 @@
 			<article
 				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
 				<form action="insertreview" method="post"
-					enctype="multipart/form-data" class="js-file-form"></form>
+					enctype="multipart/form-data" class="js-file-form">
 
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th scope="col">리뷰평점</th>
-							<td scope="col"><input type="text"
-								class="form-control js-rating" value="<%=dto.getRating()%>">
-							</td>
-							<th scope="col">작성자</th>
-							<td scope="col"><%=dto.getMemberId()%></td>
-							<th scope="col">이용인원</th>
-							<td scope="col"><%=dto.getCurrent_guest()%>명</td>
-						</tr>
-						<tr>
-							<th scope="col">호텔평점</th>
-							<td scope="col">
-								<%
-									if (dto.getHotelRating() >= 4) {
-								%>
-								<button class="btn btn-primary"><%=dto.getHotelRating()%></button>
-								<%
-									} else if (dto.getHotelRating() < 4 && dto.getHotelRating() >= 3) {
-								%>
-								<button class="btn btn-info"><%=dto.getHotelRating()%></button>
-								<%
-									} else {
-								%>
-								<button class="btn btn-secondary"><%=dto.getHotelRating()%></button>
-								<%
-									}
-								%>
-							</td>
-							<th scope="col">호텔</th>
-							<td scope="col"><%=dto.getHotelName()%></td>
-							<th scope="col">방이름</th>
-							<td scope="col"><%=dto.getRoomName()%></td>
-						</tr>
-						<tr>
-							<th scope="row">제목</th>
-							<td colspan="2"><input type="text"
-								class="form-control js-title" value="<%=dto.getTitle()%>"></td>
-							<th scope="row">작성시간</th>
-							<td><%=dto.getWriteDate()%></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row" colspan="6"><div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text">내용</span>
-									</div>
-									<textarea class="form-control js-content"
-										aria-label="With textarea" style="background-color: #fff"><%=dto.getContent()%></textarea>
-								</div></th>
-						</tr>
-					</tbody>
-				</table>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th scope="col">리뷰평점</th>
+								<td scope="col"><input type="text"
+									class="form-control js-rating" value="<%=dto.getRating()%>"
+									name="rating"></td>
+								<th scope="col">작성자</th>
+								<td scope="col"><%=dto.getMemberId()%></td>
+								<th scope="col">이용인원</th>
+								<td scope="col"><%=dto.getCurrent_guest()%>명</td>
+							</tr>
+							<tr>
+								<th scope="col">호텔평점</th>
+								<td scope="col">
+									<%
+										if (dto.getHotelRating() >= 4) {
+									%>
+									<button class="btn btn-primary"><%=dto.getHotelRating()%></button>
+									<%
+										} else if (dto.getHotelRating() < 4 && dto.getHotelRating() >= 3) {
+									%>
+									<button class="btn btn-info"><%=dto.getHotelRating()%></button>
+									<%
+										} else {
+									%>
+									<button class="btn btn-secondary"><%=dto.getHotelRating()%></button>
+									<%
+										}
+									%>
+								</td>
+								<th scope="col">호텔</th>
+								<td scope="col"><%=dto.getHotelName()%></td>
+								<th scope="col">방이름</th>
+								<td scope="col"><%=dto.getRoomName()%></td>
+							</tr>
+							<tr>
+								<th scope="row">제목</th>
+								<td colspan="2"><input type="text"
+									class="form-control js-title" value="<%=dto.getTitle()%>"
+									name="title"></td>
+								<th scope="row">작성시간</th>
+								<td><%=dto.getWriteDate()%></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" colspan="6"><div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text">내용</span>
+										</div>
+										<textarea class="form-control js-content"
+											aria-label="With textarea" style="background-color: #fff"
+											name="content"><%=dto.getContent()%></textarea>
+									</div></th>
+							</tr>
+						</tbody>
+					</table>
 
-				<button type="button" class="btn btn-outline-info js-returnList">글로
-					돌아가기</button>
-				<%
-					if (dto.getMemberId().equals(loginId)) {
-				%>
-				<input type="hidden" value="<%=dto.getSeq()%>" class="js-update-seq">
-				<button type="button"
-					class="btn btn-outline-success js-update-review-success"
-					style="float: right;">리뷰수정완료</button>
-				<button type="button"
-					class="btn btn-outline-warning js-delete-review"
-					style="float: right;">리뷰삭제하기</button>
-				<%
-					}
-				%>
+
+
+					<button type="button" class="btn btn-outline-info js-returnList">글로
+						돌아가기</button>
+					<%
+						if (dto.getMemberId().equals(loginId)) {
+					%>
+					<input type="hidden" value="<%=dto.getSeq()%>"
+						class="js-update-seq">
+					<button type="button"
+						class="btn btn-outline-success js-update-review-success"
+						style="float: right;">리뷰수정완료</button>
+					<button type="button"
+						class="btn btn-outline-warning js-delete-review"
+						style="float: right;">리뷰삭제하기</button>
+					<%
+						}
+					%>
+				</form>
 			</article>
 
 		</main>

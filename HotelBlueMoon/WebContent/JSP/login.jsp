@@ -14,9 +14,7 @@
 <meta charset="UTF-8">
 <title>login.jsp</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -46,38 +44,40 @@
 		<main class="hotelcontent">
 
 			<article>
-				<input type="hidden" id="hotelSeq" value="<%=hotelSeq%>">
-				<input type="hidden" id="checkin" value="<%=checkin%>">
-				<input type="hidden" id="checkout" value="<%=checkout%>">
-				<input type="hidden" id="guest" value="<%=guest%>">
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="basic-addon1">ID</span>
+				<div style="display: table; width: 35%; margin: auto;">
+					<input type="hidden" id="hotelSeq" value="<%=hotelSeq%>"> <input
+						type="hidden" id="checkin" value="<%=checkin%>"> <input
+						type="hidden" id="checkout" value="<%=checkout%>"> <input
+						type="hidden" id="guest" value="<%=guest%>">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">ID</span>
+						</div>
+						<input type="text" class="form-control input-id" placeholder="ID"
+							aria-label="Username" aria-describedby="basic-addon1">
 					</div>
-					<input type="text" class="form-control input-id" placeholder="ID"
-						aria-label="Username" aria-describedby="basic-addon1">
-				</div>
 
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="basic-addon1">PASSWORD</span>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">PASSWORD</span>
+						</div>
+						<input type="password" class="form-control input-pwd"
+							placeholder="PASSWORD" aria-label="Username"
+							aria-describedby="basic-addon1">
 					</div>
-					<input type="password" class="form-control input-pwd"
-						placeholder="PASSWORD" aria-label="Username"
-						aria-describedby="basic-addon1">
-				</div>
 
-				<div>
 					<div>
-						<span class="checkbox"></span>
+						<div>
+							<span class="checkbox"></span>
+						</div>
+					</div>
+
+					<div class="btn-group" role="group" aria-label="Basic example"
+						style="margin-left: 120px;">
+						<button type="button" class="btn btn-info regiBtn">회원가입</button>
+						<button type="button" class="btn btn-primary loginBtn">로그인</button>
 					</div>
 				</div>
-
-				<div class="btn-group" role="group" aria-label="Basic example">
-					<button type="button" class="btn btn-info regiBtn">회원가입</button>
-					<button type="button" class="btn btn-primary loginBtn">로그인</button>
-				</div>
-
 			</article>
 
 		</main>
