@@ -7,6 +7,7 @@
 	String checkin = request.getParameter("checkin");
 	String checkout = request.getParameter("checkout");
 	String guest = request.getParameter("geust");
+	String roomSeq = request.getParameter("roomSeq");
 %>
 <!DOCTYPE html>
 <html>
@@ -47,8 +48,9 @@
 				<div style="display: table; width: 35%; margin: auto;">
 					<input type="hidden" id="hotelSeq" value="<%=hotelSeq%>"> <input
 						type="hidden" id="checkin" value="<%=checkin%>"> <input
-						type="hidden" id="checkout" value="<%=checkout%>"> <input
-						type="hidden" id="guest" value="<%=guest%>">
+						type="hidden" id="checkout" value="<%=checkout%>"> 
+						<input type="hidden" id="guest" value="<%=guest%>">
+						<input type="hidden" id="roomSeq" value="<%=roomSeq%>">
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">ID</span>

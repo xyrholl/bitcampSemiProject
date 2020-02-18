@@ -45,7 +45,7 @@ function ajax(checkin, checkout, guest, hotelSeq, hotelName){
 													+ "<p class=\"card-text\">"
 												    + "<br>[최대정원 : " + data[i].guest + "]</p>"
 													+ "<a href=\"../hotelResvInfo?hotelSeq=" + data[i].hotelSeq + "&checkin=" + checkin + "&checkout=" + checkout 
-													+ "&guest=" + guest + "&roomSeq" + data[i].seq + "\" class=\"btn btn-primary\">Reservation</a>"
+													+ "&guest=" + guest + "&roomSeq=" + data[i].seq + "\" class=\"btn btn-primary\">Reservation</a>"
 													+ "</div>"
 													+ "</div>");
 

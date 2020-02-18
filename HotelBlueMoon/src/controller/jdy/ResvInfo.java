@@ -44,7 +44,10 @@ public class ResvInfo extends HttpServlet {
         String checkout = URLEncoder.encode(req.getParameter("checkout"), "UTF-8");
         String sguest = URLEncoder.encode(req.getParameter("guest"), "UTF-8");
         String shotelSeq = URLEncoder.encode(req.getParameter("hotelSeq"), "UTF-8");
+        String sroomSeq = URLEncoder.encode(req.getParameter("roomSeq"), "UTF-8");
+        System.out.println("서블릿 인포메이션: 룸"+sroomSeq);
         int hotelSeq = Integer.parseInt(shotelSeq);
+        int roomSeq = Integer.parseInt(sroomSeq);
         int current_guest = Integer.parseInt(sguest);
         
         
@@ -60,7 +63,7 @@ public class ResvInfo extends HttpServlet {
         long stay = s.hotelService.betweenTime(checkin, checkout);
         int totalprice = room.getPrice()*(int)stay;
         
-        ResvDTO resv = new ResvDTO(hotelSeq, room.getSeq(), checkin, checkout, totalprice, current_guest);
+        ResvDTO resv = new ResvDTO(hotelSeq, roomSeq, checkin, checkout, totalprice, current_guest);
         resv.setHotelAddr(hotel.getAddr());
         resv.setHotelName(hotel.getName());
         resv.setHotelPlace(hotel.getPlace());

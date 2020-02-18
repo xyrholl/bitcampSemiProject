@@ -208,6 +208,7 @@ img {
 				location.href= getContextPath()
  					 		+"/resvlogin?"
  					 		+"&hotelSeq="+<%=resv.getHotelSeq()%>
+ 					 		+"&roomSeq="+<%=resv.getRoomSeq()%>
  							+"&checkin="+"<%=resv.getCheckIn()%>"
  							+"&checkout="+"<%=resv.getCheckOut()%>"
  							+"&guest="+<%=resv.getCurrent_guest()%>; 

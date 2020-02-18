@@ -179,8 +179,8 @@ public class ResvDAO {
 	public boolean addResv( ResvDTO resv ) {
 //		INSERT INTO RESV(SEQ, HOTELSEQ, MEMBERSEQ, ROOMSEQ, CHECKIN, CHECKOUT, RESVDATE, TOTALPRICE, CANCEL, CURRENT_GUEST, )
 //		VALUES(3, 3, 3, '20200204', '20200205', SYSDATE, 50000, 0, 2);
-		  String sql = " INSERT INTO RESV(SEQ, HOTELSEQ, MEMBERSEQ, ROOMSEQ, CHECKIN, CHECKOUT, RESVDATE, TOTALPRICE, CANCEL, CURRENT_GUEST, REVIEWIS) "
-	                  + " VALUES(SEQ_RESV.NEXTVAL, ?, ?, ?, ?, ?, SYSDATE, ?, 0, 4, 0)  ";
+		  String sql = " INSERT INTO RESV(SEQ, HOTELSEQ, MEMBERSEQ, ROOMSEQ, CHECKIN, CHECKOUT, RESVDATE, TOTALPRICE, CANCEL, CURRENT_GUEST, REVIEWIS, PAYMETNIS) "
+	                  + " VALUES(SEQ_RESV.NEXTVAL, ?, ?, ?, ?, ?, SYSDATE, ?, 0, 4, 0, 0)  ";
 	  
 		  Connection conn = null;
 		  PreparedStatement psmt = null;
@@ -223,7 +223,8 @@ public class ResvDAO {
 					+ " SET USE = 1 "
 					+ " WHERE RESVDATE >= ? "
 					+ " AND RESVDATE < ? "
-					+ " AND HOTELSEQ = ? ";
+					+ " AND HOTELSEQ = ? "
+					+ " AND ROOMSEQ = ?";
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		int count = 0;

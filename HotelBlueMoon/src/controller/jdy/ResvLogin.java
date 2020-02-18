@@ -38,17 +38,15 @@ public class ResvLogin extends HttpServlet{
 		String checkout = URLEncoder.encode(req.getParameter("checkout"), "UTF-8");
 		String sguest = URLEncoder.encode(req.getParameter("guest"), "UTF-8");
 		String shotelSeq = URLEncoder.encode(req.getParameter("hotelSeq"), "UTF-8");
+		String roomSeq = URLEncoder.encode(req.getParameter("roomSeq"), "UTF-8");
 		int hotelSeq = Integer.parseInt(shotelSeq);
 		int current_guest = Integer.parseInt(sguest);
-		req.setAttribute("checkin", checkin);
-		req.setAttribute("checkout", checkout);
-		req.setAttribute("current_guest", current_guest);
-		req.setAttribute("hotelseq", hotelSeq);
+
 		
 		resp.sendRedirect(req.getContextPath()+"/JSP/login.jsp?hotelSeq="+hotelSeq
 				+"&checkin="+checkin
 				+"&checkout="+checkout
-				+"&geust="+current_guest);
+				+"&geust="+current_guest+"&roomSeq="+roomSeq);
 		
 		System.out.println(checkin);
 		System.out.println(checkout);
