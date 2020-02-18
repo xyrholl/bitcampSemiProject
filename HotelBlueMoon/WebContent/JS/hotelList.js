@@ -11,7 +11,6 @@ $(document).ready(function() {
 			tempDay = String(parseInt(tempDay) + 1);
 			if(tempDay < 10){
 				checkout = tempYear + "-" + tempMonth + "-0" + tempDay;
-				alert(checkout);
 			}
 			else{
 				checkout = tempYear + "-" + tempMonth + "-" + tempDay;
@@ -61,15 +60,15 @@ function ajax(checkin, checkout, guest, area){
 							}
 							$(".mainSpan").append(
 											"<div class=\"card\" style=\"width: 18rem;\">"
-													+ "<img class=\"card-img-top\" src=\"../css/assets/images/01.jpg\" alt=\"Card image cap\">"
+													+ "<img class=\"card-img-top\" src=\"../image/hotel/" + data[i].hotelImg + "\" alt=\"Card image cap\">"
 													+ "<div class=\"card-body\">"
 													+ "<h5 class=\"card-title\">"
 													+ data[i].name
 													+ "</h5>"
 													+ "<p class=\"card-text\">"
 													+ data[i].addr + "<br>[평점 : " + star + " / " + data[i].rating + "점]</p>"
-													+ "<a href=\"../hotelResvInfo?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout 
-													+ "&guest=" + guest + "\" class=\"btn btn-primary\">Reservation</a>"
+													+ "<a href=\"../goRoom?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout 
+													+ "&guest=" + guest + "&hotelName=" + data[i].name + "\" class=\"btn btn-primary\">Reservation</a>"
 													+ "</div>"
 													+ "</div>");
 

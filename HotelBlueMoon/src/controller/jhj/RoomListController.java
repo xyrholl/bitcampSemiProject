@@ -11,16 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import singleton.Singleton;
 
-@WebServlet("/placeRead")
-public class PlaceRead extends HttpServlet{
-	Singleton s;
+@WebServlet("/roomList")
+public class RoomListController extends HttpServlet{
 
+	Singleton s;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8"); 
-		String placeInfo = s.getInstance().getPlace();
+		req.setCharacterEncoding("utf-8");
+		String hotelSeq = req.getParameter("hotelSeq");
+		String checkin = req.getParameter("checkin");
+		String checkout = req.getParameter("checkout");
+		String guest = req.getParameter("guest");
 		
-		req.setAttribute("json", placeInfo);
+		String json = s.getInstance().getRoom(guest, checkin, checkout, hotelSeq);
+		
+		req.setAttribute("json", json);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/JSP/ajaxData/rs.jsp");
 		dispatcher.forward(req, resp);
 		
@@ -29,7 +36,7 @@ public class PlaceRead extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.doGet(req, resp);
+		doGet(req, resp);
 	}
 	
 }

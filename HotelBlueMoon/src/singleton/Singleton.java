@@ -7,6 +7,7 @@ import dto.HotelDTO;
 import model.jdy.ResvService;
 import model.jhj.HotelListService;
 import model.jhj.PlaceReadService;
+import model.jhj.RoomListService;
 import model.lsy.MemberService;
 import model.lsy.ReviewService;
 import model.sjh.MyPageService;
@@ -23,6 +24,7 @@ public class Singleton {
 	public ResvService resvSerivce = null;
 	public HotelListService hotelService = null;
 	public PlaceReadService placeRead = null;
+	public RoomListService roomListService = null;
 
 	private Singleton() {
 
@@ -49,6 +51,13 @@ public class Singleton {
 	public String getPlace(){
 		placeRead = new PlaceReadService();
 		String json = placeRead.getPlace();
+		
+		return json;
+	}
+	
+	public String getRoom(String guest, String checkin, String checkout, String hotelSeq) {
+		roomListService = new RoomListService();
+		String json = roomListService.createJson(guest, checkin, checkout, hotelSeq);
 		
 		return json;
 	}

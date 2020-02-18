@@ -6,19 +6,22 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import dto.HotelDTO;
+import dto.ResvDTO;
 
-public class HotelListService {
+
+
+public class RoomListService {
 	
-	HotelListDAO dao = new HotelListDAO();
 	
-	public ArrayList<HotelDTO> getHotelInfo(String guest, String area, String checkin, String checkout) {
+RoomListDAO dao = new RoomListDAO();
+	
+	public ArrayList<ResvDTO> getRoomInfo(String guest, String checkin, String checkout, String hotelSeq) {
 		
 		int timeCount = (int)betweenTime(checkin, checkout);
 		
 		System.out.println(timeCount);
 		
-		ArrayList<HotelDTO> list = dao.getHotelList(guest, area, checkin, checkout, timeCount);
+		ArrayList<ResvDTO> list = dao.getRoomList(guest, checkin, checkout, hotelSeq, timeCount);
 		
 		return list;
 	}
@@ -48,20 +51,19 @@ public class HotelListService {
 		return 0;
 	}
 	
-	public String createJson(String guest, String area, String checkin, String checkout) {
+	public String createJson(String guest, String checkin, String checkout, String hotelSeq) {
 		String temp="[";
 		
-		ArrayList<HotelDTO> list = getHotelInfo(guest, area, checkin, checkout);
+		ArrayList<ResvDTO> list = getRoomInfo(guest, checkin, checkout, hotelSeq);
 		
 		for(int i=0 ; i<list.size() ; i++) {
 			temp+="{";
 			
 			temp+="\"seq\":\""+list.get(i).getSeq()+"\",";
-			temp+="\"name\":\""+list.get(i).getName()+"\",";
-			temp+="\"addr\":\""+list.get(i).getAddr()+"\",";
-			temp+="\"count\":\""+list.get(i).getUseCount()+"\",";
-			temp+="\"rating\":\""+list.get(i).getRating()+"\",";
-			temp+="\"hotelImg\":\""+list.get(i).getHotel_img()+"\"";
+			temp+="\"name\":\""+list.get(i).getRoomName()+"\",";
+			temp+="\"hotelSeq\":\""+list.get(i).getHotelSeq()+"\",";
+			temp+="\"guest\":\""+list.get(i).getRoomMax_guest()+"\",";
+			temp+="\"image\":\""+list.get(i).getHotelAddr()+"\"";
 			
 			if(i == list.size()-1) {
 				break;
@@ -74,4 +76,5 @@ public class HotelListService {
 		
 		return temp;
 	}
+	
 }

@@ -7,7 +7,7 @@ const hotelSeq = document.getElementById("hotelSeq").value;
 const checkin = document.getElementById("checkin").value;
 const checkout = document.getElementById("checkout").value;
 const guest = document.getElementById("guest").value;
-
+const roomSeq = document.getElementById("roomSeq").value;
 function getContextPath() {
 	var hostIndex = location.href.indexOf(location.host) + location.host.length;
 	return location.href.substring(hostIndex, location.href.indexOf('/',
@@ -37,7 +37,8 @@ function login() {
 			"hotelSeq" : hotelSeq,
 			"guest" : guest,
 			"checkin" : checkin,
-			"checkout" : checkout
+			"checkout" : checkout,
+			"roomSeq" : roomSeq
 		},
 		success : function(data) {
 			if (data === "success") {
@@ -51,6 +52,7 @@ function login() {
 			} else if (data === "resvSucces"){
 				location.href = getContextPath() + "/hotelResvInfo?id="
 				+`${inputId.value}` + "&hotelSeq="+hotelSeq
+				+"&roomSeq="+roomSeq
 				+"&checkin="+checkin
 				+"&checkout="+checkout
 				+"&guest="+guest;
