@@ -53,7 +53,7 @@
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="text" name="pwd"></td>
+				<td><input type="password" name="pwd"></td>
 			</tr>
 			</table>
 			<input type="hidden" name="command" value="mypagePwdChecked">
