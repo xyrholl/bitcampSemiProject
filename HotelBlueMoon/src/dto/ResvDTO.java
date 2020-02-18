@@ -59,6 +59,16 @@ public class ResvDTO {
 
 	public ResvDTO() {
 	}
+	
+	public ResvDTO(int seq, String roomName, int hotelSeq, int roomMax_guest, String hotelAddr) {
+		super();
+		this.seq = seq;
+		this.hotelSeq = hotelSeq;
+		this.roomName = roomName;
+		this.roomMax_guest = roomMax_guest;
+		this.hotelAddr = hotelAddr;
+	}
+
 
 	//resvinfo
 	public ResvDTO(int roomSeq, int hotelSeq, String checkIn, String checkOut,

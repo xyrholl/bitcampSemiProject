@@ -32,12 +32,12 @@ body {
 
 .hotelcontent>article {
 	flex: 4;
-	min-height: 100vh;
+	min-height: 60vh;
 }
 
 header, footer {
 	
-	height: 10vh;
+	height: 20vh;
 }
 
 footer, article, nav {
