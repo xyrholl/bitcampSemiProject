@@ -54,7 +54,7 @@ public class QnADao {
 		String w = searchWord;
 		System.out.println("DAO: " + s + " / " + w);
 
-		String sql = " SELECT SEQ, MEMBERSEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WRITEDATE, DEL, READCOUNT "
+		String sql = " SELECT SEQ, MEMBERSEQ, ID, REF, STEP, DEPTH, TITLE, CONTENT, WRITEDATE, DEL, READCOUNT, RNUM "
 				+ " FROM ";
 
 		sql += " (SELECT ROW_NUMBER()OVER(ORDER BY REF DESC, STEP ASC) AS RNUM, "
@@ -80,8 +80,8 @@ public class QnADao {
 
 		List<QnADTO> list = new ArrayList<QnADTO>();
 		int start, end;
-		start = 1 + 5 * page;
-		end = 5 + 5 * page;
+		start = 1 + 10 * page;
+		end = 10 + 10 * page;
 
 		try {
 			conn = DBConnection.getConnection();
@@ -99,7 +99,7 @@ public class QnADao {
 				int i = 1;
 				QnADTO dto = new QnADTO(rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getInt(i++),
 						rs.getInt(i++), rs.getInt(i++), rs.getString(i++), rs.getString(i++), rs.getString(i++),
-						rs.getInt(i++), rs.getInt(i++));
+						rs.getInt(i++), rs.getInt(i++), rs.getInt(i++));
 				list.add(dto);
 			}
 			System.out.println("4/6 getQnAPagingList success");

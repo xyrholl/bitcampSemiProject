@@ -179,7 +179,8 @@
 
 										int compare_out = nowCheckOut.compareTo(nowDate);
 										System.out.println(i+": REVIEWIS=0 comout "+compare_out);
-										if(compare_out < 0){ // 체크아웃 지남
+										if(compare_out < 0 ){ // 체크아웃 지남 && dto.getPayMent == 1
+											
 										%>
 											<button type="button" id="reviewBtn" 
 												class="btn btn-outline-info js-review-write"

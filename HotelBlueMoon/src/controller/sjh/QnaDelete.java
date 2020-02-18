@@ -34,10 +34,11 @@ public class QnaDelete extends HttpServlet {
 				       + "return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );}";
 		
 		if(isS) {
-			resp.getWriter().println("<script>alert('삭제 완료'); "+ addfunc +" location.href=getContextPath() + '/getQnAList' </script>");
+			resp.getWriter().println("<script>alert('"
+					+ "삭제 완료'); "+ addfunc +" location.href=getContextPath() + '/qnafoward' </script>");
 			
 		}else {
-			resp.getWriter().println("<script>alert('삭제 실패'); "+ addfunc +" location.href=getContextPath() + '/getQnAList' </script>");
+			resp.getWriter().println("<script>alert('삭제 실패'); "+ addfunc +" location.href=getContextPath() + '/qnafoward' </script>");
 		}
 		resp.getWriter().flush();
 	}

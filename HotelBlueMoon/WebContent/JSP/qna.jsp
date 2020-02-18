@@ -79,7 +79,7 @@ table tr td ul li {
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
+			<article style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 200px;">
 
 				<div class="input-group-append">
 					<select id="choice" class="custom-select js-search-select"
@@ -130,7 +130,7 @@ table tr td ul li {
 										QnADTO qna = list.get(i);
 							%>
 							<tr>
-								<th align="center"><%=i + 1%></th>
+								<th align="center"><%=qna.getRnum()%></th>
 								<td>
 									<%
 										if (qna.getDel() == 0) {

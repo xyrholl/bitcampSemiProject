@@ -8,10 +8,10 @@ $(document).ready(function() {
 var loginId = $("#loginId").val();
 var dtoId = $("#dtoId").val();
 	
-	if (loginId !== null && loginId !== "") {
-		alert("loginId: "+loginId +" / dtoId: "+ dtoId);
-		if ( dtoId.trim() !== loginId.trim() || loginId.trim() !== "admin" ){
-				$(".Idcheck").attr("disabled", true);
+	if (loginId != null && loginId != "") {
+		//alert("loginId: "+loginId +" / dtoId: "+ dtoId);
+		if ( dtoId.trim() == loginId.trim() || loginId.trim() == "admin" ){
+				$(".Idcheck").attr("disabled", false);
 		}
 	}
 });

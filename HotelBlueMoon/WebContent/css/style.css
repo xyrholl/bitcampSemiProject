@@ -5,7 +5,7 @@
 }
 
 body {
-	background-image: url( "../image/bg02.jpg" );
+	background-color: #FFF;
 	display: flex;
 	min-height: 100vh;
 	flex-direction: row;
@@ -32,12 +32,12 @@ body {
 
 .hotelcontent>article {
 	flex: 4;
-	min-height: 60vh;
+	min-height: 100vh;
 }
 
 header, footer {
 	
-	height: 20vh;
+	height: 10vh;
 }
 
 footer, article, nav {
