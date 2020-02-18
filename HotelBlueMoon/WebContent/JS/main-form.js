@@ -17,10 +17,12 @@ function getContextPath() {
 
 function loginCheck() {
 	if (formSessionId.value === null || formSessionId.value === "null") {
+		formRregiBtn.style.visibility = 'visible';
 		formLoginBtn.classList.remove("btn-danger");
 		formLoginBtn.classList.add("btn-primary");
 		formLoginBtn.innerHTML = "로그인"
 	} else if (formSessionId !== null) {
+		formRregiBtn.style.visibility = 'hidden';
 		formLoginBtn.classList.remove("btn-primary");
 		formLoginBtn.classList.add("btn-danger");
 		formLoginBtn.innerHTML = "로그아웃";
@@ -74,10 +76,6 @@ function fowardMypage() {
 			alert("error")
 		}
 	});
-	
-	
-	
-	//location.href = getContextPath() + "/mypagefoward"
 }
 
 function init() {
