@@ -4,6 +4,7 @@
 <%
 	String loginId = (String) session.getAttribute("loginId");
 	if(loginId == null || loginId.equals("")){
+		out.println("로그인이 필요한 페이지입니다");
 	response.sendRedirect(request.getContextPath()+"/fowardlogin");
 	}
 

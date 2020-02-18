@@ -21,7 +21,6 @@ public class QnADTO {
 	private int memberSeq;
 	private String memberId;	// 0206 추가
 	
-	
 	private int ref;
 	private int step;
 	private int depth;
@@ -31,6 +30,8 @@ public class QnADTO {
 	private String writeDate;
 	private int del;
 	private int readcount;
+	private int rnum;
+	
 	
 	public QnADTO() {
 	}
@@ -43,6 +44,27 @@ public class QnADTO {
 		this.title = title;
 		this.content = content;
 	}
+
+
+
+	public QnADTO(int seq, int memberSeq, String memberId, int ref, int step, int depth, String title, String content,
+			String writeDate, int del, int readcount, int rnum) {
+		super();
+		this.seq = seq;
+		this.memberSeq = memberSeq;
+		this.memberId = memberId;
+		this.ref = ref;
+		this.step = step;
+		this.depth = depth;
+		this.title = title;
+		this.content = content;
+		this.writeDate = writeDate;
+		this.del = del;
+		this.readcount = readcount;
+		this.rnum = rnum;
+	}
+
+
 
 	public QnADTO(int seq, int memberSeq, String memberId, int ref, int step, int depth, String title, String content,
 			String writeDate, int del, int readcount) {
@@ -60,12 +82,16 @@ public class QnADTO {
 		this.readcount = readcount;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "QnADTO [seq=" + seq + ", memberSeq=" + memberSeq + ", memberId=" + memberId + ", ref=" + ref + ", step="
 				+ step + ", depth=" + depth + ", title=" + title + ", content=" + content + ", writeDate=" + writeDate
-				+ ", del=" + del + ", readcount=" + readcount + "]";
+				+ ", del=" + del + ", readcount=" + readcount + ", rnum=" + rnum + "]";
 	}
+
+
 
 	public int getSeq() {
 		return seq;
@@ -196,6 +222,19 @@ public class QnADTO {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
+
+
+
+	public int getRnum() {
+		return rnum;
+	}
+
+
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
 	
 	
 
