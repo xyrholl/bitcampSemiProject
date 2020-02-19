@@ -61,10 +61,10 @@ function ajax(checkin, checkout, guest, area){
 							$(".mainSpan").append(
 									"<div class=\"card mb-3\"><h5 class=\"card-header\">" + data[i].name + "</h5>"
 									+ "<img style=\"height: 200px; width: 100%; display: block;\" src=\"../image/hotel/" + data[i].hotelImg + "\" alt=\"Card image\">"
-									+ "<div class=\"card-body\"><p class=\"card-text\"></p></div><ul class=\"list-group list-group-flush\"><li class=\"list-group-item\">"
-									+ data[i].addr + "</li><li class=\"list-group-item\">[평점 : " + star + " / " + data[i].rating + "점]</li></ul><div class=\"card-body\">"
-									+ "<a href=\"../goRoom?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout + "&guest=" + guest + "&hotelName=" + data[i].name 
-									+ "\" class=\"btn btn-outline-primary\">Reservation</a></div><div class=\"card-footer text-muted\"></div></div>");
+									+ "<div class=\"card-body\"><p class=\"card-text\">"
+									+ data[i].addr + "</p><p class=\"card-text\">[평점 : " + star + " / " + data[i].rating + "점]</p></div>"
+									+ "<div class=\"card-footer text-muted\" style=\"text-align: center;\"><a href=\"../goRoom?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout + "&guest=" + guest + "&hotelName=" + data[i].name 
+									+ "\" class=\"btn btn-primary\">Reservation</a></div></div>");
 
 							console.log(data[i].name);
 						}

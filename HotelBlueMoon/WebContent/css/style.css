@@ -16,6 +16,7 @@ body {
 .hotelcol-1 {
 	flex: 1;
 	position: fixed;
+	color: #EBEBEB;
 }
 
 .hotelcol-2 {
@@ -50,10 +51,11 @@ footer, article, nav {
 .mainSpan .card {
 	background-color: #4E5D6C;
 	float: left;
-	width: 22rem;
+	width: 20rem;
 	height: 400px;
 	border-radius: 5px;
 	margin: 10px;
+	color: #EBEBEB;
 }
 
 article {

@@ -67,7 +67,7 @@
 
 		<main class="hotelcontent">
 
-			<article>
+			<article style="background-color: rgb(0, 0, 0, 0);">
 
 
 				<div class="mainSpan"></div>
