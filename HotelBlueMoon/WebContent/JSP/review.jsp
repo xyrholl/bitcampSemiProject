@@ -92,7 +92,7 @@
 								for (int i = 0; i < list.size(); i++) {
 									ReviewDTO dto = list.get(i);
 						%>
-						<tr class="row<%=i%>">
+						<tr class="row<%=i%> list-group-item-action">
 							<th scope="row"><%=i + 1%></th>
 							<td><img alt=""
 								src="http://localhost:9000/HotelBlueMoon/UPload/<%=dto.getFileRealName()%>"

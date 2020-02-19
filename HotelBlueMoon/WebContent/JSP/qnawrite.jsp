@@ -44,8 +44,9 @@
 		<main class="hotelcontent">
 
 			<article>
-				<div class="input-content" style="width: 80%; margin: auto;">
+				<div class="input-content" style="width: 90%; margin: auto;">
 					<form action="<%=request.getContextPath()%>/qnawrite" method="get">
+						<br> <br>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon1">제목</span>
@@ -54,15 +55,17 @@
 								placeholder="제목을 입력하세요." aria-label="Username"
 								aria-describedby="basic-addon1" required="required">
 						</div>
-						<div class="form-group">
-							<label for="exampleFormControlTextarea1">문의 사항</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1"
-								rows="3" name="content" style="height: 22rem;"
-								placeholder="문의사항"></textarea>
+						<div class="input-group">
+							<div class="input-group-prepend" style="height: 18rem;">
+								<span class="input-group-text">내용</span>
+							</div>
+							<textarea class="form-control" aria-label="With textarea"
+								id="exampleFormControlTextarea1" readonly="readonly"
+								style="background-color: #fff" name=content placeholder="문의사항"></textarea>
 						</div>
-						<input type="hidden" name="command" value="qnawriteAf"> <input
-							type="hidden" name="memberseq" value="<%=memberseq%>">
-						<button type="submit" class="btn btn-outline-primary"
+						<br> <input type="hidden" name="command" value="qnawriteAf">
+						<input type="hidden" name="memberseq" value="<%=memberseq%>">
+						<button type="submit" class="btn btn-outline-success"
 							style="float: right; border-radius: 5px;">글 쓰기</button>
 						<button type="button" class="btn btn-outline-info"
 							style="float: left; border-radius: 5px;"
