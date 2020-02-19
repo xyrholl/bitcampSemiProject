@@ -42,62 +42,59 @@
 		<main class="hotelcontent">
 
 			<article>
-				<form action="qnaupdate" method="post">
-					<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
-					<input type="hidden" name="command" value="QnAUpdate">
+				<div class="QNAcontent" style="width: 90%;">
+				<br>
+					<form action="qnaupdate" method="post">
+						<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
+						<input type="hidden" name="command" value="QnAUpdate">
 
-					<div class="detailbox">
-						<table class="table table-sm">
-							<thead>
-								<tr>
-									<th scope="col" colspan="2">Detail</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">작성자</th>
-									<td><%=dto.getMemberId()%></td>
-								</tr>
-								<tr>
-									<th scope="row">제목</th>
-									<td><%=dto.getTitle()%></td>
-								</tr>
-								<tr>
-									<th scope="row">조회수</th>
-									<td><%=dto.getReadcount()%></td>
-								</tr>
-								<tr>
-									<th scope="row">작성일</th>
-									<td><%=dto.getWriteDate()%></td>
-								</tr>
-								<tr>
-									<th scope="row">내용</th>
-									<td></td>
-								</tr>
-							</tbody>
-						</table>
-
-						<textarea class="form-control" id="exampleFormControlTextarea1"
-							rows="3" readonly="readonly" style="background-color: #fff"><%=dto.getContent()%></textarea>
-					</div>
+						<div class="detailbox">
+							<table class="table table-active">
+								<thead>
+									<tr>
+										<th scope="row" style="width: 10%;">제목</th>
+										<th style="widows: 60%;"><%=dto.getTitle()%></th>
+										<th scope="row" style="width: 10%;">조회수</th>
+										<th style="width: 20%;"><%=dto.getReadcount()%></th>
+									</tr>
+									<tr>
+										<th scope="row">작성자</th>
+										<th><%=dto.getMemberId()%></th>
+										<th scope="row">작성일</th>
+										<th><%=dto.getWriteDate()%></th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							<div class="input-group">
+								<div class="input-group-prepend" style="height: 18rem;">
+									<span class="input-group-text">내용</span>
+								</div>
+								<textarea class="form-control" aria-label="With textarea"
+									id="exampleFormControlTextarea1" readonly="readonly"
+									style="background-color: #fff"><%=dto.getContent()%></textarea>
+							</div>
+						</div>
 
 
-					<br>
-					<div class="buttonbox" align="center">
+						<br>
+						<div class="buttonbox" align="center">
 
-						<button class="Idcheck" type="submit" id="qnaUpdateBtn"
-							disabled="disabled">수정하기</button>
-						<button class="Idcheck" type="button" id="qnaDeleteBtn"
-							value="<%=dto.getSeq()%>" disabled="disabled">삭제하기</button>
-						<input type="hidden" id="loginId" value="<%=loginId%>"> <input
-							type="hidden" id="dtoId" value="<%=dto.getMemberId()%>">
+							<button type="button" id="qnaCommentBtn"
+								value="<%=dto.getSeq()%>" style="float: right; border-radius: 5px;" class="btn btn-outline-success">답글달기</button>
+							<button class="Idcheck btn btn-outline-warning" type="submit" id="qnaUpdateBtn"
+								disabled="disabled" style="float: right; border-radius: 5px;">수정하기</button>
+							<button class="Idcheck btn btn-outline-danger" type="button" id="qnaDeleteBtn"
+								value="<%=dto.getSeq()%>" disabled="disabled" style="float: right; border-radius: 5px;" >삭제하기</button>
+							<input type="hidden" id="loginId" value="<%=loginId%>"> <input
+								type="hidden" id="dtoId" value="<%=dto.getMemberId()%>">
 
-						<button type="button" id="qnaListBtn" onclick="history.back()">목록보기</button>
-						<button type="button" id="qnaCommentBtn" value="<%=dto.getSeq()%>">답글달기</button>
+							<button type="button" id="qnaListBtn" onclick="history.back()" class="btn btn-outline-info" style="float: left; border-radius: 5px;">돌아가기</button>
 
-					</div>
-				</form>
-
+						</div>
+					</form>
+				</div>
 			</article>
 
 		</main>

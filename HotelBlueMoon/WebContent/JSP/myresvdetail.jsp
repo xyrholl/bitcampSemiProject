@@ -46,42 +46,44 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: white">
-
-				<div class="detailbox">
-					<table class="table table-sm">
-						<thead>
-							<tr>
-								<th scope="col" colspan="2">Resv Detail</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">예약자</th>
-								<td><%=memName%></td>
-							</tr>
-							<tr>
-								<th scope="row">호텔</th>
-								<td><%=hotelName%></td>
-							</tr>
-							<tr>
-								<th scope="row">방</th>
-								<td><%=roomName%></td>
-							</tr>
-							<tr>
-								<th scope="row">예약일</th>
-								<td><%=dto.getResvDate()%></td>
-							</tr>
-							<tr>
-								<th scope="row">체크인</th>
-								<td><%=dto.getCheckIn()%></td>
-							</tr>
-							<tr>
-								<th scope="row">체크아웃</th>
-								<td><%=dto.getCheckOut()%></td>
-							</tr>
-						</tbody>
-					</table>
+			<article>
+				<div class="Reviewcontent" style="width: 90%;">
+					<br>
+					<div class="detailbox">
+						<table class="table table-active">
+							<thead>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">예약자</th>
+									<td><%=memName%></td>
+								</tr>
+								<tr>
+									<th scope="row">호텔</th>
+									<td><%=hotelName%></td>
+								</tr>
+								<tr>
+									<th scope="row">방</th>
+									<td><%=roomName%></td>
+								</tr>
+								<tr>
+									<th scope="row">예약일</th>
+									<td><%=dto.getResvDate()%></td>
+								</tr>
+								<tr>
+									<th scope="row">체크인</th>
+									<td><%=dto.getCheckIn()%></td>
+								</tr>
+								<tr>
+									<th scope="row">체크아웃</th>
+									<td><%=dto.getCheckOut()%></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<button id="cancelBtn" type="button" style="float: right; border-radius: 5px;" class="btn btn-outline-danger">취소하기</button>
+					<button id="listBtn" type="button" style="float: left; border-radius: 5px;" class="btn btn-outline-info">목록으로</button>
+					<input type="hidden" id="cancel_seq" value="<%=dto.getSeq()%>">
 				</div>
 				<button id="cancelBtn" type="button">취소하기</button>
 				<button id="listBtn" type="button">목록으로</button>
