@@ -15,12 +15,12 @@
 %>
 <%!// 댓글의 여백과 이미지 추가하는 함수
 	public String arrow(int depth) {
-		String rs = "<img src='./image/arrow1.png' width='20px' heigh='20px'/>";
-		String nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";
+		String rs = "<button class='source-button btn btn-primary btn-xs' tabindex='0' style='border-radius: 10px; margin-right: 20px; padding: 6px; padding-top: inherit; padding-bottom: inherit;'>&gt;</button>";
+		String nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
 		String ts = "";
 		for (int i = 0; i < depth; i++) {
-			ts += nbsp;
+			ts += nbsp + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
 		return depth == 0 ? "" : ts + rs;
 	}%>
@@ -28,7 +28,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Q n A</title>
+<title>호텔 블루문</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
@@ -89,7 +89,7 @@
 
 					<table class="table table-active">
 						<thead>
-							<tr align="center">
+							<tr>
 								<th scope="col">#</th>
 								<th scope="col">제목</th>
 								<th scope="col">작성자</th>
@@ -101,7 +101,8 @@
 							%>
 							<tr>
 								<td colspan="3" align="center"><ul>
-										<li class="list-group-item" style="float: none;">작성된 글이 없습니다</li>
+										<li class="list-group-item" style="float: none;">작성된 글이
+											없습니다</li>
 									</ul></td>
 							</tr>
 							<%
@@ -114,23 +115,19 @@
 								<td>
 									<%
 										if (qna.getDel() == 0) {
-									%>
-
-									<ul>
-										<li><%=arrow(qna.getDepth())%></li>
-										<li><a
-											href="<%=request.getContextPath()%>/qnadetail?seq=<%=qna.getSeq()%>"
-											class="list-group-item1 list-group-item-action"><%=qna.getTitle()%></a>
-										</li>
-									</ul> <%
- 	} else {
- %> <font color="#ff0000">-----작성자에 의해 삭제된 게시글입니다-----</font> <%
+									%> <a
+									href="<%=request.getContextPath()%>/qnadetail?seq=<%=qna.getSeq()%>"
+									class="list-group-item list-group-item-action"><span><%=arrow(qna.getDepth())%></span><%=qna.getTitle()%></a>
+									<%
+										} else {
+									%> <a class="list-group-item list-group-item-action disabled"
+									style="color: rgba(255, 255, 255, 0.4);">-----작성자에 의해 삭제된
+										게시글입니다-----</a> <%
  	}
  %>
 								</td>
-								<td align="center"><ul>
-										<li class="list-group-item"><%=qna.getMemberId()%></li>
-									</ul></td>
+								<td align="center"><a class="list-group-item"><%=qna.getMemberId()%></a>
+								</td>
 							</tr>
 
 							<%
@@ -155,7 +152,6 @@
 
 .list-paging span a {
 	font-size: 20px;
-	background-color: white;
 	padding: 5px 10px;
 	cursor: pointer;
 	text-decoration: none;
@@ -164,7 +160,6 @@
 
 .list-paging span.now a {
 	font-size: 20px;
-	background-color: #007bff;
 	padding: 5px 10px;
 	cursor: pointer;
 	text-decoration: none;
@@ -172,9 +167,8 @@
 	color: white;
 }
 
-span a:hover {
-	background-color: #007bff;
-	color: white;
+a {
+	background-color: #fff;
 }
 </style>
 				<div class="list-paging" align="center"
@@ -183,7 +177,8 @@ span a:hover {
 						for (int i = 0; i < qnaPage; i++) {
 							if (pageNumber == i) { // 현재 페이지
 					%>
-					<span class="now"><a href="#"><%=i + 1%></a></span>
+					<span class="now"><a href="#"
+						class="list-group-item list-group-item-action active"><%=i + 1%></a></span>
 					<%
 						} else {
 					%>
@@ -195,7 +190,8 @@ span a:hover {
 						}
 					%>
 				</div>
-				<button type="button" class="btn btn-secondary" style="float: right; border-radius: 5px;"
+				<button type="button" class="btn btn-secondary"
+					style="float: right; border-radius: 5px;"
 					onclick="location.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA
 					글쓰기</button>
 

@@ -23,18 +23,22 @@ public class ResvPay extends HttpServlet {
 	}
 
 	public void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("pay호출");
+		System.out.println("resvPayment.jsp -> resvpay호출");
 //		<input type="text" name="name" placeholder="Name" value="<%=resv.getMemName() %>"/>
 //		 <input type="text" name="phone" placeholder="Phone" value="<%=resv.getPhoneNum()%>"/> 
 //		<input type="text" name="email" placeholder="E-mail" value="<%=resv.getEmail() %>" /> 
 //		<input type="hidden" name="totalprice" value="<%=resv.getTotalPrice() %>"> 
+//		<input type="hidden" name="resvSeq" value="<%=resv.getSeq() %>">
+		String sresvSeq = req.getParameter("resvSeq");
+		int resvSeq = Integer.parseInt(sresvSeq);
 		String name = req.getParameter("name");
 		String phone = req.getParameter("phone");
 		String email = req.getParameter("email");
 		String stotalprice = req.getParameter("totalprice");
 		int totalprice = Integer.parseInt(stotalprice);
-		System.out.println(name+phone+email+totalprice);
+		System.out.println("resvPay의 파라미터값호출"+resvSeq+name+phone+email+totalprice);
 		
+		req.setAttribute("resvSeq", resvSeq);
 		req.setAttribute("name", name);
 		req.setAttribute("phone", phone);
 		req.setAttribute("email", email);

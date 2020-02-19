@@ -1,28 +1,32 @@
 
 $(document).ready(function() {
-	if(getParameterByName('flag') == 'yes'){
-		var tempYear = tempMonth = tempDay = "";
-		var checkin = getParameterByName('checkin');
-		var checkout = getParameterByName('checkout');
-		if(checkin == checkout){
-			tempYear = checkout.substring(0,4)
-			tempMonth = checkout.substring(5,7);
-			tempDay = checkout.substring(8);
-			tempDay = String(parseInt(tempDay) + 1);
-			if(tempDay < 10){
-				checkout = tempYear + "-" + tempMonth + "-0" + tempDay;
-			}
-			else{
-				checkout = tempYear + "-" + tempMonth + "-" + tempDay;
-			}
-		}
-		var guest = getParameterByName('guest');
-		var area = getParameterByName('area');
-		ajax(checkin, checkout, guest, area);
-	}
-	else{
-		goToAjax();
-	}
+   if(getParameterByName('flag') == 'yes'){
+      var tempYear = tempMonth = tempDay = "";
+      var checkin = getParameterByName('checkin');
+      var checkout = getParameterByName('checkout');
+      if(checkin == checkout){
+         tempYear = checkout.substring(0,4)
+         tempMonth = checkout.substring(5,7);
+         tempDay = checkout.substring(8);
+         tempDay = String(parseInt(tempDay) + 1);
+         if(tempDay < 10){
+            checkout = tempYear + "-" + tempMonth + "-0" + tempDay;
+         }
+         else {
+            checkout = tempYear + "-" + tempMonth + "-" + tempDay;
+            if(checkout == "2020-02-30"){
+               checkout = "2020-03-01";
+            }
+         }
+         
+      }
+      var guest = getParameterByName('guest');
+      var area = getParameterByName('area');
+      ajax(checkin, checkout, guest, area);
+   }
+   else{
+      goToAjax();
+   }
 });
 
 function ajax(checkin, checkout, guest, area){
@@ -104,38 +108,42 @@ $(function (){
 
 
 function goToAjax(){
-	var ci_monthDay = $('#checkin').val();
-	var co_monthDay = $('#checkout').val();
-	
-	if(ci_monthDay == "in" || ci_monthDay == "" || co_monthDay == "out" || co_monthDay == ""){
-		alert("CheckIn / CheckOut 시간을 입력해주세요.");
+	   var ci_monthDay = $('#checkin').val();
+	   var co_monthDay = $('#checkout').val();
+	   
+	   if(ci_monthDay == "in" || ci_monthDay == "" || co_monthDay == "out" || co_monthDay == ""){
+	      alert("CheckIn / CheckOut 시간을 입력해주세요.");
+	   }
+	   else{
+	      var guestCount = document.querySelector(".js-guestBox");
+	      var area = document.querySelector(".js-areaBox");
+	      area = area.options[area.selectedIndex].text;
+	      guestCount = guest.options[guest.selectedIndex].text;
+
+	      if(guestCount == 'Guest'){
+	         guestCount = 1;
+	      }
+	      
+	      if(ci_monthDay == co_monthDay){
+	         tempMonth = co_monthDay.substring(0,2);
+	         tempDay = co_monthDay.substring(3);
+	         tempDay = String(parseInt(tempDay) + 1);
+	         if(tempDay < 10){
+	            co_monthDay = tempMonth + "-0" + tempDay;
+	         }
+	         else{
+	            co_monthDay = tempMonth + "-" + tempDay;
+	            
+	            if(co_monthDay == "02-30"){
+	               co_monthDay = "03-01";
+	            }
+	         }
+	      }
+
+	   
+	      var ci_date = "2020-" + ci_monthDay;
+	      var co_date = "2020-" + co_monthDay;
+
+	      ajax(ci_date, co_date, guestCount, area);
+	   }
 	}
-	else{
-		var guestCount = document.querySelector(".js-guestBox");
-		var area = document.querySelector(".js-areaBox");
-		area = area.options[area.selectedIndex].text;
-		guestCount = guest.options[guest.selectedIndex].text;
-
-		if(guestCount == 'Guest'){
-			guestCount = 1;
-		}
-		
-		if(ci_monthDay == co_monthDay){
-			tempMonth = co_monthDay.substring(0,2);
-			tempDay = co_monthDay.substring(3);
-			tempDay = String(parseInt(tempDay) + 1);
-			if(tempDay < 10){
-				co_monthDay = tempMonth + "-0" + tempDay;
-			}
-			else{
-				co_monthDay = tempMonth + "-" + tempDay;
-			}
-		}
-
-	
-		var ci_date = "2020-" + ci_monthDay;
-		var co_date = "2020-" + co_monthDay;
-
-		ajax(ci_date, co_date, guestCount, area);
-	}
-}

@@ -22,7 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>호텔 블루문</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
@@ -106,7 +106,7 @@
 									ResvDTO dto = list.get(i);
 									System.out.println(list.get(i).toString());
 						%>
-						<tr class="row<%=i%>">
+						<tr class="row<%=i%> list-group-item-action">
 							<th scope="row"><%=i + 1%></th>
 							<td><input type="hidden" value="<%=dto.getSeq()%>"
 								class="js-resvSeq"> <%
@@ -124,9 +124,8 @@
 								<%
 									}
 								%></td>
-							<td><a class="list-group-item list-group-item-action"><%=dto.getHotelName()%></a>
-							</td>
-							<td><a class="list-group-item list-group-item-action"><%=dto.getRoomName()%></a></td>
+							<td><a class="list-group-item"><%=dto.getHotelName()%></a></td>
+							<td><a class="list-group-item"><%=dto.getRoomName()%></a></td>
 							<td><%=dto.getCheckIn()%></td>
 							<td><%=dto.getCheckOut()%></td>
 							<td><input type="hidden" value="" class="js-currDateTmp">
@@ -198,7 +197,7 @@
 											 	
 												} else { // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
 												 %>
-												<button type="button" id="reviewBtn"
+												<button type="button" id="reviewBtn" 
 												class="btn btn-outline-info js-review-write"
 												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
 												리뷰 쓰기</button> <%

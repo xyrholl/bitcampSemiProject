@@ -12,16 +12,14 @@
 <%
 	ResvDTO resv = (ResvDTO) request.getAttribute("resv");
 
-	System.out.println(resv.toString());
-
-	HotelDTO hotel = new HotelDTO();
-	hotel.setSeq(resv.getSeq());
+	System.out.println("resvCheck.jsp"+resv.toString());
+	System.out.println("호텔이미지"+resv.getHotel_img()+ "룸이미지"+resv.getRoom_img());
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>호텔 블루문</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
@@ -58,7 +56,8 @@ img {
 }
 
 .profile-image img {
-	border-radius: 50%;
+	width: 50px;
+	height: 50px;
 }
 
 .profile-user-settings, .profile-stats, .profile-bio {
@@ -149,8 +148,9 @@ img {
 				
 					<div class="profile-image">
 						<img
-							src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-							alt="">
+						<%-- 	src="<%=request.getContextPath()%>/image/hotel/<%=resv.getHotel_img() %>" --%>
+						src="<%=request.getContextPath()%>/image/image/<%=resv.getRoom_img() %>" 
+							alt="이미지없음">
 					</div>
 					<div class="profile-user-settings">
 						<h1 class="profile-user-name"><%=resv.getHotelName()%></h1>
