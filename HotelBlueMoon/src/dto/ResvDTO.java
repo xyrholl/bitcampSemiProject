@@ -28,6 +28,7 @@ public class ResvDTO {
 	private int current_guest;
 	private int cancel;
 	private int reviewIs;
+	private int paymentIs;
 
 	// HOTELDTO
 	private String hotelName;
@@ -334,6 +335,14 @@ public class ResvDTO {
 
 	public void setHotel_img(String hotel_img) {
 		Hotel_img = hotel_img;
+	}
+
+	public int getPaymentIs() {
+		return paymentIs;
+	}
+
+	public void setPaymentIs(int paymentIs) {
+		this.paymentIs = paymentIs;
 	}
 
 	@Override

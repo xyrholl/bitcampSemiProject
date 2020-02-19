@@ -47,7 +47,7 @@ public class QnaWrite extends HttpServlet{
 				       + "return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );}";
 			
 			if(isS) {
-				resp.getWriter().println("<script>alert('QnA 글쓰기 완료'); "+ addfunc +" history.go(-2);</script>");
+				resp.getWriter().println("<script>alert('QnA 글쓰기 완료'); "+ addfunc +" location.href=getContextPath() + '/qnafoward' </script>");
 				
 			}else {
 				resp.getWriter().println("<script>alert('QnA 글쓰기 실패'); "+ addfunc +" location.href=getContextPath() + '/qnafoward' </script>");
