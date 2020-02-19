@@ -102,8 +102,9 @@
 								style="background-color: #fff; height: 18rem;" name="content"><%=dto.getContent()%></textarea>
 						</div>
 						<br>
-						<button type="button" class="btn btn-outline-info js-returnList"
-							style="border-radius: 5px; float: left;">돌아가기</button>
+						<button type="button" class="btn btn-outline-info"
+							style="border-radius: 5px; float: left;"
+							onclick="location.href='<%=request.getContextPath()%>/reviewfoward'">목록으로</button>
 						<%
 							if (dto.getMemberId().equals(loginId)) {
 						%>

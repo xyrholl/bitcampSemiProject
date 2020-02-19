@@ -81,14 +81,17 @@
 							</tbody>
 						</table>
 					</div>
-					<button id="cancelBtn" type="button" style="float: right; border-radius: 5px;" class="btn btn-outline-danger">취소하기</button>
-					<button id="listBtn" type="button" style="float: left; border-radius: 5px;" class="btn btn-outline-info">목록으로</button>
-					<input type="hidden" id="cancel_seq" value="<%=dto.getSeq()%>">
+					<button id="payBtn" type="button"
+						style="float: right; border-radius: 5px;"
+						class="btn btn-outline-success">결제하기</button>
+					<button id="cancelBtn" type="button"
+						style="float: right; border-radius: 5px;"
+						class="btn btn-outline-danger">취소하기</button>
+					<button id="listBtn" type="button"
+						style="float: left; border-radius: 5px;"
+						class="btn btn-outline-info">목록으로</button>
+					<input type="hidden" id="detail_seq" value="<%=dto.getSeq()%>">
 				</div>
-				<button id="cancelBtn" type="button">취소하기</button>
-				<button id="listBtn" type="button">목록으로</button>
-				<button id="payBtn" type="button">결제하기</button>
-				<input type="hidden" id="detail_seq" value="<%=dto.getSeq()%>">
 
 			</article>
 
