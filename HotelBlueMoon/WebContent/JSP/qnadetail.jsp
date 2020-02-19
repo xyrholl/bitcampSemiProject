@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>호텔 블루문</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
@@ -92,7 +92,7 @@
 						<input type="hidden" id="loginId" value="<%=loginId%>"> <input
 							type="hidden" id="dtoId" value="<%=dto.getMemberId()%>">
 
-						<button type="button" id="qnaListBtn">목록보기</button>
+						<button type="button" id="qnaListBtn" onclick="history.back()">목록보기</button>
 						<button type="button" id="qnaCommentBtn" value="<%=dto.getSeq()%>">답글달기</button>
 
 					</div>

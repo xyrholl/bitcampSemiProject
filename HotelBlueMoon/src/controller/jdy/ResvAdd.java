@@ -76,8 +76,8 @@ public class ResvAdd extends HttpServlet {
 		resv.setHotelName(hotel.getName());
 		resv.setHotelAddr(hotel.getAddr());
 		resv.setHotelPlace(hotel.getPlace());
-		System.out.println("resvadd"+resv.toString());
-		boolean add = s.resvSerivce.addSchedule(checkIn, checkOut, hotelSeq);
+		System.out.println("resvadd함수 실행하기전"+resv.toString());
+		boolean add = s.resvSerivce.addSchedule(checkIn, checkOut, hotelSeq, roomSeq);
 		if(add) {
 			System.out.println("스케줄업데이트 성공");
 		}else {
@@ -86,7 +86,21 @@ public class ResvAdd extends HttpServlet {
 		
 		boolean b = s.resvSerivce.addResv(resv);
 		if(b) {
+			resv = s.resvSerivce.selectResvAddInfo(hotelSeq, member.getSeq(), roomSeq, checkIn, checkOut);
+			resv.setId(member.getEmail());
+			resv.setPwd(member.getPwd());
+			resv.setMemName(member.getName());
+			resv.setPhoneNum(member.getPhoneNum());
+			resv.setEmail(member.getEmail());
+			resv.setRoomName(room.getName());
+			resv.setRoomMax_guest(room.getMax_guest());
+			resv.setRoomPrice(room.getPrice());
+			resv.setHotelName(hotel.getName());
+			resv.setHotelAddr(hotel.getAddr());
+			resv.setHotelPlace(hotel.getPlace());
+			System.out.println("resvadd함수 실행하고나서 스케줄추가하고나서"+resv.toString());
 			req.setAttribute("resv", resv);
+			
 			forward("JSP/resvPayment.jsp", req, resp);
 		}else {
 			resp.sendRedirect(req.getContextPath()+"/JSP/resvcheck.jsp");

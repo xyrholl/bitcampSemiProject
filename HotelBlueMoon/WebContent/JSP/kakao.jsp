@@ -3,18 +3,19 @@
 
 
 <%
+int resvSeq = (int)request.getAttribute("resvSeq");
 String name= (String)request.getAttribute("name");
 String phone = (String)request.getAttribute("phone");
 String email = (String)request.getAttribute("email");
 int totalprice = (int)request.getAttribute("totalprice");
 
-System.out.println(name+ phone+ email+ totalprice);
+System.out.println("kakao.jsp의 getAttri값들"+resvSeq+name+ phone+ email+ totalprice);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>호텔 블루문</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -92,7 +93,7 @@ System.out.println(name+ phone+ email+ totalprice);
                     }
                 });
                 //성공시 이동할 페이지
-                location.href='<%=request.getContextPath()%>/paysuccess'; 
+                location.href='<%=request.getContextPath()%>/paysuccess?resvSeq=<%=resvSeq%>'; 
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;

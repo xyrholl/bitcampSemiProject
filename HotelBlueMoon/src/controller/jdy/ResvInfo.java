@@ -70,10 +70,14 @@ public class ResvInfo extends HttpServlet {
         resv.setHotelRating(hotel.getRating());
         resv.setHotelUseCount(hotel.getUseCount());
         resv.setHotel_img(hotel.getHotel_img());
-        
+        System.out.println("resvInfo의 호텔이미지"+resv.getHotel_img());
         resv.setRoomName(room.getName());
         resv.setRoomPrice(room.getPrice());
         resv.setRoomMax_guest(room.getMax_guest());
+        resv.setRoom_img(room.getRoom_img());
+        System.out.println("resvInfo의 룸이미지"+resv.getRoom_img());
+        
+        System.out.println("호텔정보얻어오는 resvInfo"+resv.getHotelName()+resv.getRoomName());
         req.setAttribute("resv", resv);
 		forward("JSP/resvcheck.jsp", req, resp);
 		
