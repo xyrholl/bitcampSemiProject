@@ -104,7 +104,7 @@
 
 
 
-					<button type="button" class="btn btn-outline-info js-returnList">글로
+					<button type="button" class="btn btn-outline-info js-returnList" style="border-radius: 5px;">글로
 						돌아가기</button>
 					<%
 						if (dto.getMemberId().equals(loginId)) {
@@ -113,10 +113,10 @@
 						class="js-update-seq">
 					<button type="button"
 						class="btn btn-outline-success js-update-review-success"
-						style="float: right;">리뷰수정완료</button>
+						style="float: right; border-radius: 5px;">리뷰수정완료</button>
 					<button type="button"
 						class="btn btn-outline-warning js-delete-review"
-						style="float: right;">리뷰삭제하기</button>
+						style="float: right; border-radius: 5px;">리뷰삭제하기</button>
 					<%
 						}
 					%>

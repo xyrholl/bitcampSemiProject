@@ -22,7 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>호텔 블루문</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
@@ -105,7 +105,7 @@
 									ResvDTO dto = list.get(i);
 									System.out.println(list.get(i).toString());
 						%>
-						<tr class="row<%=i%>">
+						<tr class="row<%=i%> list-group-item-action">
 							<th scope="row"><%=i + 1%></th>
 							<td><input type="hidden" value="<%=dto.getSeq()%>"
 								class="js-resvSeq"> <%
@@ -123,9 +123,8 @@
 								<%
 									}
 								%></td>
-							<td><a class="list-group-item list-group-item-action"><%=dto.getHotelName()%></a>
-							</td>
-							<td><a class="list-group-item list-group-item-action"><%=dto.getRoomName()%></a></td>
+							<td><a class="list-group-item"><%=dto.getHotelName()%></a></td>
+							<td><a class="list-group-item"><%=dto.getRoomName()%></a></td>
 							<td><%=dto.getCheckIn()%></td>
 							<td><%=dto.getCheckOut()%></td>
 							<td><input type="hidden" value="" class="js-currDateTmp">
@@ -156,7 +155,7 @@
  	} else {
  						System.out.println(i + ": CANCEL=0 체크아웃 지남");
  %>
-								<button type="button" class="btn btn-success">이용완료</button> <%
+								<button type="button" class="btn btn-secondary">이용완료</button> <%
  	}
  				}
  			} else {
