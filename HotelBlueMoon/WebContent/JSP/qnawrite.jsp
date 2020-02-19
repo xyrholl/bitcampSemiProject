@@ -45,6 +45,7 @@
 
 			<article>
 				<div class="input-content" style="width: 90%; margin: auto;">
+				<br>
 					<form action="<%=request.getContextPath()%>/qnawrite" method="get">
 						<br> <br>
 						<div class="input-group mb-3">

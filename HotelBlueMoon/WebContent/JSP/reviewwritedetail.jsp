@@ -43,55 +43,62 @@
 		<main class="hotelcontent">
 
 			<article>
-				<form action="insertreview" method="post"
-					enctype="multipart/form-data" class="js-file-form">
-					<input type="hidden" value="<%=resvDto.getSeq()%>"
-						class="js-input-review-resvseq" name="resvSeq"> <input
-						type="hidden" value="<%=resvDto.getHotelSeq()%>"
-						class="js-input-review-hotelseq" name="hotelSeq"> <input
-						type="hidden" value="<%=resvDto.getRoomSeq()%>"
-						class="js-input-review-roomseq" name="roomSeq"> <input
-						type="hidden" class="js-input-id" value="<%=loginId%>"
-						name="loginId"> <input type="hidden" class="js-nowTime"
-						value="" name="nowTime">
-					<table class="table table-bordered">
-						<tr>
-							<th scope="col">리뷰평점</th>
-							<td scope="col"><input type="text" class="js-input-rating"
-								name="rating"></td>
-							<th scope="col">작성자</th>
-							<td scope="col"><%=loginId%></td>
-							<th scope="col">이용인원</th>
-							<td scope="col"><%=resvDto.getCurrent_guest()%></td>
-						</tr>
-						<tr>
-							<th scope="col">호텔평점</th>
-							<td scope="col"><%=resvDto.getHotelRating()%></td>
-							<th scope="col">호텔</th>
-							<td scope="col"><%=resvDto.getHotelName()%></td>
-							<td colspan="2"><input type="file" name="imageFile">
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">제목</th>
-							<td colspan="5"><input type="text" class="js-input-title"
-								name="title"></td>
-						</tr>
-						<tr>
-							<th scope="row" colspan="6"><div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text">내용</span>
-									</div>
-									<textarea class="form-control js-input-content"
-										aria-label="With textarea" style="background-color: #fff"
-										name="content" style="height: 22rem;"></textarea>
-								</div></th>
-						</tr>
-					</table>
-					<button type="button" class="btn btn-outline-info js-returnList" style="float: left; border-radius: 5px;">돌아가기</button>
-					<button type="button" class="btn btn-outline-primary js-insert-review"
-						style="float: right; border-radius: 5px;">리뷰작성완료</button>
-				</form>
+				<div class="Reviewcontent" style="width: 90%;">
+					<br>
+					<form action="insertreview" method="post"
+						enctype="multipart/form-data" class="js-file-form">
+						<input type="hidden" value="<%=resvDto.getSeq()%>"
+							class="js-input-review-resvseq" name="resvSeq"> <input
+							type="hidden" value="<%=resvDto.getHotelSeq()%>"
+							class="js-input-review-hotelseq" name="hotelSeq"> <input
+							type="hidden" value="<%=resvDto.getRoomSeq()%>"
+							class="js-input-review-roomseq" name="roomSeq"> <input
+							type="hidden" class="js-input-id" value="<%=loginId%>"
+							name="loginId"> <input type="hidden" class="js-nowTime"
+							value="" name="nowTime">
+						<table class="table table-active">
+							<tr>
+								<th scope="col">리뷰평점</th>
+								<td scope="col"><input type="text" class="js-input-rating"
+									name="rating"></td>
+								<th scope="col">작성자</th>
+								<td scope="col"><%=loginId%></td>
+								<th scope="col">이용인원</th>
+								<td scope="col"><%=resvDto.getCurrent_guest()%></td>
+							</tr>
+							<tr>
+								<th scope="col">호텔평점</th>
+								<td scope="col"><%=resvDto.getHotelRating()%></td>
+								<th scope="col">호텔</th>
+								<td scope="col"><%=resvDto.getHotelName()%></td>
+								<td colspan="2"><input type="file" name="imageFile">
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">제목</th>
+								<td colspan="5"><input type="text" class="js-input-title"
+									name="title"></td>
+							</tr>
+						</table>
+						<div class="input-group" style="height: 18rem;">
+							<div class="input-group-prepend">
+								<span class="input-group-text">내용</span>
+							</div>
+							<textarea class="form-control js-input-content"
+								aria-label="With textarea" style="background-color: #fff"
+								name="content"></textarea>
+						</div>
+						<br>
+						<button type="button" class="btn btn-outline-info js-returnList"
+							style="float: left; border-radius: 5px;">돌아가기</button>
+						<button type="button"
+							class="btn btn-outline-success js-insert-review"
+							style="float: right; border-radius: 5px;">리뷰작성완료</button>
+						<br>
+						<br>
+						<br>
+					</form>
+				</div>
 			</article>
 
 		</main>

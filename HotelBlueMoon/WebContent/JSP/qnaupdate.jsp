@@ -50,6 +50,7 @@
 
 			<article>
 				<div class="QNAcontent" style="width: 90%;">
+				<br>
 					<form action="qnaupdate" method="get">
 						<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
 						<input type="hidden" name="command" value="QnAUpdateAf">
