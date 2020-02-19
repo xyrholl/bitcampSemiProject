@@ -104,8 +104,8 @@
 
 
 
-					<button type="button" class="btn btn-outline-info js-returnList" style="border-radius: 5px;">글로
-						돌아가기</button>
+					<button type="button" class="btn btn-outline-info js-returnList" style="border-radius: 5px;"
+					 onclick="location.href='<%=request.getContextPath() %>/reviewfoward'">목록으로</button>
 					<%
 						if (dto.getMemberId().equals(loginId)) {
 					%>

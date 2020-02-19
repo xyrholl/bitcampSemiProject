@@ -85,7 +85,8 @@
 				</div>
 				<button id="cancelBtn" type="button">취소하기</button>
 				<button id="listBtn" type="button">목록으로</button>
-				<input type="hidden" id="cancel_seq" value="<%=dto.getSeq()%>">
+				<button id="payBtn" type="button">결제하기</button>
+				<input type="hidden" id="detail_seq" value="<%=dto.getSeq()%>">
 
 			</article>
 
