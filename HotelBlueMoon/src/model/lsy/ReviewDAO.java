@@ -186,9 +186,10 @@ public class ReviewDAO {
 
 		List<ResvDTO> list = new ArrayList<ResvDTO>();
 
-		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL "
+		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL, re.PAYMENTIS "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
-				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ? ";
+				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ? "
+						+ " ORDER BY re.SEQ DESC ";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -213,6 +214,7 @@ public class ReviewDAO {
 				dto.setCheckOut(rs.getString(i++));
 				dto.setHotelPlace(rs.getString(i++));
 				dto.setCancel(rs.getInt(i++));
+				dto.setPaymentIs(rs.getInt(i++));
 				list.add(dto);
 			}
 
@@ -227,9 +229,10 @@ public class ReviewDAO {
 
 		List<ResvDTO> list = new ArrayList<ResvDTO>();
 
-		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL "
+		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL, re.PAYMENTIS "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
-				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ? ";
+				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ?"
+						+ " ORDER BY re.SEQ DESC ";
 
 		if (selectIndex == 1) {
 			sql = sql + " AND h.NAME LIKE '%'||?||'%' ";
@@ -261,6 +264,7 @@ public class ReviewDAO {
 				dto.setCheckOut(rs.getString(i++));
 				dto.setHotelPlace(rs.getString(i++));
 				dto.setCancel(rs.getInt(i++));
+				dto.setPaymentIs(rs.getInt(i++));
 				list.add(dto);
 			}
 

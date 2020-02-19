@@ -110,6 +110,7 @@
 					</tbody>
 				</table>
 
+				<button type="button" class="btn btn-outline-info js-returnList" onclick="history.back()">목록으로
 				<button type="button" class="btn btn-outline-info js-returnList" style="border-radius: 5px;">목록으로
 					돌아가기</button>
 				<%
