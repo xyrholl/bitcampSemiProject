@@ -33,9 +33,12 @@ public class MyResvCancel extends HttpServlet {
 		String command = req.getParameter("command");
 		String loginId = (String) session.getAttribute("loginId");
 		Singleton s = Singleton.getInstance();
+		int seq = Integer.parseInt(req.getParameter("detail_seq"));
+		System.out.println("JAVA: myresvcancel seq= "+seq);
+		ResvDTO dto = s.myPageService.getMyResv(seq);
 		
 		if(command.equals("cancelAf")) {
-			int seq = Integer.parseInt(req.getParameter("cancel_seq"));
+			System.out.println("command= cancelAf");
 			String nowTime = (String)req.getParameter("nowTime");
 			boolean isS = s.myPageService.resvCancel(seq);
 			
@@ -46,11 +49,23 @@ public class MyResvCancel extends HttpServlet {
 				
 				resp.sendRedirect(req.getContextPath()+"/JSP/myresvhistory.jsp?nowTime="+nowTime+"&loginId="+loginId);
 			}
-		}else {
 			
-		
-		int seq = Integer.parseInt(req.getParameter("seq"));
-		ResvDTO dto = s.myPageService.getMyResv(seq);
+		}else if(command.equals("paymentAf")) {
+			System.out.println("command= paymentAf");
+			//String loginId = dto.getId();
+			int roomSeq = dto.getRoomSeq();
+			int hotelSeq = dto.getHotelSeq();
+			String checkIn = dto.getCheckIn();
+			String checkOut = dto.getCheckOut();
+			int totalPrice = dto.getTotalPrice();
+			int current_guest = dto.getCurrent_guest();
+			
+			resp.sendRedirect(req.getContextPath()+"/resvAdd?loginId="+loginId+"&roomSeq="+roomSeq+
+												   "&hotelSeq="+hotelSeq+"&checkIn="+checkIn+"&checkOut="+checkOut+
+												   "&totalPrice="+totalPrice+"&current_guest="+current_guest);
+			
+		}else { // 그냥 detail
+			System.out.println("command= x");
 		System.out.println("JAVA cancel seq: "+seq +" dto: "+dto.toString());
 		
 		int hotelseq = dto.getHotelSeq();

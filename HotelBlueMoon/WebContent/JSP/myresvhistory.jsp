@@ -167,15 +167,17 @@
 						    </td>
 						    <td>
 						    	<%
-						    		if(dto.getPaymentIs() == 0) {
+						    		if(dto.getPaymentIs() == 0 && dto.getCancel() == 0) {
 						    			%>
 						    			<button type="button" class="btn btn-outline-success"
-						    			onclick="location.href= '<%=request.getContextPath()%>/myresvdetail?seq=<%=dto.getSeq()%>'">결제하기</button>
+						    			onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">결제하기</button>
 						    			<%
-						    		}else {
+						    		}else if(dto.getPaymentIs() == 1 && dto.getCancel() == 0) {
 						    	%>
 						    			<button type="button" class="btn btn-success">결제완료</button>
-						    	<% } %>
+						    	<% }else { %>
+						    		<button type="button" class="btn btn-outline-secondary" disabled="disabled">결제하기</button>
+						    	<%}%>
 						    </td>
 							<td>
 								<%
@@ -193,20 +195,19 @@
 												<button type="button" id="reviewBtn"
 												class="btn btn-outline-info js-review-write"
 												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
-												리뷰 쓰기</button> <%
+												리뷰쓰기</button> <%
 											 	
 												} else { // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
 												 %>
-												<button type="button" id="reviewBtn" 
-												class="btn btn-outline-info js-review-write"
+												<button type="button" id="reviewBtn" disabled="disabled"
+												class="btn btn-outline-secondary js-review-write"
 												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
-												리뷰 쓰기</button> <%
+												리뷰쓰기</button> <%
 			 									}
 						 			} else {
 						 			%>
 									<button type="button" class="btn btn-info"
-									onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰
-									보기</button> <%
+									onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰보기</button> <%
 								 	}
 								 	%>
 							</td>

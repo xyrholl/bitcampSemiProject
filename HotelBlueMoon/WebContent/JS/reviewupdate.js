@@ -4,7 +4,6 @@ const updateTitle = document.querySelector(".js-title");
 const updateContent = document.querySelector(".js-content");
 const updateBtn = document.querySelector(".js-update-review-success");
 
-const returnDetail = document.querySelector(".js-returnList");
 
 const deleteBtn = document.querySelector(".js-delete-review");
 
@@ -67,10 +66,6 @@ function updateCheck() {
 	}
 }
 
-function returnBtn() {
-	location.href = getContextPath() + "/reviewdetailfoward?seq="
-			+ updateSeq.value;
-}
 
 function deleteCheck() {
 	alert("리뷰가삭제됩니다.")
@@ -79,7 +74,7 @@ function deleteCheck() {
 
 function init() {
 	updateBtn.addEventListener("click", ratingCheck);
-	returnDetail.addEventListener("click", returnBtn);
+
 	deleteBtn.addEventListener("click", deleteCheck);
 }
 
