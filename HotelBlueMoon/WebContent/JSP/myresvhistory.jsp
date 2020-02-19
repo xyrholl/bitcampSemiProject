@@ -197,7 +197,7 @@
 											 	
 												} else { // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
 												 %>
-												<button type="button" id="reviewBtn"
+												<button type="button" id="reviewBtn" 
 												class="btn btn-outline-info js-review-write"
 												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
 												리뷰 쓰기</button> <%
