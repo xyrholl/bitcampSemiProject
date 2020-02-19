@@ -58,12 +58,12 @@ public class ResvInfo extends HttpServlet {
         
         Singleton s = Singleton.getInstance();
       
-        RoomDTO room = s.resvSerivce.getRoomInfo(hotelSeq);
-        HotelDTO hotel  = s.resvSerivce.getHotelInfo(room.getSeq());
+        RoomDTO room = s.resvSerivce.getRoomInfo(roomSeq);
+        HotelDTO hotel  = s.resvSerivce.getHotelInfo(hotelSeq);
         long stay = s.hotelService.betweenTime(checkin, checkout);
         int totalprice = room.getPrice()*(int)stay;
         
-        ResvDTO resv = new ResvDTO(hotelSeq, roomSeq, checkin, checkout, totalprice, current_guest);
+        ResvDTO resv = new ResvDTO(roomSeq, hotelSeq, checkin, checkout, totalprice, current_guest);
         resv.setHotelAddr(hotel.getAddr());
         resv.setHotelName(hotel.getName());
         resv.setHotelPlace(hotel.getPlace());
