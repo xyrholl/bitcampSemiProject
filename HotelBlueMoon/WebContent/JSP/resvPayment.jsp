@@ -7,7 +7,7 @@
 
 	ResvDTO resv = (ResvDTO) request.getAttribute("resv");
 	
-	System.out.println(resv.toString());
+	System.out.println("예약테이블에저장하고 결제하러온 resvPayment.jsp"+resv.getSeq());
 %>
 <!DOCTYPE html>
 <html>
@@ -360,6 +360,7 @@ h1 {
 						<a class="close" href="#">&times;</a>
 						<div class="content">
 							<form id="msform" action="resvPay">
+								<input type="hidden" name="resvSeq" value="<%=resv.getSeq() %>">
 								<fieldset>
 									<h3 class="fs-subtitle">Payment Information</h3>
 									<input type="text" name="name" placeholder="Name" value="<%=resv.getMemName() %>"/>

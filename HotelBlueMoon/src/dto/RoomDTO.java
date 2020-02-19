@@ -17,18 +17,19 @@ public class RoomDTO {
 	private int hotelSeq;
 	private int price;
 	private int max_guest;
-
+	private String room_img;
 	
 	public RoomDTO() {
 	}
 
-	public RoomDTO(int seq, String name, int hotelSeq, int price, int max_guest) {
+	public RoomDTO(int seq, String name, int hotelSeq, int price, int max_guest, String room_img) {
 		super();
 		this.seq = seq;
 		this.name = name;
 		this.hotelSeq = hotelSeq;
 		this.price = price;
 		this.max_guest = max_guest;
+		this.room_img = room_img;
 	}
 
 	public int getSeq() {
@@ -69,6 +70,16 @@ public class RoomDTO {
 
 	public void setMax_guest(int max_guest) {
 		this.max_guest = max_guest;
+	}
+	
+	
+
+	public String getRoom_img() {
+		return room_img;
+	}
+
+	public void setRoom_img(String room_img) {
+		this.room_img = room_img;
 	}
 
 	@Override

@@ -1,8 +1,13 @@
 package model.jdy;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import db.DBClose;
+import db.DBConnection;
 import dto.BM_MemberDTO;
 import dto.HotelDTO;
 import dto.ResvDTO;
@@ -38,10 +43,24 @@ public class ResvService {
 		return b;
 	}
 	
-	public boolean addSchedule(String checkin, String checkout, int hotelSeq) {
-		boolean b = resvDAO.addSchedule(checkin, checkout, hotelSeq);
+	public ResvDTO selectResvAddInfo(int hotelSeq, int memberSeq, int roomSeq, String checkIn, String checkOut ) {
+		ResvDTO resv = null;
+		resv = resvDAO.selectResvAddInfo(hotelSeq, memberSeq, roomSeq, checkIn, checkOut);
+		return resv;
+	}
+	
+	public boolean addSchedule(String checkin, String checkout, int hotelSeq, int roomSeq) {
+		boolean b = resvDAO.addSchedule(checkin, checkout, hotelSeq, roomSeq);
 		return b;
 	}
+	
+	public boolean updatePaymentIs(int resvSeq) {
+		boolean b = resvDAO.updatePaymentIs(resvSeq);
+		return b;
+	}
+
+
+	
 	
 
 	

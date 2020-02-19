@@ -41,6 +41,7 @@ public class ResvDTO {
 	private String roomName;
 	private int roomPrice;
 	private int roomMax_guest;
+	private String room_img;
 
 	// memDTO
 	private String id;
@@ -96,6 +97,19 @@ public class ResvDTO {
 		this.current_guest = current_guest;
 	}
 	
+	//selectResvAddInfo
+	//resv = new ResvDTO(seq, hotelSeq, memberSeq, roomSeq, checkIn, checkOut, totalPrice, current_guest);
+	public ResvDTO(int seq, int hotelSeq, int memberSeq, int roomSeq, String checkIn, String checkOut, int totalPrice, int current_guest ) {
+		super();
+		this.seq = seq;
+		this.hotelSeq = hotelSeq;
+		this.memberSeq = memberSeq;
+		this.roomSeq = roomSeq;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.totalPrice = totalPrice;
+		this.current_guest = current_guest;
+	}
 	
 	//전체
 	public ResvDTO(int seq, int memberSeq, int roomSeq, int hotelSeq, String checkIn, String checkOut, String resvDate,
@@ -334,6 +348,15 @@ public class ResvDTO {
 
 	public void setHotel_img(String hotel_img) {
 		Hotel_img = hotel_img;
+	}
+
+	
+	public String getRoom_img() {
+		return room_img;
+	}
+
+	public void setRoom_img(String room_img) {
+		this.room_img = room_img;
 	}
 
 	@Override
