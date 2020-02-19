@@ -28,7 +28,7 @@ System.out.println("kakao.jsp의 getAttri값들"+resvSeq+name+ phone+ email+ tot
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group">
+		<ul class="list-group" style="cursor: pointer;">
 			<li class="list-group-item js-main-foward">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>
 			<li class="list-group-item js-qna-foward">Q&A</li>

@@ -20,7 +20,7 @@
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group">
+		<ul class="list-group" style="cursor: pointer;">
 			<li class="list-group-item js-main-foward">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>
 			<li class="list-group-item js-qna-foward">Q&A</li>
@@ -92,7 +92,7 @@
 								for (int i = 0; i < list.size(); i++) {
 									ReviewDTO dto = list.get(i);
 						%>
-						<tr class="row<%=i%> list-group-item-action">
+						<tr class="row<%=i%> list-group-item-action" onclick="location.href='<%=request.getContextPath()%>/reviewdetailfoward?seq=<%=dto.getSeq()%>'">
 							<th scope="row"><%=i + 1%></th>
 							<td><img alt=""
 								src="http://localhost:9000/HotelBlueMoon/UPload/<%=dto.getFileRealName()%>"

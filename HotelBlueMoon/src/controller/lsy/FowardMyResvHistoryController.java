@@ -26,6 +26,7 @@ public class FowardMyResvHistoryController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("fowardmyresvhistory 서블릿 도착");
 		Singleton s = Singleton.getInstance();
 		HttpSession session = req.getSession(false);
 		String selectIndex = req.getParameter("selectIndex");
@@ -35,9 +36,11 @@ public class FowardMyResvHistoryController extends HttpServlet {
 
 		if (selectIndex == null) {
 			list = s.reviewService.resvList(loginId);
+			System.out.println("비검색");
 			req.setAttribute("resvList", list);
 		} else if (Integer.parseInt(selectIndex) == 1 || Integer.parseInt(selectIndex) == 2) {
 			list = s.reviewService.resvList(loginId, Integer.parseInt(selectIndex), searchText);
+			System.out.println("검색");
 			req.setAttribute("resvList", list);
 		}
 

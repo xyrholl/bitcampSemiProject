@@ -6,14 +6,13 @@
 <%
 	String loginId = (String) session.getAttribute("loginId");
 	System.out.println(loginId);
-	
 %>
 
 <%
 	ResvDTO resv = (ResvDTO) request.getAttribute("resv");
 
-	System.out.println("resvCheck.jsp"+resv.toString());
-	System.out.println("호텔이미지"+resv.getHotel_img()+ "룸이미지"+resv.getRoom_img());
+	System.out.println("resvCheck.jsp" + resv.toString());
+	System.out.println("호텔이미지" + resv.getHotel_img() + "룸이미지" + resv.getRoom_img());
 %>
 <!DOCTYPE html>
 <html>
@@ -121,7 +120,7 @@ img {
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group">
+		<ul class="list-group" style="cursor: pointer;">
 			<li class="list-group-item js-main-foward">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>
 			<li class="list-group-item js-qna-foward">Q&A</li>
@@ -130,7 +129,7 @@ img {
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 0vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -140,64 +139,60 @@ img {
 		</header>
 		<main class="hotelcontent">
 
-			<article>
-
-
-				<h3>예약정보</h3>
-				<div class="profile">
-				
-					<div class="profile-image">
-						<img
-						<%-- 	src="<%=request.getContextPath()%>/image/hotel/<%=resv.getHotel_img() %>" --%>
-						src="<%=request.getContextPath()%>/image/image/<%=resv.getRoom_img() %>" 
-							alt="이미지없음">
-					</div>
-					<div class="profile-user-settings">
-						<h1 class="profile-user-name"><%=resv.getHotelName()%></h1>
-						<br>
-						<p class="profile-user-area"><%=resv.getHotelAddr()%></p>
-						<ul>
-							<li><span class="profile-stat-hotel">호텔등급</span><%=resv.getHotelRating()%></li>
-							<li><span class="profile-stat-hotel">이용수</span><%=resv.getHotelUseCount()%></li>
-							<li><span class="profile-stat-hotel">평점</span> <%=resv.getHotelRating()%></li>
+			<article style="background-color: rgb(0, 0, 0, 0);">
+				<div class="resvcontent" style="width: 40%">
+					<div class="card mb-3">
+						<h3 class="card-header">예약 확인</h3>
+						<div class="card-body">
+							<h5 class="card-title"><%=resv.getHotelName()%></h5>
+							<h6 class="card-subtitle text-muted"><%=resv.getHotelAddr()%></h6>
+						</div>
+						<img style="height: 15rem; width: 100%; display: block;"
+							src="<%=request.getContextPath()%>/image/image/<%=resv.getRoom_img()%>"
+							alt="Card image">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item active">호텔등급 <%=resv.getHotelRating()%>
+								/ 평점 <%=resv.getHotelRating()%> / 이용수 <%=resv.getHotelUseCount()%></li>
+							<li class="list-group-item">CHECK-IN <%=resv.getCheckIn()%></li>
+							<li class="list-group-item">CHECK-OUT <%=resv.getCheckOut()%></li>
 						</ul>
-					</div>
-					<div class="profile-stats">
-						<ul>
-							<li><span class="profile-stat-count">CHECK-IN</span><%=resv.getCheckIn()%></li>
-							<li><span class="profile-stat-count">CHECK-OUT</span><%=resv.getCheckOut()%></li>
-							<br>
-							<li><span class="profile-stat-count">PRICE</span> <%=resv.getTotalPrice()%></li>
-							<br>
-							<li class="hotelbtm">
-								<button type="button" id="cancleBtn" class="btn btn-outline-danger">예약취소</button>
-								<button type="button" id="updateBtn"class="btn btn-outline-success">예약변경</button>
-							</li>
-						</ul>
-					</div>
-
-					<div align="center">
-						<form id="frm" action="resvAdd">
-							<input type="hidden" name="seq" value="<%=resv.getSeq()%>">
-							<input type="hidden" name="memberSeq" value="<%=resv.getMemberSeq()%>">
-							 <input type="hidden" name="roomSeq" value="<%=resv.getRoomSeq()%>">
-							 <input type="hidden" name="hotelSeq" value="<%=resv.getHotelSeq()%>">
-						   	<input type="hidden" name="checkIn" value="<%=resv.getCheckIn()%>">
-							 <input type="hidden" name="checkOut" value="<%=resv.getCheckOut()%>"> 
-							<input type="hidden" name="totalPrice" value="<%=resv.getTotalPrice()%>"> 
-							 <input type="hidden" name="current_guest" value="<%=resv.getCurrent_guest()%>"> 
-							 <input type="hidden" id="loginId" name="loginId" value="<%=loginId%>"> 
-							<input type="button" id="btn" class="btn btn-primary btn-lg" value="예약하기">
-						</form>
+						<div class="card-body">
+							<a href="#" class="card-link">Price <%=resv.getTotalPrice()%>
+								WON
+							</a>
+						</div>
+						<div class="card-footer text-muted">
+							<form id="frm" action="resvAdd">
+								<input type="hidden" name="seq" value="<%=resv.getSeq()%>">
+								<input type="hidden" name="memberSeq"
+									value="<%=resv.getMemberSeq()%>"> <input type="hidden"
+									name="roomSeq" value="<%=resv.getRoomSeq()%>"> <input
+									type="hidden" name="hotelSeq" value="<%=resv.getHotelSeq()%>">
+								<input type="hidden" name="checkIn"
+									value="<%=resv.getCheckIn()%>"> <input type="hidden"
+									name="checkOut" value="<%=resv.getCheckOut()%>"> <input
+									type="hidden" name="totalPrice"
+									value="<%=resv.getTotalPrice()%>"> <input type="hidden"
+									name="current_guest" value="<%=resv.getCurrent_guest()%>">
+								<input type="hidden" id="loginId" name="loginId"
+									value="<%=loginId%>">
+								<button type="button" id="cancleBtn"
+									class="btn btn-outline-danger">예약취소</button>
+								<button type="button" id="updateBtn"
+									class="btn btn-outline-warning">예약변경</button>
+								<input type="button" id="btn" class="btn btn-success"
+									value="예약하기">
+							</form>
+						</div>
 					</div>
 				</div>
-
 			</article>
 
 		</main>
 		<footer></footer>
 	</div>
 	<script type="text/javascript">	
+	$( document ).ready(function() {
 	$('#btn').click(function() { 
  		if($("#loginId").val() == 'null'){
  			alert("로그인시 이용가능합니다.\n로그인페이지로 이동합니다.");
@@ -210,7 +205,6 @@ img {
  							+"&checkout="+"<%=resv.getCheckOut()%>"
  							+"&guest="+<%=resv.getCurrent_guest()%>; 
 		}else{
-			alert("정보있음");
 			$("#frm").submit();
 		} 
 		
@@ -220,19 +214,21 @@ img {
 	 		+"/resvUpdate?"
 	 		+"hotelArea="+"<%=resv.getHotelPlace()%>"
 			+"&checkin="+"<%=resv.getCheckIn()%>"
-			+"&checkout="+"<%=resv.getCheckOut()%>"
-			+"&guest="+<%=resv.getCurrent_guest()%>; 
-		
-	});
-	
-	$('#cancleBtn').click(function() { 
-		alert("메인화면으로 이동합니다.");
-		location.href= getContextPath()+"/JSP/main.jsp";
-		
-	});
-	
+			+"&checkout="+"<%=resv.getCheckOut()%>
+		" + "&guest="
+										+
+	<%=resv.getCurrent_guest()%>
+		;
+							});
+
+					$('#cancleBtn').click(function() {
+						alert("메인화면으로 이동합니다.");
+						location.href = getContextPath() + "/JSP/main.jsp";
+
+					});
+				});
 	</script>
-	
+
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>

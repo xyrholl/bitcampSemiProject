@@ -79,15 +79,15 @@
 				<table class="table table-active">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
-							<th scope="col">평점</th>
+							<th scope="col" style="width: 3%">#</th>
+							<th scope="col" style="width: 3%">평점</th>
 							<th scope="col">호텔명</th>
 							<th scope="col">방이름</th>
-							<th scope="col">체크인</th>
-							<th scope="col">체크아웃</th>
-							<th scope="col">취소여부</th>
-							<th scope="col">결제여부</th>
-							<th scope="col">리뷰여부</th>
+							<th scope="col" style="width: 11%;">체크인</th>
+							<th scope="col" style="width: 11%;">체크아웃</th>
+							<th scope="col" style="width: 11.6%;">취소여부</th>
+							<th scope="col" style="width: 11.6%;">결제여부</th>
+							<th scope="col" style="width: 11.6%;">리뷰여부</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -96,8 +96,7 @@
 						%>
 						<tr>
 							<td colspan="8"><ul>
-									<li class="list-group-item" style="float: none;">작성된 글이
-										없습니다</li>
+									<li class="list-group-item" style="float: none;">예약을 신청한 이력이 없습니다.</li>
 								</ul></td>
 						</tr>
 						<%
@@ -106,12 +105,12 @@
 									ResvDTO dto = list.get(i);
 									System.out.println(list.get(i).toString());
 						%>
-						<tr class="row<%=i%> list-group-item-action">
+						<tr class="row<%=i%> list-group-item-action" onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">
 							<th scope="row"><%=i + 1%></th>
 							<td><input type="hidden" value="<%=dto.getSeq()%>"
 								class="js-resvSeq"> <%
-								 	if (dto.getHotelRating() >= 4) {
-								 %>
+ 	if (dto.getHotelRating() >= 4) {
+ %>
 								<button class="btn btn-primary"><%=dto.getHotelRating()%></button>
 								<%
 									} else if (dto.getHotelRating() < 4 && dto.getHotelRating() >= 3) {
@@ -139,46 +138,49 @@
 
 												if (compare > 0) {
 													System.out.println(i + ": CANCEL=0 체크인 안지남");
-												%>
-													<button type="button" class="btn btn-outline-danger"
-													onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=cancel&seq=<%=dto.getSeq()%>'">
-													취소하기</button> <%
- 												} else {
-								 					System.out.println(i + ": CANCEL=0 체크인 지남");
-								 					String checkOutstr = dto.getCheckOut();
-								 					Date nowCheckOut = simpledataFormat.parse(checkOutstr);
-								 					int compare_out = nowCheckOut.compareTo(nowDate);
-								
-								 					if (compare_out > 0) { // 체크아웃  안지남
-								 						System.out.println(i + ": CANCEL=0 체크아웃 안지남");
-								 					%>
-													<button type="button" class="btn btn-warning">취소불가</button> <%
-				 									} else {
-												 	System.out.println(i + ": CANCEL=0 체크아웃 지남");
-												 	%>
-													<button type="button" class="btn btn-secondary">이용완료</button> <%
- 													}
-					 							}
-					 				} else {
-					 					System.out.println(i + ": CANCEL=1 취소완료");
-					 				%>
-									<button type="button" class="btn btn-danger">취소완료</button> <%
-								 	}%>
-						    </td>
-						    <td>
-						    	<%
-						    		if(dto.getPaymentIs() == 0 && dto.getCancel() == 0) {
-						    			%>
-						    			<button type="button" class="btn btn-outline-success"
-						    			onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">결제하기</button>
-						    			<%
-						    		}else if(dto.getPaymentIs() == 1 && dto.getCancel() == 0) {
-						    	%>
-						    			<button type="button" class="btn btn-success">결제완료</button>
-						    	<% }else { %>
-						    		<button type="button" class="btn btn-outline-secondary" disabled="disabled">결제하기</button>
-						    	<%}%>
-						    </td>
+								%>
+								<button type="button" class="btn btn-outline-danger"
+									onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">
+									취소하기</button> <%
+ 	} else {
+ 					System.out.println(i + ": CANCEL=0 체크인 지남");
+ 					String checkOutstr = dto.getCheckOut();
+ 					Date nowCheckOut = simpledataFormat.parse(checkOutstr);
+ 					int compare_out = nowCheckOut.compareTo(nowDate);
+
+ 					if (compare_out > 0) { // 체크아웃  안지남
+ 						System.out.println(i + ": CANCEL=0 체크아웃 안지남");
+ %>
+								<button type="button" class="btn btn-warning">취소불가</button> <%
+ 	} else {
+ 						System.out.println(i + ": CANCEL=0 체크아웃 지남");
+ %>
+								<button type="button" class="btn btn-secondary">이용완료</button> <%
+ 	}
+ 				}
+ 			} else {
+ 				System.out.println(i + ": CANCEL=1 취소완료");
+ %>
+								<button type="button" class="btn btn-danger">취소완료</button> <%
+ 	}
+ %></td>
+							<td>
+								<%
+									if (dto.getPaymentIs() == 0 && dto.getCancel() == 0) {
+								%>
+								<button type="button" class="btn btn-outline-success"
+									onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">결제하기</button>
+								<%
+									} else if (dto.getPaymentIs() == 1 && dto.getCancel() == 0) {
+								%>
+								<button type="button" class="btn btn-success">결제완료</button> <%
+ 	} else {
+ %>
+								<button type="button" class="btn btn-outline-secondary"
+									disabled="disabled">결제하기</button> <%
+ 	}
+ %>
+							</td>
 							<td>
 								<%
 									if (dto.getReviewIs() == 0) {
@@ -189,31 +191,31 @@
 
 												int compare_out = nowCheckOut.compareTo(nowDate);
 												System.out.println(i + ": REVIEWIS=0 comout " + compare_out);
-												
+
 												if (compare_out == 0) { // 체크아웃 지남 && dto.getPayMent == 1
-												%>
-												<button type="button" id="reviewBtn"
-												class="btn btn-outline-info js-review-write"
-												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
-												리뷰쓰기</button> <%
-											 	
-												} else { // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
-												 %>
-												<button type="button" id="reviewBtn" disabled="disabled"
-												class="btn btn-outline-secondary js-review-write"
-												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
-												리뷰쓰기</button> <%
-			 									}
-						 			} else {
-						 			%>
-									<button type="button" class="btn btn-info"
-									onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰보기</button> <%
-								 	}
-								 	%>
+								%>
+								<button type="button" id="reviewBtn"
+									class="btn btn-outline-info js-review-write"
+									onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
+									리뷰쓰기</button> <%
+ 	} else { // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
+ %>
+								<button type="button" id="reviewBtn" disabled="disabled"
+									class="btn btn-outline-secondary js-review-write"
+									onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
+									리뷰쓰기</button> <%
+ 	}
+ 			} else {
+ %>
+								<button type="button" class="btn btn-info"
+									onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰보기</button>
+								<%
+									}
+								%>
 							</td>
 						</tr>
 						<%
-								}
+							}
 							}
 						%>
 					</tbody>
