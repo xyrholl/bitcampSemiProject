@@ -127,7 +127,7 @@
 							<td><a class="list-group-item"><%=dto.getRoomName()%></a></td>
 							<td><%=dto.getCheckIn()%></td>
 							<td><%=dto.getCheckOut()%></td>
-							<td><input type="hidden" value="" class="js-currDateTmp">
+							<td onclick="event.cancelBubble = true;"><input type="hidden" value="" class="js-currDateTmp">
 								<%
 									if (dto.getCancel() == 0) {
 												String checkInstr = dto.getCheckIn();
@@ -164,7 +164,7 @@
 								<button type="button" class="btn btn-danger">취소완료</button> <%
  	}
  %></td>
-							<td>
+							<td onclick="event.cancelBubble = true;">
 								<%
 									if (dto.getPaymentIs() == 0 && dto.getCancel() == 0) {
 								%>
@@ -181,7 +181,7 @@
  	}
  %>
 							</td>
-							<td>
+							<td onclick="event.cancelBubble = true;">
 								<%
 									if (dto.getReviewIs() == 0) {
 

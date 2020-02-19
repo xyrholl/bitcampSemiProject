@@ -38,11 +38,12 @@
 		</header>
 		<main class="hotelcontent">
 			<article style="background-color: rgb(0, 0, 0, 0);">
-				<div style="display: table; width: 40%; margin: auto;">
+				<div style="display: table; width: 45%; margin: auto;">
 					<form action="../regiservlet" class="frm" method="post">
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon1">ID</span>
+								<span class="input-group-text" id="basic-addon1"
+									style="width: 114px;">ID</span>
 							</div>
 							<input name="id" type="text" class="form-control input-id"
 								placeholder="4자리  이상 (영문 대소문자, 숫자)" aria-label="Username"
@@ -51,12 +52,14 @@
 						</div>
 
 						<div>
-							<div class="alert alert-light checkbox" role="alert" style="visibility: hidden;"></div>
+							<div class="alert alert-light checkbox" role="alert"
+								style="visibility: hidden;"></div>
 						</div>
 
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon1">PASSWORD</span>
+								<span class="input-group-text" id="basic-addon1"
+									style="width: 114px;">PASSWORD</span>
 							</div>
 							<input name="pwd" type="password" class="form-control input-pwd"
 								placeholder="4자리  이상 (영문 대소문자, 숫자)" aria-label="Username"
@@ -65,7 +68,8 @@
 
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon1">NAME</span>
+								<span class="input-group-text" id="basic-addon1"
+									style="width: 114px;">NAME</span>
 							</div>
 							<input name="name" type="text" class="form-control input-name"
 								placeholder="이름 입력하세요." aria-label="Username"
@@ -74,7 +78,8 @@
 
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon1">PHONE</span>
+								<span class="input-group-text" id="basic-addon1"
+									style="width: 114px;">PHONE</span>
 							</div>
 							<input name="phone" type="text" class="form-control input-phone"
 								placeholder="전화번호를 입력하세요." aria-label="Username"
@@ -83,15 +88,16 @@
 
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon1">e-mail</span>
+								<span class="input-group-text" id="basic-addon1"
+									style="width: 114px;">e-mail</span>
 							</div>
 							<input name="email" type="email" class="form-control input-email"
 								placeholder="이메일 형식에 맞춰 입력해주세요" aria-label="Username"
 								aria-describedby="emailHelp">
 						</div>
-
+						<br>
 						<div>
-							<div style="margin-left: 190px;">
+							<div>
 								<button type="button" class="btn btn-info submitBtn">회원가입</button>
 							</div>
 						</div>

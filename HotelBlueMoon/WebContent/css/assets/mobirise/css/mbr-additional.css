@@ -1175,7 +1175,7 @@ body {
 	border: none;
 	position: absolute;
 	background: transparent;
-	z-index: 2;
+	z-index: 1;
 	left: -90px;
 	top: 25%;
 	height: 50%;
