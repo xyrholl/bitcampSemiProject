@@ -1,3 +1,5 @@
+<%@page import="dto.HotelDTO"%>
+<%@page import="dto.RoomDTO"%>
 <%@page import="dto.ResvDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -7,11 +9,12 @@
 	if (loginId == null || loginId.equals("")) {
 		response.sendRedirect(request.getContextPath() + "/fowardlogin");
 	}
-	String hotelName = (String) request.getAttribute("hotelName");
-	String roomName = (String) request.getAttribute("roomName");
+	HotelDTO hotelDto = (HotelDTO) request.getAttribute("hotelDto");
+	RoomDTO roomDto = (RoomDTO) request.getAttribute("roomDto");
 	String memName = (String) request.getAttribute("memName");
 
 	ResvDTO dto = (ResvDTO) request.getAttribute("dto");
+	System.out.println(dto.getHotel_img());
 %>
 <!DOCTYPE html>
 <html>
@@ -36,7 +39,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 0vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -46,53 +49,44 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article>
-				<div class="Reviewcontent" style="width: 90%;">
-					<br>
-					<div class="detailbox">
-						<table class="table table-active">
-							<thead>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">예약자</th>
-									<td><%=memName%></td>
-								</tr>
-								<tr>
-									<th scope="row">호텔</th>
-									<td><%=hotelName%></td>
-								</tr>
-								<tr>
-									<th scope="row">방</th>
-									<td><%=roomName%></td>
-								</tr>
-								<tr>
-									<th scope="row">예약일</th>
-									<td><%=dto.getResvDate()%></td>
-								</tr>
-								<tr>
-									<th scope="row">체크인</th>
-									<td><%=dto.getCheckIn()%></td>
-								</tr>
-								<tr>
-									<th scope="row">체크아웃</th>
-									<td><%=dto.getCheckOut()%></td>
-								</tr>
-							</tbody>
-						</table>
+			<article style="background-color: rgb(0, 0, 0, 0);">
+				<div class="resvcontent" style="width: 40%">
+					<div class="card mb-3">
+						<h3 class="card-header">예약 확인</h3>
+						<div class="card-body">
+							<h5 class="card-title"><%=hotelDto.getName()%></h5>
+							<h6 class="card-subtitle text-muted"><%=roomDto.getName()%></h6>
+						</div>
+						<img style="height: 15rem; width: 100%; display: block;"
+							src="<%=request.getContextPath()%>/image/image/<%=roomDto.getRoom_img()%>"
+							alt="Card image">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item active"><%=memName%> / 예약일 <%=dto.getResvDate()%></li>
+							<li class="list-group-item">
+								<h6 class="card-subtitle text-muted"><%=hotelDto.getAddr()%></h6>
+							</li>
+							<li class="list-group-item">CHECK-IN <%=dto.getCheckIn()%></li>
+							<li class="list-group-item">CHECK-OUT <%=dto.getCheckOut()%></li>
+						</ul>
+						<div class="card-body">
+							<a href="#" class="card-link">Price <%=dto.getTotalPrice()%>
+								WON
+							</a>
+						</div>
+						<div class="card-footer text-muted">
+							<form id="frm" action="resvAdd">
+								<input type="hidden" id="loginId" name="loginId"
+									value="<%=loginId%>">
+								<button id="listBtn" type="button" class="btn btn-outline-info">목록으로</button>
+								<button id="cancelBtn" type="button"
+									class="btn btn-outline-danger">취소하기</button>
+								<button id="payBtn" type="button"
+									class="btn btn-outline-success">결제하기</button>
+								<input type="hidden" id="detail_seq" value="<%=dto.getSeq()%>">
+							</form>
+						</div>
 					</div>
-					<button id="payBtn" type="button"
-						style="float: right; border-radius: 5px;"
-						class="btn btn-outline-success">결제하기</button>
-					<button id="cancelBtn" type="button"
-						style="float: right; border-radius: 5px;"
-						class="btn btn-outline-danger">취소하기</button>
-					<button id="listBtn" type="button"
-						style="float: left; border-radius: 5px;"
-						class="btn btn-outline-info">목록으로</button>
-					<input type="hidden" id="detail_seq" value="<%=dto.getSeq()%>">
 				</div>
-
 			</article>
 
 		</main>

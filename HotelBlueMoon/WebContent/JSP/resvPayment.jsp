@@ -179,7 +179,6 @@ h1 {
 }
 
 .overlay {
-	position: absolute;
 	top: 130px;
 	bottom: 0;
 	left: 800px;
@@ -196,10 +195,10 @@ h1 {
 
 .popup {
 	margin: 60px auto;
+	margin-top: 600px;
 	padding: 20px;
 	border-radius: 5px;
 	width: 500px;
-	position: relative;
 	transition: all 5s ease-in-out;
 }
 
@@ -290,7 +289,7 @@ h1 {
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group">
+		<ul class="list-group" style="cursor: pointer;">
 			<li class="list-group-item js-main-foward">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>
 			<li class="list-group-item js-qna-foward">Q&A</li>
@@ -309,7 +308,7 @@ h1 {
 		</header>
 		<main class="hotelcontent">
 
-			<article>
+			<article style="background-color: rgb(0, 0, 0, 0);">
 
 				<div class="container">
 					<div class="tab"></div>

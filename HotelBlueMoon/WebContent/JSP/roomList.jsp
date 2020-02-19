@@ -37,7 +37,7 @@
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group">
+		<ul class="list-group" style="cursor: pointer;">
 			<li class="list-group-item js-main-foward">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>
 			<li class="list-group-item js-qna-foward">Q&A</li>
@@ -48,27 +48,24 @@
 	<div class="hotelcol-2">
 		<header>
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right; padding-top: 15px; position: fixed; margin-left: 80rem;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
 			<input type="hidden" value="<%=loginId%>" class="js-session">
 			<div class="mainDiv" style="float: left; width: 500px;">
-				<button onclick="goToBefore()" type="submit"
-					class="btn btn-form btn-secondary mbr-lighter display-8">
-					이전화면</button>
 				<div>
 					<input type="text" id="hotelName"
 						class="mbr-section-title align-left mbr-fonts-style mbr-bold mbr-white pb-4 display-2"
 						style="background-color: transparent; border-style: none" disabled></input>
 				</div>
 			</div>
+
 		</header>
 
 		<main class="hotelcontent">
 
 			<article style="background-color: rgb(0, 0, 0, 0);">
-
 
 				<div class="mainSpan"></div>
 

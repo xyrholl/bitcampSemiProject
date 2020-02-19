@@ -39,7 +39,7 @@
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group" style="color: #EBEBEB;">
+		<ul class="list-group" style="color: #EBEBEB; cursor: pointer;">
 			<li class="list-group-item js-main-foward"
 				style="border-top-left-radius: 0; border-top-right-radius: 0;">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>

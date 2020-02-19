@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import dto.HotelDTO;
 import dto.ResvDTO;
+import dto.RoomDTO;
 import singleton.Singleton;
 @WebServlet("/myresvcancel")
 public class MyResvCancel extends HttpServlet {
@@ -72,14 +74,12 @@ public class MyResvCancel extends HttpServlet {
 		int roomseq = dto.getRoomSeq();
 		int memseq = dto.getMemberSeq();
 		
-		String hotelname = s.myPageService.gethotelName(hotelseq);
-		String roomname = s.myPageService.getroomName(roomseq);
+		HotelDTO hotelDto = s.myPageService.gethotelNameAddr(hotelseq);
+		RoomDTO roomDto = s.myPageService.getroomNameImg(roomseq);
 		String memname = s.myPageService.getmemName(memseq);
 		
-		System.out.println(hotelname + " "+roomname+" "+memname);
-		
-		req.setAttribute("hotelName", hotelname);
-		req.setAttribute("roomName", roomname);
+		req.setAttribute("hotelDto", hotelDto);
+		req.setAttribute("roomDto", roomDto);
 		req.setAttribute("memName", memname);
 		req.setAttribute("dto", dto);
 		forward("JSP/myresvdetail.jsp", req, resp);

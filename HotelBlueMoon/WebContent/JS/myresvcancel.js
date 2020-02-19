@@ -16,16 +16,13 @@ function currDate() {
 $(function(){
 	var detail_seq = $("#detail_seq").val();
 	$(document).on("click", "#cancelBtn", function(){
-		alert("JS: 취소seq= "+detail_seq);
 		location.href= getContextPath()+"/myresvcancel?command=cancelAf&nowTime="+nowTime+"&detail_seq="+detail_seq;
 	});
 	$(document).on("click", "#payBtn", function(){
-		alert("JS: 결제seq= "+detail_seq);
 		location.href= getContextPath()+"/myresvcancel?command=paymentAf&nowTime="+nowTime+"&detail_seq="+detail_seq;
 	});
 	
 	$(document).on("click", "#listBtn", function(){
-	
 		location.href= getContextPath()+"/fowardmyresvhistory?nowTime="+nowTime;
 	});
 	
