@@ -110,7 +110,7 @@
 					</tbody>
 				</table>
 
-				<button type="button" class="btn btn-outline-info js-returnList">목록으로
+				<button type="button" class="btn btn-outline-info js-returnList" style="border-radius: 5px;">목록으로
 					돌아가기</button>
 				<%
 					if (dto.getMemberId().equals(loginId)) {
@@ -118,10 +118,10 @@
 				<input type="hidden" value="<%=dto.getSeq()%>" class="js-update-seq">
 				<button type="button"
 					class="btn btn-outline-success js-update-review"
-					style="float: right;">리뷰수정하기</button>
+					style="float: right; border-radius: 5px;">리뷰수정하기</button>
 				<button type="button"
 					class="btn btn-outline-warning js-delete-review"
-					style="float: right;">리뷰삭제하기</button>
+					style="float: right; border-radius: 5px;">리뷰삭제하기</button>
 				<%
 					}
 				%>

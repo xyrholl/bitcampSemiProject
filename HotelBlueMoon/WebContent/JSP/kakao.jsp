@@ -15,7 +15,7 @@ System.out.println("kakao.jsp의 getAttri값들"+resvSeq+name+ phone+ email+ tot
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>호텔 블루문</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"

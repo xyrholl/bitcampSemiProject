@@ -24,29 +24,64 @@ public class HotelListService {
 	}
 	
 	public long betweenTime(String firstDate, String secondDate) {
-		try{
-	        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-	        Date first = format.parse(firstDate);
-	        Date second = format.parse(secondDate);
+	      try {
+	         String sd1 = firstDate.substring(0, 4);
+	         String sd2 = firstDate.substring(5, 7);
+	         String sd3 = firstDate.substring(8, 10);
+	         String ed1 = secondDate.substring(0, 4);
+	         String ed2 = secondDate.substring(5, 7);
+	         String ed3 = secondDate.substring(8, 10);
 
-	        long calDate = first.getTime() - second.getTime(); 
+	         firstDate = sd1 + "-" + sd2 + "-" + sd3;
+	         secondDate = ed1 + "-" + ed2 + "-" + ed3;
 
-	        long calDateDays = calDate / ( 24*60*60*1000); 
-	 
-	        calDateDays = Math.abs(calDateDays);
-	        
-	        System.out.println("시간차: "+calDateDays);
-	        
-	        return calDateDays;
-	        
-	        }
-	        catch(ParseException e)
-	        {
+	         SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+	         Date sDate = fm.parse(firstDate);
+	         Date eDate = fm.parse(secondDate);
 
-	        }
-		
-		return 0;
-	}
+	         long diff = eDate.getTime() - sDate.getTime();
+	         long diffDays = diff / (24 * 60 * 60 * 1000);
+	         long difMonth = (diffDays + 1) / 30; // 총개월수 ( 대략 30으로 나눴을때 나오는 개월수 )
+	         long chkNum = 0;
+
+	         int j = 0;
+
+	         for (int i = Integer.parseInt(sd2); j < difMonth; i++) {
+	            if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
+	               chkNum += 31;
+	            } else if (i == 4 || i == 6 || i == 9 || i == 11) {
+	               chkNum += 30;
+	            }
+
+	            if (i == 2) {
+	               if (((Integer.parseInt(sd2)) % 400) == 0) {
+	                  chkNum += 29;
+	               } else {
+	                  chkNum += 28;
+	               }
+	            }
+	            j++;
+	            if (i > 12) {
+	               i = 1;
+	               j = j - 1;
+	            }
+	         }
+
+	         long allMonth = (chkNum + 1) / 30;
+	         if (diffDays < chkNum) {
+	            allMonth = allMonth - 1;
+	         }
+
+	         System.out.println("날짜차이 =" + diffDays);
+
+	         return diffDays;
+
+	      } catch (Exception e) {
+	      }
+	      
+	      return 0;
+
+	   }
 	
 	public String createJson(String guest, String area, String checkin, String checkout) {
 		String temp="[";

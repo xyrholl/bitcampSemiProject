@@ -116,7 +116,7 @@
 								href="<%=request.getContextPath()%>/reviewdetailfoward?seq=<%=dto.getSeq()%>"
 								class="list-group-item list-group-item-action"><%=dto.getTitle()%></a>
 							</td>
-							<td><a class="list-group-item list-group-item-action"><%=dto.getHotelName()%></a></td>
+							<td><a class="list-group-item"><%=dto.getHotelName()%></a></td>
 						</tr>
 						<%
 							}

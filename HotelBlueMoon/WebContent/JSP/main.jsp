@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>호텔 블루문</title>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -42,10 +42,10 @@
 		<ul class="list-group" style="color: #EBEBEB;">
 			<li class="list-group-item js-main-foward"
 				style="border-top-left-radius: 0; border-top-right-radius: 0;">메인</li>
-			<li class="list-group-item js-search-foward">검색</li>
-			<li class="list-group-item js-qna-foward">Q&A</li>
-			<li class="list-group-item js-review-foward">Review</li>
-			<li class="list-group-item js-mypage-foward"
+			<li class="list-group-item list-group-item-action js-search-foward">검색</li>
+			<li class="list-group-item list-group-item-action js-qna-foward">Q&A</li>
+			<li class="list-group-item list-group-item-action js-review-foward">Review</li>
+			<li class="list-group-item list-group-item-action js-mypage-foward"
 				style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">MyPage</li>
 		</ul>
 	</nav>
