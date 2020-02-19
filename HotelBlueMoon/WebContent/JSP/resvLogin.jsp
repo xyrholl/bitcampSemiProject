@@ -2,16 +2,16 @@
 	pageEncoding="UTF-8"%>
 
 <%
-/* req.setAttribute("checkin", checkin);
-req.setAttribute("checkout", checkout);
-req.setAttribute("current_guest", current_guest);
-req.setAttribute("hotelseq", hotelSeq); */
+	/* req.setAttribute("checkin", checkin);
+	req.setAttribute("checkout", checkout);
+	req.setAttribute("current_guest", current_guest);
+	req.setAttribute("hotelseq", hotelSeq); */
 	String loginId = (String) session.getAttribute("loginId");
 	String shotelSeq = request.getParameter("hotelseq");
 	int hotelseq = Integer.parseInt(shotelSeq);
 	String checkin = request.getParameter("checkin");
-	String checkout= request.getParameter("checkout");
-	
+	String checkout = request.getParameter("checkout");
+
 	String sguest = request.getParameter("geust");
 	int guest = Integer.parseInt(sguest);
 %>
@@ -21,9 +21,7 @@ req.setAttribute("hotelseq", hotelSeq); */
 <meta charset="UTF-8">
 <title>login.jsp</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -42,9 +40,8 @@ req.setAttribute("hotelseq", hotelSeq); */
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -76,10 +73,10 @@ req.setAttribute("hotelseq", hotelSeq); */
 						
 						String sguest = request.getParameter("geust");
 						int guest = Integer.parseInt(sguest); -->
-					<input type="hidden" id="hotelseq" value="<%=hotelseq %>">
-					<input type="hidden" id="checkin" value="<%=checkin %>">
-					<input type="hidden" id="checkout" value="<%=checkout %>">
-					<input type="hidden" id="guest" value="<%=guest %>">
+					<input type="hidden" id="hotelseq" value="<%=hotelseq%>">
+					<input type="hidden" id="checkin" value="<%=checkin%>"> <input
+						type="hidden" id="checkout" value="<%=checkout%>"> <input
+						type="hidden" id="guest" value="<%=guest%>">
 				</div>
 
 				<div>
@@ -88,7 +85,8 @@ req.setAttribute("hotelseq", hotelSeq); */
 					</div>
 				</div>
 
-				<div class="btn-group" role="group" aria-label="Basic example">
+				<div class="btn-group" role="group" aria-label="Basic example"
+					style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 					<button type="button" class="btn btn-info regiBtn">회원가입</button>
 					<button type="button" class="btn btn-primary loginBtn">로그인</button>
 				</div>
@@ -96,7 +94,7 @@ req.setAttribute("hotelseq", hotelSeq); */
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

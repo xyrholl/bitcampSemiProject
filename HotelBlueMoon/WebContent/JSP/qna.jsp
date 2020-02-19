@@ -36,20 +36,6 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 </head>
-<style type="text/css">
-table tr td ul li {
-	float: left;
-	list-style: none;
-}
-
-.list-group-item1 {
-	position: relative;
-	display: block;
-	padding: .75rem 1.25rem;
-	margin-bottom: -1px;
-	background-color: #fff;
-}
-</style>
 
 <body>
 	<nav class="hotelcol-1">
@@ -63,21 +49,20 @@ table tr td ul li {
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
-				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
+				<button type="button" class="btn btn-success js-foward-login">로그인</button>
 			</div>
 			<input type="hidden" value="<%=loginId%>" class="js-session">
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: #2B3E50">
+			<article>
 
 				<div class="input-group-append">
 					<select id="choice" class="custom-select js-search-select"
-						style="width: 20%">
+						style="width: 20%; border-bottom-left-radius: 5px; border-top-left-radius: 5px; height: 2.22rem; margin-top: 0.08rem;">
 						<option value="sel" selected>선 택</option>
 						<option value="title">제목</option>
 						<option value="writer">작성자</option>
@@ -92,7 +77,8 @@ table tr td ul li {
 						<div class="input-group-append">
 							<button type="button" class="btn btn-secondary"
 								onclick="searchQnA()">검색</button>
-							<button type="button" class="btn btn-outline-info"
+							<button type="button" class="btn btn-secondary"
+								style="border-bottom-right-radius: 5px; border-top-right-radius: 5px;"
 								onclick="location.href='<%=request.getContextPath()%>'+'/qnafoward'">전체목록</button>
 						</div>
 					</div>
@@ -101,7 +87,7 @@ table tr td ul li {
 
 				<div align="center">
 
-					<table class="table table-sm">
+					<table class="table table-active">
 						<thead>
 							<tr align="center">
 								<th scope="col">#</th>
@@ -115,7 +101,7 @@ table tr td ul li {
 							%>
 							<tr>
 								<td colspan="3" align="center"><ul>
-										<li class="list-group-item">작성된 글이 없습니다</li>
+										<li class="list-group-item" style="float: none;">작성된 글이 없습니다</li>
 									</ul></td>
 							</tr>
 							<%
@@ -209,14 +195,14 @@ span a:hover {
 						}
 					%>
 				</div>
-				<button type="button" class="btn btn-info"
+				<button type="button" class="btn btn-secondary" style="float: right; border-radius: 5px;"
 					onclick="location.href='<%=request.getContextPath()%>/qnawrite?command=qnawrite&loginId=<%=loginId%>'">QnA
 					글쓰기</button>
 
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/qna.js"></script>

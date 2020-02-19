@@ -42,7 +42,7 @@ function login() {
 		},
 		success : function(data) {
 			if (data === "success") {
-				alert("login success")
+				alert(" '" + inputId.value + "' 님 호텔 블루문에 오신걸 환영합니다!")
 				location.href = getContextPath() + "/mainfoward?id="
 						+ `${inputId.value}`;
 			} else if (data === "id false") {

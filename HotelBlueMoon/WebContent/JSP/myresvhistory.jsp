@@ -42,9 +42,8 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -52,15 +51,13 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article
-				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
-
-				<h1>My Resv History</h1>
+			<article>
 
 				<input type="hidden" value="" class="js-currDateTmp">
 				<div class="input-group-append">
 
-					<select class="custom-select js-search-select" style="width: 20%">
+					<select class="custom-select js-search-select"
+						style="width: 20%; border-bottom-left-radius: 5px; border-top-left-radius: 5px; height: 2.22rem; margin-top: 0.08rem;">
 						<option selected>검색</option>
 						<option value="1">호텔이름</option>
 						<option value="2">지역</option>
@@ -73,12 +70,13 @@
 
 						<div class="input-group-append">
 							<span class="input-group-text js-searchBtn" id="basic-addon2">검색</span>
-							<span class="input-group-text js-allListBtn" id="basic-addon2">전체목록</span>
+							<span class="input-group-text js-allListBtn" id="basic-addon2"
+								style="border-bottom-right-radius: 5px; border-top-right-radius: 5px;">전체목록</span>
 						</div>
 					</div>
 				</div>
 
-				<table class="table">
+				<table class="table table-active">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
@@ -96,11 +94,14 @@
 							if (list == null || list.size() == 0) {
 						%>
 						<tr>
-							<td colspan="8">작성된 글이 없습니다</td>
+							<td colspan="8"><ul>
+									<li class="list-group-item" style="float: none;">작성된 글이
+										없습니다</li>
+								</ul></td>
 						</tr>
 						<%
 							} else {
-									for (int i = 0; i < list.size(); i++) {
+								for (int i = 0; i < list.size(); i++) {
 									ResvDTO dto = list.get(i);
 									System.out.println(list.get(i).toString());
 						%>
@@ -108,17 +109,17 @@
 							<th scope="row"><%=i + 1%></th>
 							<td><input type="hidden" value="<%=dto.getSeq()%>"
 								class="js-resvSeq"> <%
-									if (dto.getHotelRating() >= 4) {
-								 %>
-									<button class="btn btn-primary"><%=dto.getHotelRating()%></button>
+ 	if (dto.getHotelRating() >= 4) {
+ %>
+								<button class="btn btn-primary"><%=dto.getHotelRating()%></button>
 								<%
 									} else if (dto.getHotelRating() < 4 && dto.getHotelRating() >= 3) {
 								%>
-									<button class="btn btn-info"><%=dto.getHotelRating()%></button>
+								<button class="btn btn-info"><%=dto.getHotelRating()%></button>
 								<%
 									} else {
 								%>
-									<button class="btn btn-secondary"><%=dto.getHotelRating()%></button>
+								<button class="btn btn-secondary"><%=dto.getHotelRating()%></button>
 								<%
 									}
 								%></td>
@@ -137,80 +138,75 @@
 												int compare = nowCheckIn.compareTo(nowDate);
 
 												if (compare > 0) {
-													System.out.println(i+": CANCEL=0 체크인 안지남");
-												%>
-												<button type="button" class="btn btn-outline-danger"
-													onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=cancel&seq=<%=dto.getSeq()%>'">
-													취소하기</button> 
-											 <%	} else {
-											 		System.out.println(i+": CANCEL=0 체크인 지남");
-											 		String checkOutstr = dto.getCheckOut();
-													Date nowCheckOut = simpledataFormat.parse(checkOutstr);
-													int compare_out = nowCheckOut.compareTo(nowDate);
-													
-													
-													if(compare_out > 0){ // 체크아웃  안지남
-														System.out.println(i+": CANCEL=0 체크아웃 안지남");
-											 			%>
-											 			<button type="button" class="btn btn-warning">취소불가</button>
-											 			<%
-											 		}else{
-											 			System.out.println(i+": CANCEL=0 체크아웃 지남");
-											 			%>
-														<button type="button" class="btn btn-success">이용완료</button> 
-											 			<%
-											 		}
-						 						}
-						 			} else { System.out.println(i+": CANCEL=1 취소완료");
-						 			%>
-										<button type="button" class="btn btn-danger">취소완료</button> 
-									<%
-						 			}%>
-						 	</td>
+													System.out.println(i + ": CANCEL=0 체크인 안지남");
+								%>
+								<button type="button" class="btn btn-outline-danger"
+									onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=cancel&seq=<%=dto.getSeq()%>'">
+									취소하기</button> <%
+ 	} else {
+ 					System.out.println(i + ": CANCEL=0 체크인 지남");
+ 					String checkOutstr = dto.getCheckOut();
+ 					Date nowCheckOut = simpledataFormat.parse(checkOutstr);
+ 					int compare_out = nowCheckOut.compareTo(nowDate);
+
+ 					if (compare_out > 0) { // 체크아웃  안지남
+ 						System.out.println(i + ": CANCEL=0 체크아웃 안지남");
+ %>
+								<button type="button" class="btn btn-warning">취소불가</button> <%
+ 	} else {
+ 						System.out.println(i + ": CANCEL=0 체크아웃 지남");
+ %>
+								<button type="button" class="btn btn-success">이용완료</button> <%
+ 	}
+ 				}
+ 			} else {
+ 				System.out.println(i + ": CANCEL=1 취소완료");
+ %>
+								<button type="button" class="btn btn-danger">취소완료</button> <%
+ 	}
+ %></td>
 							<td>
 								<%
 									if (dto.getReviewIs() == 0) {
-										
-										String checkOutstr = dto.getCheckOut();
-										SimpleDateFormat simpledataFormat = new SimpleDateFormat("yyyy-MM-dd");
-										Date nowCheckOut = simpledataFormat.parse(checkOutstr);
 
-										int compare_out = nowCheckOut.compareTo(nowDate);
-										System.out.println(i+": REVIEWIS=0 comout "+compare_out);
-										if(compare_out < 0 ){ // 체크아웃 지남 && dto.getPayMent == 1
-											
-										%>
-											<button type="button" id="reviewBtn" 
-												class="btn btn-outline-info js-review-write"
-												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
-												리뷰 쓰기</button>
-											
-										<% 
-										}else{ // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
-										%>
-											<button type="button" id="reviewBtn" 
-												class="btn btn-outline-info js-review-write"
-												onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
-												리뷰 쓰기</button>
-										<%
-										}
-								 	} else {
-								 %>
-										<button type="button" class="btn btn-info"
-										 onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰 보기</button> 
-								<%
-								 	}%>
+												String checkOutstr = dto.getCheckOut();
+												SimpleDateFormat simpledataFormat = new SimpleDateFormat("yyyy-MM-dd");
+												Date nowCheckOut = simpledataFormat.parse(checkOutstr);
+
+												int compare_out = nowCheckOut.compareTo(nowDate);
+												System.out.println(i + ": REVIEWIS=0 comout " + compare_out);
+												if (compare_out < 0) { // 체크아웃 지남 && dto.getPayMent == 1
+								%>
+								<button type="button" id="reviewBtn"
+									class="btn btn-outline-info js-review-write"
+									onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
+									리뷰 쓰기</button> <%
+ 	} else { // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
+ %>
+								<button type="button" id="reviewBtn"
+									class="btn btn-outline-info js-review-write"
+									onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
+									리뷰 쓰기</button> <%
+ 	}
+ 			} else {
+ %>
+								<button type="button" class="btn btn-info"
+									onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰
+									보기</button> <%
+ 	}
+ %>
 							</td>
 						</tr>
-							<%
-								}
-							}%>
+						<%
+							}
+							}
+						%>
 					</tbody>
 				</table>
-								
+
 			</article>
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

@@ -13,9 +13,7 @@
 <meta charset="UTF-8">
 <title>main</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -33,9 +31,8 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -43,8 +40,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article
-				style="background-color: rgba(255, 255, 255); overflow-y: scroll; height: 500px;">
+			<article>
 
 				<table class="table table-bordered">
 					<thead>
@@ -120,7 +116,8 @@
 					if (dto.getMemberId().equals(loginId)) {
 				%>
 				<input type="hidden" value="<%=dto.getSeq()%>" class="js-update-seq">
-				<button type="button" class="btn btn-outline-success js-update-review"
+				<button type="button"
+					class="btn btn-outline-success js-update-review"
 					style="float: right;">리뷰수정하기</button>
 				<button type="button"
 					class="btn btn-outline-warning js-delete-review"
@@ -131,7 +128,7 @@
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

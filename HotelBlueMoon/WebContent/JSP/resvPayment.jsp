@@ -7,7 +7,7 @@
 
 	ResvDTO resv = (ResvDTO) request.getAttribute("resv");
 	
-	System.out.println(resv.toString());
+	System.out.println("예약테이블에저장하고 결제하러온 resvPayment.jsp"+resv.getSeq());
 %>
 <!DOCTYPE html>
 <html>
@@ -15,9 +15,7 @@
 <meta charset="UTF-8">
 <title>main</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -302,9 +300,8 @@ h1 {
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -363,6 +360,7 @@ h1 {
 						<a class="close" href="#">&times;</a>
 						<div class="content">
 							<form id="msform" action="resvPay">
+								<input type="hidden" name="resvSeq" value="<%=resv.getSeq() %>">
 								<fieldset>
 									<h3 class="fs-subtitle">Payment Information</h3>
 									<input type="text" name="name" placeholder="Name" value="<%=resv.getMemName() %>"/>
@@ -379,7 +377,7 @@ h1 {
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

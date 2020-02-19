@@ -34,9 +34,8 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -44,34 +43,36 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: #2B3E50">
-
-				<h1>Q n A</h1>
-				<form action="<%=request.getContextPath()%>/qnawrite" method="get">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">제목</span>
+			<article>
+				<div class="input-content" style="width: 80%; margin: auto;">
+					<form action="<%=request.getContextPath()%>/qnawrite" method="get">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">제목</span>
+							</div>
+							<input name="title" type="text" class="form-control input-id"
+								placeholder="제목을 입력하세요." aria-label="Username"
+								aria-describedby="basic-addon1" required="required">
 						</div>
-						<input name="title" type="text" class="form-control input-id"
-							placeholder="제목을 입력하세요." aria-label="Username"
-							aria-describedby="basic-addon1" required="required">
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlTextarea1">질문 사항</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1"
-							rows="3" name="content"></textarea>
-					</div>
-					<input type="hidden" name="command" value="qnawriteAf"> <input
-						type="hidden" name="memberseq" value="<%=memberseq%>">
-					<button type="submit" class="btn btn-primary">글 쓰기</button>
-					<button type="button" class="btn btn-info"
-						onclick="location.href='<%=request.getContextPath()%>/qnafoward'">목록으로</button>
-				</form>
-
+						<div class="form-group">
+							<label for="exampleFormControlTextarea1">문의 사항</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1"
+								rows="3" name="content" style="height: 22rem;"
+								placeholder="문의사항"></textarea>
+						</div>
+						<input type="hidden" name="command" value="qnawriteAf"> <input
+							type="hidden" name="memberseq" value="<%=memberseq%>">
+						<button type="submit" class="btn btn-outline-primary"
+							style="float: right; border-radius: 5px;">글 쓰기</button>
+						<button type="button" class="btn btn-outline-info"
+							style="float: left; border-radius: 5px;"
+							onclick="location.href='<%=request.getContextPath()%>/qnafoward'">목록으로</button>
+					</form>
+				</div>
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

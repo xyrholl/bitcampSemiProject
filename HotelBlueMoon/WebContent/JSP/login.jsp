@@ -34,17 +34,16 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
-				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
+				<button type="button" class="btn btn-success js-foward-login">로그인</button>
 			</div>
 			<input type="hidden" value="<%=loginId%>" class="js-session">
 		</header>
 		<main class="hotelcontent">
 
-			<article>
+			<article style="background-color: rgb(0, 0, 0, 0);">
 				<div style="display: table; width: 35%; margin: auto;">
 					<input type="hidden" id="hotelSeq" value="<%=hotelSeq%>"> <input
 						type="hidden" id="checkin" value="<%=checkin%>"> <input
@@ -77,13 +76,13 @@
 					<div class="btn-group" role="group" aria-label="Basic example"
 						style="margin-left: 120px;">
 						<button type="button" class="btn btn-info regiBtn">회원가입</button>
-						<button type="button" class="btn btn-primary loginBtn">로그인</button>
+						<button type="button" class="btn btn-success loginBtn">로그인</button>
 					</div>
 				</div>
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

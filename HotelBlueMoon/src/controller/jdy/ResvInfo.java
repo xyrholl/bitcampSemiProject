@@ -58,22 +58,26 @@ public class ResvInfo extends HttpServlet {
         
         Singleton s = Singleton.getInstance();
       
-        RoomDTO room = s.resvSerivce.getRoomInfo(hotelSeq);
-        HotelDTO hotel  = s.resvSerivce.getHotelInfo(room.getSeq());
+        RoomDTO room = s.resvSerivce.getRoomInfo(roomSeq);
+        HotelDTO hotel  = s.resvSerivce.getHotelInfo(hotelSeq);
         long stay = s.hotelService.betweenTime(checkin, checkout);
         int totalprice = room.getPrice()*(int)stay;
         
-        ResvDTO resv = new ResvDTO(hotelSeq, roomSeq, checkin, checkout, totalprice, current_guest);
+        ResvDTO resv = new ResvDTO(roomSeq, hotelSeq, checkin, checkout, totalprice, current_guest);
         resv.setHotelAddr(hotel.getAddr());
         resv.setHotelName(hotel.getName());
         resv.setHotelPlace(hotel.getPlace());
         resv.setHotelRating(hotel.getRating());
         resv.setHotelUseCount(hotel.getUseCount());
         resv.setHotel_img(hotel.getHotel_img());
-        
+        System.out.println("resvInfo의 호텔이미지"+resv.getHotel_img());
         resv.setRoomName(room.getName());
         resv.setRoomPrice(room.getPrice());
         resv.setRoomMax_guest(room.getMax_guest());
+        resv.setRoom_img(room.getRoom_img());
+        System.out.println("resvInfo의 룸이미지"+resv.getRoom_img());
+        
+        System.out.println("호텔정보얻어오는 resvInfo"+resv.getHotelName()+resv.getRoomName());
         req.setAttribute("resv", resv);
 		forward("JSP/resvcheck.jsp", req, resp);
 		

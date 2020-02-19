@@ -39,9 +39,8 @@ float: left;
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			Header
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -49,7 +48,7 @@ float: left;
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: rgba(255, 255, 255); overflow-y:scroll; height: 500px;">
+			<article>
 
 				<form action="qnaupdate" method="get">
 					<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
@@ -85,7 +84,7 @@ float: left;
 			</article>
 
 		</main>
-		<footer>Footer</footer>
+		<footer></footer>
 	</div>
 
 	<script type="text/javascript"

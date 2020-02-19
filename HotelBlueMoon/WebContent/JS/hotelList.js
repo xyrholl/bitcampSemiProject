@@ -59,18 +59,12 @@ function ajax(checkin, checkout, guest, area){
 								star += "☆";
 							}
 							$(".mainSpan").append(
-											"<div class=\"card\" style=\"width: 18rem;\">"
-													+ "<img class=\"card-img-top\" src=\"../image/hotel/" + data[i].hotelImg + "\" alt=\"Card image cap\">"
-													+ "<div class=\"card-body\">"
-													+ "<h5 class=\"card-title\">"
-													+ data[i].name
-													+ "</h5>"
-													+ "<p class=\"card-text\">"
-													+ data[i].addr + "<br>[평점 : " + star + " / " + data[i].rating + "점]</p>"
-													+ "<a href=\"../goRoom?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout 
-													+ "&guest=" + guest + "&hotelName=" + data[i].name + "\" class=\"btn btn-primary\">Reservation</a>"
-													+ "</div>"
-													+ "</div>");
+									"<div class=\"card mb-3\"><h5 class=\"card-header\">" + data[i].name + "</h5>"
+									+ "<img style=\"height: 200px; width: 100%; display: block;\" src=\"../image/hotel/" + data[i].hotelImg + "\" alt=\"Card image\">"
+									+ "<div class=\"card-body\"><p class=\"card-text\">"
+									+ data[i].addr + "</p><p class=\"card-text\">[평점 : " + star + " / " + data[i].rating + "점]</p></div>"
+									+ "<div class=\"card-footer text-muted\" style=\"text-align: center;\"><a href=\"../goRoom?hotelSeq=" + data[i].seq + "&checkin=" + checkin + "&checkout=" + checkout + "&guest=" + guest + "&hotelName=" + data[i].name 
+									+ "\" class=\"btn btn-primary\">Reservation</a></div></div>");
 
 							console.log(data[i].name);
 						}
