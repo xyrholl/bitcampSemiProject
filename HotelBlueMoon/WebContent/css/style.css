@@ -15,6 +15,7 @@ body {
 
 .hotelcol-1 {
 	flex: 1;
+	position: fixed;
 }
 
 .hotelcol-2 {
@@ -33,7 +34,12 @@ body {
 	min-height: 60vh;
 }
 
-header, footer {
+header {
+	height: 20vh;
+	margin-left: 15.5em;
+}
+
+footer {
 	height: 20vh;
 }
 
@@ -52,4 +58,31 @@ footer, article, nav {
 
 article {
 	background-color: #2B3E50;
+	min-height: 36rem;
+	margin-left: 15rem;
+	margin-right: 9rem;
 }
+
+/* common */
+.clfix:after {
+	content: ".";
+	display: block;
+	height: 0px;
+	clear: both;
+	visibility: hidden;
+}
+
+.clfix {
+	display: inline-block;
+}
+
+.clfix {
+	display: block;
+}
+
+* html .clfix {
+	height: 1%;
+} /* Hides from IE-mac */
+.clfix {
+	zoom: 1;
+} /*for IE 5.5-7*/

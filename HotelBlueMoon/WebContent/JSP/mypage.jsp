@@ -41,7 +41,7 @@
 	<div class="hotelcol-2">
 		<header>
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right; padding-top: 15px;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -53,7 +53,7 @@
 
 				<div class="mypage-content" align="center">
 					<form action="mypageupdate" method="get">
-						<div class="mytable" style="width: 40%;">
+						<div class="mytable" style="width: 40%; float: left;">
 							<table class="table table-active">
 								<col width="100">
 								<col width="200">
@@ -74,29 +74,32 @@
 									<td><%=dto.getEmail()%></td>
 								</tr>
 							</table>
+							<button type="submit" class="btn btn-outline-primary"
+								style="margin-bottom: 15px;">회원정보 수정하기</button>
 						</div>
-						<button type="submit" class="btn btn-outline-primary">회원정보
-							수정하기</button>
-						<br> <br>
-						<ul class="list-group">
-							<li id="reviewCount"
-								class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
-								내가 쓴 리뷰 보기 <span class="badge badge-pill badge-primary"><%=reviewCount%></span>
-							</li>
+						<div class="clfix"></div>
+						<div class="mylist">
+
+							<ul class="list-group">
+								<li id="reviewCount"
+									class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
+									내가 쓴 리뷰 보기 <span class="badge badge-pill badge-primary"><%=reviewCount%></span>
+								</li>
 
 
-							<li id="qnaCount"
-								class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
-								내가 쓴 QnA 보기 <span class="badge badge-pill badge-primary"><%=qnaCount%></span>
-							</li>
-							<li id="resvCount"
-								class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
-								예약 내역 보기 및 리뷰 쓰기<span class="badge badge-pill badge-primary"><%=resvCount%></span>
-							</li>
-						</ul>
-						<br> <input type="hidden" value="" class="js-currDateTmp">
-						<input type="hidden" name="command" value="mypageUpdate">
-						<input type="hidden" name="id" value="<%=dto.getId()%>">
+								<li id="qnaCount"
+									class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
+									내가 쓴 QnA 보기 <span class="badge badge-pill badge-primary"><%=qnaCount%></span>
+								</li>
+								<li id="resvCount"
+									class="list-group-item d-flex justify-content-between align-items-center list-group-item list-group-item-action">
+									예약 내역 보기 및 리뷰 쓰기<span class="badge badge-pill badge-primary"><%=resvCount%></span>
+								</li>
+							</ul>
+							<input type="hidden" value="" class="js-currDateTmp"> <input
+								type="hidden" name="command" value="mypageUpdate"> <input
+								type="hidden" name="id" value="<%=dto.getId()%>">
+						</div>
 					</form>
 				</div>
 

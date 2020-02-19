@@ -68,7 +68,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header style="margin-left: 10px;">
+		<header>
 			<input type="hidden" value="<%=loginId%>" class="js-session">
 			<div class="mainDiv" style="float: left; width: 500px;">
 				<div class="col-3 input-wrap area" style="float: left;">
@@ -129,7 +129,7 @@
 					</span>
 				</div>
 				<div class="btn-group" role="group" aria-label="Basic example"
-					style="float: right;">
+					style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 					<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 					<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 				</div>

@@ -17,9 +17,7 @@
 <meta charset="UTF-8">
 <title>QnA Comment</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="<%=request.getContextPath()%>/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
@@ -30,7 +28,7 @@
 	<div class="hotelcol-2">
 		<header>
 			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right; padding-top: 15px;">
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
@@ -96,16 +94,16 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">내용</span>
 										</div>
-										<textarea class="form-control" name="content" aria-label="With textarea"
-											 style="background-color: #fff"></textarea>
+										<textarea class="form-control" name="content"
+											aria-label="With textarea" style="background-color: #fff"></textarea>
 									</div>
 								</th>
-											 
+
 							</tr>
 						</tbody>
 					</table>
-					<input type="hidden" name="command" value="qnacommentAf">
-					<input type="hidden" name="seq" value="<%=dto.getSeq() %>">
+					<input type="hidden" name="command" value="qnacommentAf"> <input
+						type="hidden" name="seq" value="<%=dto.getSeq()%>">
 					<button type="submit">답글 달기</button>
 				</form>
 

@@ -51,8 +51,8 @@
 	</nav>
 	<div class="hotelcol-2">
 		<header>
-			<div class="btn-group" role="group" aria-label="Basic example"
-				style="float: right; padding-top: 15px;">
+			<div class="btn-group " role="group" aria-label="Basic example"
+				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 				<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 			</div>
