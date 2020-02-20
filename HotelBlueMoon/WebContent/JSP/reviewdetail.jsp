@@ -40,7 +40,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.2);">
 				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
 					style="width: 25%; float: left;">
 				<div style="float: left; margin-top: 5vh;">
@@ -117,9 +117,18 @@
 							readonly="readonly"
 							style="background-color: #fff; height: 13.4rem;"><%=dto.getContent()%></textarea>
 						<div class="input-group-prepend">
-							<span><img
+							<span> <%
+ 	if (dto.getFileRealName() == null || dto.getFileRealName().equals("null")) {
+ %><img
 								src="<%=request.getContextPath()%>/image/image/<%=dto.getRoomImg()%>"
-								style="width: 20rem;"></span>
+								style="width: 20rem;"> <%
+ 	} else {
+ %><img
+								src="http://localhost:9000/HotelBlueMoon/UPload/<%=dto.getFileRealName()%>"
+								style="width: 20rem;"> <%
+ 	}
+ %>
+							</span>
 						</div>
 					</div>
 					<br>

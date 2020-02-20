@@ -35,6 +35,7 @@ public class ReviewDTO {
 	// HotelDTO
 	private String hotelName;
 	private Double hotelRating;
+	private String hotelImg;
 
 	// RoomDTO
 	private String roomName;
@@ -82,6 +83,14 @@ public class ReviewDTO {
 		this.checkOutDate = checkOutDate;
 		this.current_guest = current_guest;
 		this.memberId = memberId;
+	}
+
+	public String getHotelImg() {
+		return hotelImg;
+	}
+
+	public void setHotelImg(String hotelImg) {
+		this.hotelImg = hotelImg;
 	}
 
 	public String getRoomImg() {

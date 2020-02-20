@@ -6,8 +6,8 @@
 	String loginId = (String) session.getAttribute("loginId");
 
 	ResvDTO resv = (ResvDTO) request.getAttribute("resv");
-	
-	System.out.println("예약테이블에저장하고 결제하러온 resvPayment.jsp"+resv.getSeq());
+
+	System.out.println("예약테이블에저장하고 결제하러온 resvPayment.jsp" + resv.getSeq());
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,7 @@ body {
 	margin: 0 auto;
 	padding: 0;
 	background-color: #EFE8E2;
-	font-family: tahoma;
+	padding: 40px;
 }
 
 .paid {
@@ -114,12 +114,10 @@ table {
 
 .right {
 	text-align: right;
-
 }
 
 .center {
 	text-align: center;
-	padding-top: 20px;
 }
 
 .kakao {
@@ -195,7 +193,7 @@ h1 {
 
 .popup {
 	margin: 60px auto;
-	margin-top: 600px;
+	margin-top: 620px;
 	padding: 20px;
 	border-radius: 5px;
 	width: 500px;
@@ -281,9 +279,10 @@ h1 {
 #msform .action-button:hover, #msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
-.logo{
-  width: 30px;
-  height: 30px;
+
+.logo {
+	width: 30px;
+	height: 30px;
 }
 </style>
 </head>
@@ -312,8 +311,10 @@ h1 {
 
 				<div class="container">
 					<div class="card border-warning mb-3" style="max-width: 24rem;">
-						<div class="card-header"><h5><%=resv.getHotelName()%>
-							<%=resv.getRoomName()%></h5></div>
+						<div class="card-header">
+							<h5 style="margin: auto;"><%=resv.getHotelName()%>
+								<%=resv.getRoomName()%></h5>
+						</div>
 						<div class="card-body">
 							<p class="card-text"><%=resv.getHotelAddr()%></p>
 							<p class="card-text">
@@ -321,16 +322,21 @@ h1 {
 								<%=resv.getCheckIn()%>
 								/ 체크아웃
 								<%=resv.getCheckOut()%></p>
-							<h5 class="card-title">
-								Price
-								<%=resv.getTotalPrice()%>
-								WON
-							</h5>
+							<ul class="nav nav-pills flex-column">
+								<li class="nav-item"><a class="nav-link active" style="border-radius: 5px;"><h5
+											class="card-title" style="margin: 0 auto;">
+											Price
+											<%=resv.getTotalPrice()%>
+											WON
+										</h5></a></li>
+							</ul>
+
 							<div class="sign center">
-								<br /> 
-								<button type="button" class="btn btn-outline-primary" style="border-radius: 5px;" onclick="location.href='mainfoward'">나중에 결제하기</button>
-								<a class="kakao" href="#popup1"> <img alt=""
-									class="logo"
+								<br />
+								<button type="button" class="btn btn-outline-primary"
+									style="border-radius: 5px;"
+									onclick="location.href='mainfoward'">나중에 결제하기</button>
+								<a class="kakao" href="#popup1"> <img alt="" class="logo"
 									src="<%=request.getContextPath()%>/image/kakao.JPG">KaKaoPay
 								</a> <br />
 								<div class="thankyou">Thank you for your business</div>
@@ -343,14 +349,17 @@ h1 {
 						<a class="close" href="#">&times;</a>
 						<div class="content">
 							<form id="msform" action="resvPay">
-								<input type="hidden" name="resvSeq" value="<%=resv.getSeq() %>">
+								<input type="hidden" name="resvSeq" value="<%=resv.getSeq()%>">
 								<fieldset>
 									<h3 class="fs-subtitle">Payment Information</h3>
-									<input type="text" name="name" placeholder="Name" value="<%=resv.getMemName() %>"/>
-									 <input type="text" name="phone" placeholder="Phone" value="<%=resv.getPhoneNum()%>"/> 
-									<input type="text" name="email" placeholder="E-mail" value="<%=resv.getEmail() %>" /> 
-									<input type="hidden" name="totalprice" value="<%=resv.getTotalPrice() %>"> 
-									<input	type="submit" class="submit action-button" value="결제하기" />
+									<input type="text" name="name" placeholder="Name"
+										value="<%=resv.getMemName()%>" /> <input type="text"
+										name="phone" placeholder="Phone"
+										value="<%=resv.getPhoneNum()%>" /> <input type="text"
+										name="email" placeholder="E-mail" value="<%=resv.getEmail()%>" />
+									<input type="hidden" name="totalprice"
+										value="<%=resv.getTotalPrice()%>"> <input
+										type="submit" class="submit action-button" value="결제하기" />
 								</fieldset>
 							</form>
 						</div>

@@ -39,7 +39,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.2);">
 				<input type="hidden" value="" class="js-currDateTmp"> <img
 					alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
 					style="width: 25%; float: left;">
@@ -61,8 +61,9 @@
 							aria-describedby="basic-addon2">
 
 						<div class="input-group-append">
-							<span class="input-group-text js-searchBtn" id="basic-addon2" style="cursor: pointer;">검색</span>
-							<span class="input-group-text js-allListBtn" id="basic-addon2"
+							<span class="input-group-text js-searchBtn" id="basic-addon2"
+								style="cursor: pointer;">검색</span> <span
+								class="input-group-text js-allListBtn" id="basic-addon2"
 								style="border-bottom-right-radius: 5px; border-top-right-radius: 5px; cursor: pointer;">전체목록</span>
 						</div>
 					</div>
@@ -93,13 +94,24 @@
 							} else {
 								for (int i = 0; i < list.size(); i++) {
 									ReviewDTO dto = list.get(i);
+									System.out.println(dto.getFileRealName());
 						%>
 						<tr class="row<%=i%> list-group-item-action"
 							onclick="location.href='<%=request.getContextPath()%>/reviewdetailfoward?seq=<%=dto.getSeq()%>'">
 							<th scope="row"><%=i + 1%></th>
-							<td><img alt=""
+							<td>
+								<%
+									if (dto.getFileRealName() == null || dto.getFileRealName().equals("")) {
+								%><img
+								src="<%=request.getContextPath()%>/image/hotel/<%=dto.getHotelImg()%>"
+								width="45px" height="45px"> <%
+ 	} else {
+ %> <img
 								src="http://localhost:9000/HotelBlueMoon/UPload/<%=dto.getFileRealName()%>"
-								width="40px" height="40px"></td>
+								width="40px" height="40px"> <%
+ 	}
+ %>
+							</td>
 							<td>
 								<%
 									if (dto.getRating() >= 4) {

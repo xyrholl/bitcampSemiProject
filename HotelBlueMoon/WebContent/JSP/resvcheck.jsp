@@ -157,7 +157,7 @@ img {
 							<li class="list-group-item">CHECK-OUT <%=resv.getCheckOut()%></li>
 						</ul>
 						<div class="card-body">
-							<a href="#" class="card-link">Price <%=resv.getTotalPrice()%>
+							<a class="card-link" style="color: #DF691A;">Price <%=resv.getTotalPrice()%>
 								WON
 							</a>
 						</div>
