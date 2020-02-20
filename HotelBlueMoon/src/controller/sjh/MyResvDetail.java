@@ -15,8 +15,8 @@ import dto.HotelDTO;
 import dto.ResvDTO;
 import dto.RoomDTO;
 import singleton.Singleton;
-@WebServlet("/myresvcancel")
-public class MyResvCancel extends HttpServlet {
+@WebServlet("/myresvdetail")
+public class MyResvDetail extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,6 +33,10 @@ public class MyResvCancel extends HttpServlet {
 		HttpSession session = req.getSession(false);
 		
 		String command = req.getParameter("command");
+		String ctype = req.getParameter("ctype");
+		String ptype = req.getParameter("ptype");
+		
+		
 		String loginId = (String) session.getAttribute("loginId");
 		Singleton s = Singleton.getInstance();
 		int seq = Integer.parseInt(req.getParameter("detail_seq"));
@@ -74,6 +78,9 @@ public class MyResvCancel extends HttpServlet {
 		RoomDTO roomDto = s.myPageService.getroomNameImg(roomseq);
 		String memname = s.myPageService.getmemName(memseq);
 		
+		System.out.println("detail JAVA: ctype= "+ctype);
+		req.setAttribute("ctype", ctype);
+		req.setAttribute("ptype", ptype);
 		req.setAttribute("hotelDto", hotelDto);
 		req.setAttribute("roomDto", roomDto);
 		req.setAttribute("memName", memname);

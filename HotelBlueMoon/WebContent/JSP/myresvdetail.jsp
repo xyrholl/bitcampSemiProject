@@ -13,8 +13,13 @@
 	RoomDTO roomDto = (RoomDTO) request.getAttribute("roomDto");
 	String memName = (String) request.getAttribute("memName");
 
+	String ctype = (String) request.getAttribute("ctype");
+	String ptype = (String) request.getAttribute("ptype");
+	
 	ResvDTO dto = (ResvDTO) request.getAttribute("dto");
 	System.out.println(dto.getHotel_img());
+	
+	System.out.println("detail JSP: ctype= "+ctype+" / ptype= "+ptype);
 %>
 <!DOCTYPE html>
 <html>
@@ -78,10 +83,31 @@
 								<input type="hidden" id="loginId" name="loginId"
 									value="<%=loginId%>">
 								<button id="listBtn" type="button" class="btn btn-outline-info">목록으로</button>
-								<button id="cancelBtn" type="button"
-									class="btn btn-outline-danger">취소하기</button>
-								<button id="payBtn" type="button"
-									class="btn btn-outline-success">결제하기</button>
+								<% if(ctype.equals("1c")){ %>
+									<button type="button" class="btn btn-outline-danger" disabled="disabled" value="1c">취소하기</button>
+								<%}else if(ctype.equals("2c")){ %>
+									<button type="button" class="btn btn-secondary" value="2c">자동취소</button>
+								<%}else if(ctype.equals("3c")){ %>
+									<button type="button" class="btn btn-success" value="3c">이용완료</button>
+								<%}else if(ctype.equals("4c")){ %>
+									<button type="button" id="cancelBtn" class="btn btn-outline-danger" value="4c">취소하기</button>
+								<%}else if(ctype.equals("5c")){ %>
+									<button type="button" class="btn btn-danger" value="5">취소완료</button>
+								<%} %>
+								
+								
+								<% if(ptype.equals("1p")){ %>
+									<button type="button" class="btn btn-outline-warning" disabled="disabled" value="1p">결제하기</button>
+								<%}else if(ptype.equals("2p")){ %>
+									<button type="button" class="btn btn-warning" value="2p">결제완료</button>
+								<%}else if(ptype.equals("3p")){ %>
+									<button type="button" class="btn btn-warning" disabled="disabled" value="3p">결제완료</button>
+								<%}else if(ptype.equals("4p")){ %>
+									<button type="button" id="payBtn" class="btn btn-outline-warning" value="4p">결제하기</button>
+								<%}else if(ptype.equals("5p")){ %>
+									<button type="button" class="btn btn-secondary" disabled="disabled" value="5p">기간만료</button>
+								<%} %>
+								
 								<input type="hidden" id="detail_seq" value="<%=dto.getSeq()%>">
 							</form>
 						</div>
@@ -93,7 +119,7 @@
 		<footer></footer>
 	</div>
 	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/JS/myresvcancel.js"></script>
+		src="<%=request.getContextPath()%>/JS/myresvdetail.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/JS/main-form.js"></script>
 </body>

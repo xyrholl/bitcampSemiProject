@@ -16,10 +16,10 @@ function currDate() {
 $(function(){
 	var detail_seq = $("#detail_seq").val();
 	$(document).on("click", "#cancelBtn", function(){
-		location.href= getContextPath()+"/myresvcancel?command=cancelAf&nowTime="+nowTime+"&detail_seq="+detail_seq;
+		location.href= getContextPath()+"/myresvdetail?command=cancelAf&nowTime="+nowTime+"&detail_seq="+detail_seq;
 	});
 	$(document).on("click", "#payBtn", function(){
-		location.href= getContextPath()+"/myresvcancel?command=paymentAf&nowTime="+nowTime+"&detail_seq="+detail_seq;
+		location.href= getContextPath()+"/myresvdetail?command=paymentAf&nowTime="+nowTime+"&detail_seq="+detail_seq;
 	});
 	
 	$(document).on("click", "#listBtn", function(){
