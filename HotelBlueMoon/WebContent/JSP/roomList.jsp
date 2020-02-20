@@ -57,7 +57,7 @@
 				<div>
 					<input type="text" id="hotelName"
 						class="mbr-section-title align-left mbr-fonts-style mbr-bold mbr-white pb-4 display-2"
-						style="background-color: transparent; border-style: none" disabled></input>
+						style="background-color: transparent; border-style: none; margin-top: 11px;" disabled></input>
 				</div>
 			</div>
 

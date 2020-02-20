@@ -75,9 +75,9 @@ public class ReviewDAO {
 	public List<ReviewDTO> reviewList() {
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
 
-		String sql = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC), SEQ, RATING, NAME, TITLE, CONTENT, WRITEDATE, IMAGE "
+		String sql = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC), SEQ, RATING, NAME, TITLE, CONTENT, WRITEDATE, REVIEW_IMAGE, HOTEL_IMG "
 				+ " FROM( "
-				+ " SELECT r.SEQ AS SEQ, r.RATING AS RATING, h.NAME AS NAME, TITLE, CONTENT, r.writedate AS WRITEDATE, r.REVIEW_IMG_REAL AS IMAGE "
+				+ " SELECT r.SEQ AS SEQ, r.RATING AS RATING, h.NAME AS NAME, TITLE, CONTENT, r.writedate AS WRITEDATE, r.REVIEW_IMG_REAL AS REVIEW_IMAGE, h.HOTEL_IMG AS HOTEL_IMG "
 				+ " FROM REVIEW r, HOTEL h " + " WHERE r.HotelSEQ = h.SEQ " + " AND DEL = 0) ";
 
 		Connection conn = null;
@@ -100,7 +100,7 @@ public class ReviewDAO {
 				dto.setContent(rs.getString(i++));
 				dto.setWriteDate(rs.getString(i++));
 				dto.setFileRealName(rs.getString(i++));
-				System.out.println(dto.getFileRealName());
+				dto.setHotelImg(rs.getString(i++));
 				list.add(dto);
 			}
 
@@ -113,9 +113,9 @@ public class ReviewDAO {
 	public List<ReviewDTO> reviewList(int selectIndex, String text) {
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
 
-		String sql1 = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC)AS RNUM, REVIEWSEQ, RATING, HOTELNAME, REVIEWTITLE, REVIEWCONTENT, WRITEDATE, IMAGE"
+		String sql1 = " SELECT ROW_NUMBER()OVER(ORDER BY WRITEDATE DESC)AS RNUM, REVIEWSEQ, RATING, HOTELNAME, REVIEWTITLE, REVIEWCONTENT, WRITEDATE, REVIEW_IMAGE, HOTEL_IMG "
 				+ " FROM( "
-				+ " SELECT r.SEQ AS REVIEWSEQ, r.RATING AS RATING, h.NAME AS HOTELNAME, r.TITLE AS REVIEWTITLE, r.CONTENT AS REVIEWCONTENT, r.writedate AS WRITEDATE, m.ID AS MEMBERID, r.REVIEW_IMG AS IMAGE "
+				+ " SELECT r.SEQ AS REVIEWSEQ, r.RATING AS RATING, h.NAME AS HOTELNAME, r.TITLE AS REVIEWTITLE, r.CONTENT AS REVIEWCONTENT, r.writedate AS WRITEDATE, m.ID AS MEMBERID, r.REVIEW_IMG_REAL AS REVIEW_IMAGE, h.HOTEL_IMG AS HOTEL_IMG "
 				+ " FROM REVIEW r, HOTEL h, BM_MEMBER m "
 				+ " WHERE r.HotelSEQ = h.SEQ AND r.MemberSEQ = m.SEQ AND r.DEL = 0) ";
 
@@ -149,7 +149,7 @@ public class ReviewDAO {
 				dto.setContent(rs.getString(i++));
 				dto.setWriteDate(rs.getString(i++));
 				dto.setFileRealName(rs.getString(i++));
-				System.out.println(dto.getFileRealName());
+				dto.setHotelImg(rs.getString(i++));
 				list.add(dto);
 			}
 
