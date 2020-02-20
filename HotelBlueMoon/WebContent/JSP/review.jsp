@@ -29,7 +29,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 2vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -40,10 +40,13 @@
 		<main class="hotelcontent">
 
 			<article>
-
-				<input type="hidden" value="" class="js-currDateTmp">
-				<div class="input-group-append">
-
+				<input type="hidden" value="" class="js-currDateTmp"> <img
+					alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
+					style="width: 25%; float: left;">
+				<div style="float: left; margin-top: 5vh;">
+					<h1>Review</h1>
+				</div>
+				<div class="input-group-append" style="margin-top: 14vh;">
 					<select class="custom-select js-search-select"
 						style="width: 20%; border-bottom-left-radius: 5px; border-top-left-radius: 5px; height: 2.22rem; margin-top: 0.08rem;">
 						<option selected>검색</option>
@@ -52,7 +55,6 @@
 						<option value="3">내용</option>
 						<option value="4">작성자</option>
 					</select>
-
 					<div class="input-group input-group-append mb-3">
 						<input type="text" class="form-control js-searchText"
 							placeholder="Search" aria-label="Recipient's username"
@@ -92,7 +94,8 @@
 								for (int i = 0; i < list.size(); i++) {
 									ReviewDTO dto = list.get(i);
 						%>
-						<tr class="row<%=i%> list-group-item-action" onclick="location.href='<%=request.getContextPath()%>/reviewdetailfoward?seq=<%=dto.getSeq()%>'">
+						<tr class="row<%=i%> list-group-item-action"
+							onclick="location.href='<%=request.getContextPath()%>/reviewdetailfoward?seq=<%=dto.getSeq()%>'">
 							<th scope="row"><%=i + 1%></th>
 							<td><img alt=""
 								src="http://localhost:9000/HotelBlueMoon/UPload/<%=dto.getFileRealName()%>"
