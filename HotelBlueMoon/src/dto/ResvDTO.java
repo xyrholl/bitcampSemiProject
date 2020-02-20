@@ -372,7 +372,7 @@ public class ResvDTO {
 	public String toString() {
 		return "ResvDTO [seq=" + seq + ", memberSeq=" + memberSeq + ", roomSeq=" + roomSeq + ", hotelSeq=" + hotelSeq
 				+ ", checkIn=" + checkIn + ", checkOut=" + checkOut + ", resvDate=" + resvDate + ", totalPrice="
-				+ totalPrice + ", cancel=" + cancel + ", current_guest=" + current_guest + ", hotelName=" + hotelName
+				+ totalPrice + ", cancel=" + cancel +", paymentIs=" + paymentIs + ", current_guest=" + current_guest + ", hotelName=" + hotelName
 				+ ", hotelPlace=" + hotelPlace + ", hotelAddr=" + hotelAddr + ", hotelUseCount=" + hotelUseCount
 				+ ", hotelRating=" + hotelRating + ", roomName=" + roomName + ", roomPrice=" + roomPrice
 				+ ", roomMax_guest=" + roomMax_guest + ", id=" + id + ", pwd=" + pwd + ", memName=" + memName
