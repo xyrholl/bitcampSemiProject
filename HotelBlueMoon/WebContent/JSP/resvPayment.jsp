@@ -336,39 +336,7 @@ h1 {
 								<div class="thankyou">Thank you for your business</div>
 							</div>
 						</div>
-						<table>
-							<tbody>
-								<tr>
-									<td>호텔명</td>
-									<td class="right"><%=resv.getHotelName() %></td>
-								</tr>
-								<tr>
-									<td>CheckIn</td>
-									<td class="right"><%=resv.getCheckIn() %></td>
-								</tr>
-								<tr>
-									<td>CheckOut</td>
-									<td class="right"><%=resv.getCheckOut() %></td>
-								</tr>
-								<tr>
-									<td>totlaPrice</td>
-									<td class="right"><%=resv.getTotalPrice() %></td>
-								</tr>
-								<tr>
-									<td colspan="2" class="center"></td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="sign center">
-
-							<br /> <a class="kakao" href="#popup1">
-							<img alt="" class="logo" src="<%=request.getContextPath()%>/image/kakao.JPG">KaKaoPay
-							</a> <br />
-							<div class="thankyou">Thank you for your business</div>
-						</div>
 					</div>
-
-					<div></div>
 				</div>
 				<div id="popup1" class="overlay">
 					<div class="popup">
