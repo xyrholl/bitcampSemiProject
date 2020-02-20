@@ -30,7 +30,7 @@
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group">
+		<ul class="list-group" style="cursor: pointer;">
 			<li class="list-group-item js-main-foward">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>
 			<li class="list-group-item js-qna-foward">Q&A</li>
@@ -49,11 +49,11 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="background-color: #2B3E50">
-
+			<article>
+				<br>
 				<div class="mypage-content" align="center">
 					<form action="mypageupdate" method="get">
-						<div class="mytable" style="width: 40%; float: left;">
+						<div class="mytable" style="width: 40%;">
 							<table class="table table-active">
 								<col width="100">
 								<col width="200">
@@ -78,7 +78,7 @@
 								style="margin-bottom: 15px;">회원정보 수정하기</button>
 						</div>
 						<div class="clfix"></div>
-						<div class="mylist">
+						<div class="mylist" style="width: 70%">
 
 							<ul class="list-group">
 								<li id="reviewCount"

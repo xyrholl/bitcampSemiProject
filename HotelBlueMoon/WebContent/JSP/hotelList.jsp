@@ -68,7 +68,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="margin-left: 13.65em;">
 			<input type="hidden" value="<%=loginId%>" class="js-session">
 			<div class="mainDiv" style="float: left; width: 500px;">
 				<div class="col-3 input-wrap area" style="float: left;">
@@ -124,12 +124,13 @@
 				<div class="mbr-section-btn" style="float: left;">
 					<span class="input-group-btn">
 						<button onclick="goToAjax()" type="submit"
-							class="btn btn-form btn-secondary mbr-lighter display-8" style="padding: 0.74rem; margin-left: 15px; border-radius: 5px;">
+							class="btn btn-form btn-secondary mbr-lighter display-8"
+							style="padding: 0.74rem; margin-left: 15px; border-radius: 5px;">
 							Search</button>
 					</span>
 				</div>
 				<div class="btn-group" role="group" aria-label="Basic example"
-					style="float: right; position: fixed; margin-left: 25.7rem;">
+					style="float: right; position: fixed; margin-left: 27.6rem;">
 					<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
 					<button type="button" class="btn btn-primary js-foward-login">로그인</button>
 				</div>

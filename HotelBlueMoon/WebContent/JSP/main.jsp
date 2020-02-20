@@ -39,7 +39,7 @@
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group" style="color: #EBEBEB;">
+		<ul class="list-group" style="color: #EBEBEB; cursor: pointer;">
 			<li class="list-group-item js-main-foward"
 				style="border-top-left-radius: 0; border-top-right-radius: 0;">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>
@@ -93,7 +93,7 @@
 											CHECK-IN</p>
 										<div class="date-row">
 											<span class="day display-2 mbr-bold js-ci-dayVal"></span>
-											<div class="date-col">
+											<div class="date-col" style="cursor: pointer;">
 												<span class="month display-4 js-ci-monthVal"></span> <span
 													class="mbr-iconfont mbri-arrow-down"> </span>
 											</div>
@@ -108,7 +108,7 @@
 											CHECK-OUT</p>
 										<div class="date-row">
 											<span class="day display-2 mbr-bold js-co-dayVal"></span>
-											<div class="date-col">
+											<div class="date-col" style="cursor: pointer;">
 												<span class="month display-4 js-co-monthVal"></span> <span
 													class="mbr-iconfont mbri-arrow-down"></span>
 											</div>
@@ -123,8 +123,8 @@
 										<div class="date-row">
 											<span class="guests-count display-2 mbr-bold js-guest">1</span>
 											<div class="date-col">
-												<span class="mbr-iconfont mbri-arrow-up"></span> <span
-													class="mbr-iconfont mbri-arrow-down"></span>
+												<span class="mbr-iconfont mbri-arrow-up" style="cursor: pointer;"></span> <span
+													class="mbr-iconfont mbri-arrow-down" style="cursor: pointer;"></span>
 											</div>
 										</div>
 									</div>
@@ -132,7 +132,7 @@
 									<div class="col-3 input-wrap">
 										<p class="label mbr-fonts-style align-center display-4">
 											AREA</p>
-										<select class="custom-select custom-select-lg mb-2 js-areaBox">
+										<select class="custom-select custom-select-lg mb-2 js-areaBox" style="cursor: pointer;">
 											<option selected>Area</option>
 										</select>
 									</div>

@@ -189,7 +189,7 @@ public class ReviewDAO {
 		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL, re.PAYMENTIS "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
 				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ? "
-						+ " ORDER BY re.SEQ DESC ";
+				+ " ORDER BY re.SEQ DESC ";
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -231,13 +231,12 @@ public class ReviewDAO {
 
 		String sql = " SELECT h.NAME, h.RATING, r.NAME, re.CURRENT_GUEST, re.SEQ, re.REVIEWIS, re.CHECKIN, re.CHECKOUT, h.PLACE, re.CANCEL, re.PAYMENTIS "
 				+ " FROM RESV re, BM_MEMBER m, HOTEL h, ROOM r" + " WHERE re.MemberSEQ = m.SEQ "
-				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ?"
-						+ " ORDER BY re.SEQ DESC ";
+				+ " AND re.HotelSEQ = h.SEQ " + " AND re.RoomSEQ = r.SEQ " + " AND m.ID = ?";
 
 		if (selectIndex == 1) {
-			sql = sql + " AND h.NAME LIKE '%'||?||'%' ";
+			sql = sql + " AND h.NAME LIKE '%'||?||'%' " + " ORDER BY re.SEQ DESC ";
 		} else if (selectIndex == 2) {
-			sql = sql + " AND h.PLACE LIKE '%'||?||'%' ";
+			sql = sql + " AND h.PLACE LIKE '%'||?||'%' " + " ORDER BY re.SEQ DESC ";
 		}
 
 		Connection conn = null;

@@ -18,18 +18,18 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <style type="text/css">
-.qnaup li{ list-style: none}
-.qnaup li:first-child{
-float: left;
-
+.qnaup li {
+	list-style: none
 }
 
-
+.qnaup li:first-child {
+	float: left;
+}
 </style>
 </head>
 <body>
 	<nav class="hotelcol-1">
-		<ul class="list-group">
+		<ul class="list-group" style="cursor: pointer;">
 			<li class="list-group-item js-main-foward">메인</li>
 			<li class="list-group-item js-search-foward">검색</li>
 			<li class="list-group-item js-qna-foward">Q&A</li>
@@ -49,38 +49,48 @@ float: left;
 		<main class="hotelcontent">
 
 			<article>
-
-				<form action="qnaupdate" method="get">
-					<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
-					<input type="hidden" name="command" value="QnAUpdateAf">
-					<div class="qnaupdatebox" align="center">
-						<ul class="qnaup">
-							<li >작성자</li>
-							<li><%=dto.getMemberId()%></li>
-						</ul>
-
-						<ul class="qnaup">
-							<li>제목</li>
-							<li><input type="text" name="title"
-								value="<%=dto.getTitle()%>"></li>
-
-						</ul>
-						<ul class="qnaup">
-							<li>작성일</li>
-							<li><%=dto.getWriteDate()%></li>
-						</ul>
-						<ul class="qnaup">
-							<li>내용</li>
-							<li><textarea rows="20" cols="50" name=content><%=dto.getContent()%></textarea>
-							</li>
-						</ul>
-					</div><br>
-					<div class="buttonbox" align="center">
-						<button type="submit" id="qnaUpdateBtn">수정하기</button>
-						<button type="button" onclick="location.href='<%=request.getContextPath()%>/qnafoward'">목록으로</button>
-					</div>
-				</form>
-
+				<div class="QNAcontent" style="width: 90%;">
+				<br>
+					<form action="qnaupdate" method="get">
+						<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
+						<input type="hidden" name="command" value="QnAUpdateAf">
+						<table class="table table-active">
+							<thead>
+								<tr>
+									<th scope="row" style="width: 10%;">제목</th>
+									<th style="widows: 60%;"><input type="text" name="title"
+										value="<%=dto.getTitle()%>" style="width: 28rem;"></th>
+									<th scope="row" style="width: 10%;">조회수</th>
+									<th style="width: 20%;"><%=dto.getReadcount()%></th>
+								</tr>
+								<tr>
+									<th scope="row">작성자</th>
+									<th><%=dto.getMemberId()%></th>
+									<th scope="row">작성일</th>
+									<th><%=dto.getWriteDate()%></th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+						<div class="input-group">
+							<div class="input-group-prepend" style="height: 18rem;">
+								<span class="input-group-text">내용</span>
+							</div>
+							<textarea class="form-control" aria-label="With textarea"
+								id="exampleFormControlTextarea1" readonly="readonly"
+								style="background-color: #fff" name=content><%=dto.getContent()%></textarea>
+						</div>
+						<br>
+						<button type="submit" id="qnaUpdateBtn"
+							class="btn btn-outline-warning"
+							style="float: right; border-radius: 5px;">수정하기</button>
+						<button type="button"
+							onclick="location.href='<%=request.getContextPath()%>/qnafoward'"
+							style="float: left; border-radius: 5px;"
+							class="btn btn-outline-info">목록으로</button>
+					</form>
+				</div>
 			</article>
 
 		</main>
