@@ -78,7 +78,7 @@
 								style="margin-bottom: 15px;">회원정보 수정하기</button>
 						</div>
 						<div class="clfix"></div>
-						<div class="mylist" style="width: 70%">
+						<div class="mylist" style="width: 80%">
 
 							<ul class="list-group">
 								<li id="reviewCount"

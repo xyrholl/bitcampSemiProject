@@ -40,25 +40,30 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article
-				style="background-color: rgba(170, 166, 157, 0.55); overflow-y: scroll; height: 500px;">
+			<article>
+				<br>
+				<div style="width: 40%">
+					<form action="../mypageupdate" method="post">
+						<table class="table table-active">
+							<tr>
+								<th>아이디</th>
+								<td><%=loginId%></td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td><input type="password" name="pwd"></td>
+							</tr>
+						</table>
+						<input type="hidden" name="command" value="mypagePwdChecked">
+						<input type="hidden" name="loginId" value="<%=loginId%>">
+						<button type="button"
+							onclick="location.href='<%=request.getContextPath()%>/mypagefoward'"
+							class="btn btn-outline-info" style="border-radius: 5px;">돌아가기</button>
+						<button type="submit" class="btn btn-outline-success submit-btn"
+							style="border-radius: 5px;">확인</button>
 
-				<form action="../mypageupdate" method="post">
-					<table>
-						<tr>
-							<th>아이디</th>
-							<td><%=loginId%></td>
-						</tr>
-						<tr>
-							<th>비밀번호</th>
-							<td><input type="password" name="pwd"></td>
-						</tr>
-					</table>
-					<input type="hidden" name="command" value="mypagePwdChecked">
-					<input type="hidden" name="loginId" value="<%=loginId%>">
-					<button type="submit">확인</button>
-
-				</form>
+					</form>
+				</div>
 			</article>
 
 		</main>
