@@ -30,7 +30,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 2vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 80rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -40,25 +40,38 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article
-				style="background-color: rgba(170, 166, 157, 0.55); overflow-y: scroll; height: 500px;">
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
+					style="width: 25%; float: left;">
+				<div style="float: left; margin-top: 5vh;">
+					<h1>MyPage</h1>
+				</div>
+				<input type="text" disabled=""
+					style="float: left; width: 70%; height: 1px; margin-top: 25px;">
+				<br>
 
-				<form action="../mypageupdate" method="post">
-					<table>
-						<tr>
-							<th>아이디</th>
-							<td><%=loginId%></td>
-						</tr>
-						<tr>
-							<th>비밀번호</th>
-							<td><input type="password" name="pwd"></td>
-						</tr>
-					</table>
-					<input type="hidden" name="command" value="mypagePwdChecked">
-					<input type="hidden" name="loginId" value="<%=loginId%>">
-					<button type="submit">확인</button>
+				<div style="width: 40%">
+					<form action="../mypageupdate" method="post">
+						<table class="table table-active" style="margin-top: 200px;">
+							<tr>
+								<th>아이디</th>
+								<td><%=loginId%></td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td><input type="password" name="pwd"></td>
+							</tr>
+						</table>
+						<input type="hidden" name="command" value="mypagePwdChecked">
+						<input type="hidden" name="loginId" value="<%=loginId%>">
+						<button type="button"
+							onclick="location.href='<%=request.getContextPath()%>/mypagefoward'"
+							class="btn btn-outline-info" style="border-radius: 5px;">돌아가기</button>
+						<button type="submit" class="btn btn-outline-success submit-btn"
+							style="border-radius: 5px;">확인</button>
 
-				</form>
+					</form>
+				</div>
 			</article>
 
 		</main>

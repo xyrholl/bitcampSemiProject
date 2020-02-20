@@ -298,7 +298,9 @@ h1 {
 								WON
 							</h5>
 							<div class="sign center">
-								<br /> <a class="kakao" href="#popup1"> <img alt=""
+								<br /> 
+								<button type="button" class="btn btn-outline-primary" style="border-radius: 5px;" onclick="location.href='mainfoward'">나중에 결제하기</button>
+								<a class="kakao" href="#popup1"> <img alt=""
 									class="logo"
 									src="<%=request.getContextPath()%>/image/kakao.JPG">KaKaoPay
 								</a> <br />

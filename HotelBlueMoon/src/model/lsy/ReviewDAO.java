@@ -31,7 +31,7 @@ public class ReviewDAO {
 	public ReviewDTO selectOne(int seq) {
 		ReviewDTO dto = null;
 
-		String sql = " SELECT r.SEQ, r.RATING, m.ID, rm.NAME, rs.CURRENT_GUEST, r.WRITEDATE, r.TITLE, r.CONTENT, h.RATING, rs.CHECKIN, rs.CHECKOUT, h.NAME"
+		String sql = " SELECT r.SEQ, r.RATING, m.ID, rm.NAME, rs.CURRENT_GUEST, r.WRITEDATE, r.TITLE, r.CONTENT, h.RATING, rs.CHECKIN, rs.CHECKOUT, h.NAME, rm.ROOM_IMG, r.REVIEW_IMG_REAL "
 				+ " FROM REVIEW r, HOTEL h, ROOM rm, RESV rs, BM_MEMBER m"
 				+ " WHERE r.HOTELSEQ = h.SEQ AND r.ROOMSEQ = rm.SEQ AND r.RESVSEQ = rs.SEQ  AND r.MEMBERSEQ = m.SEQ AND r.SEQ = ? AND r.DEL = 0 ";
 
@@ -60,6 +60,8 @@ public class ReviewDAO {
 				dto.setCheckInDate(rs.getString(i++));
 				dto.setCheckOutDate(rs.getString(i++));
 				dto.setHotelName(rs.getString(i++));
+				dto.setRoomImg(rs.getString(i++));
+				dto.setFileRealName(rs.getString(i++));
 			}
 
 		} catch (SQLException e) {

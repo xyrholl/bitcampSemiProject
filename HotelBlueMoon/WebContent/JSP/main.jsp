@@ -88,12 +88,12 @@
 									<div class="col-3 input-wrap check-in" data-for="check-in">
 										<input type="text" class="check-in-input" name="check-in"
 											data-form-field="Check-In" readonly=""
-											id="check-in-header1-3">
+											id="check-in-header1-3" style="cursor: pointer;">
 										<p class="label mbr-fonts-style align-center display-4">
 											CHECK-IN</p>
 										<div class="date-row">
 											<span class="day display-2 mbr-bold js-ci-dayVal"></span>
-											<div class="date-col" style="cursor: pointer;">
+											<div class="date-col">
 												<span class="month display-4 js-ci-monthVal"></span> <span
 													class="mbr-iconfont mbri-arrow-down"> </span>
 											</div>
@@ -103,12 +103,12 @@
 									<div class="col-3 input-wrap check-out" data-for="check-out">
 										<input type="text" class="check-out-input" name="check-out"
 											data-form-field="Check-Out" readonly=""
-											id="check-out-header1-3">
+											id="check-out-header1-3" style="cursor: pointer;">
 										<p class="label mbr-fonts-style align-center display-4">
 											CHECK-OUT</p>
 										<div class="date-row">
 											<span class="day display-2 mbr-bold js-co-dayVal"></span>
-											<div class="date-col" style="cursor: pointer;">
+											<div class="date-col">
 												<span class="month display-4 js-co-monthVal"></span> <span
 													class="mbr-iconfont mbri-arrow-down"></span>
 											</div>

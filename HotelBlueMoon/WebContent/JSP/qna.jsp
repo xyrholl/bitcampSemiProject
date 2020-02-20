@@ -48,7 +48,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 2vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -58,11 +58,15 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article>
-
-				<div class="input-group-append">
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
+					style="width: 25%; float: left;">
+				<div style="float: left; margin-top: 5vh;">
+					<h1>Q&A</h1>
+				</div>
+				<div class="input-group-append" style="margin-top: 14vh;">
 					<select id="choice" class="custom-select js-search-select"
-						style="width: 20%; border-bottom-left-radius: 5px; border-top-left-radius: 5px; height: 2.22rem; margin-top: 0.08rem;">
+						style="width: 20%; border-bottom-left-radius: 5px; border-top-left-radius: 5px; height: 2.22rem; margin-top: 0.08rem; cursor: pointer;">
 						<option value="sel" selected>선 택</option>
 						<option value="title">제목</option>
 						<option value="writer">작성자</option>
