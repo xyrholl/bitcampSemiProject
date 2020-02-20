@@ -36,7 +36,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 2vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -46,7 +46,14 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article>
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
+					style="width: 25%; float: left;">
+				<div style="float: left; margin-top: 5vh;">
+					<h1>MyPage</h1>
+				</div>
+				<input type="text" disabled=""
+					style="float: left; width: 70%; height: 1px; margin-top: 25px;">
 				<div class="mypage-content" align="center" style="width: 90%">
 					<form action="mypageupdate" method="post" class="frm">
 						<table class="table table-active">
@@ -73,12 +80,14 @@
 							<tr>
 								<th>전화번호</th>
 								<td><input type="text" name="phoneNum"
-									value="<%=dto.getPhoneNum()%>" required="required" class="updatePhoneNum"></td>
+									value="<%=dto.getPhoneNum()%>" required="required"
+									class="updatePhoneNum"></td>
 							</tr>
 							<tr>
 								<th>이메일</th>
 								<td><input type="text" name="email"
-									value="<%=dto.getEmail()%>" required="required" class="updateEmails"></td>
+									value="<%=dto.getEmail()%>" required="required"
+									class="updateEmails"></td>
 							</tr>
 						</table>
 						<div>
@@ -97,6 +106,7 @@
 
 					</form>
 				</div>
+				<br>
 			</article>
 
 		</main>

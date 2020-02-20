@@ -36,7 +36,7 @@ function ajax(checkin, checkout, guest, hotelSeq, hotelName){
 						for (var i = 0; i < data.length; i++) {
 							
 							$(".mainSpan").append(
-											"<div class=\"card\" style=\"width: 18rem;\">"
+											"<div class=\"card\" style=\"width: 18rem; box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);\">"
 													+ "<img class=\"card-img-top\" src=\"../image/image/" + data[i].image + "\" alt=\"Card image cap\">"
 													+ "<div class=\"card-body\">"
 													+ "<h5 class=\"card-title\">"

@@ -63,7 +63,7 @@ function ajax(checkin, checkout, guest, area){
 								star += "☆";
 							}
 							$(".mainSpan").append(
-									"<div class=\"card mb-3\"><h5 class=\"card-header\">" + data[i].name + "</h5>"
+									"<div class=\"card mb-3\" style=\"box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);\"><h5 class=\"card-header\">" + data[i].name + "</h5>"
 									+ "<img style=\"height: 200px; width: 100%; display: block;\" src=\"../image/hotel/" + data[i].hotelImg + "\" alt=\"Card image\">"
 									+ "<div class=\"card-body\"><p class=\"card-text\">"
 									+ data[i].addr + "</p><p class=\"card-text\">[평점 : " + star + " / " + data[i].rating + "점]</p></div>"

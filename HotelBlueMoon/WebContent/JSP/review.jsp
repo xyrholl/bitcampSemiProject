@@ -39,7 +39,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article>
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
 				<input type="hidden" value="" class="js-currDateTmp"> <img
 					alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
 					style="width: 25%; float: left;">
@@ -48,7 +48,7 @@
 				</div>
 				<div class="input-group-append" style="margin-top: 14vh;">
 					<select class="custom-select js-search-select"
-						style="width: 20%; border-bottom-left-radius: 5px; border-top-left-radius: 5px; height: 2.22rem; margin-top: 0.08rem;">
+						style="width: 20%; border-bottom-left-radius: 5px; border-top-left-radius: 5px; height: 2.22rem; margin-top: 0.08rem; cursor: pointer;">
 						<option selected>검색</option>
 						<option value="1">호텔이름</option>
 						<option value="2">제목</option>
@@ -61,9 +61,9 @@
 							aria-describedby="basic-addon2">
 
 						<div class="input-group-append">
-							<span class="input-group-text js-searchBtn" id="basic-addon2">검색</span>
+							<span class="input-group-text js-searchBtn" id="basic-addon2" style="cursor: pointer;">검색</span>
 							<span class="input-group-text js-allListBtn" id="basic-addon2"
-								style="border-bottom-right-radius: 5px; border-top-right-radius: 5px;">전체목록</span>
+								style="border-bottom-right-radius: 5px; border-top-right-radius: 5px; cursor: pointer;">전체목록</span>
 						</div>
 					</div>
 				</div>

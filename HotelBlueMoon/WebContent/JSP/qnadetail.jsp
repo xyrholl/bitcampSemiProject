@@ -41,7 +41,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article>
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
 				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
 					style="width: 25%; float: left;">
 				<div style="float: left; margin-top: 5vh;">
