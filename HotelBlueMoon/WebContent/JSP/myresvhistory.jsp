@@ -104,12 +104,23 @@
 								for (int i = 0; i < list.size(); i++) {
 									ResvDTO dto = list.get(i);
 									System.out.println(list.get(i).toString());
+									
+									String checkInstr = dto.getCheckIn();
+									SimpleDateFormat simpledataFormat = new SimpleDateFormat("yyyy-MM-dd");
+									Date nowCheckIn = simpledataFormat.parse(checkInstr);
+									
+									String checkOutstr = dto.getCheckOut();
+									Date nowCheckOut = simpledataFormat.parse(checkOutstr);
+									
+									int compare_in = nowCheckIn.compareTo(nowDate);
+									int compare_out = nowCheckOut.compareTo(nowDate);
+
 						%>
 						<tr class="row<%=i%> list-group-item-action" onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">
 							<th scope="row"><%=i + 1%></th>
 							<td><input type="hidden" value="<%=dto.getSeq()%>"
 								class="js-resvSeq"> <%
- 	if (dto.getHotelRating() >= 4) {
+ 								if (dto.getHotelRating() >= 4) {
  %>
 								<button class="btn btn-primary"><%=dto.getHotelRating()%></button>
 								<%
@@ -128,96 +139,123 @@
 							<td><%=dto.getCheckIn()%></td>
 							<td><%=dto.getCheckOut()%></td>
 							<td onclick="event.cancelBubble = true;"><input type="hidden" value="" class="js-currDateTmp">
-								<%
-									if (dto.getCancel() == 0) {
-												String checkInstr = dto.getCheckIn();
-												SimpleDateFormat simpledataFormat = new SimpleDateFormat("yyyy-MM-dd");
-												Date nowCheckIn = simpledataFormat.parse(checkInstr);
-
-												int compare = nowCheckIn.compareTo(nowDate);
-
-												if (compare > 0) {
-													System.out.println(i + ": CANCEL=0 체크인 안지남");
-								%>
-								<button type="button" class="btn btn-outline-danger"
-									onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">
-									취소하기</button> <%
- 	} else {
- 					System.out.println(i + ": CANCEL=0 체크인 지남");
- 					String checkOutstr = dto.getCheckOut();
- 					Date nowCheckOut = simpledataFormat.parse(checkOutstr);
- 					int compare_out = nowCheckOut.compareTo(nowDate);
-
- 					if (compare_out > 0) { // 체크아웃  안지남
- 						System.out.println(i + ": CANCEL=0 체크아웃 안지남");
- %>
-								<button type="button" class="btn btn-warning">취소불가</button> <%
- 	} else {
- 						System.out.println(i + ": CANCEL=0 체크아웃 지남");
- %>
-								<button type="button" class="btn btn-secondary">이용완료</button> <%
- 	}
- 				}
- 			} else {
- 				System.out.println(i + ": CANCEL=1 취소완료");
- %>
-								<button type="button" class="btn btn-danger">취소완료</button> <%
- 	}
- %></td>
-							<td onclick="event.cancelBubble = true;">
-								<%
-									if (dto.getPaymentIs() == 0 && dto.getCancel() == 0) {
-								%>
-								<button type="button" class="btn btn-outline-success"
-									onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">결제하기</button>
-								<%
-									} else if (dto.getPaymentIs() == 1 && dto.getCancel() == 0) {
-								%>
-								<button type="button" class="btn btn-success">결제완료</button> <%
- 	} else {
- %>
-								<button type="button" class="btn btn-outline-secondary"
-									disabled="disabled">결제하기</button> <%
- 	}
- %>
+							
+								<%////////////////////////////// 취소버튼  ////////////////////////////////////
+								
+									if (dto.getCancel() == 0) { // 취소안함
+												
+												if (compare_in <=0 && compare_out > 0 ) { // 체크인 지남, 체크아웃 안지남
+													System.out.println(i + "취소버튼: 취소안함, 체크인 안지남 = 취소하기 비활성화 ");
+													%><button type="button" class="btn btn-outline-danger" disabled="disabled">취소하기</button> <%
+													
+												}else if(compare_in <=0  && compare_out <= 0 && dto.getPaymentIs()==0){ // 체크인 지남, 체크아웃 지남
+														System.out.println(i + "취소버튼: 취소안함, 체크아웃 지남, 결제 안함 = 자동취소");
+														dto.setCancel(1);
+								 						%><button type="button" class="btn btn-secondary">자동취소</button> <%
+												}else if(compare_in <=0  && compare_out <= 0 && dto.getPaymentIs()==1){ // 체크인 지남, 체크아웃 지남
+													System.out.println(i + "취소버튼: 취소안함, 체크아웃 지남, 결제 함 = 이용완료");
+													
+							 						%><button type="button" class="btn btn-success">이용완료</button> <%
+															
+												}else if(compare_in > 0){ // 취소안함, 체크인 안지남 = 취소하기);
+													System.out.println(i + "취소버튼: 취소안함, 체크인 안지남, 결제 안함 = 취소하기");
+													%><button type="button" class="btn btn-outline-danger">취소하기</button> <%
+												}
+										
+									}else if(dto.getCancel()==1) {
+	 								System.out.println(i + "취소버튼: CANCEL=1 취소완료");
+	 								%><button type="button" class="btn btn-danger">취소완료</button> <%
+ 									} %> 
 							</td>
+ 
+							 <!-- /////////////////////////////  결제 버튼   ////////////////////////////////// -->
+							
 							<td onclick="event.cancelBubble = true;">
 								<%
-									if (dto.getReviewIs() == 0) {
-
-												String checkOutstr = dto.getCheckOut();
-												SimpleDateFormat simpledataFormat = new SimpleDateFormat("yyyy-MM-dd");
-												Date nowCheckOut = simpledataFormat.parse(checkOutstr);
-
-												int compare_out = nowCheckOut.compareTo(nowDate);
-												System.out.println(i + ": REVIEWIS=0 comout " + compare_out);
-
-												if (compare_out == 0) { // 체크아웃 지남 && dto.getPayMent == 1
-								%>
-								<button type="button" id="reviewBtn"
-									class="btn btn-outline-info js-review-write"
-									onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
-									리뷰쓰기</button> <%
- 	} else { // 체크아웃 안지남  disabled="disabled" 추가해야 제대로 작동함.
- %>
-								<button type="button" id="reviewBtn" disabled="disabled"
-									class="btn btn-outline-secondary js-review-write"
-									onclick="location.href= '<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">
-									리뷰쓰기</button> <%
- 	}
- 			} else {
- %>
-								<button type="button" class="btn btn-info"
-									onclick="location.href='<%=request.getContextPath()%>/mypagereviewdetail?seq=<%=dto.getSeq()%>'">리뷰보기</button>
-								<%
+								if (dto.getPaymentIs() == 0 && dto.getCancel()==1) { // 결제 안함, 취소함
+									
+									System.out.println(i + "결제버튼: 취소함  결제 안함 = 결제비활성");
+			 						%><button type="button" class="btn btn-outline-warning" disabled="disabled">결제하기</button> <%
+								
+								}else if (dto.getPaymentIs() == 1 && dto.getCancel()==0) { // 결제함, 취소안함
+									
+									System.out.println(i + "결제버튼: 결제함, 취소안함 = 결제완료");
+									%><button type="button" class="btn btn-warning">결제완료</button> <%
+								
+								}else if (dto.getPaymentIs() == 1 && dto.getCancel()==1) { // 결제함, 취소안함
+									
+									System.out.println(i + "결제버튼: 결제함, 취소함 = 결제완료");
+									%><button type="button" class="btn btn-warning" disabled="disabled">결제완료</button> <%
+								
+								}else if(dto.getPaymentIs() == 0 && dto.getCancel()==0){ // 결제안하고. 취소 안함
+									
+									System.out.println(i + "결제버튼: 결제안함, 취소 안함 = 결제하기");
+									
+									if(compare_in <= 0 && compare_out > 0 ){ // 체크인 지남, 체크아웃 안지남
+										
+										System.out.println(i + "결제버튼: 체크인지남, 체크아웃 안지남 = 결제하기");
+										%><button type="button" class="btn btn-outline-warning">결제하기</button> <%
+										
+									}else if(compare_out <= 0){ // 체크인 지남, 체크아웃 지남
+										
+										System.out.println(i + "결제버튼: 체크인지남, 체크아웃 지남 = 기간만료");
+										%><button type="button" class="btn btn-secondary" disabled="disabled">기간만료</button> <%
+										
+									}else if(compare_in > 0){ // 체크인 안지남
+										System.out.println(i + "결제버튼: 체크인 안지남 = 결제하기");
+										%><button type="button" class="btn btn-outline-warning">결제하기</button> <%
+										
 									}
+								}
+							%>
+							</td>
+							
+							<!-- ///////////////////////////////   리뷰 버튼    /////////////////////////////////// -->
+							<td onclick="event.cancelBubble = true;">
+								<%
+							
+								if(dto.getReviewIs()== 1 && dto.getCancel() == 0) { // 리뷰쓰고 취소안함
+									System.out.println(i + "리뷰버튼: 리뷰쓰고 취소안함 = 리뷰 보기");
+									%><button type="button" class="btn btn-info">리뷰보기</button> <%
+							
+								}else if(dto.getReviewIs()==0 && dto.getCancel() == 1){ // 리뷰안쓰고 취소함
+									System.out.println(i + "리뷰버튼: 리뷰안쓰고 취소함 = 리뷰 비활성");
+									%><button type="button" class="btn btn-outline-info" disabled="disabled">리뷰쓰기</button> <%
+											
+								}else if (dto.getReviewIs() == 0 && dto.getCancel()==0 && dto.getPaymentIs()==0) { // 리뷰 안쓰고 취소안함 결제 안함
+									if (compare_out <= 0) { // 체크아웃 지남
+										System.out.println(i + "리뷰버튼: 취소안함, 결제안함, 체크아웃지남 = 리뷰 비활성");
+										%><button type="button" class="btn btn-outline-info" disabled="disabled">리뷰쓰기</button> <%
+									
+									}else if(compare_in <= 0 && compare_out > 0 ){ // 체크인 지나고  체크아웃 안지남
+										System.out.println(i + "리뷰버튼: 취소안함, 결제안함,체크인 지남, 체크아웃 안지남 = 리뷰 비활성");
+										%><button type="button" class="btn btn-outline-info" disabled="disabled">리뷰쓰기</button> <%
+																				
+									}else if(compare_in > 0){ // 체크인 안지남
+										System.out.println(i + "리뷰버튼: 취소안함, 결제안함, 체크인 안지남 = 리뷰 비활성");
+										%><button type="button" class="btn btn-outline-info" disabled="disabled">리뷰쓰기</button> <%
+									}
+								}else if (dto.getReviewIs() == 0 && dto.getCancel()==0 && dto.getPaymentIs()==1) { // 리뷰 안쓰고 취소안함 결제 함
+									if (compare_out <= 0) { // 체크아웃 지남
+										System.out.println(i + "리뷰버튼: 취소안함, 결제함, 체크아웃지남 = 리뷰쓰기");
+										%><button type="button" class="btn btn-outline-info" onclick="location.href='<%=request.getContextPath()%>/fowardreviewwrite?seq=<%=dto.getSeq()%>'">리뷰쓰기</button> <%
+									
+									}else if(compare_in <= 0 && compare_out > 0 ){ // 체크인 지나고  체크아웃 안지남
+										System.out.println(i + "리뷰버튼: 취소안함, 결제함, 체크인 지남, 체크아웃 안지남 = 리뷰 비활성");
+										%><button type="button" class="btn btn-outline-info">리뷰쓰기</button> <%
+																				
+									}else if(compare_in > 0){ // 체크인 안지남
+										System.out.println(i + "리뷰버튼: 취소안함, 체크인 안지남 = 리뷰 비활성");
+										%><button type="button" class="btn btn-outline-info" disabled="disabled">리뷰쓰기</button> <%
+									}
+								}
+							
+							} // for문 끝
+						} // else문 끝
 								%>
+							
 							</td>
 						</tr>
-						<%
-							}
-							}
-						%>
 					</tbody>
 				</table>
 

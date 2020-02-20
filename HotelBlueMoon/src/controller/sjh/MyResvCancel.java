@@ -54,17 +54,13 @@ public class MyResvCancel extends HttpServlet {
 			
 		}else if(command.equals("paymentAf")) {
 			System.out.println("command= paymentAf");
-			//String loginId = dto.getId();
-			int roomSeq = dto.getRoomSeq();
-			int hotelSeq = dto.getHotelSeq();
-			String checkIn = dto.getCheckIn();
-			String checkOut = dto.getCheckOut();
-			int totalPrice = dto.getTotalPrice();
-			int current_guest = dto.getCurrent_guest();
-			
-			resp.sendRedirect(req.getContextPath()+"/resvAdd?loginId="+loginId+"&roomSeq="+roomSeq+
-												   "&hotelSeq="+hotelSeq+"&checkIn="+checkIn+"&checkOut="+checkOut+
-												   "&totalPrice="+totalPrice+"&current_guest="+current_guest);
+
+			req.setAttribute("resvSeq", dto.getSeq());
+			req.setAttribute("name", dto.getMemName());
+			req.setAttribute("phone", dto.getPhoneNum());
+			req.setAttribute("email", dto.getEmail());
+			req.setAttribute("totalprice", dto.getTotalPrice());
+			forward("JSP/kakao.jsp", req, resp);
 			
 		}else { // 그냥 detail
 			System.out.println("command= x");
