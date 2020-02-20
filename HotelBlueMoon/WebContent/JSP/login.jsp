@@ -44,15 +44,15 @@
 		<main class="hotelcontent">
 
 			<article style="background-color: rgb(0, 0, 0, 0);">
-				<div style="display: table; width: 35%; margin: auto;">
+				<div style="display: table; width: 45%; margin: auto;">
 					<input type="hidden" id="hotelSeq" value="<%=hotelSeq%>"> <input
 						type="hidden" id="checkin" value="<%=checkin%>"> <input
-						type="hidden" id="checkout" value="<%=checkout%>"> 
-						<input type="hidden" id="guest" value="<%=guest%>">
-						<input type="hidden" id="roomSeq" value="<%=roomSeq%>">
+						type="hidden" id="checkout" value="<%=checkout%>"> <input
+						type="hidden" id="guest" value="<%=guest%>"> <input
+						type="hidden" id="roomSeq" value="<%=roomSeq%>">
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">ID</span>
+							<span class="input-group-text" id="basic-addon1" style="width: 114px;">ID</span>
 						</div>
 						<input type="text" class="form-control input-id" placeholder="ID"
 							aria-label="Username" aria-describedby="basic-addon1">
@@ -60,7 +60,7 @@
 
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">PASSWORD</span>
+							<span class="input-group-text" id="basic-addon1" style="width: 114px;">PASSWORD</span>
 						</div>
 						<input type="password" class="form-control input-pwd"
 							placeholder="PASSWORD" aria-label="Username"
@@ -73,8 +73,7 @@
 						</div>
 					</div>
 
-					<div class="btn-group" role="group" aria-label="Basic example"
-						style="margin-left: 120px;">
+					<div class="btn-group" role="group" aria-label="Basic example">
 						<button type="button" class="btn btn-info regiBtn">회원가입</button>
 						<button type="button" class="btn btn-success loginBtn">로그인</button>
 					</div>

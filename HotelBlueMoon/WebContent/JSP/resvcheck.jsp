@@ -214,12 +214,9 @@ img {
 	 		+"/resvUpdate?"
 	 		+"hotelArea="+"<%=resv.getHotelPlace()%>"
 			+"&checkin="+"<%=resv.getCheckIn()%>"
-			+"&checkout="+"<%=resv.getCheckOut()%>
-		" + "&guest="
-										+
-	<%=resv.getCurrent_guest()%>
-		;
-							});
+			+"&checkout="+"<%=resv.getCheckOut()%>"
+			+"&guest="+<%=resv.getCurrent_guest()%>;
+			});
 
 					$('#cancleBtn').click(function() {
 						alert("메인화면으로 이동합니다.");

@@ -45,7 +45,7 @@
 
 			<article>
 				<div class="input-content" style="width: 90%; margin: auto;">
-				<br>
+					<br>
 					<form action="<%=request.getContextPath()%>/qnawrite" method="get">
 						<br> <br>
 						<div class="input-group mb-3">
@@ -61,8 +61,8 @@
 								<span class="input-group-text">내용</span>
 							</div>
 							<textarea class="form-control" aria-label="With textarea"
-								id="exampleFormControlTextarea1" readonly="readonly"
-								style="background-color: #fff" name=content placeholder="문의사항"></textarea>
+								id="exampleFormControlTextarea1" style="background-color: #fff"
+								name=content placeholder="문의사항"></textarea>
 						</div>
 						<br> <input type="hidden" name="command" value="qnawriteAf">
 						<input type="hidden" name="memberseq" value="<%=memberseq%>">
