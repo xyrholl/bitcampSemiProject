@@ -33,7 +33,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 2vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -44,6 +44,13 @@
 		<main class="hotelcontent">
 
 			<article>
+				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
+					style="width: 25%; float: left;">
+				<div style="float: left; margin-top: 5vh;">
+					<h1>Q&A</h1>
+				</div>
+				<input type="text" disabled=""
+					style="float: left; width: 70%; height: 1px; margin-top: 25px;">
 				<div class="input-content" style="width: 90%; margin: auto;">
 					<br>
 					<form action="<%=request.getContextPath()%>/qnawrite" method="get">

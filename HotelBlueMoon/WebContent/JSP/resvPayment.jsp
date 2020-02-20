@@ -311,48 +311,32 @@ h1 {
 			<article style="background-color: rgb(0, 0, 0, 0);">
 
 				<div class="container">
-					<div class="tab"></div>
-					<div class="paid">
-						<p>Receipt Paid successfully</p>
-					</div>
-					<div class="receipt">
-						<div class="paper">
-							<div class="title">Receipt</div>
-
-						</div>
-						<table>
-							<tbody>
-								<tr>
-									<td>호텔명</td>
-									<td class="right"><%=resv.getHotelName() %></td>
-								</tr>
-								<tr>
-									<td>CheckIn</td>
-									<td class="right"><%=resv.getCheckIn() %></td>
-								</tr>
-								<tr>
-									<td>CheckOut</td>
-									<td class="right"><%=resv.getCheckOut() %></td>
-								</tr>
-								<tr>
-									<td>totlaPrice</td>
-									<td class="right"><%=resv.getTotalPrice() %></td>
-								</tr>
-								<tr>
-									<td colspan="2" class="center"></td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="sign center">
-
-							<br /> <a class="kakao" href="#popup1">
-							<img alt="" class="logo" src="<%=request.getContextPath()%>/image/kakao.JPG">KaKaoPay
-							</a> <br />
-							<div class="thankyou">Thank you for your business</div>
+					<div class="card border-warning mb-3" style="max-width: 24rem;">
+						<div class="card-header"><h5><%=resv.getHotelName()%>
+							<%=resv.getRoomName()%></h5></div>
+						<div class="card-body">
+							<p class="card-text"><%=resv.getHotelAddr()%></p>
+							<p class="card-text">
+								체크인
+								<%=resv.getCheckIn()%>
+								/ 체크아웃
+								<%=resv.getCheckOut()%></p>
+							<h5 class="card-title">
+								Price
+								<%=resv.getTotalPrice()%>
+								WON
+							</h5>
+							<div class="sign center">
+								<br /> 
+								<button type="button" class="btn btn-outline-primary" style="border-radius: 5px;" onclick="location.href='mainfoward'">나중에 결제하기</button>
+								<a class="kakao" href="#popup1"> <img alt=""
+									class="logo"
+									src="<%=request.getContextPath()%>/image/kakao.JPG">KaKaoPay
+								</a> <br />
+								<div class="thankyou">Thank you for your business</div>
+							</div>
 						</div>
 					</div>
-
-					<div></div>
 				</div>
 				<div id="popup1" class="overlay">
 					<div class="popup">

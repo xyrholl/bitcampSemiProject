@@ -30,7 +30,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 2vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -40,9 +40,16 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article>
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
+					style="width: 25%; float: left;">
+				<div style="float: left; margin-top: 5vh;">
+					<h1>Review</h1>
+				</div>
+				<input type="text" disabled=""
+					style="float: left; width: 70%; height: 1px; margin-top: 25px;">
 				<div class="Reviewcontent" style="width: 90%;">
-				<br>
+					<br>
 					<table class="table table-active">
 						<thead>
 							<tr>
@@ -108,7 +115,12 @@
 						</div>
 						<textarea class="form-control" aria-label="With textarea"
 							readonly="readonly"
-							style="background-color: #fff; height: 18rem;"><%=dto.getContent()%></textarea>
+							style="background-color: #fff; height: 13.4rem;"><%=dto.getContent()%></textarea>
+						<div class="input-group-prepend">
+							<span><img
+								src="<%=request.getContextPath()%>/image/image/<%=dto.getRoomImg()%>"
+								style="width: 20rem;"></span>
+						</div>
 					</div>
 					<br>
 					<button type="button" class="btn btn-outline-info js-returnList"
@@ -127,7 +139,7 @@
 					<%
 						}
 					%>
-					<br><br><br>
+					<br> <br> <br>
 				</div>
 			</article>
 

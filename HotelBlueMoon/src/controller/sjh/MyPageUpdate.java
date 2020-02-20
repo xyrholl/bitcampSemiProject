@@ -68,7 +68,7 @@ public class MyPageUpdate extends HttpServlet {
 				
 				boolean isS = s.myPageService.mypageUpdate(loginId, pwd, phoneNum, email);
 				if(isS) {
-					resp.getWriter().println("<script>alert('수정 완료'); "+ addfunc +" location.href=getContextPath() + '/mypagefoward'</script>");
+					resp.getWriter().println("<script>alert('회원정보가 수정되었습니다.'); "+ addfunc +" location.href=getContextPath() + '/mypagefoward'</script>");
 				}else {
 					resp.getWriter().println("<script>alert('수정 실패'); "+ addfunc +" location.href=getContextPath() + '/mypagefoward'</script>");
 				}

@@ -31,7 +31,7 @@
 		</ul>
 	</nav>
 	<div class="hotelcol-2">
-		<header>
+		<header style="height: 2vh;">
 			<div class="btn-group" role="group" aria-label="Basic example"
 				style="float: right; padding-top: 15px; position: fixed; margin-left: 62rem;">
 				<button type="button" class="btn btn-info js-foward-regi">회원가입</button>
@@ -41,9 +41,16 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article>
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
+					style="width: 25%; float: left;">
+				<div style="float: left; margin-top: 5vh;">
+					<h1>Q&A</h1>
+				</div>
+				<input type="text" disabled=""
+					style="float: left; width: 70%; height: 1px; margin-top: 25px;">
 				<div class="QNAcontent" style="width: 90%;">
-				<br>
+					<br>
 					<form action="qnaupdate" method="post">
 						<input type="hidden" name="seq" value="<%=dto.getSeq()%>">
 						<input type="hidden" name="command" value="QnAUpdate">
@@ -82,15 +89,21 @@
 						<div class="buttonbox" align="center">
 
 							<button type="button" id="qnaCommentBtn"
-								value="<%=dto.getSeq()%>" style="float: right; border-radius: 5px;" class="btn btn-outline-success">답글달기</button>
-							<button class="Idcheck btn btn-outline-warning" type="submit" id="qnaUpdateBtn"
-								disabled="disabled" style="float: right; border-radius: 5px;">수정하기</button>
-							<button class="Idcheck btn btn-outline-danger" type="button" id="qnaDeleteBtn"
-								value="<%=dto.getSeq()%>" disabled="disabled" style="float: right; border-radius: 5px;" >삭제하기</button>
+								value="<%=dto.getSeq()%>"
+								style="float: right; border-radius: 5px;"
+								class="btn btn-outline-success">답글달기</button>
+							<button class="Idcheck btn btn-outline-warning" type="submit"
+								id="qnaUpdateBtn" disabled="disabled"
+								style="float: right; border-radius: 5px;">수정하기</button>
+							<button class="Idcheck btn btn-outline-danger" type="button"
+								id="qnaDeleteBtn" value="<%=dto.getSeq()%>" disabled="disabled"
+								style="float: right; border-radius: 5px;">삭제하기</button>
 							<input type="hidden" id="loginId" value="<%=loginId%>"> <input
 								type="hidden" id="dtoId" value="<%=dto.getMemberId()%>">
 
-							<button type="button" id="qnaListBtn" onclick="history.back()" class="btn btn-outline-info" style="float: left; border-radius: 5px;">돌아가기</button>
+							<button type="button" id="qnaListBtn" onclick="history.back()"
+								class="btn btn-outline-info"
+								style="float: left; border-radius: 5px;">돌아가기</button>
 
 						</div>
 					</form>
