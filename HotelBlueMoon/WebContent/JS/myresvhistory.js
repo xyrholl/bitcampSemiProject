@@ -58,6 +58,26 @@ function allSearch() {
 			+ loginId.value + "&nowTime=" + nowTime;
 }
 
+$(function(){
+	$(".clink").click(function(){
+		var ctype = $(this).closest(".ctype").val();
+		var ptype = $(this).parent().parent().children().children(".ptype").val();	
+		var detail_seq = $(this).parent().parent().children().children(".resv_seq").val();
+		location.href= getContextPath()+"/myresvdetail?command=detail&detail_seq="+detail_seq+"&ctype="+ctype+"&ptype="+ptype;
+	});
+	$(".plink").click(function(){
+		var ctype = $(this).parent().parent().children().children(".ctype").val();	
+		var ptype = $(this).closest(".ptype").val();
+		var detail_seq = $(this).parent().parent().children().children(".resv_seq").val();
+		location.href= getContextPath()+"/myresvdetail?command=detail&detail_seq="+detail_seq+"&ctype="+ctype+"&ptype="+ptype;
+	});
+});
+
+
+
+
+
+
 function init() {
 	searchBtn.addEventListener("click", searchCheck);
 	allListBtn.addEventListener("click", allSearch);
