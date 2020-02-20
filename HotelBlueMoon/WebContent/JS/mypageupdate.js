@@ -31,7 +31,7 @@ function CheckIdPwd(str) {
 }
 
 function PhoneNumberCheck(str) {
-	var checkPhone = /^[0-9]{9,12}$/;
+	var checkPhone = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4,4}$/;
 	if (!checkPhone.test(str)) {
 		return false;
 	} else {
@@ -64,7 +64,7 @@ function formCheck() {
 					alert("이메일 형식이 맞지 않습니다.")
 				}
 			} else {
-				alert("전화번호 형식이 맞지 않습니다.")
+				alert("전화번호 000-0000-0000 형식에 맞지 않습니다.")
 			}
 		} else {
 			alert("비밀번호 확인에 형식이 맞지 않습니다.")

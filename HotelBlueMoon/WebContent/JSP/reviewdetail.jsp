@@ -42,7 +42,7 @@
 
 			<article>
 				<div class="Reviewcontent" style="width: 90%;">
-				<br>
+					<br>
 					<table class="table table-active">
 						<thead>
 							<tr>
@@ -108,7 +108,10 @@
 						</div>
 						<textarea class="form-control" aria-label="With textarea"
 							readonly="readonly"
-							style="background-color: #fff; height: 18rem;"><%=dto.getContent()%></textarea>
+							style="background-color: #fff; height: 13.4rem;"><%=dto.getContent()%></textarea>
+						<div class="input-group-prepend">
+							<span><img src="<%=request.getContextPath()%>/image/image/<%=dto.getRoomImg()%>" style="width: 20rem;"></span>
+						</div>
 					</div>
 					<br>
 					<button type="button" class="btn btn-outline-info js-returnList"
@@ -127,7 +130,7 @@
 					<%
 						}
 					%>
-					<br><br><br>
+					<br> <br> <br>
 				</div>
 			</article>
 

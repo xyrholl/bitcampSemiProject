@@ -107,7 +107,7 @@ function CheckIdPwd(str) {
 }
 
 function PhoneNumberCheck(str) {
-	var checkPhone = /^[0-9]{9,12}$/;
+	var checkPhone = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4,4}$/;
 	if (!checkPhone.test(str)) {
 		return false;
 	} else {
@@ -133,7 +133,7 @@ function subBtn() {
 									alert("이메일을 입력해주세요")
 								}
 							} else {
-								alert("전화번호를 9자리에서 12자리 숫자로 입력해주세요.")
+								alert("전화번호 000-0000-0000 형식으로 입력해주세요.")
 							}
 						} else {
 							alert("전화번호를 입력해주세요")
