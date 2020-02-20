@@ -52,7 +52,7 @@
 			<article style="background-color: rgb(0, 0, 0, 0);">
 				<div class="resvcontent" style="width: 40%">
 					<div class="card mb-3">
-						<h3 class="card-header">예약 확인</h3>
+						<h3 class="card-header">예약 내역</h3>
 						<div class="card-body">
 							<h5 class="card-title"><%=hotelDto.getName()%></h5>
 							<h6 class="card-subtitle text-muted"><%=roomDto.getName()%></h6>
