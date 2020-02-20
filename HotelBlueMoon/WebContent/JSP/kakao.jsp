@@ -47,7 +47,7 @@ System.out.println("kakao.jsp의 getAttri값들"+resvSeq+name+ phone+ email+ tot
 		</header>
 		<main class="hotelcontent">
 
-			<article>
+			<article style="background-color: rgb(0, 0, 0, 0);">
 
 <script>
     $(function(){
