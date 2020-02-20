@@ -74,7 +74,7 @@
 							<li class="list-group-item">CHECK-OUT <%=dto.getCheckOut()%></li>
 						</ul>
 						<div class="card-body">
-							<a href="#" class="card-link">Price <%=dto.getTotalPrice()%>
+							<a class="card-link" style="color: #DF691A;">Price <%=dto.getTotalPrice()%>
 								WON
 							</a>
 						</div>
@@ -99,9 +99,9 @@
 								<% if(ptype.equals("1p")){ %>
 									<button type="button" class="btn btn-outline-warning" disabled="disabled" value="1p">결제하기</button>
 								<%}else if(ptype.equals("2p")){ %>
-									<button type="button" class="btn btn-warning" value="2p">결제완료</button>
+									<button type="button" class="btn btn-success" value="2p">결제완료</button>
 								<%}else if(ptype.equals("3p")){ %>
-									<button type="button" class="btn btn-warning" disabled="disabled" value="3p">결제완료</button>
+									<button type="button" class="btn btn-success" disabled="disabled" value="3p">결제완료</button>
 								<%}else if(ptype.equals("4p")){ %>
 									<button type="button" id="payBtn" class="btn btn-outline-warning" value="4p">결제하기</button>
 								<%}else if(ptype.equals("5p")){ %>

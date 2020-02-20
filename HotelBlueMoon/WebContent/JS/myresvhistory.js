@@ -71,8 +71,15 @@ $(function(){
 		var detail_seq = $(this).parent().parent().children().children(".resv_seq").val();
 		location.href= getContextPath()+"/myresvdetail?command=detail&detail_seq="+detail_seq+"&ctype="+ctype+"&ptype="+ptype;
 	});
+	$(".r_link").click(function() {
+		var detail_seq = $(this).parent().parent().children().children(".resv_seq").val();
+		location.href = getContextPath()+"/fowardreviewwrite?seq=" + detail_seq;
+	});
+	$(".rd_link").click(function() {
+		var detail_seq = $(this).parent().parent().children().children(".resv_seq").val();
+		location.href = getContextPath()+"/mypagereviewdetail?seq=" + detail_seq;
+	});
 });
-
 
 
 

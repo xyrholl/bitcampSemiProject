@@ -51,7 +51,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.2);">
 				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
 					style="width: 25%; float: left;">
 				<div style="float: left; margin-top: 5vh;">
@@ -74,8 +74,9 @@
 							aria-describedby="basic-addon2">
 
 						<div class="input-group-append">
-							<span class="input-group-text js-searchBtn" id="basic-addon2" style="cursor: pointer;">검색</span>
-							<span class="input-group-text js-allListBtn" id="basic-addon2"
+							<span class="input-group-text js-searchBtn" id="basic-addon2"
+								style="cursor: pointer;">검색</span> <span
+								class="input-group-text js-allListBtn" id="basic-addon2"
 								style="border-bottom-right-radius: 5px; border-top-right-radius: 5px; cursor: pointer;">전체목록</span>
 						</div>
 					</div>
@@ -101,8 +102,9 @@
 						%>
 						<tr>
 							<td colspan="8"><ul>
-									<li class="list-group-item" style="float: none; text-align: center;">예약을 신청한
-										이력이 없습니다.</li>
+									<li class="list-group-item"
+										style="float: none; text-align: center;">예약을 신청한 이력이
+										없습니다.</li>
 								</ul></td>
 						</tr>
 						<%
@@ -121,11 +123,10 @@
 									int compare_in = nowCheckIn.compareTo(nowDate);
 									int compare_out = nowCheckOut.compareTo(nowDate);
 						%>
-						<tr class="row<%=i%> list-group-item-action"
-							onclick="location.href='<%=request.getContextPath()%>/myresvcancel?command=pay&detail_seq=<%=dto.getSeq()%>'">
+						<tr class="row<%=i%> list-group-item-action">
 							<th scope="row"><%=i + 1%></th>
-							<td><input type="hidden" class="resv_seq" value="<%=dto.getSeq()%>"
-								class="js-resvSeq"> <%
+							<td><input type="hidden" class="resv_seq"
+								value="<%=dto.getSeq()%>" class="js-resvSeq"> <%
  	if (dto.getHotelRating() >= 4) {
  %>
 								<button class="btn btn-primary"><%=dto.getHotelRating()%></button>
@@ -144,73 +145,79 @@
 							<td><a class="list-group-item"><%=dto.getRoomName()%></a></td>
 							<td><%=dto.getCheckIn()%></td>
 							<td><%=dto.getCheckOut()%></td>
-							<td onclick="event.cancelBubble = true;"><input type="hidden" value="" class="js-currDateTmp">
-							
-								<%////////////////////////////// 취소버튼  ////////////////////////////////////
-								
-									if (dto.getCancel() == 0) { // 취소안함
-												
-												if (compare_in <=0 && compare_out > 0 ) { // 체크인 지남, 체크아웃 안지남
-													System.out.println(i + "취소버튼: 취소안함, 체크인 안지남 = 취소하기 비활성화 ");
-													%><button type="button" class="btn btn-outline-danger ctype" disabled="disabled" value="1c">취소하기</button> <%
-													
-												}else if(compare_in <=0  && compare_out <= 0 && dto.getPaymentIs()==0){ // 체크인 지남, 체크아웃 지남
-														System.out.println(i + "취소버튼: 취소안함, 체크아웃 지남, 결제 안함 = 자동취소");
-														dto.setCancel(1);
-								 						%><button type="button" class="btn btn-secondary ctype" value="2c">자동취소</button> <%
-												}else if(compare_in <=0  && compare_out <= 0 && dto.getPaymentIs()==1){ // 체크인 지남, 체크아웃 지남
-													System.out.println(i + "취소버튼: 취소안함, 체크아웃 지남, 결제 함 = 이용완료");
-													
-							 						%><button type="button" class="btn btn-success ctype" value="3c">이용완료</button> <%
-															
-												}else if(compare_in > 0){ // 취소안함, 체크인 안지남 = 취소하기);
-													System.out.println(i + "취소버튼: 취소안함, 체크인 안지남, 결제 안함 = 취소하기");
-													%><button type="button" class="btn btn-outline-danger ctype clink" value="4c">취소하기</button> <%
-												}
-										
-									}else if(dto.getCancel()==1) {
-	 								System.out.println(i + "취소버튼: CANCEL=1 취소완료");
-	 								%><button type="button" class="btn btn-danger ctype" value="5c">취소완료</button> <%
- 									} %> 
-							</td>
- 
-							 <!-- /////////////////////////////  결제 버튼   ////////////////////////////////// -->
-							
+							<td onclick="event.cancelBubble = true;"><input
+								type="hidden" value="" class="js-currDateTmp"> <%
+ 	////////////////////////////// 취소버튼  ////////////////////////////////////
+
+ 			if (dto.getCancel() == 0) { // 취소안함
+
+ 				if (compare_in <= 0 && compare_out > 0) { // 체크인 지남, 체크아웃 안지남
+ 					System.out.println(i + "취소버튼: 취소안함, 체크인 안지남 = 취소하기 비활성화 ");
+ %><button type="button"
+									class="btn btn-outline-danger ctype" disabled="disabled"
+									value="1c">취소하기</button> <%
+ 	} else if (compare_in <= 0 && compare_out <= 0 && dto.getPaymentIs() == 0) { // 체크인 지남, 체크아웃 지남
+ 					System.out.println(i + "취소버튼: 취소안함, 체크아웃 지남, 결제 안함 = 자동취소");
+ 					dto.setCancel(1);
+ %><button type="button" class="btn btn-secondary ctype"
+									value="2c">자동취소</button> <%
+ 	} else if (compare_in <= 0 && compare_out <= 0 && dto.getPaymentIs() == 1) { // 체크인 지남, 체크아웃 지남
+ 					System.out.println(i + "취소버튼: 취소안함, 체크아웃 지남, 결제 함 = 이용완료");
+ %><button type="button" class="btn btn-success ctype"
+									value="3c">이용완료</button> <%
+ 	} else if (compare_in > 0) { // 취소안함, 체크인 안지남 = 취소하기);
+ 					System.out.println(i + "취소버튼: 취소안함, 체크인 안지남, 결제 안함 = 취소하기");
+ %><button type="button"
+									class="btn btn-outline-danger ctype clink" value="4c">취소하기</button>
+								<%
+									}
+
+											} else if (dto.getCancel() == 1) {
+												System.out.println(i + "취소버튼: CANCEL=1 취소완료");
+								%><button type="button" class="btn btn-danger ctype"
+									value="5c">취소완료</button> <%
+ 	}
+ %></td>
+
+							<!-- /////////////////////////////  결제 버튼   ////////////////////////////////// -->
+
 							<td onclick="event.cancelBubble = true;">
 								<%
-								if (dto.getPaymentIs() == 0 && dto.getCancel()==1) { // 결제 안함, 취소함
-									
-									System.out.println(i + "결제버튼: 취소함  결제 안함 = 결제비활성");
-			 						%><button type="button" class="btn btn-outline-warning ptype" disabled="disabled" value="1p">결제하기</button> <%
-								
-								}else if (dto.getPaymentIs() == 1 && dto.getCancel()==0) { // 결제함, 취소안함
-									
-									System.out.println(i + "결제버튼: 결제함, 취소안함 = 결제완료");
-									%><button type="button" class="btn btn-warning ptype" value="2p">결제완료</button> <%
-								
-								}else if (dto.getPaymentIs() == 1 && dto.getCancel()==1) { // 결제함, 취소함
-									
-									System.out.println(i + "결제버튼: 결제함, 취소함 = 결제완료");
-									%><button type="button" class="btn btn-warning ptype" disabled="disabled" value="3p">결제완료</button> <%
-								
-								}else if(dto.getPaymentIs() == 0 && dto.getCancel()==0){ // 결제안하고. 취소 안함
-									
-									System.out.println(i + "결제버튼: 결제안함, 취소 안함 = 결제하기");
-									
-									if(compare_in <= 0 && compare_out > 0 ){ // 체크인 지남, 체크아웃 안지남
-										
-										System.out.println(i + "결제버튼: 체크인지남, 체크아웃 안지남 = 결제하기");
-										%><button type="button" class="btn btn-outline-warning ptype plink" value="4p">결제하기</button> <%
-										
-									}else if(compare_out <= 0){ // 체크인 지남, 체크아웃 지남
-										
-										System.out.println(i + "결제버튼: 체크인지남, 체크아웃 지남 = 기간만료");
-										%><button type="button" class="btn btn-secondary ptype" disabled="disabled" value="5p">기간만료</button> <%
-										
-									}else if(compare_in > 0){ // 체크인 안지남
-										System.out.println(i + "결제버튼: 체크인 안지남 = 결제하기");
-										%><button type="button" class="btn btn-outline-warning ptype plink" value="4p">결제하기</button> <%
-										
+									if (dto.getPaymentIs() == 0 && dto.getCancel() == 1) { // 결제 안함, 취소함
+
+												System.out.println(i + "결제버튼: 취소함  결제 안함 = 결제비활성");
+								%><button type="button" class="btn btn-warning ptype"
+									disabled="disabled" value="1p">결제하기</button> <%
+ 	} else if (dto.getPaymentIs() == 1 && dto.getCancel() == 0) { // 결제함, 취소안함
+
+ 				System.out.println(i + "결제버튼: 결제함, 취소안함 = 결제완료");
+ %><button type="button" class="btn btn-success ptype plink"
+									value="2p">결제완료</button> <%
+ 	} else if (dto.getPaymentIs() == 1 && dto.getCancel() == 1) { // 결제함, 취소함
+
+ 				System.out.println(i + "결제버튼: 결제함, 취소함 = 결제완료");
+ %><button type="button" class="btn btn-success ptype"
+									disabled="disabled" value="3p">결제완료</button> <%
+ 	} else if (dto.getPaymentIs() == 0 && dto.getCancel() == 0) { // 결제안하고. 취소 안함
+
+ 				System.out.println(i + "결제버튼: 결제안함, 취소 안함 = 결제하기");
+
+ 				if (compare_in <= 0 && compare_out > 0) { // 체크인 지남, 체크아웃 안지남
+
+ 					System.out.println(i + "결제버튼: 체크인지남, 체크아웃 안지남 = 결제하기");
+ %><button type="button"
+									class="btn btn-warning ptype plink" value="4p">결제하기</button>
+								<%
+									} else if (compare_out <= 0) { // 체크인 지남, 체크아웃 지남
+
+													System.out.println(i + "결제버튼: 체크인지남, 체크아웃 지남 = 기간만료");
+								%><button type="button" class="btn btn-secondary ptype"
+									disabled="disabled" value="5p">기간만료</button> <%
+ 	} else if (compare_in > 0) { // 체크인 안지남
+ 					System.out.println(i + "결제버튼: 체크인 안지남 = 결제하기");
+ %><button type="button"
+									class="btn btn-warning ptype plink" value="4p">결제하기</button>
+								<%
 									}
 											}
 								%>
@@ -219,47 +226,50 @@
 							<!-- ///////////////////////////////   리뷰 버튼    /////////////////////////////////// -->
 							<td onclick="event.cancelBubble = true;">
 								<%
-							
-								if(dto.getReviewIs()== 1 && dto.getCancel() == 0) { // 리뷰쓰고 취소안함
-									System.out.println(i + "리뷰버튼: 리뷰쓰고 취소안함 = 리뷰 보기");
-									%><button type="button" class="btn btn-info rtype rd_link" value="1r">리뷰보기</button> <%
-							
-								}else if(dto.getReviewIs()==0 && dto.getCancel() == 1){ // 리뷰안쓰고 취소함
-									System.out.println(i + "리뷰버튼: 리뷰안쓰고 취소함 = 리뷰 비활성");
-									%><button type="button" class="btn btn-outline-info rtype" disabled="disabled" value="2r">리뷰쓰기</button> <%
-											
-								}else if (dto.getReviewIs() == 0 && dto.getCancel()==0 && dto.getPaymentIs()==0) { // 리뷰 안쓰고 취소안함 결제 안함
-									if (compare_out <= 0) { // 체크아웃 지남
-										System.out.println(i + "리뷰버튼: 취소안함, 결제안함, 체크아웃지남 = 리뷰 비활성");
-										%><button type="button" class="btn btn-outline-info rtype" disabled="disabled" value="2r">리뷰쓰기</button> <%
-									
-									}else if(compare_in <= 0 && compare_out > 0 ){ // 체크인 지나고  체크아웃 안지남
-										System.out.println(i + "리뷰버튼: 취소안함, 결제안함,체크인 지남, 체크아웃 안지남 = 리뷰 비활성");
-										%><button type="button" class="btn btn-outline-info rtype" disabled="disabled" value="2r">리뷰쓰기</button> <%
-																				
-									}else if(compare_in > 0){ // 체크인 안지남
-										System.out.println(i + "리뷰버튼: 취소안함, 결제안함, 체크인 안지남 = 리뷰 비활성");
-										%><button type="button" class="btn btn-outline-info rtype" disabled="disabled" value="2r">리뷰쓰기</button> <%
-									}
-								}else if (dto.getReviewIs() == 0 && dto.getCancel()==0 && dto.getPaymentIs()==1) { // 리뷰 안쓰고 취소안함 결제 함
-									if (compare_out <= 0) { // 체크아웃 지남
-										System.out.println(i + "리뷰버튼: 취소안함, 결제함, 체크아웃지남 = 리뷰쓰기");
-										%><button type="button" class="btn btn-outline-info rtype r_link" value="3r">리뷰쓰기</button> <%
-									
-									}else if(compare_in <= 0 && compare_out > 0 ){ // 체크인 지나고  체크아웃 안지남
-										System.out.println(i + "리뷰버튼: 취소안함, 결제함, 체크인 지남, 체크아웃 안지남 = 리뷰 비활성");
-										%><button type="button" class="btn btn-outline-info rtype r_link" value="3r">리뷰쓰기</button> <%
-																				
-									}else if(compare_in > 0){ // 체크인 안지남
-										System.out.println(i + "리뷰버튼: 취소안함, 체크인 안지남 = 리뷰 비활성");
-										%><button type="button" class="btn btn-outline-info rtype" disabled="disabled" value="2r">리뷰쓰기</button> <%
-									}
-								}
-							
-							} // for문 끝
-						} // else문 끝
-								%>
-							
+									if (dto.getReviewIs() == 1 && dto.getCancel() == 0) { // 리뷰쓰고 취소안함
+												System.out.println(i + "리뷰버튼: 리뷰쓰고 취소안함 = 리뷰 보기");
+								%><button type="button" class="btn btn-info rtype rd_link"
+									value="1r">리뷰보기</button> <%
+ 	} else if (dto.getReviewIs() == 0 && dto.getCancel() == 1) { // 리뷰안쓰고 취소함
+ 				System.out.println(i + "리뷰버튼: 리뷰안쓰고 취소함 = 리뷰 비활성");
+ %><button type="button" class="btn btn-outline-info rtype"
+									disabled="disabled" value="2r">리뷰쓰기</button> <%
+ 	} else if (dto.getReviewIs() == 0 && dto.getCancel() == 0 && dto.getPaymentIs() == 0) { // 리뷰 안쓰고 취소안함 결제 안함
+ 				if (compare_out <= 0) { // 체크아웃 지남
+ 					System.out.println(i + "리뷰버튼: 취소안함, 결제안함, 체크아웃지남 = 리뷰 비활성");
+ %><button type="button" class="btn btn-outline-info rtype"
+									disabled="disabled" value="2r">리뷰쓰기</button> <%
+ 	} else if (compare_in <= 0 && compare_out > 0) { // 체크인 지나고  체크아웃 안지남
+ 					System.out.println(i + "리뷰버튼: 취소안함, 결제안함,체크인 지남, 체크아웃 안지남 = 리뷰 비활성");
+ %><button type="button" class="btn btn-outline-info rtype"
+									disabled="disabled" value="2r">리뷰쓰기</button> <%
+ 	} else if (compare_in > 0) { // 체크인 안지남
+ 					System.out.println(i + "리뷰버튼: 취소안함, 결제안함, 체크인 안지남 = 리뷰 비활성");
+ %><button type="button" class="btn btn-outline-info rtype"
+									disabled="disabled" value="2r">리뷰쓰기</button> <%
+ 	}
+ 			} else if (dto.getReviewIs() == 0 && dto.getCancel() == 0 && dto.getPaymentIs() == 1) { // 리뷰 안쓰고 취소안함 결제 함
+ 				if (compare_out <= 0) { // 체크아웃 지남
+ 					System.out.println(i + "리뷰버튼: 취소안함, 결제함, 체크아웃지남 = 리뷰쓰기");
+ %><button type="button"
+									class="btn btn-outline-info rtype r_link" value="3r">리뷰쓰기</button>
+								<%
+									} else if (compare_in <= 0 && compare_out > 0) { // 체크인 지나고  체크아웃 안지남
+													System.out.println(i + "리뷰버튼: 취소안함, 결제함, 체크인 지남, 체크아웃 안지남 = 리뷰 비활성");
+								%><button type="button"
+									class="btn btn-outline-info rtype r_link" value="3r">리뷰쓰기</button>
+								<%
+									} else if (compare_in > 0) { // 체크인 안지남
+													System.out.println(i + "리뷰버튼: 취소안함, 체크인 안지남 = 리뷰 비활성");
+								%><button type="button" class="btn btn-outline-info rtype"
+									disabled="disabled" value="2r">리뷰쓰기</button> <%
+ 	}
+ 			}
+
+ 		} // for문 끝
+ 	} // else문 끝
+ %>
+
 							</td>
 						</tr>
 					</tbody>
