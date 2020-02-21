@@ -48,7 +48,7 @@
 		</header>
 		<main class="hotelcontent">
 
-			<article style="box-shadow: 5px 5px 5px 5px rgb(0,0,0,0.2);">
+			<article style="box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.2);">
 				<img alt="" src="<%=request.getContextPath()%>/image/bluemoon.png"
 					style="width: 25%; float: left;">
 				<div style="float: left; margin-top: 5vh;">
@@ -85,8 +85,8 @@
 								<span class="input-group-text">내용</span>
 							</div>
 							<textarea class="form-control" aria-label="With textarea"
-								id="exampleFormControlTextarea1" readonly="readonly"
-								style="background-color: #fff" name=content><%=dto.getContent()%></textarea>
+								id="exampleFormControlTextarea1" style="background-color: #fff"
+								name=content><%=dto.getContent()%></textarea>
 						</div>
 						<br>
 						<button type="submit" id="qnaUpdateBtn"
