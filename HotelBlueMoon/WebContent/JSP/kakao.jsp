@@ -59,7 +59,7 @@ System.out.println("kakao.jsp의 getAttri값들"+resvSeq+name+ phone+ email+ tot
             pg : 'kakaopay',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name : 'KH Books 도서 결제',
+            name : '블루문 호텔 예약',
             amount : <%=totalprice%>,
             buyer_email : '<%=email%>',
             buyer_name : '<%=name%>',

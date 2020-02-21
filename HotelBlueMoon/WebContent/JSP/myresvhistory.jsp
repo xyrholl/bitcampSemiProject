@@ -163,7 +163,7 @@
 									value="2c">자동취소</button> <%
  	} else if (compare_in <= 0 && compare_out <= 0 && dto.getPaymentIs() == 1) { // 체크인 지남, 체크아웃 지남
  					System.out.println(i + "취소버튼: 취소안함, 체크아웃 지남, 결제 함 = 이용완료");
- %><button type="button" class="btn btn-success ctype"
+ %><button type="button" class="btn btn-success ctype clink"
 									value="3c">이용완료</button> <%
  	} else if (compare_in > 0) { // 취소안함, 체크인 안지남 = 취소하기);
  					System.out.println(i + "취소버튼: 취소안함, 체크인 안지남, 결제 안함 = 취소하기");
@@ -186,7 +186,7 @@
 									if (dto.getPaymentIs() == 0 && dto.getCancel() == 1) { // 결제 안함, 취소함
 
 												System.out.println(i + "결제버튼: 취소함  결제 안함 = 결제비활성");
-								%><button type="button" class="btn btn-warning ptype"
+								%><button type="button" class="btn btn-outline-warning ptype"
 									disabled="disabled" value="1p">결제하기</button> <%
  	} else if (dto.getPaymentIs() == 1 && dto.getCancel() == 0) { // 결제함, 취소안함
 

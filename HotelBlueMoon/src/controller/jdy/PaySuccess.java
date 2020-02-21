@@ -23,6 +23,8 @@ public class PaySuccess extends HttpServlet{
 	}
 	
 	public void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		resp.setContentType("text/html; charset=UTF-8");
 		System.out.println("kakao.jsp-> paysuccess호출");
 		//location.href='<%=request.getContextPath()%>/paysuccess?resvSeq=<%=resvSeq%>'; 
 		
